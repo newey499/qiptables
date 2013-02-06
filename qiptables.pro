@@ -6,13 +6,33 @@
 
 QT       += core gui
 
+
 TARGET = qiptables
 TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    formtest.cpp \
+    formfirewallrules.cpp \
+    ipstackedwidget.cpp \
+    qiptablesexception.cpp \
+    linuxuserid.cpp \
+    ipprocess.cpp \
+    iptables.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    formtest.h \
+    formfirewallrules.h \
+    ipstackedwidget.h \
+    qiptablesexception.h \
+    linuxuserid.h \
+    ipprocess.h \
+    iptables.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    formtest.ui \
+    formfirewallrules.ui
+
+OTHER_FILES += \
+    TODO.txt

@@ -1,16 +1,28 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <string>
-using namespace std;
+
+#include "qiptablesexception.h"
+
 
 #include <QAction>
 #include <QCloseEvent>
+#include <QEvent>
 #include <QMainWindow>
+#include <QMap>
 #include <QMenuBar>
 #include <QMenuItem>
 #include <QMessageBox>
 #include <QSettings>
+#include <QStackedWidget>
+
+#include "formtest.h"
+#include "formfirewallrules.h"
+#include "ipstackedwidget.h"
+#include "linuxuserid.h"
+#include "ipprocess.h"
+
+class FormTest;
 
 namespace Ui {
 class MainWindow;
@@ -34,19 +46,34 @@ public:
 
 public slots:
 
-
-    void aboutQiptables();
-    void aboutQt();
+    virtual void quitApplication();
+    virtual void aboutQiptables();
+    virtual void aboutQt();
+    virtual void selectTestPage();
+    virtual void selectFirewallRulesPage();
+    virtual void saveSettings();
 
 protected:
 
     virtual void closeEvent(QCloseEvent *event);
+
+    virtual int quitYesNo();
     virtual void buildMenuBar();
+
+    IpStackedWidget *widgetStack;
+    FormTest *formTest;
+    FormFirewallRules *formFirewallRules;
 
 
     QMenu *fileMenu;
+            QAction *actFirewallRules;
+            QAction *actQuit;
+
     QMenu *toolsMenu;
+            QAction *actTest;
+
     QMenu *settingsMenu;
+
     QMenu *helpMenu;
         QAction *actAboutQt;
         QAction *actAboutQiptables;

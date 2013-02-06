@@ -1,0 +1,5 @@
+TODO List for Qiptables project
+
+1) Add check for root user id when calling exec in IpProcess
+Note exec will need to be overriden to include check for
+foot access before calling parent class exec method.
