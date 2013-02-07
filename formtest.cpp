@@ -39,6 +39,13 @@ void FormTest::slotBtnTest()
 
     Iptables *iptables = new Iptables(this);
     ui->plainTextEdit->appendPlainText(iptables->list());
+
+    Install *install = new Install(this);
+    QString instStr(install->performInstall());
+    ui->plainTextEdit->appendPlainText(instStr);
+
+
+
 }
 
 

@@ -8,6 +8,7 @@ MainWindow::MainWindow(QString organization, QString application, QWidget *paren
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    setObjectName("MainWindow");
     this->organization = organization;
     this->application = application;
 
@@ -20,9 +21,11 @@ MainWindow::MainWindow(QString organization, QString application, QWidget *paren
     widgetStack = new IpStackedWidget(this);
     formTest = new FormTest(this);
     formFirewallRules = new FormFirewallRules(this);
+    formConfigQiptables = new FormConfigQiptables(this);
 
     widgetStack->addWidget("formTest", formTest);
     widgetStack->addWidget("formFirewallRules", formFirewallRules);
+    widgetStack->addWidget("formConfigQiptables", formConfigQiptables);
 
     widgetStack->setCurrentIndex(widgetStack->getPageIndex("formTest"));
 
@@ -88,6 +91,12 @@ void MainWindow::aboutQt()
     QMessageBox::aboutQt(this, "Qiptables");
 }
 
+void MainWindow::selectConfigQiptables()
+{
+    qDebug("MainWindow::selectconfigQiptables()");
+    widgetStack->setCurrentIndex(widgetStack->getPageIndex("formConfigQiptables"));
+}
+
 void MainWindow::selectFirewallRulesPage()
 {
     qDebug("MainWindow::selectFirewallRulesPage()");
@@ -133,9 +142,12 @@ void MainWindow::buildMenuBar()
 
 
     settingsMenu = menuBar()->addMenu(tr("&Settings"));
+        actConfigQiptables = new QAction(tr("Configure Qiptables"), this);
+        actConfigQiptables->setStatusTip(tr("Configure Qiptables options"));
+        connect(actConfigQiptables, SIGNAL(triggered()), this, SLOT(selectConfigQiptables()));
+        settingsMenu->addAction(actConfigQiptables);
 
     helpMenu = menuBar()->addMenu(tr("&Help"));
-
         actAboutQt = new QAction(tr("About &Qt"), this);
         actAboutQt->setStatusTip(tr("About Qt"));
         connect(actAboutQt, SIGNAL(triggered()), this, SLOT(aboutQt()));

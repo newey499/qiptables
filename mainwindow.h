@@ -18,6 +18,7 @@
 
 #include "formtest.h"
 #include "formfirewallrules.h"
+#include "formconfigqiptables.h"
 #include "ipstackedwidget.h"
 #include "linuxuserid.h"
 #include "ipprocess.h"
@@ -51,6 +52,7 @@ public slots:
     virtual void aboutQt();
     virtual void selectTestPage();
     virtual void selectFirewallRulesPage();
+    virtual void selectConfigQiptables();
     virtual void saveSettings();
 
 protected:
@@ -63,16 +65,18 @@ protected:
     IpStackedWidget *widgetStack;
     FormTest *formTest;
     FormFirewallRules *formFirewallRules;
+    FormConfigQiptables *formConfigQiptables;
 
 
     QMenu *fileMenu;
-            QAction *actFirewallRules;
-            QAction *actQuit;
+        QAction *actFirewallRules;
+        QAction *actQuit;
 
     QMenu *toolsMenu;
-            QAction *actTest;
+        QAction *actTest;
 
     QMenu *settingsMenu;
+        QAction *actConfigQiptables;
 
     QMenu *helpMenu;
         QAction *actAboutQt;

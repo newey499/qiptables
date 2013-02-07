@@ -11,6 +11,8 @@
 #include "linuxuserid.h"
 #include "ipprocess.h"
 #include "iptables.h"
+#include "install.h"
+#include "databasemanager.h"
 
 namespace Ui {
 class FormTest;

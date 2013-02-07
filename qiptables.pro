@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui sql
 
 
 TARGET = qiptables
@@ -19,7 +19,10 @@ SOURCES += main.cpp\
     qiptablesexception.cpp \
     linuxuserid.cpp \
     ipprocess.cpp \
-    iptables.cpp
+    iptables.cpp \
+    databasemanager.cpp \
+    formconfigqiptables.cpp \
+    install.cpp
 
 HEADERS  += mainwindow.h \
     formtest.h \
@@ -28,11 +31,16 @@ HEADERS  += mainwindow.h \
     qiptablesexception.h \
     linuxuserid.h \
     ipprocess.h \
-    iptables.h
+    iptables.h \
+    databasemanager.h \
+    formconfigqiptables.h \
+    install.h
 
 FORMS    += mainwindow.ui \
     formtest.ui \
-    formfirewallrules.ui
+    formfirewallrules.ui \
+    formconfigqiptables.ui
 
 OTHER_FILES += \
-    TODO.txt
+    TODO.txt \
+    README.md
