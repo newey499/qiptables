@@ -28,7 +28,12 @@ class DatabaseManager : public QObject
 
         QSqlError lastError();
 
-        bool createPersonTable();
+        bool createSysconfTable();
+        bool createRulesetTable();
+
+
+        bool createInitialRows();
+
 
     public slots:
 
@@ -38,6 +43,9 @@ class DatabaseManager : public QObject
 
         QString dbPath;
         QSqlDatabase db;
+
+        bool createRulesetRows();
+        bool createSysconfRow();
 
     private:
 

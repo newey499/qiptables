@@ -61,6 +61,40 @@ bool Install::createQiptablesDir()
         result = true;
     }
 
+    createQiptablesTmpDir();
+
+    return result;
+
+}
+
+bool Install::createQiptablesTmpDir()
+{
+    bool result;
+    QString tmpDir(Install::INSTALL_DIR);
+    tmpDir = tmpDir.append("/tmp");
+
+    /**********
+     This looks strange - but the docs say:
+
+    bool QDir::mkdir ( const QString & dirName ) const
+    Creates a sub-directory called dirName.
+
+    Returns true on success; otherwise returns false.
+
+    If the directory already exists when this function is called, it will return false.
+     ********************/
+    if (dir->exists(tmpDir))
+    {
+        qDebug("Directory [%s] already exists", tmpDir.toAscii().data());
+        result = false;
+    }
+    else
+    {
+        dir->mkdir(tmpDir);
+        qDebug("Directory [%s] created OK", tmpDir.toAscii().data());
+        result = true;
+    }
+
     return result;
 
 }
@@ -72,7 +106,20 @@ bool Install::createQiptablesDatabase()
     {
         qDebug("Creating database");
         dm->openDB();
-        dm->createPersonTable();
+
+        qDebug("Creating Ruleset Table");
+        qDebug("%s", dm->createRulesetTable() ? "true" : "false");
+        qDebug("%s", dm->lastError().text().toAscii().data());
+
+        qDebug("Creating Sysconf Table");
+        qDebug("%s", dm->createSysconfTable() ? "true" : "false");
+        qDebug("%s", dm->lastError().text().toAscii().data());
+
+        qDebug("Creating Initial data");
+        qDebug("%s", dm->createInitialRows() ? "true" : "false");
+        qDebug("%s", dm->lastError().text().toAscii().data());
+
+
         dm->closeDB();
     }
     else

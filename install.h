@@ -33,6 +33,7 @@ protected:
     DatabaseManager *dm;
 
     bool createQiptablesDir();
+    bool createQiptablesTmpDir();
     bool createQiptablesDatabase();
 
     

@@ -83,19 +83,101 @@ bool DatabaseManager::dropTable(QString tableName)
 }
 
 
-bool DatabaseManager::createPersonTable()
+bool DatabaseManager::createRulesetTable()
 {
-    // Create table "person"
     bool ret = false;
     if (db.isOpen())
     {
         QSqlQuery query;
-        ret = query.exec("create table person "
-                  "(id integer primary key, "
-                  "firstname varchar(20), "
-                  "lastname varchar(30), "
-                  "age integer)");
+        ret = query.exec("create table ruleset "
+                         "("
+                         " id integer primary key not null, "
+                         " name     varchar(100) not null, "
+                         " rules	text not null "
+                         ")");
 
     }
     return ret;
 }
+
+
+bool DatabaseManager::createRulesetRows()
+{
+    bool ret = false;
+    if (db.isOpen())
+    {
+        QSqlQuery query;
+        ret = query.exec(" insert into ruleset "
+                         "   (name, rules) "
+                         " values "
+                         "   ('Clean Firewall', 'Clean firewall rules') "
+                        );
+        ret = query.exec(" insert into ruleset "
+                         "   (name, rules) "
+                         " values "
+                         "   ('Home', 'Home firewall rules') "
+                        );
+        ret = query.exec(" insert into ruleset "
+                         "   (name, rules) "
+                         " values "
+                         "   ('Office', 'Office firewall rules') "
+                        );
+        ret = query.exec(" insert into ruleset "
+                         "   (name, rules) "
+                         " values "
+                         "   ('Public location', 'Public location firewall rules') "
+                        );
+
+    }
+    return ret;
+}
+
+
+bool DatabaseManager::createSysconfTable()
+{
+    bool ret = false;
+    if (db.isOpen())
+    {
+        QSqlQuery query;
+        ret = query.exec("create table sysconf "
+                         "("
+                         " id integer primary key not null, "
+                         " shell	        varchar(100) not null, "
+                         " defaultRuleName	varchar(100) not null, "
+                         " foreign key(defaultRuleName) references ruleset(name) "
+                         "         on delete restrict on update restrict "
+                         ")");
+
+    }
+    return ret;
+}
+
+
+bool DatabaseManager::createSysconfRow()
+{
+    bool ret = false;
+    if (db.isOpen())
+    {
+        QSqlQuery query;
+        ret = query.exec(" insert into sysconf "
+                         "   (shell, defaultRuleName) "
+                         " values "
+                         "   ('/bin/bash', 'Clean Firewall') "
+                        );
+
+    }
+    return ret;
+}
+
+
+bool DatabaseManager::createInitialRows()
+{
+    // Ruleset row has to be created before
+    // sysconf row due to foreign key
+    createRulesetRows();
+    createSysconfRow();
+
+    return true;
+}
+
+
