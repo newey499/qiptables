@@ -8,6 +8,7 @@
 #include <QSqlError>
 #include <QSqlQuery>
 
+
 #include "install.h"
 
 class DatabaseManager : public QObject

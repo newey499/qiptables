@@ -8,6 +8,8 @@ MainWindow::MainWindow(QString organization, QString application, QWidget *paren
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    qDebug("\n============| qiptables debug terminal messages |============\n");
+
     setObjectName("MainWindow");
     this->organization = organization;
     this->application = application;
@@ -15,6 +17,16 @@ MainWindow::MainWindow(QString organization, QString application, QWidget *paren
     ui->setupUi(this);
     QSettings settings(organization, application);
     restoreGeometry(settings.value("geometry").toByteArray());
+
+    Install *install = new Install(this);
+    QString instStr(install->performInstall());
+    qDebug("Install Reported [%s]", instStr.toAscii().data());
+
+    qDebug("Create new DatabaseManager instance");
+    DatabaseManager dm(Install::INSTALL_DIR, this);
+    dm.openDB();
+
+
 
     buildMenuBar();
 

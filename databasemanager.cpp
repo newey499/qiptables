@@ -8,6 +8,8 @@ DatabaseManager::DatabaseManager(QString dbPath, QObject *parent) :
     QObject(parent)
 {
     this->dbPath = dbPath;
+
+    openDB();
 }
 
 DatabaseManager::~DatabaseManager()
@@ -38,13 +40,30 @@ QString DatabaseManager::getDatabaseFileName()
 
 bool DatabaseManager::openDB()
 {
-    // Find QSLite driver
-    db = QSqlDatabase::addDatabase("QSQLITE");
+    bool result = false;
 
-    db.setDatabaseName(getDatabaseFileName());
+    if (db.isOpen())
+    {
+        result = true;
+    }
+    else
+    {
+        // Find QSLite driver
+        db =  QSqlDatabase::addDatabase("QSQLITE");
 
-    // Open databasee
-    return db.open();
+        db.setDatabaseName(getDatabaseFileName());
+
+        // Open database
+        result = db.open();
+        if (! result)
+        {
+            qDebug("DatabaseManager::openDB(): failed to open db - error \n[%s]",
+                db.lastError().text().toAscii().data());
+        }
+    }
+
+
+    return result;
 }
 
 QSqlError DatabaseManager::lastError()
@@ -89,13 +108,14 @@ bool DatabaseManager::createRulesetTable()
     if (db.isOpen())
     {
         QSqlQuery query;
-        ret = query.exec("create table ruleset "
-                         "("
-                         " id integer primary key not null, "
-                         " name     varchar(100) not null, "
-                         " rules	text not null "
-                         ")");
-
+        QString qryMsg = QString("create table %1 "
+                                 "("
+                                 " id integer primary key not null, "
+                                 " name     varchar(100) not null, "
+                                 " rules	text not null "
+                                 ")");
+        ret = query.exec(qryMsg.arg("ruleset"));
+        ret = query.exec(qryMsg.arg("rulesetdef"));
     }
     return ret;
 }
@@ -107,26 +127,37 @@ bool DatabaseManager::createRulesetRows()
     if (db.isOpen())
     {
         QSqlQuery query;
-        ret = query.exec(" insert into ruleset "
-                         "   (name, rules) "
-                         " values "
-                         "   ('Clean Firewall', 'Clean firewall rules') "
-                        );
-        ret = query.exec(" insert into ruleset "
+        QString qryMsg = QString(" insert into %1 "
+                                 "   (name, rules) "
+                                 " values "
+                                 "   ('Clean Firewall', 'Clean firewall rules') ");
+        ret = query.exec(qryMsg.arg("ruleset"));
+        ret = query.exec(qryMsg.arg("rulesetdef"));
+
+        qryMsg = QString(" insert into %1 "
                          "   (name, rules) "
                          " values "
                          "   ('Home', 'Home firewall rules') "
                         );
-        ret = query.exec(" insert into ruleset "
+        ret = query.exec(qryMsg.arg("ruleset"));
+        ret = query.exec(qryMsg.arg("rulesetdef"));
+
+
+        qryMsg = QString(" insert into %1 "
                          "   (name, rules) "
                          " values "
                          "   ('Office', 'Office firewall rules') "
                         );
-        ret = query.exec(" insert into ruleset "
+        ret = query.exec(qryMsg.arg("ruleset"));
+        ret = query.exec(qryMsg.arg("rulesetdef"));
+
+        qryMsg = QString(" insert into %1 "
                          "   (name, rules) "
                          " values "
                          "   ('Public location', 'Public location firewall rules') "
-                        );
+                         );
+        ret = query.exec(qryMsg.arg("ruleset"));
+        ret = query.exec(qryMsg.arg("rulesetdef"));
 
     }
     return ret;
@@ -139,14 +170,17 @@ bool DatabaseManager::createSysconfTable()
     if (db.isOpen())
     {
         QSqlQuery query;
-        ret = query.exec("create table sysconf "
-                         "("
-                         " id integer primary key not null, "
-                         " shell	        varchar(100) not null, "
-                         " defaultRuleName	varchar(100) not null, "
-                         " foreign key(defaultRuleName) references ruleset(name) "
-                         "         on delete restrict on update restrict "
-                         ")");
+        QString qryMsg = QString("create table %1 "
+                                 "("
+                                 " id integer primary key not null, "
+                                 " shell	        varchar(100) not null, "
+                                 " defaultRuleName	varchar(100) not null, "
+                                 " foreign key(defaultRuleName) references ruleset(name) "
+                                 "         on delete restrict on update restrict "
+                                 ")"
+                                );
+        ret = query.exec(qryMsg.arg("sysconf"));
+        ret = query.exec(qryMsg.arg("sysconfdef"));
 
     }
     return ret;
@@ -159,11 +193,13 @@ bool DatabaseManager::createSysconfRow()
     if (db.isOpen())
     {
         QSqlQuery query;
-        ret = query.exec(" insert into sysconf "
-                         "   (shell, defaultRuleName) "
-                         " values "
-                         "   ('/bin/bash', 'Clean Firewall') "
-                        );
+        QString qryMsg = QString(" insert into %1 "
+                                 "   (shell, defaultRuleName) "
+                                 " values "
+                                 "   ('/bin/bash', 'Clean Firewall') "
+                                );
+        ret = query.exec(qryMsg.arg("sysconf"));
+        ret = query.exec(qryMsg.arg("sysconfdef"));
 
     }
     return ret;

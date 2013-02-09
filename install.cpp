@@ -9,8 +9,6 @@ Install::Install(QObject *parent) :
     dir = new QDir();
     file = new QFile(this);
     dm = new DatabaseManager(Install::INSTALL_DIR, this);
-
-    performInstall();
 }
 
 Install::~Install()
@@ -22,15 +20,31 @@ Install::~Install()
 }
 
 
-QString Install::performInstall()
+QString Install::performInstall(bool forceInstall)
 {
-    QString msg("Performing Qiptables Install");
+    QString msg("Install::performInstall()");
+    qDebug("%s", msg.toAscii().data());
+    msg = "";
+    if (forceInstall)
+    {
+        qDebug("Install forced");
+    }
 
-    createQiptablesDir();
-    msg = msg.append("\n%1 - Ok").arg(Install::INSTALL_DIR);
+    if ( (! dm->databaseExists()) || forceInstall)
+    {
+        msg = "Performing Qiptables Install";
 
-    createQiptablesDatabase();
-    msg = msg.append("\n%1 database - Ok").arg(dm->getDatabaseFileName());
+        createQiptablesDir();
+        msg = msg.append("\n%1 - Ok").arg(Install::INSTALL_DIR);
+
+        createQiptablesDatabase();
+        msg = msg.append("\n%1 database - Ok").arg(dm->getDatabaseFileName());
+    }
+    else
+    {
+        msg = "Install not required - not performed";
+        qDebug("%s", msg.toAscii().data());
+    }
 
     return msg;
 }
@@ -118,9 +132,6 @@ bool Install::createQiptablesDatabase()
         qDebug("Creating Initial data");
         qDebug("%s", dm->createInitialRows() ? "true" : "false");
         qDebug("%s", dm->lastError().text().toAscii().data());
-
-
-        dm->closeDB();
     }
     else
     {

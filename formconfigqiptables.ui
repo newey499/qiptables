@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>422</width>
+    <height>57</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,17 +16,14 @@
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QTabWidget" name="tabWidget">
-     <property name="currentIndex">
-      <number>0</number>
-     </property>
-     <widget class="QWidget" name="tabRulesets">
+     <widget class="QWidget" name="tab">
       <attribute name="title">
-       <string>Rule Sets</string>
+       <string>Tab 1</string>
       </attribute>
      </widget>
-     <widget class="QWidget" name="tabRuleSnippets">
+     <widget class="QWidget" name="tab_2">
       <attribute name="title">
-       <string>Rule Snippets</string>
+       <string>Tab 2</string>
       </attribute>
      </widget>
     </widget>
@@ -35,4 +32,9 @@
  </widget>
  <resources/>
  <connections/>
+ <slots>
+  <slot>slotFileDialog()</slot>
+  <slot>slotSave()</slot>
+  <slot>slotCancel()</slot>
+ </slots>
 </ui>

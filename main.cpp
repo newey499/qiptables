@@ -11,10 +11,14 @@ int main(int argc, char *argv[])
     globalMainWindow = &w;
     IpProcess ip;
 
+    /**********
     if (ip.checkForRoot())
     {
         w.show();
         return a.exec();
     }
+    ******************/
+    w.show();
+    return a.exec();
 
 }

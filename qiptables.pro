@@ -22,7 +22,10 @@ SOURCES += main.cpp\
     iptables.cpp \
     databasemanager.cpp \
     formconfigqiptables.cpp \
-    install.cpp
+    install.cpp \
+    formcfgruleset.cpp \
+    formcfgrulesnippets.cpp \
+    formcfgsettings.cpp
 
 HEADERS  += mainwindow.h \
     formtest.h \
@@ -34,12 +37,18 @@ HEADERS  += mainwindow.h \
     iptables.h \
     databasemanager.h \
     formconfigqiptables.h \
-    install.h
+    install.h \
+    formcfgruleset.h \
+    formcfgrulesnippets.h \
+    formcfgsettings.h
 
 FORMS    += mainwindow.ui \
     formtest.ui \
     formfirewallrules.ui \
-    formconfigqiptables.ui
+    formconfigqiptables.ui \
+    formcfgruleset.ui \
+    formcfgrulesnippets.ui \
+    formcfgsettings.ui
 
 OTHER_FILES += \
     TODO.txt \

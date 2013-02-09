@@ -20,7 +20,7 @@ public:
     explicit Install(QObject *parent = 0);
     ~Install();
 
-    QString performInstall();
+    QString performInstall(bool forceInstall = false);
 
 signals:
 

@@ -1,10 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-
-#include "qiptablesexception.h"
-
-
 #include <QAction>
 #include <QCloseEvent>
 #include <QEvent>
@@ -16,6 +12,7 @@
 #include <QSettings>
 #include <QStackedWidget>
 
+#include "qiptablesexception.h"
 #include "formtest.h"
 #include "formfirewallrules.h"
 #include "formconfigqiptables.h"
