@@ -8,6 +8,8 @@
 #include <QVariant>
 #include <QWidget>
 
+#include "formdlgruleset.h"
+
 namespace Ui {
 class FormCfgRuleset;
 }
@@ -17,6 +19,7 @@ class FormCfgRuleset : public QWidget
     Q_OBJECT
     
 public:
+
     explicit FormCfgRuleset(QWidget *parent = 0);
     ~FormCfgRuleset();
     

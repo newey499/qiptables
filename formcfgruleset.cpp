@@ -62,15 +62,27 @@ void FormCfgRuleset::currentRowChanged()
 
 void FormCfgRuleset::slotBtnAdd()
 {
+    FormDlgRuleset dlg(this);
     qDebug("FormCfgRuleset::slotBtnAdd()");
+    dlg.setWindowTitle("Add a Ruleset");
+    dlg.setModal(true);
+    dlg.exec();
 }
 
 void FormCfgRuleset::slotBtnEdit()
 {
+    FormDlgRuleset dlg(this);
     qDebug("FormCfgRuleset::slotBtnEdit()");
+    dlg.setWindowTitle("Edit this Ruleset");
+    dlg.setModal(true);
+    dlg.exec();
 }
 
 void FormCfgRuleset::slotBtnDelete()
 {
+    FormDlgRuleset dlg(this);
     qDebug("FormCfgRuleset::slotBtnDelete()");
+    dlg.setWindowTitle("Delete this Ruleset");
+    dlg.setModal(true);
+    dlg.exec();
 }
