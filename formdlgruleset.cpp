@@ -19,16 +19,46 @@ FormDlgRuleset::FormDlgRuleset(int opCode, FormCfgRuleset *parent) :
         ui->edtRuleset->setReadOnly(true);
         ui->edtRulesetName->setReadOnly(true);
         ui->btnSave->setText("&Delete");
+        buttonsEnabled(true);
+    }
+    else
+    {
+        buttonsEnabled(false);
     }
 
     if (opcode == FormCfgRuleset::REC_ADD)
     {
         ui->btnSave->setText("&Create");
+        ui->edtRulesetName->setText("");
+        ui->edtRuleset->clear();
+        ui->edtRuleset->appendPlainText("");
+    }
+    else
+    {
+        ui->edtRulesetName->setText(name);
+        ui->edtRuleset->clear();
+        ui->edtRuleset->appendPlainText(rules);
     }
 
-    ui->edtRulesetName->setText(name);
-    ui->edtRuleset->clear();
-    ui->edtRuleset->appendPlainText(rules);
+
+
+    connect(ui->edtRulesetName, SIGNAL(textEdited(QString)),
+            this, SLOT(dataChanged()));
+    connect(ui->edtRuleset, SIGNAL(textChanged()),
+            this, SLOT(dataChanged()));
+
+}
+
+void FormDlgRuleset::buttonsEnabled(bool enabled)
+{
+    ui->btnSave->setEnabled(enabled);
+    ui->btnCancel->setEnabled(enabled);
+
+}
+
+void FormDlgRuleset::dataChanged()
+{
+    buttonsEnabled(true);
 }
 
 FormDlgRuleset::~FormDlgRuleset()

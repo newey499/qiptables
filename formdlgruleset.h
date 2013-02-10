@@ -32,8 +32,13 @@ protected:
     int id;
     QString name;
     QString rules;
-
     int opcode;
+
+protected slots:
+
+    virtual void buttonsEnabled(bool enabled);
+    virtual void dataChanged();
+
 
 private:
     Ui::FormDlgRuleset *ui;

@@ -122,5 +122,6 @@
  <slots>
   <slot>slotSave()</slot>
   <slot>slotCancel()</slot>
+  <slot>dataChanged()</slot>
  </slots>
 </ui>
