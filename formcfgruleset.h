@@ -20,6 +20,10 @@ class FormCfgRuleset : public QWidget
     
 public:
 
+    static const int REC_ADD;
+    static const int REC_EDIT;
+    static const int REC_DELETE;
+
     explicit FormCfgRuleset(QWidget *parent = 0);
     ~FormCfgRuleset();
     

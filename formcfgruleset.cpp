@@ -1,6 +1,10 @@
 #include "formcfgruleset.h"
 #include "ui_formcfgruleset.h"
 
+const int FormCfgRuleset::REC_ADD       = 1;
+const int FormCfgRuleset::REC_EDIT      = 2;
+const int FormCfgRuleset::REC_DELETE    = 3;
+
 FormCfgRuleset::FormCfgRuleset(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::FormCfgRuleset)
@@ -62,7 +66,7 @@ void FormCfgRuleset::currentRowChanged()
 
 void FormCfgRuleset::slotBtnAdd()
 {
-    FormDlgRuleset dlg(this);
+    FormDlgRuleset dlg(REC_ADD, this);
     qDebug("FormCfgRuleset::slotBtnAdd()");
     dlg.setWindowTitle("Add a Ruleset");
     dlg.setModal(true);
@@ -71,7 +75,7 @@ void FormCfgRuleset::slotBtnAdd()
 
 void FormCfgRuleset::slotBtnEdit()
 {
-    FormDlgRuleset dlg(this);
+    FormDlgRuleset dlg(REC_EDIT, this);
     qDebug("FormCfgRuleset::slotBtnEdit()");
     dlg.setWindowTitle("Edit this Ruleset");
     dlg.setModal(true);
@@ -80,7 +84,7 @@ void FormCfgRuleset::slotBtnEdit()
 
 void FormCfgRuleset::slotBtnDelete()
 {
-    FormDlgRuleset dlg(this);
+    FormDlgRuleset dlg(REC_DELETE, this);
     qDebug("FormCfgRuleset::slotBtnDelete()");
     dlg.setWindowTitle("Delete this Ruleset");
     dlg.setModal(true);
