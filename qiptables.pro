@@ -25,7 +25,8 @@ SOURCES += main.cpp\
     install.cpp \
     formcfgruleset.cpp \
     formcfgrulesnippets.cpp \
-    formcfgsettings.cpp
+    formcfgsettings.cpp \
+    rulesettableview.cpp
 
 HEADERS  += mainwindow.h \
     formtest.h \
@@ -40,7 +41,8 @@ HEADERS  += mainwindow.h \
     install.h \
     formcfgruleset.h \
     formcfgrulesnippets.h \
-    formcfgsettings.h
+    formcfgsettings.h \
+    rulesettableview.h
 
 FORMS    += mainwindow.ui \
     formtest.ui \

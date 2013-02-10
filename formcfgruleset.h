@@ -1,6 +1,7 @@
 #ifndef FORMCFGRULESET_H
 #define FORMCFGRULESET_H
 
+#include <QShowEvent>
 #include <QSqlTableModel>
 #include <QTableView>
 #include <QWidget>
@@ -17,6 +18,11 @@ public:
     explicit FormCfgRuleset(QWidget *parent = 0);
     ~FormCfgRuleset();
     
+public slots:
+
+    virtual void showEvent(QShowEvent *event);
+    virtual void currentRowChanged(int rowNo);
+
 protected:
 
     QSqlTableModel *model;

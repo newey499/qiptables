@@ -16,10 +16,25 @@ FormCfgRuleset::FormCfgRuleset(QWidget *parent) :
 
     ui->tblRuleset->setModel(model);
     ui->tblRuleset->hideColumn(0); // don't show the ID
+    ui->tblRuleset->selectRow(0);
+
+    connect(ui->tblRuleset, SIGNAL(rowChanged(int)),
+            this, SLOT(currentRowChanged(int)));
+
     ui->tblRuleset->show();
 }
 
 FormCfgRuleset::~FormCfgRuleset()
 {
     delete ui;
+}
+
+void FormCfgRuleset::showEvent(QShowEvent *event)
+{
+    ui->tblRuleset->setFocus();
+}
+
+void FormCfgRuleset::currentRowChanged(int rowNo)
+{
+    qDebug("FormCfgRuleset::currentRowChanged(int rowNo) [%d]", rowNo);
 }
