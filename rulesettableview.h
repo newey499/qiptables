@@ -15,7 +15,7 @@ public:
     
 signals:
 
-    void rowChanged(int);
+    void rowChanged(QModelIndex);
     
 public slots:
 

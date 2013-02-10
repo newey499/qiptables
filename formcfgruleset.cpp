@@ -7,6 +7,8 @@ FormCfgRuleset::FormCfgRuleset(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ui->edtRuleSet->setReadOnly(true);
+
     model = new QSqlTableModel(this);
     model->setTable("ruleset");
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
@@ -16,10 +18,12 @@ FormCfgRuleset::FormCfgRuleset(QWidget *parent) :
 
     ui->tblRuleset->setModel(model);
     ui->tblRuleset->hideColumn(0); // don't show the ID
-    ui->tblRuleset->selectRow(0);
+    ui->tblRuleset->hideColumn(2); // don't show the Rules - displayed
+                                   // in text edit box
+    ui->tblRuleset->selectRow(0);  // select first row
 
-    connect(ui->tblRuleset, SIGNAL(rowChanged(int)),
-            this, SLOT(currentRowChanged(int)));
+    connect(ui->tblRuleset, SIGNAL(rowChanged(QModelIndex)),
+            this, SLOT(currentRowChanged()));
 
     ui->tblRuleset->show();
 }
@@ -32,9 +36,41 @@ FormCfgRuleset::~FormCfgRuleset()
 void FormCfgRuleset::showEvent(QShowEvent *event)
 {
     ui->tblRuleset->setFocus();
+    currentRowChanged();
 }
 
-void FormCfgRuleset::currentRowChanged(int rowNo)
+QVariant FormCfgRuleset::getColumnData(QString colName)
 {
-    qDebug("FormCfgRuleset::currentRowChanged(int rowNo) [%d]", rowNo);
+    return model->record(ui->tblRuleset->currentIndex().row()).value(colName);
+}
+
+//void FormCfgRuleset::currentRowChanged(QModelIndex currentRow)
+void FormCfgRuleset::currentRowChanged()
+{
+    //qDebug("FormCfgRuleset::currentRowChanged(int rowNo) [%d]",
+    //       ui->tblRuleset->currentRow());
+
+    QSqlTableModel *model = (QSqlTableModel *) ui->tblRuleset->model();
+
+    QString txt = getColumnData("rules").toString();
+
+    qDebug("column text [%s]",txt.toAscii().data());
+    ui->edtRuleSet->clear();
+    ui->edtRuleSet->appendPlainText(txt);
+
+}
+
+void FormCfgRuleset::slotBtnAdd()
+{
+    qDebug("FormCfgRuleset::slotBtnAdd()");
+}
+
+void FormCfgRuleset::slotBtnEdit()
+{
+    qDebug("FormCfgRuleset::slotBtnEdit()");
+}
+
+void FormCfgRuleset::slotBtnDelete()
+{
+    qDebug("FormCfgRuleset::slotBtnDelete()");
 }

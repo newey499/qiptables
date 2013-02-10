@@ -26,7 +26,7 @@ void RulesetTableView::currentChanged(const QModelIndex &current,
 {
     QTableView::currentChanged(current, previous);
     selectRow(current.row());
-    emit rowChanged(currentRow());
+    emit rowChanged(current);
 }
 
 /***********
