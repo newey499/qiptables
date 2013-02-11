@@ -2,8 +2,14 @@
 #define FORMDLGRULESET_H
 
 #include <QDialog>
+#include <QMessageBox>
+#include <QSqlError>
+#include <QSqlField>
+#include <QSqlQuery>
+#include <QSqlRecord>
 #include <QVariant>
 
+#include "rulesetsqltablemodel.h"
 #include "formcfgruleset.h"
 
 
@@ -16,7 +22,7 @@ class FormDlgRuleset;
 class FormDlgRuleset : public QDialog
 {
     Q_OBJECT
-    
+
 public:
     explicit FormDlgRuleset(int opCode, FormCfgRuleset *parent);
     ~FormDlgRuleset();
@@ -33,6 +39,9 @@ protected:
     QString name;
     QString rules;
     int opcode;
+
+    bool validateData();
+    bool writeRow();
 
 protected slots:
 

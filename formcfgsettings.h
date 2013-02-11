@@ -20,7 +20,7 @@ class FormCfgSettings;
 class FormCfgSettings : public QWidget
 {
     Q_OBJECT
-    
+
 public:
     explicit FormCfgSettings(QWidget *parent = 0);
     ~FormCfgSettings();
@@ -36,7 +36,7 @@ public slots:
 protected:
 
     DatabaseManager *databaseManager;
-    QSqlQuery *qry;
+    QSqlQuery qry;
 
     int id;
     QString shell;
@@ -45,7 +45,7 @@ protected:
     virtual void loadSettings();
     virtual void saveSettings();
     virtual QString lastSqlErrorAsString();
-    
+
 private:
     Ui::FormCfgSettings *ui;
 };

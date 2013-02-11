@@ -8,7 +8,11 @@
 #include <QVariant>
 #include <QWidget>
 
+#include "rulesettableview.h"
+#include "rulesetsqltablemodel.h"
 #include "formdlgruleset.h"
+
+
 
 namespace Ui {
 class FormCfgRuleset;
@@ -17,7 +21,7 @@ class FormCfgRuleset;
 class FormCfgRuleset : public QWidget
 {
     Q_OBJECT
-    
+
 public:
 
     static const int REC_ADD;
@@ -26,8 +30,11 @@ public:
 
     explicit FormCfgRuleset(QWidget *parent = 0);
     ~FormCfgRuleset();
-    
+
     virtual QVariant getColumnData(QString colName);
+
+    virtual RulesetTableView *getView();
+    virtual RulesetSqlTableModel *getModel() { return model; }
 
 public slots:
 
@@ -40,7 +47,7 @@ public slots:
 
 protected:
 
-    QSqlTableModel *model;
+    RulesetSqlTableModel *model;
 
 private:
     Ui::FormCfgRuleset *ui;

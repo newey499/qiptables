@@ -17,6 +17,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li id="searchli">
@@ -41,6 +42,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&nbsp;List</span></a></li>
       <li><a href="classes.html"><span>Class&nbsp;Index</span></a></li>
+      <li><a href="functions.html"><span>Class&nbsp;Members</span></a></li>
     </ul>
   </div>
 </div>
@@ -60,7 +62,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td colspan="2"><h2><a name="pub-slots"></a>
 Public Slots</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6a026ab454d19d843f95a2350d05b028"></a><!-- doxytag: member="FormCfgRuleset::showEvent" ref="a6a026ab454d19d843f95a2350d05b028" args="(QShowEvent *event)" -->
-virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>showEvent</b> (QShowEvent *event)</td></tr>
+virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormCfgRuleset.html#a6a026ab454d19d843f95a2350d05b028">showEvent</a> (QShowEvent *event)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">When the form is displayed set the focus to the ruleset browse window and select the first row. <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad8cd00c37afb2adc0b4841754b7d1ab1"></a><!-- doxytag: member="FormCfgRuleset::currentRowChanged" ref="ad8cd00c37afb2adc0b4841754b7d1ab1" args="()" -->
 virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>currentRowChanged</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a51515d27de245932b2f749ca5f31017d"></a><!-- doxytag: member="FormCfgRuleset::slotBtnAdd" ref="a51515d27de245932b2f749ca5f31017d" args="()" -->
@@ -75,6 +78,10 @@ Public Member Functions</h2></td></tr>
 &nbsp;</td><td class="memItemRight" valign="bottom"><b>FormCfgRuleset</b> (QWidget *parent=0)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4a530d5c9670798f715c3fa64381da6b"></a><!-- doxytag: member="FormCfgRuleset::getColumnData" ref="a4a530d5c9670798f715c3fa64381da6b" args="(QString colName)" -->
 virtual QVariant&nbsp;</td><td class="memItemRight" valign="bottom"><b>getColumnData</b> (QString colName)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7e11beb7d3ab5b75e49c26d36e12b972"></a><!-- doxytag: member="FormCfgRuleset::getView" ref="a7e11beb7d3ab5b75e49c26d36e12b972" args="()" -->
+virtual <a class="el" href="classRulesetTableView.html">RulesetTableView</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><b>getView</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad57eb6cfbeb96a5e6fdf6912f856b04e"></a><!-- doxytag: member="FormCfgRuleset::getModel" ref="ad57eb6cfbeb96a5e6fdf6912f856b04e" args="()" -->
+virtual <a class="el" href="classRulesetSqlTableModel.html">RulesetSqlTableModel</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><b>getModel</b> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ada245a912320c30b255a5afefc941a2c"></a><!-- doxytag: member="FormCfgRuleset::REC_ADD" ref="ada245a912320c30b255a5afefc941a2c" args="" -->
@@ -85,8 +92,8 @@ static const int&nbsp;</td><td class="memItemRight" valign="bottom"><b>REC_EDIT<
 static const int&nbsp;</td><td class="memItemRight" valign="bottom"><b>REC_DELETE</b> = 3</td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a33fc9d912a53f83a58719fa2600514cd"></a><!-- doxytag: member="FormCfgRuleset::model" ref="a33fc9d912a53f83a58719fa2600514cd" args="" -->
-QSqlTableModel *&nbsp;</td><td class="memItemRight" valign="bottom"><b>model</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a86337375f3830a66f35039975250f2e7"></a><!-- doxytag: member="FormCfgRuleset::model" ref="a86337375f3830a66f35039975250f2e7" args="" -->
+<a class="el" href="classRulesetSqlTableModel.html">RulesetSqlTableModel</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><b>model</b></td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="formcfgruleset_8h_source.html">formcfgruleset.h</a></li>
@@ -98,7 +105,7 @@ QSqlTableModel *&nbsp;</td><td class="memItemRight" valign="bottom"><b>model</b>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -107,7 +114,7 @@ QSqlTableModel *&nbsp;</td><td class="memItemRight" valign="bottom"><b>model</b>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Feb 10 2013 16:39:32 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Mon Feb 11 2013 14:16:36 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

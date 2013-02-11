@@ -13,16 +13,18 @@ FormCfgRuleset::FormCfgRuleset(QWidget *parent) :
 
     ui->edtRuleSet->setReadOnly(true);
 
-    model = new QSqlTableModel(this);
+    model = new RulesetSqlTableModel(this);
     model->setTable("ruleset");
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+    model->setSort(1, Qt::AscendingOrder); // Sort by ruleset Name
+    model->setHeaderData(0, Qt::Horizontal, tr("Id"));
+    model->setHeaderData(1, Qt::Horizontal, tr("Ruleset Name"));
+    model->setHeaderData(2, Qt::Horizontal, tr("Ruleset"));
     model->select();
-    model->setHeaderData(0, Qt::Horizontal, tr("Name"));
-    model->setHeaderData(1, Qt::Horizontal, tr("Rules"));
 
     ui->tblRuleset->setModel(model);
     ui->tblRuleset->hideColumn(0); // don't show the ID
-    ui->tblRuleset->hideColumn(2); // don't show the Rules - displayed
+    ui->tblRuleset->hideColumn(2); // don't show the Ruleset - displayed
                                    // in text edit box
     ui->tblRuleset->selectRow(0);  // select first row
 
@@ -37,6 +39,10 @@ FormCfgRuleset::~FormCfgRuleset()
     delete ui;
 }
 
+/**
+\brief When the form is displayed set the focus to the ruleset browse
+ window and select the first row
+****************/
 void FormCfgRuleset::showEvent(QShowEvent *event)
 {
     ui->tblRuleset->setFocus();
@@ -51,17 +57,11 @@ QVariant FormCfgRuleset::getColumnData(QString colName)
 //void FormCfgRuleset::currentRowChanged(QModelIndex currentRow)
 void FormCfgRuleset::currentRowChanged()
 {
-    //qDebug("FormCfgRuleset::currentRowChanged(int rowNo) [%d]",
-    //       ui->tblRuleset->currentRow());
-
-    QSqlTableModel *model = (QSqlTableModel *) ui->tblRuleset->model();
-
     QString txt = getColumnData("rules").toString();
 
     qDebug("column text [%s]",txt.toAscii().data());
     ui->edtRuleSet->clear();
     ui->edtRuleSet->appendPlainText(txt);
-
 }
 
 void FormCfgRuleset::slotBtnAdd()
@@ -70,7 +70,15 @@ void FormCfgRuleset::slotBtnAdd()
     qDebug("FormCfgRuleset::slotBtnAdd()");
     dlg.setWindowTitle("Add a Ruleset");
     dlg.setModal(true);
-    dlg.exec();
+    if (dlg.exec())
+    {
+        getModel()->submitAll();
+        ui->tblRuleset->selectRow(model->rowCount() - 1);
+    }
+    else
+    {
+        getModel()->revertAll();
+    }
 }
 
 void FormCfgRuleset::slotBtnEdit()
@@ -79,7 +87,19 @@ void FormCfgRuleset::slotBtnEdit()
     qDebug("FormCfgRuleset::slotBtnEdit()");
     dlg.setWindowTitle("Edit this Ruleset");
     dlg.setModal(true);
-    dlg.exec();
+    int currentRow = getView()->currentRow();
+    if (dlg.exec())
+    {
+        getModel()->submitAll();
+        QString rules = getColumnData("rules").toString();
+        ui->edtRuleSet->clear();
+        ui->edtRuleSet->setPlainText(rules);
+        ui->tblRuleset->selectRow(currentRow);
+    }
+    else
+    {
+        getModel()->revertAll();
+    }
 }
 
 void FormCfgRuleset::slotBtnDelete()
@@ -88,5 +108,24 @@ void FormCfgRuleset::slotBtnDelete()
     qDebug("FormCfgRuleset::slotBtnDelete()");
     dlg.setWindowTitle("Delete this Ruleset");
     dlg.setModal(true);
-    dlg.exec();
+    int currentRow = getView()->currentRow();
+    if (dlg.exec())
+    {
+        getModel()->submitAll();
+        if (currentRow > 0)
+        {
+            currentRow--;   // select the row above the deleted one
+        }
+        ui->tblRuleset->selectRow(currentRow);
+    }
+    else
+    {
+        getModel()->revertAll();
+    }
+}
+
+
+RulesetTableView * FormCfgRuleset::getView()
+{
+    return ui->tblRuleset;
 }

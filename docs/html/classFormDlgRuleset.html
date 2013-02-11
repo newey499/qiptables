@@ -17,6 +17,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li id="searchli">
@@ -41,6 +42,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&nbsp;List</span></a></li>
       <li><a href="classes.html"><span>Class&nbsp;Index</span></a></li>
+      <li><a href="functions.html"><span>Class&nbsp;Members</span></a></li>
     </ul>
   </div>
 </div>
@@ -49,6 +51,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#pub-slots">Public Slots</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-slots">Protected Slots</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a>  </div>
   <div class="headertitle">
 <h1>FormDlgRuleset Class Reference</h1>  </div>
@@ -73,6 +76,12 @@ Protected Slots</h2></td></tr>
 virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>buttonsEnabled</b> (bool enabled)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9eabb52d5645cc04c337839df94d41eb"></a><!-- doxytag: member="FormDlgRuleset::dataChanged" ref="a9eabb52d5645cc04c337839df94d41eb" args="()" -->
 virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>dataChanged</b> ()</td></tr>
+<tr><td colspan="2"><h2><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a06a3ad70e1442c28f8edd4f2f2700674"></a><!-- doxytag: member="FormDlgRuleset::validateData" ref="a06a3ad70e1442c28f8edd4f2f2700674" args="()" -->
+bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>validateData</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6c0fc2159adc50e0e07b1b9e6086ebe4"></a><!-- doxytag: member="FormDlgRuleset::writeRow" ref="a6c0fc2159adc50e0e07b1b9e6086ebe4" args="()" -->
+bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>writeRow</b> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1cd9095961dd82cf438f3e4f5c62891a"></a><!-- doxytag: member="FormDlgRuleset::formRuleset" ref="a1cd9095961dd82cf438f3e4f5c62891a" args="" -->
@@ -88,7 +97,7 @@ int&nbsp;</td><td class="memItemRight" valign="bottom"><b>opcode</b></td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="formdlgruleset_8h_source.html">formdlgruleset.h</a></li>
-<li>formdlgruleset.cpp</li>
+<li><a class="el" href="formdlgruleset_8cpp.html">formdlgruleset.cpp</a></li>
 </ul>
 </div>
 <!--- window showing the filter options -->
@@ -96,7 +105,7 @@ int&nbsp;</td><td class="memItemRight" valign="bottom"><b>opcode</b></td></tr>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -105,7 +114,7 @@ int&nbsp;</td><td class="memItemRight" valign="bottom"><b>opcode</b></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Feb 10 2013 16:39:32 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Mon Feb 11 2013 14:16:36 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

@@ -39,6 +39,11 @@ QString Install::performInstall(bool forceInstall)
 
         createQiptablesDatabase();
         msg = msg.append("\n%1 database - Ok").arg(dm->getDatabaseFileName());
+
+        QFile dbFile(dm->getDatabaseFileName());
+        dbFile.setPermissions(QFile::ReadOwner  | QFile::WriteOwner |
+                              QFile::ReadGroup  | QFile::WriteGroup |
+                              QFile::ReadOther  | QFile::WriteOther );
     }
     else
     {
@@ -132,6 +137,7 @@ bool Install::createQiptablesDatabase()
         qDebug("Creating Initial data");
         qDebug("%s", dm->createInitialRows() ? "true" : "false");
         qDebug("%s", dm->lastError().text().toAscii().data());
+
     }
     else
     {
