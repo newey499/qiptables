@@ -104,23 +104,26 @@ void FormCfgRuleset::slotBtnEdit()
 
 void FormCfgRuleset::slotBtnDelete()
 {
-    FormDlgRuleset dlg(REC_DELETE, this);
-    qDebug("FormCfgRuleset::slotBtnDelete()");
-    dlg.setWindowTitle("Delete this Ruleset");
-    dlg.setModal(true);
-    int currentRow = getView()->currentRow();
-    if (dlg.exec())
+    if (! isRulesetDefault())
     {
-        getModel()->submitAll();
-        if (currentRow > 0)
+        FormDlgRuleset dlg(REC_DELETE, this);
+        qDebug("FormCfgRuleset::slotBtnDelete()");
+        dlg.setWindowTitle("Delete this Ruleset");
+        dlg.setModal(true);
+        int currentRow = getView()->currentRow();
+        if (dlg.exec())
         {
-            currentRow--;   // select the row above the deleted one
+            getModel()->submitAll();
+            if (currentRow > 0)
+            {
+                currentRow--;   // select the row above the deleted one
+            }
+            ui->tblRuleset->selectRow(currentRow);
         }
-        ui->tblRuleset->selectRow(currentRow);
-    }
-    else
-    {
-        getModel()->revertAll();
+        else
+        {
+            getModel()->revertAll();
+        }
     }
 }
 
@@ -128,4 +131,53 @@ void FormCfgRuleset::slotBtnDelete()
 RulesetTableView * FormCfgRuleset::getView()
 {
     return ui->tblRuleset;
+}
+
+
+bool FormCfgRuleset::isRulesetDefault()
+{
+    bool result = false;
+    QString errMsg("");
+    QString rulesetName = getColumnData("name").toString();
+
+    // Cannot delete a ruleset if it is in use as the default ruleset
+
+    QSqlQuery qry;
+    qry.prepare(" select count(*) as count "
+                " from sysconf "
+                " where defaultRuleName = :defaultRuleName");
+    qry.bindValue(":defaultRuleName", rulesetName);
+
+    if (qry.exec())
+    {
+        if (qry.first())
+        {
+            if (qry.record().value("count").toInt() > 0)
+            {
+                errMsg = errMsg.append("%1Ruleset Name [%2] is in use as the default."
+                              " - not including leading and trailing spaces.").
+                        arg((result ? "" : "\n")).arg(rulesetName);
+                result = true;
+            }
+
+        }
+        else
+        {
+            qDebug("query on delete validation failed to find first row \n[%s]",
+                   qry.lastError().text().toAscii().data());
+        }
+
+    }
+    else
+    {
+        qDebug("query on delete validation failed \n[%s]",
+               qry.lastError().text().toAscii().data());
+    }
+
+    if (result)
+    {
+        QMessageBox::information(this, "Data Validation Error", errMsg);
+    }
+
+    return result;
 }

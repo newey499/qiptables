@@ -49,6 +49,8 @@ protected:
 
     RulesetSqlTableModel *model;
 
+    virtual bool isRulesetDefault();
+
 private:
     Ui::FormCfgRuleset *ui;
 };

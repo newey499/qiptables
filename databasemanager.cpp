@@ -8,7 +8,6 @@ DatabaseManager::DatabaseManager(QString dbPath, QObject *parent) :
     QObject(parent)
 {
     this->dbPath = dbPath;
-
     openDB();
 }
 
@@ -62,7 +61,6 @@ bool DatabaseManager::openDB()
         }
     }
 
-
     return result;
 }
 
@@ -101,6 +99,60 @@ bool DatabaseManager::dropTable(QString tableName)
     return ret;
 }
 
+bool DatabaseManager::createSysconfTable()
+{
+    bool ret = false;
+    if (db.isOpen())
+    {
+        QSqlQuery query;
+        QString qryMsg = QString("create table %1 "
+                                 "("
+                                 " id integer primary key not null, "
+                                 " shell	        varchar(100) not null, "
+                                 " defaultRuleName	varchar(100) not null, "
+                                 " foreign key(defaultRuleName) references %2(name) "
+                                 "         on delete restrict on update restrict "
+                                 ")"
+                                );
+        ret = query.exec(qryMsg.arg("sysconf").arg("ruleset"));
+        ret = query.exec(qryMsg.arg("sysconfdef").arg("rulesetdef"));
+    }
+    return ret;
+}
+
+
+bool DatabaseManager::createSysconfRow()
+{
+    bool ret = false;
+    if (db.isOpen())
+    {
+        QSqlQuery query;
+        QString qryMsg = QString(" insert into %1 "
+                                 "   (shell, defaultRuleName) "
+                                 " values "
+                                 "   ('/bin/bash', 'Clean Firewall') "
+                                );
+        ret = query.exec(qryMsg.arg("sysconf"));
+        ret = query.exec(qryMsg.arg("sysconfdef"));
+
+    }
+    return ret;
+}
+
+
+bool DatabaseManager::createInitialRows()
+{
+    // Ruleset row has to be created before
+    // sysconf row due to foreign key
+    createRulesetRows();
+    createRulesetSnippetRows();
+    createSysconfRow();
+
+    return true;
+}
+
+
+
 
 bool DatabaseManager::createRulesetTable()
 {
@@ -111,11 +163,13 @@ bool DatabaseManager::createRulesetTable()
         QString qryMsg = QString("create table %1 "
                                  "("
                                  " id integer primary key not null, "
-                                 " name     varchar(100) not null, "
-                                 " rules	text not null "
+                                 " name     varchar(100) unique not null, "
+                                 " rules	text not null, "
+                                 " foreign key(name) references %2(name) "
+                                 "         on delete restrict on update restrict "
                                  ")");
-        ret = query.exec(qryMsg.arg("ruleset"));
-        ret = query.exec(qryMsg.arg("rulesetdef"));
+        ret = query.exec(qryMsg.arg("ruleset").arg("sysconf"));
+        ret = query.exec(qryMsg.arg("rulesetdef").arg("sysconfdef"));
     }
     return ret;
 }
@@ -164,7 +218,7 @@ bool DatabaseManager::createRulesetRows()
 }
 
 
-bool DatabaseManager::createSysconfTable()
+bool DatabaseManager::createRulesetSnippetsTable()
 {
     bool ret = false;
     if (db.isOpen())
@@ -173,47 +227,54 @@ bool DatabaseManager::createSysconfTable()
         QString qryMsg = QString("create table %1 "
                                  "("
                                  " id integer primary key not null, "
-                                 " shell	        varchar(100) not null, "
-                                 " defaultRuleName	varchar(100) not null, "
-                                 " foreign key(defaultRuleName) references ruleset(name) "
-                                 "         on delete restrict on update restrict "
-                                 ")"
-                                );
-        ret = query.exec(qryMsg.arg("sysconf"));
-        ret = query.exec(qryMsg.arg("sysconfdef"));
-
+                                 " name     varchar(100) unique not null, "
+                                 " snippets	text not null "
+                                 ")");
+        ret = query.exec(qryMsg.arg("rulesetsnippets"));
+        ret = query.exec(qryMsg.arg("rulesetsnippetsdef"));
     }
     return ret;
 }
 
 
-bool DatabaseManager::createSysconfRow()
+bool DatabaseManager::createRulesetSnippetRows()
 {
     bool ret = false;
     if (db.isOpen())
     {
         QSqlQuery query;
         QString qryMsg = QString(" insert into %1 "
-                                 "   (shell, defaultRuleName) "
+                                 "   (name, snippets) "
                                  " values "
-                                 "   ('/bin/bash', 'Clean Firewall') "
-                                );
-        ret = query.exec(qryMsg.arg("sysconf"));
-        ret = query.exec(qryMsg.arg("sysconfdef"));
+                                 "   ('Snippet 1', 'Snippet 1 iptables statements') ");
+        ret = query.exec(qryMsg.arg("rulesetsnippets"));
+        ret = query.exec(qryMsg.arg("rulesetsnippetsdef"));
+
+        qryMsg = QString(" insert into %1 "
+                         "   (name, snippets) "
+                         " values "
+                         "   ('Snippet 2', 'Snippet 2 iptables statements') "
+                        );
+        ret = query.exec(qryMsg.arg("rulesetsnippets"));
+        ret = query.exec(qryMsg.arg("rulesetsnippetsdef"));
+
+
+        qryMsg = QString(" insert into %1 "
+                         "   (name, snippets) "
+                         " values "
+                         "   ('Snippet 3', 'Snippet 3 iptables statements') "
+                        );
+        ret = query.exec(qryMsg.arg("rulesetsnippets"));
+        ret = query.exec(qryMsg.arg("rulesetsnippetsdef"));
+
+        qryMsg = QString(" insert into %1 "
+                         "   (name, rules) "
+                         " values "
+                         "   ('Snippet 4', 'Snippet 4 iptables statements') "
+                         );
+        ret = query.exec(qryMsg.arg("rulesetsnippets"));
+        ret = query.exec(qryMsg.arg("rulesetsnippetsdef"));
 
     }
     return ret;
 }
-
-
-bool DatabaseManager::createInitialRows()
-{
-    // Ruleset row has to be created before
-    // sysconf row due to foreign key
-    createRulesetRows();
-    createSysconfRow();
-
-    return true;
-}
-
-

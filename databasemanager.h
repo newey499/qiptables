@@ -31,6 +31,7 @@ class DatabaseManager : public QObject
 
         bool createSysconfTable();
         bool createRulesetTable();
+        bool createRulesetSnippetsTable();
 
 
         bool createInitialRows();
@@ -46,6 +47,7 @@ class DatabaseManager : public QObject
         QSqlDatabase db;
 
         bool createRulesetRows();
+        bool createRulesetSnippetRows();
         bool createSysconfRow();
 
     private:

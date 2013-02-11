@@ -120,6 +120,42 @@ bool FormDlgRuleset::validateData()
     QString rulesetName = ui->edtRulesetName->text();
     QString ruleset = ui->edtRuleset->toPlainText();
 
+    // Cannot delete a ruleset if it is in use as the default ruleset
+    if (result && opcode == FormCfgRuleset::REC_DELETE)
+    {
+        QSqlQuery qry;
+        qry.prepare(" select count(*) as count "
+                    " from sysconf "
+                    " where defaultRuleName = :defaultRuleName");
+        qry.bindValue(":defaultRuleName", rulesetName);
+
+        if (qry.exec())
+        {
+            if (qry.first())
+            {
+                if (qry.record().value("count").toInt() > 0)
+                {
+                    errMsg = errMsg.append("%1Ruleset Name [%2] is in use as the default."
+                                  " - not including leading and trailing spaces.").
+                            arg((result ? "" : "\n")).arg(rulesetName);
+                    result = false;
+                }
+
+            }
+            else
+            {
+                qDebug("query on delete validation failed to find first row \n[%s]",
+                       qry.lastError().text().toAscii().data());
+            }
+
+        }
+        else
+        {
+            qDebug("query on delete validation failed \n[%s]",
+                   qry.lastError().text().toAscii().data());
+        }
+    }
+
     // check rulesetName has something in it
     if (rulesetName.isEmpty())
     {
@@ -257,6 +293,7 @@ bool FormDlgRuleset::writeRow()
         if (formRuleset->getModel()->insertRecord(-1, rec))
         {
             qDebug("row inserted");
+            result = true;
         }
         else
         {
@@ -275,6 +312,7 @@ bool FormDlgRuleset::writeRow()
         if (formRuleset->getModel()->setRecord(currentRow, rec))
         {
             qDebug("row update write submitAll() Ok");
+            result = true;
         }
         else
         {
@@ -290,6 +328,7 @@ bool FormDlgRuleset::writeRow()
         if (formRuleset->getModel()->removeRow(currentRow))
         {
             qDebug("row delete submitAll() Ok");
+            result = true;
         }
         else
         {

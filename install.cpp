@@ -134,6 +134,11 @@ bool Install::createQiptablesDatabase()
         qDebug("%s", dm->createSysconfTable() ? "true" : "false");
         qDebug("%s", dm->lastError().text().toAscii().data());
 
+        qDebug("Creating Ruleset Snippets Table");
+        qDebug("%s", dm->createRulesetSnippetsTable() ? "true" : "false");
+        qDebug("%s", dm->lastError().text().toAscii().data());
+
+
         qDebug("Creating Initial data");
         qDebug("%s", dm->createInitialRows() ? "true" : "false");
         qDebug("%s", dm->lastError().text().toAscii().data());
