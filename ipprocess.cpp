@@ -85,8 +85,11 @@ QString IpProcess::executeSynchronous(const QString &program, const QStringList 
 
     //QByteArray std = readAllStandardOutput();
     //QByteArray err = readAllStandardError();
-    QString result = QString("%1 %2").arg(QString(readAllStandardOutput())).
-                                                  arg(QString(readAllStandardError()));
+    QString result = QString("stdout:\n%1\nstderr:\n%2\nexit code: [%3]\nexit status: [%4]\n").
+                        arg(QString(readAllStandardOutput())).
+                        arg(QString(readAllStandardError())).
+                        arg(this->exitCode()).
+                        arg(this->exitStatus());
 
     return QString(result);
 }
