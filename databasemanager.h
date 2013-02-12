@@ -4,12 +4,17 @@
 #include <QFile>
 #include <QDir>
 #include <QObject>
+#include <QSqlRecord>
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
+#include <QString>
+#include <QVariant>
 
 
 #include "install.h"
+
+
 
 class DatabaseManager : public QObject
 {
@@ -26,6 +31,8 @@ class DatabaseManager : public QObject
         bool dropTable(QString tableName);
         QString getDatabaseFileName();
         bool openDB();
+        QSqlRecord getSysconfRow();
+        QSqlRecord getRulesetRow(QVariant rulesetName);
 
         QSqlError lastError();
 
@@ -45,6 +52,8 @@ class DatabaseManager : public QObject
 
         QString dbPath;
         QSqlDatabase db;
+        QSqlRecord syconfRec;
+        QSqlRecord rulesetRec;
 
         bool createRulesetRows();
         bool createRulesetSnippetRows();

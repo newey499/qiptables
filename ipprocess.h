@@ -19,18 +19,18 @@ public:
 
     explicit IpProcess(QObject *parent = 0);
 
-    virtual bool checkForRoot();
+    virtual bool checkForRoot(QString title = "Application Name");
+    virtual QString	execute (const QString &program, const QStringList &arguments = QStringList());
+    virtual QString executeSynchronous(const QString &program, const QStringList &arguments = QStringList());
+    virtual QString exec(QString cmd, QStringList argList);
+    virtual QString printCmdLine(QString cmd, QStringList argList = QStringList());
 
-    virtual int	execute (const QString &program, const QStringList &arguments);
-    virtual int	execute (const QString &program);
-
-    virtual QString executeSynchronous(const QString &program, const QStringList &arguments);
-    virtual QString executeSynchronous(const QString &program);
+    virtual QString execCmdLine(QString cmd);
 
 signals:
-    
+
 public slots:
-    
+
 };
 
 #endif // IPPROCESS_H

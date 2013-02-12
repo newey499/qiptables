@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>425</width>
-    <height>119</height>
+    <height>276</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,9 +15,9 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_3">
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="label_3">
        <property name="minimumSize">
         <size>
          <width>110</width>
@@ -25,12 +25,12 @@
         </size>
        </property>
        <property name="text">
-        <string>Shell</string>
+        <string>iptables</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="edtShell">
+      <widget class="QLineEdit" name="edtIptables">
        <property name="minimumSize">
         <size>
          <width>200</width>
@@ -40,14 +40,14 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="btnFileDialog">
+      <widget class="QPushButton" name="btnIptables">
        <property name="text">
         <string>Select</string>
        </property>
       </widget>
      </item>
      <item>
-      <spacer name="horizontalSpacer_3">
+      <spacer name="horizontalSpacer_4">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -150,22 +150,6 @@
  <resources/>
  <connections>
   <connection>
-   <sender>btnFileDialog</sender>
-   <signal>clicked()</signal>
-   <receiver>FormCfgSettings</receiver>
-   <slot>slotFileDialog()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>358</x>
-     <y>16</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>245</x>
-     <y>112</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>btnSave</sender>
    <signal>clicked()</signal>
    <receiver>FormCfgSettings</receiver>
@@ -194,6 +178,22 @@
     <hint type="destinationlabel">
      <x>245</x>
      <y>112</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnIptables</sender>
+   <signal>clicked()</signal>
+   <receiver>FormCfgSettings</receiver>
+   <slot>slotFileDialog()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>374</x>
+     <y>82</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>212</x>
+     <y>137</y>
     </hint>
    </hints>
   </connection>

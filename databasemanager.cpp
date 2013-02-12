@@ -109,6 +109,7 @@ bool DatabaseManager::createSysconfTable()
                                  "("
                                  " id integer primary key not null, "
                                  " shell	        varchar(100) not null, "
+                                 " iptables         varchar(100) not null, "
                                  " defaultRuleName	varchar(100) not null, "
                                  " foreign key(defaultRuleName) references %2(name) "
                                  "         on delete restrict on update restrict "
@@ -128,9 +129,9 @@ bool DatabaseManager::createSysconfRow()
     {
         QSqlQuery query;
         QString qryMsg = QString(" insert into %1 "
-                                 "   (shell, defaultRuleName) "
+                                 "   (shell, iptables, defaultRuleName) "
                                  " values "
-                                 "   ('/bin/bash', 'Clean Firewall') "
+                                 "   ('/bin/bash', '/sbin/iptables', 'Clean Firewall') "
                                 );
         ret = query.exec(qryMsg.arg("sysconf"));
         ret = query.exec(qryMsg.arg("sysconfdef"));
@@ -277,4 +278,56 @@ bool DatabaseManager::createRulesetSnippetRows()
 
     }
     return ret;
+}
+
+
+QSqlRecord DatabaseManager::getSysconfRow()
+{
+    QSqlQuery qry;
+    syconfRec = QSqlRecord();
+
+    if (qry.exec("select id, shell, iptables, defaultRuleName from sysconf"))
+    {
+        if (qry.first())
+        {
+            syconfRec = qry.record();
+        }
+        else
+        {
+            qDebug("Query error on sysconf: [%s]", qry.lastError().text().toAscii().data());
+        }
+    }
+    else
+    {
+        qDebug("Query error on sysconf: [%s]", qry.lastError().text().toAscii().data());
+    }
+
+    return syconfRec;
+}
+
+
+QSqlRecord DatabaseManager::getRulesetRow(QVariant rulesetName)
+{
+    QSqlQuery qry;
+    rulesetRec = QSqlRecord();
+
+    qry.prepare("select id, name, rules from ruleset where name = :name");
+    qry.bindValue(QString(":name"), rulesetName);
+    if (qry.exec())
+    {
+        if (qry.first())
+        {
+            rulesetRec = qry.record();
+        }
+        else
+        {
+            qDebug("Query error on sysconf: [%s]", qry.lastError().text().toAscii().data());
+        }
+    }
+    else
+    {
+        qDebug("Query error on sysconf: [%s]", qry.lastError().text().toAscii().data());
+    }
+
+    return rulesetRec;
 }

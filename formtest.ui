@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>348</height>
+    <width>408</width>
+    <height>168</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -35,6 +35,27 @@
         </size>
        </property>
       </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Command Line</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="edtCmd"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnRun">
+       <property name="text">
+        <string>&amp;Run</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
@@ -85,8 +106,41 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>btnRun</sender>
+   <signal>clicked()</signal>
+   <receiver>FormTest</receiver>
+   <slot>slotBtnRun()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>380</x>
+     <y>41</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>173</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>edtCmd</sender>
+   <signal>editingFinished()</signal>
+   <receiver>FormTest</receiver>
+   <slot>slotBtnRun()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>217</x>
+     <y>43</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>173</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>slotBtnTest()</slot>
+  <slot>slotBtnRun()</slot>
  </slots>
 </ui>

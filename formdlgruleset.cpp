@@ -293,11 +293,13 @@ bool FormDlgRuleset::writeRow()
         if (formRuleset->getModel()->insertRecord(-1, rec))
         {
             qDebug("row inserted");
+            formRuleset->getModel()->submitAll();
             result = true;
         }
         else
         {
             qDebug("row not inserted");
+            formRuleset->getModel()->revertAll();
         }
     }
 
@@ -312,11 +314,13 @@ bool FormDlgRuleset::writeRow()
         if (formRuleset->getModel()->setRecord(currentRow, rec))
         {
             qDebug("row update write submitAll() Ok");
+            formRuleset->getModel()->submitAll();
             result = true;
         }
         else
         {
             qDebug("row not updated - setRecord call failed");
+            formRuleset->getModel()->revertAll();
         }
     }
 
@@ -328,11 +332,13 @@ bool FormDlgRuleset::writeRow()
         if (formRuleset->getModel()->removeRow(currentRow))
         {
             qDebug("row delete submitAll() Ok");
+            formRuleset->getModel()->submitAll();
             result = true;
         }
         else
         {
             qDebug("row not deleted - removeRow call failed");
+            formRuleset->getModel()->revertAll();
         }
     }
 

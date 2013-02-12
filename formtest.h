@@ -1,7 +1,11 @@
 #ifndef FORMTEST_H
 #define FORMTEST_H
 
+#include <QPointer>
 #include <QProcessEnvironment>
+#include <QSqlField>
+#include <QSqlQuery>
+#include <QSqlRecord>
 #include <QString>
 #include <QStringList>
 #include <QWidget>
@@ -21,14 +25,15 @@ class FormTest;
 class FormTest : public QWidget
 {
     Q_OBJECT
-    
+
 public:
     explicit FormTest(QWidget *parent = 0);
     ~FormTest();
-    
+
 public slots:
 
-    void slotBtnTest();
+    virtual void slotBtnTest();
+    virtual void slotBtnRun();
 
 private:
     Ui::FormTest *ui;

@@ -11,11 +11,11 @@ FormCfgSettings::FormCfgSettings(QWidget *parent) :
 
     ui->setupUi(this);
 
-    ui->edtShell->setReadOnly(true);
+    ui->edtIptables->setReadOnly(true);
 
     loadSettings();
 
-    connect(ui->edtShell, SIGNAL(textChanged(QString)),
+    connect(ui->edtIptables, SIGNAL(textChanged(QString)),
             this, SLOT(slotButtonStateEnabled()));
     connect(ui->cbxDefRuleset, SIGNAL(currentIndexChanged(int)),
             this, SLOT(slotButtonStateEnabled()));
@@ -40,7 +40,7 @@ void FormCfgSettings::slotButtonStateEnabled()
 void FormCfgSettings::slotButtonStateDisabled()
 {
     qDebug("FormCfgSettings::slotButtonStateDisabled()");
-    ui->btnCancel->setEnabled(false);
+    ui->btnCancel->setEnabled(true);
     ui->btnSave->setEnabled(false);
 }
 
@@ -50,12 +50,12 @@ void FormCfgSettings::slotFileDialog()
     QString fileName;
 
     fd.setReadOnly(true);
-    fd.setDirectory("/bin/bash");
+    fd.setDirectory("/sbin/iptables");
     fd.setFileMode(QFileDialog::ExistingFile);
     if (fd.exec())
     {
         fileName = fd.selectedFiles().at(0);
-        ui->edtShell->setText(fileName);
+        ui->edtIptables->setText(fileName);
     }
 
     qDebug("FormConfigQiptables::slotFileDialog()\nselected file [%s]",
@@ -76,8 +76,9 @@ void FormCfgSettings::slotSave()
 void FormCfgSettings::slotCancel()
 {
     qDebug("FormConfigQiptables::slotCancel()");
-    ui->edtShell->setText(shell);
-    ui->cbxDefRuleset->setCurrentIndex(ui->cbxDefRuleset->findText(defaultRuleName));
+    this->loadSettings();
+    //ui->edtIptables->setText(shell);
+    //ui->cbxDefRuleset->setCurrentIndex(ui->cbxDefRuleset->findText(defaultRuleName));
     slotButtonStateDisabled();
 }
 
@@ -91,14 +92,15 @@ void FormCfgSettings::loadSettings()
 
     qDebug("FormCfgSettings::loadSettings()");
 
-    if (qry.exec("select id, shell, defaultRuleName from sysconf"))
+    if (qry.exec("select id, shell, iptables, defaultRuleName from sysconf"))
     {
         if (qry.first())
         {
             id = qry.record().value("id").toInt();
             shell = qry.record().value("shell").toString();
+            iptables = qry.record().value("iptables").toString();
             defaultRuleName = qry.record().value("defaultRuleName").toString();
-            ui->edtShell->setText(shell);
+            ui->edtIptables->setText(iptables);
         }
         else
         {
@@ -128,8 +130,8 @@ void FormCfgSettings::loadSettings()
 
 void FormCfgSettings::saveSettings()
 {
-    qry.prepare("update sysconf set shell = :shell, defaultRuleName = :defaultRuleName");
-    qry.bindValue(":shell", ui->edtShell->text());
+    qry.prepare("update sysconf set iptables = :iptables, defaultRuleName = :defaultRuleName");
+    qry.bindValue(":iptables", ui->edtIptables->text());
     qry.bindValue(":defaultRuleName", ui->cbxDefRuleset->currentText());
 
     if (qry.exec())

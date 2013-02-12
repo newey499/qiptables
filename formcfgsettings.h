@@ -40,6 +40,7 @@ protected:
 
     int id;
     QString shell;
+    QString iptables;
     QString defaultRuleName;
 
     virtual void loadSettings();
