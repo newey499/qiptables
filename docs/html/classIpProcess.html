@@ -62,16 +62,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3da2f50b99994ade7fa6551acaeecd20"></a><!-- doxytag: member="IpProcess::IpProcess" ref="a3da2f50b99994ade7fa6551acaeecd20" args="(QObject *parent=0)" -->
 &nbsp;</td><td class="memItemRight" valign="bottom"><b>IpProcess</b> (QObject *parent=0)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aafaa8494a6b8584489afd12c93e44455"></a><!-- doxytag: member="IpProcess::checkForRoot" ref="aafaa8494a6b8584489afd12c93e44455" args="()" -->
-virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>checkForRoot</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aec1b96b4107cc1d4a751a626c921df67"></a><!-- doxytag: member="IpProcess::execute" ref="aec1b96b4107cc1d4a751a626c921df67" args="(const QString &amp;program, const QStringList &amp;arguments)" -->
-virtual int&nbsp;</td><td class="memItemRight" valign="bottom"><b>execute</b> (const QString &amp;program, const QStringList &amp;arguments)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a583b2f6e8dbb14d8a35251e168cf579d"></a><!-- doxytag: member="IpProcess::execute" ref="a583b2f6e8dbb14d8a35251e168cf579d" args="(const QString &amp;program)" -->
-virtual int&nbsp;</td><td class="memItemRight" valign="bottom"><b>execute</b> (const QString &amp;program)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4bd8ed33b7c3fbf3aa9d95b90facee0c"></a><!-- doxytag: member="IpProcess::executeSynchronous" ref="a4bd8ed33b7c3fbf3aa9d95b90facee0c" args="(const QString &amp;program, const QStringList &amp;arguments)" -->
-virtual QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>executeSynchronous</b> (const QString &amp;program, const QStringList &amp;arguments)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a46135461d985c54b25259a841b2674dd"></a><!-- doxytag: member="IpProcess::executeSynchronous" ref="a46135461d985c54b25259a841b2674dd" args="(const QString &amp;program)" -->
-virtual QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>executeSynchronous</b> (const QString &amp;program)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab24ac4bb2c6950492fb6c3961cfbc6b0"></a><!-- doxytag: member="IpProcess::checkForRoot" ref="ab24ac4bb2c6950492fb6c3961cfbc6b0" args="(QString title=&quot;Application Name&quot;)" -->
+virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>checkForRoot</b> (QString title=&quot;Application Name&quot;)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3c9fb661383a27639cbbff7e170f4754"></a><!-- doxytag: member="IpProcess::execute" ref="a3c9fb661383a27639cbbff7e170f4754" args="(const QString &amp;program, const QStringList &amp;arguments=QStringList())" -->
+virtual QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>execute</b> (const QString &amp;program, const QStringList &amp;arguments=QStringList())</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acb6135e745605260ac96b283a26a318e"></a><!-- doxytag: member="IpProcess::executeSynchronous" ref="acb6135e745605260ac96b283a26a318e" args="(const QString &amp;program, const QStringList &amp;arguments=QStringList())" -->
+virtual QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>executeSynchronous</b> (const QString &amp;program, const QStringList &amp;arguments=QStringList())</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0470177f4de4043f0534d8f2d5b8c5d4"></a><!-- doxytag: member="IpProcess::exec" ref="a0470177f4de4043f0534d8f2d5b8c5d4" args="(QString cmd, QStringList argList)" -->
+virtual QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>exec</b> (QString cmd, QStringList argList)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a862ad6eebf54297ccc6aee13e63cb6bf"></a><!-- doxytag: member="IpProcess::printCmdLine" ref="a862ad6eebf54297ccc6aee13e63cb6bf" args="(QString cmd, QStringList argList=QStringList())" -->
+virtual QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>printCmdLine</b> (QString cmd, QStringList argList=QStringList())</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a91b0e23207036137f05c09805bacfd64"></a><!-- doxytag: member="IpProcess::execCmdLine" ref="a91b0e23207036137f05c09805bacfd64" args="(QString cmd)" -->
+virtual QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>execCmdLine</b> (QString cmd)</td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab4d8d648ceffc0a576ccf028ce268cee"></a><!-- doxytag: member="IpProcess::systemEnvironment" ref="ab4d8d648ceffc0a576ccf028ce268cee" args="()" -->
@@ -100,7 +102,7 @@ static const int&nbsp;</td><td class="memItemRight" valign="bottom"><b>PROCESS_C
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Mon Feb 11 2013 14:16:36 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Tue Feb 12 2013 20:07:59 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

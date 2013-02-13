@@ -75,12 +75,18 @@ bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>dropTable</b> (QStrin
 QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>getDatabaseFileName</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0b3e9d4f35fff725ca5cf56b5d178913"></a><!-- doxytag: member="DatabaseManager::openDB" ref="a0b3e9d4f35fff725ca5cf56b5d178913" args="()" -->
 bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>openDB</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac17db5077b4f1853cb97914974f3e9a8"></a><!-- doxytag: member="DatabaseManager::getSysconfRow" ref="ac17db5077b4f1853cb97914974f3e9a8" args="()" -->
+QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><b>getSysconfRow</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaa2bf9379def45ebab72f6f927b252a2"></a><!-- doxytag: member="DatabaseManager::getRulesetRow" ref="aaa2bf9379def45ebab72f6f927b252a2" args="(QVariant rulesetName)" -->
+QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><b>getRulesetRow</b> (QVariant rulesetName)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d786883976ea0f32e3566415138478d"></a><!-- doxytag: member="DatabaseManager::lastError" ref="a0d786883976ea0f32e3566415138478d" args="()" -->
 QSqlError&nbsp;</td><td class="memItemRight" valign="bottom"><b>lastError</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a741d3cf41fcf6abc565fff0ba63e87c2"></a><!-- doxytag: member="DatabaseManager::createSysconfTable" ref="a741d3cf41fcf6abc565fff0ba63e87c2" args="()" -->
 bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>createSysconfTable</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab8da1e1fda7cd5e2c5ecf7f5901b1d57"></a><!-- doxytag: member="DatabaseManager::createRulesetTable" ref="ab8da1e1fda7cd5e2c5ecf7f5901b1d57" args="()" -->
 bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>createRulesetTable</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a37d01eac6a3180e46aaa2607da32e4e5"></a><!-- doxytag: member="DatabaseManager::createRulesetSnippetsTable" ref="a37d01eac6a3180e46aaa2607da32e4e5" args="()" -->
+bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>createRulesetSnippetsTable</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3433b8525da10ada71310ca899471046"></a><!-- doxytag: member="DatabaseManager::createInitialRows" ref="a3433b8525da10ada71310ca899471046" args="()" -->
 bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>createInitialRows</b> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-attribs"></a>
@@ -91,6 +97,8 @@ static const QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>DB_NA
 Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab47a9e3579c916217dd324785a290eaa"></a><!-- doxytag: member="DatabaseManager::createRulesetRows" ref="ab47a9e3579c916217dd324785a290eaa" args="()" -->
 bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>createRulesetRows</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad5ed24e6feeecb35600f8fd476ee925c"></a><!-- doxytag: member="DatabaseManager::createRulesetSnippetRows" ref="ad5ed24e6feeecb35600f8fd476ee925c" args="()" -->
+bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>createRulesetSnippetRows</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1102061af6d29e57a0c42ad8c83a1048"></a><!-- doxytag: member="DatabaseManager::createSysconfRow" ref="a1102061af6d29e57a0c42ad8c83a1048" args="()" -->
 bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>createSysconfRow</b> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
@@ -99,6 +107,10 @@ Protected Attributes</h2></td></tr>
 QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>dbPath</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a48728975c70722593bb73736d7e76efb"></a><!-- doxytag: member="DatabaseManager::db" ref="a48728975c70722593bb73736d7e76efb" args="" -->
 QSqlDatabase&nbsp;</td><td class="memItemRight" valign="bottom"><b>db</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7bce99f2103752a79e7670c10fbf4d62"></a><!-- doxytag: member="DatabaseManager::syconfRec" ref="a7bce99f2103752a79e7670c10fbf4d62" args="" -->
+QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><b>syconfRec</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a624fe8233fd9de7861d051a84403f362"></a><!-- doxytag: member="DatabaseManager::rulesetRec" ref="a624fe8233fd9de7861d051a84403f362" args="" -->
+QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><b>rulesetRec</b></td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="databasemanager_8h_source.html">databasemanager.h</a></li>
@@ -119,7 +131,7 @@ QSqlDatabase&nbsp;</td><td class="memItemRight" valign="bottom"><b>db</b></td></
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Mon Feb 11 2013 14:16:36 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Tue Feb 12 2013 20:07:59 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

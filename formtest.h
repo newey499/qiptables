@@ -18,6 +18,9 @@
 #include "install.h"
 #include "databasemanager.h"
 
+class Iptables;
+class IpProcess;
+
 namespace Ui {
 class FormTest;
 }
@@ -27,13 +30,30 @@ class FormTest : public QWidget
     Q_OBJECT
 
 public:
+
+    QPointer<DatabaseManager> db;
+    QPointer<Iptables> iptables;
+    QPointer<IpProcess> proc;
+
+
     explicit FormTest(QWidget *parent = 0);
     ~FormTest();
+
+
+
 
 public slots:
 
     virtual void slotBtnTest();
     virtual void slotBtnRun();
+
+protected:
+
+
+protected slots:
+
+    void slotCmdOutput(QString program, QStringList arguments, int exitCode, QString result);
+
 
 private:
     Ui::FormTest *ui;

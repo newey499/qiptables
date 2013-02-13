@@ -29,6 +29,8 @@ public:
 
 signals:
 
+    void procCmdOutput(QString, QStringList, int, QString);
+
 public slots:
 
 };

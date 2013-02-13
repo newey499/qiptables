@@ -99,11 +99,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00049"></a>00049 
 <a name="l00050"></a>00050     <a class="code" href="classRulesetSqlTableModel.html">RulesetSqlTableModel</a> *model;
 <a name="l00051"></a>00051 
-<a name="l00052"></a>00052 <span class="keyword">private</span>:
-<a name="l00053"></a>00053     Ui::FormCfgRuleset *ui;
-<a name="l00054"></a>00054 };
-<a name="l00055"></a>00055 
-<a name="l00056"></a>00056 <span class="preprocessor">#endif // FORMCFGRULESET_H</span>
+<a name="l00052"></a>00052     <span class="keyword">virtual</span> <span class="keywordtype">bool</span> isRulesetDefault();
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054 <span class="keyword">private</span>:
+<a name="l00055"></a>00055     Ui::FormCfgRuleset *ui;
+<a name="l00056"></a>00056 };
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058 <span class="preprocessor">#endif // FORMCFGRULESET_H</span>
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -120,7 +122,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Mon Feb 11 2013 14:16:36 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Tue Feb 12 2013 20:07:59 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

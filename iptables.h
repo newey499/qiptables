@@ -26,6 +26,8 @@ public:
 
     static const QString IPTABLES_BINARY;
 
+    QPointer<DatabaseManager> db;
+
     explicit Iptables(QObject *parent = 0);
     ~Iptables();
 
@@ -35,23 +37,42 @@ public:
     virtual QString listIptablesRules();
     virtual QString printCmdLine(QString cmd, QStringList argList);
 
+    /* ****************************
+     Methods to process a ruleset
+    ********************************/
 
-    QPointer<DatabaseManager> db;
+    // Get the required SQLRecord containing the ruleset
+    virtual QSqlRecord getRuleset(QString rulesetName);
 
-    QSqlRecord getRuleset(QString rulesetName);
-    QStringList getRulesetRows(QString rulesetName);
-    QStringList stripComments(QStringList rulesetList, QString commentMark = "#");
-    QString     stripComments(QString rule, QString commentMark = "#");
-    QStringList stripBlankLine(QStringList rulesetList);
+    // Strip any comments from the ruleset
+    virtual QStringList stripComments(QStringList rulesetList, QString commentMark = "#");
+    virtual QString     stripComments(QString rule, QString commentMark = "#");
+
+    // Strip any blank lines from the ruleset
+    virtual QStringList stripBlankLines(QStringList rulesetList);
+
+    // Get the ruleset as a QStringList off the ruleset table using the ruleset name
+    virtual QStringList getRulesetRows(QString rulesetName);
+
+
+    // Execute the commands in the ruleset
+    virtual bool    processRuleset(QString rulesetName);
 
 signals:
 
+    void cmdOutput(QString program, QStringList arguments, int exitCode, QString result);
+
 public slots:
+
+
+protected slots:
+
+    void slotCmdOutput(QString program, QStringList arguments, int exitCode, QString result);
 
 protected:
 
-    IpProcess *process;
-    LinuxUserId *userId;
+    QPointer<IpProcess> process;
+    QPointer<LinuxUserId> userId;
     QString IptablesBinary;
 
 };

@@ -1,14 +1,31 @@
 #include "iptables.h"
 
+/**
+\file iptables.cpp
+\brief Iptables class reads commands from SQLite database
+ruleset table and then performs each command it finds (one per line).
+
+\todo method "Iptables::processRuleset(QString rulesetName)" - add code to process
+each command found.
+
+\todo method "Iptables::processRuleset(QString rulesetName)" - emit signals for
+each command executed and the output of each command.
+
+***************************/
+
 const QString Iptables::IPTABLES_BINARY = QString("/sbin/iptables");
 
 Iptables::Iptables(QObject *parent) :
     QObject(parent)
 {
-    db = 0;
+    db = new DatabaseManager(Install::INSTALL_DIR, this);
     setIptablesBinary();
     process = new IpProcess(this);
     userId = new LinuxUserId(this);
+
+    connect(process, SIGNAL(procCmdOutput(QString, QStringList, int, QString)),
+            this,    SLOT(slotCmdOutput(QString, QStringList, int, QString)));
+
 }
 
 Iptables::~Iptables()
@@ -84,12 +101,9 @@ QString Iptables::listIptablesRules()
 
 QString Iptables::printCmdLine(QString cmd, QStringList argList)
 {
-    qDebug("Iptables::printCmdLine(QString cmd, QStringList argList)");
     QString msg = QString("cmd: %1 %2").
                     arg(cmd.toAscii().data()).
                     arg(argList.join(" ").toAscii().data());
-
-    qDebug("%s", msg.toAscii().data());
 
     return msg;
 }
@@ -97,10 +111,6 @@ QString Iptables::printCmdLine(QString cmd, QStringList argList)
 
 QSqlRecord Iptables::getRuleset(QString rulesetName)
 {
-    if (db == 0)
-    {
-        db = new DatabaseManager(Install::INSTALL_DIR, this);
-    }
     QSqlRecord rec = db->getRulesetRow(rulesetName);
 
     return rec;
@@ -135,13 +145,13 @@ QStringList Iptables::stripComments(QStringList rulesetList, QString commentMark
         result.append(stripComments(rulesetList.at(i), commentMark));
     }
 
-    result = stripBlankLine(result);
+    result = stripBlankLines(result);
 
     return result;
 }
 
 
-QStringList Iptables::stripBlankLine(QStringList rulesetList)
+QStringList Iptables::stripBlankLines(QStringList rulesetList)
 {
     QStringList result;
 
@@ -154,4 +164,29 @@ QStringList Iptables::stripBlankLine(QStringList rulesetList)
     }
 
     return result;
+}
+
+
+bool Iptables::processRuleset(QString rulesetName)
+{
+    bool result = true;
+    QStringList rulesetList = getRulesetRows(rulesetName);
+    rulesetList = stripComments(rulesetList);
+    rulesetList = stripBlankLines(rulesetList);
+
+    for (int i = 0; i < rulesetList.count(); i++)
+    {
+        if ("" != rulesetList.at(i).trimmed())
+        {
+            this->process->execCmdLine(rulesetList.at(i));
+        }
+    }
+
+    return result;
+}
+
+
+void Iptables::slotCmdOutput(QString program, QStringList arguments, int exitCode, QString result)
+{
+    emit cmdOutput(program, arguments, exitCode, result);
 }

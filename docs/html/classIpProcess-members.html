@@ -52,12 +52,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 This is the complete list of members for <a class="el" href="classIpProcess.html">IpProcess</a>, including all inherited members.<table>
-  <tr bgcolor="#f0f0f0"><td><b>checkForRoot</b>() (defined in <a class="el" href="classIpProcess.html">IpProcess</a>)</td><td><a class="el" href="classIpProcess.html">IpProcess</a></td><td><code> [virtual]</code></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>execute</b>(const QString &amp;program, const QStringList &amp;arguments) (defined in <a class="el" href="classIpProcess.html">IpProcess</a>)</td><td><a class="el" href="classIpProcess.html">IpProcess</a></td><td><code> [virtual]</code></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>execute</b>(const QString &amp;program) (defined in <a class="el" href="classIpProcess.html">IpProcess</a>)</td><td><a class="el" href="classIpProcess.html">IpProcess</a></td><td><code> [virtual]</code></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>executeSynchronous</b>(const QString &amp;program, const QStringList &amp;arguments) (defined in <a class="el" href="classIpProcess.html">IpProcess</a>)</td><td><a class="el" href="classIpProcess.html">IpProcess</a></td><td><code> [virtual]</code></td></tr>
-  <tr bgcolor="#f0f0f0"><td><b>executeSynchronous</b>(const QString &amp;program) (defined in <a class="el" href="classIpProcess.html">IpProcess</a>)</td><td><a class="el" href="classIpProcess.html">IpProcess</a></td><td><code> [virtual]</code></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>checkForRoot</b>(QString title=&quot;Application Name&quot;) (defined in <a class="el" href="classIpProcess.html">IpProcess</a>)</td><td><a class="el" href="classIpProcess.html">IpProcess</a></td><td><code> [virtual]</code></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>exec</b>(QString cmd, QStringList argList) (defined in <a class="el" href="classIpProcess.html">IpProcess</a>)</td><td><a class="el" href="classIpProcess.html">IpProcess</a></td><td><code> [virtual]</code></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>execCmdLine</b>(QString cmd) (defined in <a class="el" href="classIpProcess.html">IpProcess</a>)</td><td><a class="el" href="classIpProcess.html">IpProcess</a></td><td><code> [virtual]</code></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>execute</b>(const QString &amp;program, const QStringList &amp;arguments=QStringList()) (defined in <a class="el" href="classIpProcess.html">IpProcess</a>)</td><td><a class="el" href="classIpProcess.html">IpProcess</a></td><td><code> [virtual]</code></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>executeSynchronous</b>(const QString &amp;program, const QStringList &amp;arguments=QStringList()) (defined in <a class="el" href="classIpProcess.html">IpProcess</a>)</td><td><a class="el" href="classIpProcess.html">IpProcess</a></td><td><code> [virtual]</code></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>IpProcess</b>(QObject *parent=0) (defined in <a class="el" href="classIpProcess.html">IpProcess</a>)</td><td><a class="el" href="classIpProcess.html">IpProcess</a></td><td><code> [explicit]</code></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>printCmdLine</b>(QString cmd, QStringList argList=QStringList()) (defined in <a class="el" href="classIpProcess.html">IpProcess</a>)</td><td><a class="el" href="classIpProcess.html">IpProcess</a></td><td><code> [virtual]</code></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>PROCESS_CANNOT_BE_STARTED</b> (defined in <a class="el" href="classIpProcess.html">IpProcess</a>)</td><td><a class="el" href="classIpProcess.html">IpProcess</a></td><td><code> [static]</code></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>systemEnvironment</b>() (defined in <a class="el" href="classIpProcess.html">IpProcess</a>)</td><td><a class="el" href="classIpProcess.html">IpProcess</a></td><td><code> [static]</code></td></tr>
 </table></div>
@@ -75,7 +76,7 @@ This is the complete list of members for <a class="el" href="classIpProcess.html
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Mon Feb 11 2013 14:16:36 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Tue Feb 12 2013 20:07:59 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

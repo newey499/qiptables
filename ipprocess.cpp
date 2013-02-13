@@ -59,21 +59,6 @@ QString	IpProcess::execute (const QString &program, const QStringList &arguments
     return result;
 }
 
-/*******************************
-int	IpProcess::execute (const QString &program)
-{
-    int result = IpProcess::PROCESS_CANNOT_BE_STARTED;
-
-    if (! checkForRoot())
-    {
-        result = QProcess::execute(program);
-    }
-
-    return result;
-}
-********************************/
-
-
 QString IpProcess::executeSynchronous(const QString &program, const QStringList &arguments)
 {
     QString empty("");
@@ -92,6 +77,8 @@ QString IpProcess::executeSynchronous(const QString &program, const QStringList 
 
     //QByteArray std = readAllStandardOutput();
     //QByteArray err = readAllStandardError();
+    // exit code of zero means command completed ok
+    // and that output is from stdout - error output is on stderrs
     if (exitCode() == 0)
     {
         result = QString(readAllStandardOutput());
@@ -101,40 +88,12 @@ QString IpProcess::executeSynchronous(const QString &program, const QStringList 
         result = QString(readAllStandardError());
     }
 
-    /*********
-    result = QString("stdout:\n%1\nstderr:\n%2\nexit code: [%3]\nexit status: [%4]\n").
-                      arg(QString(readAllStandardOutput())).
-                      arg(QString(readAllStandardError())).
-                      arg(this->exitCode()).
-                      arg(this->exitStatus());
-    ************/
-    return QString(result);
-}
+    // Send the result of executing the command
+    emit procCmdOutput(program, arguments, exitCode(), result);
 
-/**********************
-QString IpProcess::executeSynchronous(const QString &program)
-{
-    QString empty("");
-
-    printCmdLine(program);
-
-    start(program);
-    if (! waitForStarted())
-        return empty;
-
-    //write("Qt rocks!");
-    closeWriteChannel();
-
-    if (! waitForFinished())
-        return empty;
-
-    //QByteArray result = readAllStandardOutput();
-    QString result = QString("%1 %2").arg(QString(readAllStandardOutput())).
-                                                  arg(QString(readAllStandardError()));
 
     return QString(result);
 }
-***************************************/
 
 QString IpProcess::printCmdLine(QString cmd, QStringList argList)
 {
