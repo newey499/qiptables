@@ -53,7 +53,7 @@ protected:
 protected slots:
 
     void slotCmdOutput(QString program, QStringList arguments, int exitCode, QString result);
-
+    void slotRunRuleset();
 
 private:
     Ui::FormTest *ui;

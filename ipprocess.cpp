@@ -6,12 +6,16 @@ const int IpProcess::PROCESS_CANNOT_BE_STARTED = -2;
 IpProcess::IpProcess(QObject *parent) :
     QProcess(parent)
 {
+    errStr = "";
     QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
     // Add an environment variable
     //env.insert("TMPDIR", "C:\\MyApp\\temp");
     // Append a value to an environment variable
     //env.insert("PATH", env.value("Path") + ";C:\\Bin");
     setProcessEnvironment(env);
+
+    connect(this, SIGNAL(error(QProcess::ProcessError)),
+            this, SLOT(slotError(QProcess::ProcessError)) );
 }
 
 
@@ -75,22 +79,35 @@ QString IpProcess::executeSynchronous(const QString &program, const QStringList 
     if (! waitForFinished())
         return empty;
 
+    qDebug("IpProcess::executeSynchronous");
     //QByteArray std = readAllStandardOutput();
     //QByteArray err = readAllStandardError();
     // exit code of zero means command completed ok
     // and that output is from stdout - error output is on stderrs
-    if (exitCode() == 0)
+    if (exitCode() == 0 || (! errStr.isEmpty()) )
     {
-        result = QString(readAllStandardOutput());
+        result = QString(QString(readAllStandardOutput()));
     }
     else
     {
-        result = QString(readAllStandardError());
+        result = QString(QString(readAllStandardError()));
+    }
+
+    if (result.isEmpty())
+    {
+        result = parseErrorCode();
     }
 
     // Send the result of executing the command
-    emit procCmdOutput(program, arguments, exitCode(), result);
+    emit cmdOutput(program, arguments, exitCode(), result);
 
+
+    qDebug("IpProcess::executeSynchronous\n"
+           "cmd [%s] exit code [%d]\n"
+           "result %s",
+           program.toAscii().data(),
+           exitCode(),
+           result.toAscii().data() );
 
     return QString(result);
 }
@@ -128,9 +145,61 @@ QString IpProcess::execCmdLine(QString cmd)
         prog = args.takeFirst();
     }
 
-    qDebug("cmd [%s] args [%s]",
-           prog.toAscii().data(),
-           args.join(" ").toAscii().data());
-
     return exec(prog, args);
+}
+
+void IpProcess::slotError(QProcess::ProcessError error)
+{
+    procError = error;
+    QString tmp = parseErrorCode();
+    qDebug("%s", tmp.toAscii().data());
+}
+
+
+QString IpProcess::parseErrorCode()
+{
+    QString result("");
+
+    switch (procError)
+    {
+        case QProcess::FailedToStart :
+             result = "0	The process failed to start. "
+                      "Either the invoked program is missing, "
+                      "or you may have insufficient permissions to invoke the program.";
+             break;
+
+        case QProcess::Crashed :
+             result = "1	The process crashed some time after starting successfully.";
+             break;
+
+        case QProcess::Timedout :
+             result = "2	The last waitFor...() function timed out. "
+                      "The state of QProcess is unchanged, and you can "
+                      "try calling waitFor...() again.";
+             break;
+
+        case QProcess::WriteError :
+             result = "4	An error occurred when attempting to write to "
+                      "the process. For example, the process may not be running, "
+                      "or it may have closed its input channel.";
+             break;
+
+        case QProcess::ReadError :
+             result = "3	An error occurred when attempting to read from the "
+                      "process. For example, the process may not be running.";
+             break;
+
+        case QProcess::UnknownError :
+             result = "5	An unknown error occurred. This is the default return "
+                      "value of error().";
+              break;
+
+        default :
+              result = "";
+              break;
+    }
+
+    errStr = result;
+
+    return errStr;
 }

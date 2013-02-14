@@ -5,6 +5,14 @@
 \brief Iptables class reads commands from SQLite database
 ruleset table and then performs each command it finds (one per line).
 
+
+This class "knows" about line comments in the style of bash "#" comments.
+The comment identifier may be changed by using set/get functions but only
+line comments are recognised. Block  comments are not although they may
+be supported in the future.
+
+\todo Add support for block comments
+
 \todo method "Iptables::processRuleset(QString rulesetName)" - add code to process
 each command found.
 
@@ -18,12 +26,16 @@ const QString Iptables::IPTABLES_BINARY = QString("/sbin/iptables");
 Iptables::Iptables(QObject *parent) :
     QObject(parent)
 {
+
     db = new DatabaseManager(Install::INSTALL_DIR, this);
     setIptablesBinary();
+
     process = new IpProcess(this);
     userId = new LinuxUserId(this);
 
-    connect(process, SIGNAL(procCmdOutput(QString, QStringList, int, QString)),
+    cmdLine = new CmdLine(this);
+    cmdLine->setCommentMark("#");  // Default comment mark
+    connect(process, SIGNAL(cmdOutput(QString, QStringList, int, QString)),
             this,    SLOT(slotCmdOutput(QString, QStringList, int, QString)));
 
 }
@@ -31,6 +43,20 @@ Iptables::Iptables(QObject *parent) :
 Iptables::~Iptables()
 {
 }
+
+
+void Iptables::setCommentMark(QString commentMark)
+{
+    cmdLine->setCommentMark(commentMark);
+}
+
+QString Iptables::getCommentMark()
+{
+    QString cm = cmdLine->getCommentMark();
+    return cm;
+}
+
+
 
 QString Iptables::getIptablesBinary()
 {
@@ -85,11 +111,11 @@ QString Iptables::listIptablesRules()
 
     if (process->checkForRoot())
     {
-        result = process->executeSynchronous(cmd, arguments);
+        result = process->exec(cmd, arguments);
     }
     else
     {
-        result = process->executeSynchronous(cmd, arguments).
+        result = process->exec(cmd, arguments).
                     append("Command [%1] not executed\n%2").
                     arg(cmd).
                     arg(QString(process->readAllStandardError()));
@@ -125,54 +151,13 @@ QStringList Iptables::getRulesetRows(QString rulesetName)
     return rulesList;
 }
 
-QString Iptables::stripComments(QString rule, QString commentMark)
-{
-    int offset = rule.indexOf(commentMark, 0, Qt::CaseSensitive);
-    if (offset != -1)
-    {
-        rule = rule.left(offset).trimmed();
-    }
-    return rule;
-}
-
-QStringList Iptables::stripComments(QStringList rulesetList, QString commentMark)
-{
-    QStringList result;
-
-    for (int i = 0; i < rulesetList.count(); i++)
-    {
-        QString tmp = rulesetList.at(i).trimmed();
-        result.append(stripComments(rulesetList.at(i), commentMark));
-    }
-
-    result = stripBlankLines(result);
-
-    return result;
-}
-
-
-QStringList Iptables::stripBlankLines(QStringList rulesetList)
-{
-    QStringList result;
-
-    for (int i = 0; i < rulesetList.count(); i++)
-    {
-        if ("" != rulesetList.at(i).trimmed())
-        {
-            result.append(rulesetList.at(i));
-        }
-    }
-
-    return result;
-}
-
 
 bool Iptables::processRuleset(QString rulesetName)
 {
     bool result = true;
     QStringList rulesetList = getRulesetRows(rulesetName);
-    rulesetList = stripComments(rulesetList);
-    rulesetList = stripBlankLines(rulesetList);
+    rulesetList = cmdLine->stripComments(rulesetList);
+    rulesetList = cmdLine->stripBlankLines(rulesetList);
 
     for (int i = 0; i < rulesetList.count(); i++)
     {
@@ -185,8 +170,16 @@ bool Iptables::processRuleset(QString rulesetName)
     return result;
 }
 
+/**
 
+\brief This slot is only ever called from the IpProcess Class via the signal slot
+mechanism. It is used to propogate the results of one command in a ruleset when
+it is processed by the ipProcess class
+
+****************/
 void Iptables::slotCmdOutput(QString program, QStringList arguments, int exitCode, QString result)
 {
     emit cmdOutput(program, arguments, exitCode, result);
 }
+
+

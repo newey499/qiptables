@@ -3,6 +3,7 @@
 
 #include <QDir>
 #include <QFile>
+#include <QTextStream>
 #include <QWidget>
 
 #include "databasemanager.h"
@@ -12,7 +13,7 @@ class DatabaseManager;
 class Install : public QObject
 {
     Q_OBJECT
-    
+
 public:
 
     static const QString INSTALL_DIR;
@@ -21,6 +22,13 @@ public:
     ~Install();
 
     QString performInstall(bool forceInstall = false);
+
+    bool createSysconfTable();
+    bool createRulesetTable();
+    bool createRulesetSnippetsTable();
+
+
+    bool createInitialRows();
 
 signals:
 
@@ -32,11 +40,23 @@ protected:
     QFile *file;
     DatabaseManager *dm;
 
-    bool createQiptablesDir();
-    bool createQiptablesTmpDir();
     bool createQiptablesDatabase();
 
-    
+    bool createDir(QString dirName);
+    bool createQiptablesDir();
+    bool createQiptablesTmpDir();
+    bool createQiptablesToolsDir();
+
+    bool createRulesetRows();
+    bool createRulesetSnippetRows();
+    bool createSysconfRow();
+
+    bool createFile(QString filename, QString content, bool executable = false);
+    bool createFile(QString filename, QStringList content, bool executable = false);
+
+    QString createScriptClearFirewall();
+
+
 private:
 
 };

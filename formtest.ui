@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>408</width>
-    <height>168</height>
+    <width>569</width>
+    <height>326</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -84,28 +84,36 @@
        </property>
       </spacer>
      </item>
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Ruleset</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="cbxRuleset">
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>0</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnRunRuleset">
+       <property name="text">
+        <string>Run Ruleset</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
   </layout>
  </widget>
  <resources/>
  <connections>
-  <connection>
-   <sender>btnTest</sender>
-   <signal>clicked()</signal>
-   <receiver>FormTest</receiver>
-   <slot>slotBtnTest()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>33</x>
-     <y>330</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>199</x>
-     <y>173</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>btnRun</sender>
    <signal>clicked()</signal>
@@ -138,9 +146,42 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>btnTest</sender>
+   <signal>clicked()</signal>
+   <receiver>FormTest</receiver>
+   <slot>slotBtnTest()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>33</x>
+     <y>330</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>173</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnRunRuleset</sender>
+   <signal>clicked()</signal>
+   <receiver>FormTest</receiver>
+   <slot>slotRunRuleset()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>408</x>
+     <y>307</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>232</x>
+     <y>162</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>slotBtnTest()</slot>
   <slot>slotBtnRun()</slot>
+  <slot>slotRunRuleset()</slot>
  </slots>
 </ui>

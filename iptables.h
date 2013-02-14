@@ -12,6 +12,7 @@
 
 #include "ipprocess.h"
 #include "linuxuserid.h"
+#include "cmdline.h"
 
 #include "install.h"
 #include "databasemanager.h"
@@ -37,6 +38,9 @@ public:
     virtual QString listIptablesRules();
     virtual QString printCmdLine(QString cmd, QStringList argList);
 
+    virtual void setCommentMark(QString commentMark);
+    virtual QString getCommentMark();
+
     /* ****************************
      Methods to process a ruleset
     ********************************/
@@ -44,12 +48,6 @@ public:
     // Get the required SQLRecord containing the ruleset
     virtual QSqlRecord getRuleset(QString rulesetName);
 
-    // Strip any comments from the ruleset
-    virtual QStringList stripComments(QStringList rulesetList, QString commentMark = "#");
-    virtual QString     stripComments(QString rule, QString commentMark = "#");
-
-    // Strip any blank lines from the ruleset
-    virtual QStringList stripBlankLines(QStringList rulesetList);
 
     // Get the ruleset as a QStringList off the ruleset table using the ruleset name
     virtual QStringList getRulesetRows(QString rulesetName);
@@ -73,7 +71,11 @@ protected:
 
     QPointer<IpProcess> process;
     QPointer<LinuxUserId> userId;
+    QPointer<CmdLine> cmdLine;
     QString IptablesBinary;
+
+private:
+
 
 };
 

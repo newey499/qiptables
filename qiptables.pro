@@ -28,7 +28,8 @@ SOURCES += main.cpp\
     formcfgsettings.cpp \
     rulesettableview.cpp \
     formdlgruleset.cpp \
-    rulesetsqltablemodel.cpp
+    rulesetsqltablemodel.cpp \
+    cmdline.cpp
 
 HEADERS  += mainwindow.h \
     formtest.h \
@@ -46,7 +47,8 @@ HEADERS  += mainwindow.h \
     formcfgsettings.h \
     rulesettableview.h \
     formdlgruleset.h \
-    rulesetsqltablemodel.h
+    rulesetsqltablemodel.h \
+    cmdline.h
 
 FORMS    += mainwindow.ui \
     formtest.ui \

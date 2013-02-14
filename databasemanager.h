@@ -30,19 +30,14 @@ class DatabaseManager : public QObject
         bool deleteDB();
         bool dropTable(QString tableName);
         QString getDatabaseFileName();
+        QSqlDatabase getDb();
         bool openDB();
         QSqlRecord getSysconfRow();
         QSqlRecord getRulesetRow(QVariant rulesetName);
+        QString getRuleset(QVariant rulesetName);
+        QStringList getRulesetNames();
 
         QSqlError lastError();
-
-        bool createSysconfTable();
-        bool createRulesetTable();
-        bool createRulesetSnippetsTable();
-
-
-        bool createInitialRows();
-
 
     public slots:
 
@@ -55,9 +50,7 @@ class DatabaseManager : public QObject
         QSqlRecord syconfRec;
         QSqlRecord rulesetRec;
 
-        bool createRulesetRows();
-        bool createRulesetSnippetRows();
-        bool createSysconfRow();
+
 
     private:
 
