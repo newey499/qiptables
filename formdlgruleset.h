@@ -11,7 +11,7 @@
 
 #include "rulesetsqltablemodel.h"
 #include "formcfgruleset.h"
-
+#include "formdlgrulesnippet.h"
 
 class FormCfgRuleset;
 
@@ -40,6 +40,7 @@ protected:
     QString rules;
     int opcode;
 
+    bool isDefaultRuleset();
     bool validateData();
     bool writeRow();
 

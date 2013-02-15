@@ -83,12 +83,6 @@ virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>setCommentMar
 virtual QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>getCommentMark</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aff17f6dbb4e3608be7c8bb3281a12b88"></a><!-- doxytag: member="Iptables::getRuleset" ref="aff17f6dbb4e3608be7c8bb3281a12b88" args="(QString rulesetName)" -->
 virtual QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><b>getRuleset</b> (QString rulesetName)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a238ba6476fbbe80420feab477c2aa403"></a><!-- doxytag: member="Iptables::stripComments" ref="a238ba6476fbbe80420feab477c2aa403" args="(QStringList rulesetList, QString commentMark=&quot;#&quot;)" -->
-virtual QStringList&nbsp;</td><td class="memItemRight" valign="bottom"><b>stripComments</b> (QStringList rulesetList, QString commentMark=&quot;#&quot;)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3625ccdbb65d7b4464ff61ffef5be469"></a><!-- doxytag: member="Iptables::stripComments" ref="a3625ccdbb65d7b4464ff61ffef5be469" args="(QString rule, QString commentMark=&quot;#&quot;)" -->
-virtual QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>stripComments</b> (QString rule, QString commentMark=&quot;#&quot;)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a446ff6499d9efbfa22bacee8284ecd8a"></a><!-- doxytag: member="Iptables::stripBlankLines" ref="a446ff6499d9efbfa22bacee8284ecd8a" args="(QStringList rulesetList)" -->
-virtual QStringList&nbsp;</td><td class="memItemRight" valign="bottom"><b>stripBlankLines</b> (QStringList rulesetList)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7c0e062adec9be4fe1c311e813f0f0f9"></a><!-- doxytag: member="Iptables::getRulesetRows" ref="a7c0e062adec9be4fe1c311e813f0f0f9" args="(QString rulesetName)" -->
 virtual QStringList&nbsp;</td><td class="memItemRight" valign="bottom"><b>getRulesetRows</b> (QString rulesetName)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acfde23b7114a476f26667a5392f6ec00"></a><!-- doxytag: member="Iptables::processRuleset" ref="acfde23b7114a476f26667a5392f6ec00" args="(QString rulesetName)" -->
@@ -112,10 +106,10 @@ Protected Attributes</h2></td></tr>
 QPointer&lt; <a class="el" href="classIpProcess.html">IpProcess</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><b>process</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afca6f2a3cc89cf4d7c51333e6a2978c9"></a><!-- doxytag: member="Iptables::userId" ref="afca6f2a3cc89cf4d7c51333e6a2978c9" args="" -->
 QPointer&lt; <a class="el" href="classLinuxUserId.html">LinuxUserId</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><b>userId</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a127b6c9179ca8c2dd00d933a3014f2cf"></a><!-- doxytag: member="Iptables::cmdLine" ref="a127b6c9179ca8c2dd00d933a3014f2cf" args="" -->
+QPointer&lt; <a class="el" href="classCmdLine.html">CmdLine</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><b>cmdLine</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8284fb26bab03b78e6b2226d5df007b5"></a><!-- doxytag: member="Iptables::IptablesBinary" ref="a8284fb26bab03b78e6b2226d5df007b5" args="" -->
 QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>IptablesBinary</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3d878e678052ea1b98aa9dc502a03a1b"></a><!-- doxytag: member="Iptables::commentMark" ref="a3d878e678052ea1b98aa9dc502a03a1b" args="" -->
-QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>commentMark</b></td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="iptables_8h_source.html">iptables.h</a></li>
@@ -136,7 +130,7 @@ QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>commentMark</b></t
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Thu Feb 14 2013 06:06:19 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Fri Feb 15 2013 12:50:10 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

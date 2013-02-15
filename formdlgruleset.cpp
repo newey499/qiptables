@@ -10,6 +10,9 @@
 
  \todo Investigate and implement a mechanism for validating firewall rules
 
+ \todo If ruleset being edited is the default ruleset held on the sysconf table
+ then the validation needs to make the ruleset name edit box readonly.
+
 
 iptables
 
@@ -47,8 +50,8 @@ FormDlgRuleset::FormDlgRuleset(int opCode, FormCfgRuleset *parent) :
 
     if (opcode == FormCfgRuleset::REC_DELETE)
     {
-        ui->edtRuleset->setReadOnly(true);
         ui->edtRulesetName->setReadOnly(true);
+        ui->edtRuleset->setReadOnly(true);
         ui->btnSave->setText("&Delete");
         buttonsEnabled(true);
     }
@@ -69,6 +72,12 @@ FormDlgRuleset::FormDlgRuleset(int opCode, FormCfgRuleset *parent) :
         ui->edtRulesetName->setText(name);
         ui->edtRuleset->clear();
         ui->edtRuleset->appendPlainText(rules);
+        // Cannot edit ruleset name if its the default held
+        // on the sysconf table.
+        if (isDefaultRuleset())
+        {
+            ui->edtRulesetName->setReadOnly(true);
+        }
     }
 
 
@@ -112,6 +121,42 @@ void FormDlgRuleset::slotCancel()
     reject();
 }
 
+bool FormDlgRuleset::isDefaultRuleset()
+{
+    bool result = false;
+
+    QSqlQuery qry;
+    qry.prepare(" select count(*) as count "
+                " from sysconf "
+                " where defaultRuleName = :defaultRuleName");
+    qry.bindValue(":defaultRuleName", name);
+
+    if (qry.exec())
+    {
+        if (qry.first())
+        {
+            if (qry.record().value("count").toInt() > 0)
+            {
+                result = true;
+            }
+
+        }
+        else
+        {
+            qDebug("query on FormDlgRuleset::isDefaultRuleset() failed to find first row \n[%s]",
+                   qry.lastError().text().toAscii().data());
+        }
+
+    }
+    else
+    {
+        qDebug("query on FormDlgRuleset::isDefaultRuleset() failed \n[%s]",
+               qry.lastError().text().toAscii().data());
+    }
+
+    return result;
+}
+
 
 bool FormDlgRuleset::validateData()
 {
@@ -123,36 +168,12 @@ bool FormDlgRuleset::validateData()
     // Cannot delete a ruleset if it is in use as the default ruleset
     if (result && opcode == FormCfgRuleset::REC_DELETE)
     {
-        QSqlQuery qry;
-        qry.prepare(" select count(*) as count "
-                    " from sysconf "
-                    " where defaultRuleName = :defaultRuleName");
-        qry.bindValue(":defaultRuleName", rulesetName);
-
-        if (qry.exec())
+        if (isDefaultRuleset())
         {
-            if (qry.first())
-            {
-                if (qry.record().value("count").toInt() > 0)
-                {
-                    errMsg = errMsg.append("%1Ruleset Name [%2] is in use as the default."
-                                  " - not including leading and trailing spaces.").
-                            arg((result ? "" : "\n")).arg(rulesetName);
-                    result = false;
-                }
-
-            }
-            else
-            {
-                qDebug("query on delete validation failed to find first row \n[%s]",
-                       qry.lastError().text().toAscii().data());
-            }
-
-        }
-        else
-        {
-            qDebug("query on delete validation failed \n[%s]",
-                   qry.lastError().text().toAscii().data());
+            errMsg = errMsg.append("%1Ruleset Name [%2] is in use as the default."
+                          " - not including leading and trailing spaces.").
+                    arg((result ? "" : "\n")).arg(rulesetName);
+            result = false;
         }
     }
 

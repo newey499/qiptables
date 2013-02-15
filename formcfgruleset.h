@@ -1,6 +1,7 @@
 #ifndef FORMCFGRULESET_H
 #define FORMCFGRULESET_H
 
+#include <QPointer>
 #include <QShowEvent>
 #include <QSqlRecord>
 #include <QSqlTableModel>
@@ -47,7 +48,8 @@ public slots:
 
 protected:
 
-    RulesetSqlTableModel *model;
+    QPointer<RulesetSqlTableModel> model;
+
 
     virtual bool isRulesetDefault();
 

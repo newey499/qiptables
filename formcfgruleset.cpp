@@ -16,7 +16,7 @@ FormCfgRuleset::FormCfgRuleset(QWidget *parent) :
     model = new RulesetSqlTableModel(this);
     model->setTable("ruleset");
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
-    model->setSort(1, Qt::AscendingOrder); // Sort by ruleset Name
+    //model->setSort(1, Qt::AscendingOrder); // Sort by ruleset Name
     model->setHeaderData(0, Qt::Horizontal, tr("Id"));
     model->setHeaderData(1, Qt::Horizontal, tr("Ruleset Name"));
     model->setHeaderData(2, Qt::Horizontal, tr("Ruleset"));
@@ -141,7 +141,6 @@ bool FormCfgRuleset::isRulesetDefault()
     QString rulesetName = getColumnData("name").toString();
 
     // Cannot delete a ruleset if it is in use as the default ruleset
-
     QSqlQuery qry;
     qry.prepare(" select count(*) as count "
                 " from sysconf "
@@ -154,9 +153,9 @@ bool FormCfgRuleset::isRulesetDefault()
         {
             if (qry.record().value("count").toInt() > 0)
             {
-                errMsg = errMsg.append("%1Ruleset Name [%2] is in use as the default."
-                              " - not including leading and trailing spaces.").
-                        arg((result ? "" : "\n")).arg(rulesetName);
+                errMsg = errMsg.append("%1Ruleset Name [%2] may not be deleted "
+                                       "as it is in use as the default.").
+                                arg((result ? "" : "\n")).arg(rulesetName);
                 result = true;
             }
 

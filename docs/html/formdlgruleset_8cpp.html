@@ -57,6 +57,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Data validation</dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Insert, update and delete sql</dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>Investigate and implement a mechanism for validating firewall rules</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>If ruleset being edited is the default ruleset held on the sysconf table then the validation needs to make the ruleset name edit box readonly.</dd></dl>
 <p>iptables</p>
 <p>DIAGNOSTICS Various error messages are printed to standard error. The exit code is 0 for correct functioning. Errors which appear to be caused by invalid or abused command line parameters cause an exit code of 2, and other errors cause an exit code of 1.</p>
 <p>Perhaps load the ruleset into a stringlist, trim each line and pass each line that starts with "iptables " (note trailing space) to iptables and check return code.</p>
@@ -77,7 +78,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Thu Feb 14 2013 06:06:19 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Fri Feb 15 2013 12:50:10 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

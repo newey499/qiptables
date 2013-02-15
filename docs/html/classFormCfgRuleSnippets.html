@@ -48,7 +48,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a>  </div>
+<a href="#pub-slots">Public Slots</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a>  </div>
   <div class="headertitle">
 <h1>FormCfgRuleSnippets Class Reference</h1>  </div>
 </div>
@@ -56,10 +59,42 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <!-- doxytag: class="FormCfgRuleSnippets" -->
 <p><a href="classFormCfgRuleSnippets-members.html">List of all members.</a></p>
 <table class="memberdecls">
+<tr><td colspan="2"><h2><a name="pub-slots"></a>
+Public Slots</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab2db66666ba96e5e097b02dc1bf6b648"></a><!-- doxytag: member="FormCfgRuleSnippets::showEvent" ref="ab2db66666ba96e5e097b02dc1bf6b648" args="(QShowEvent *event)" -->
+virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormCfgRuleSnippets.html#ab2db66666ba96e5e097b02dc1bf6b648">showEvent</a> (QShowEvent *event)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">When the form is displayed set the focus to the rulesnippet browse window and select the first row. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad28177f66f27acf9f396527b5e425869"></a><!-- doxytag: member="FormCfgRuleSnippets::currentRowChanged" ref="ad28177f66f27acf9f396527b5e425869" args="()" -->
+virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>currentRowChanged</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a44cbf915ad17246197dc85964ab01d67"></a><!-- doxytag: member="FormCfgRuleSnippets::slotBtnAdd" ref="a44cbf915ad17246197dc85964ab01d67" args="()" -->
+virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>slotBtnAdd</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab055eee734e6ff50eed3a12be63ed2c6"></a><!-- doxytag: member="FormCfgRuleSnippets::slotBtnEdit" ref="ab055eee734e6ff50eed3a12be63ed2c6" args="()" -->
+virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>slotBtnEdit</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8d27d01a70a5eb59b46fe33a33ab9ce9"></a><!-- doxytag: member="FormCfgRuleSnippets::slotBtnDelete" ref="a8d27d01a70a5eb59b46fe33a33ab9ce9" args="()" -->
+virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>slotBtnDelete</b> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aff837f7d0ae12112cc37acee14d16ab5"></a><!-- doxytag: member="FormCfgRuleSnippets::FormCfgRuleSnippets" ref="aff837f7d0ae12112cc37acee14d16ab5" args="(QWidget *parent=0)" -->
 &nbsp;</td><td class="memItemRight" valign="bottom"><b>FormCfgRuleSnippets</b> (QWidget *parent=0)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac3e237d60b6abbda6fcfb48243080767"></a><!-- doxytag: member="FormCfgRuleSnippets::getView" ref="ac3e237d60b6abbda6fcfb48243080767" args="()" -->
+<a class="el" href="classRuleSnippetsTableView.html">RuleSnippetsTableView</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><b>getView</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa8a494da0e8939b8323c801c23c71013"></a><!-- doxytag: member="FormCfgRuleSnippets::getModel" ref="aa8a494da0e8939b8323c801c23c71013" args="()" -->
+<a class="el" href="classRuleSnippetsSqlTableModel.html">RuleSnippetsSqlTableModel</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><b>getModel</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a741dcd0e954f6b2c149960f5ac2cc70d"></a><!-- doxytag: member="FormCfgRuleSnippets::getColumnData" ref="a741dcd0e954f6b2c149960f5ac2cc70d" args="(QString colName)" -->
+virtual QVariant&nbsp;</td><td class="memItemRight" valign="bottom"><b>getColumnData</b> (QString colName)</td></tr>
+<tr><td colspan="2"><h2><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a38628596c3bc77ebba34510434a4244f"></a><!-- doxytag: member="FormCfgRuleSnippets::REC_ADD" ref="a38628596c3bc77ebba34510434a4244f" args="" -->
+static const int&nbsp;</td><td class="memItemRight" valign="bottom"><b>REC_ADD</b> = 1</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5f2440ea7c9c2e48554a71ff77629edd"></a><!-- doxytag: member="FormCfgRuleSnippets::REC_EDIT" ref="a5f2440ea7c9c2e48554a71ff77629edd" args="" -->
+static const int&nbsp;</td><td class="memItemRight" valign="bottom"><b>REC_EDIT</b> = 2</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9487145ebc6c59b5cfaff6d3123035ca"></a><!-- doxytag: member="FormCfgRuleSnippets::REC_DELETE" ref="a9487145ebc6c59b5cfaff6d3123035ca" args="" -->
+static const int&nbsp;</td><td class="memItemRight" valign="bottom"><b>REC_DELETE</b> = 3</td></tr>
+<tr><td colspan="2"><h2><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae84ebe67c654a665da4a19527549097c"></a><!-- doxytag: member="FormCfgRuleSnippets::model" ref="ae84ebe67c654a665da4a19527549097c" args="" -->
+QPointer<br class="typebreak"/>
+&lt; <a class="el" href="classRuleSnippetsSqlTableModel.html">RuleSnippetsSqlTableModel</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><b>model</b></td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="formcfgrulesnippets_8h_source.html">formcfgrulesnippets.h</a></li>
@@ -80,7 +115,7 @@ Public Member Functions</h2></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Thu Feb 14 2013 06:06:19 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Fri Feb 15 2013 12:50:10 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

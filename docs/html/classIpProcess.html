@@ -52,7 +52,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
-<a href="#pro-methods">Protected Member Functions</a>  </div>
+<a href="#pro-slots">Protected Slots</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a>  </div>
   <div class="headertitle">
 <h1>IpProcess Class Reference</h1>  </div>
 </div>
@@ -82,6 +84,10 @@ static QProcessEnvironment&nbsp;</td><td class="memItemRight" valign="bottom"><b
 Static Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab7b2ce263430d37cefd9ef9925397c38"></a><!-- doxytag: member="IpProcess::PROCESS_CANNOT_BE_STARTED" ref="ab7b2ce263430d37cefd9ef9925397c38" args="" -->
 static const int&nbsp;</td><td class="memItemRight" valign="bottom"><b>PROCESS_CANNOT_BE_STARTED</b> = -2</td></tr>
+<tr><td colspan="2"><h2><a name="pro-slots"></a>
+Protected Slots</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a49f069e69aa2bbe50ad8271e5f814f6b"></a><!-- doxytag: member="IpProcess::slotError" ref="a49f069e69aa2bbe50ad8271e5f814f6b" args="(QProcess::ProcessError error)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>slotError</b> (QProcess::ProcessError error)</td></tr>
 <tr><td colspan="2"><h2><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3c9fb661383a27639cbbff7e170f4754"></a><!-- doxytag: member="IpProcess::execute" ref="a3c9fb661383a27639cbbff7e170f4754" args="(const QString &amp;program, const QStringList &amp;arguments=QStringList())" -->
@@ -90,6 +96,14 @@ virtual QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>execute</b
 virtual QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>executeSynchronous</b> (const QString &amp;program, const QStringList &amp;arguments=QStringList())</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a862ad6eebf54297ccc6aee13e63cb6bf"></a><!-- doxytag: member="IpProcess::printCmdLine" ref="a862ad6eebf54297ccc6aee13e63cb6bf" args="(QString cmd, QStringList argList=QStringList())" -->
 virtual QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>printCmdLine</b> (QString cmd, QStringList argList=QStringList())</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa87c4a938cf006352cebb4f00f46ff12"></a><!-- doxytag: member="IpProcess::parseErrorCode" ref="aa87c4a938cf006352cebb4f00f46ff12" args="()" -->
+virtual QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>parseErrorCode</b> ()</td></tr>
+<tr><td colspan="2"><h2><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acc9886edff0a55ec095619277367f2da"></a><!-- doxytag: member="IpProcess::errStr" ref="acc9886edff0a55ec095619277367f2da" args="" -->
+QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>errStr</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a03641c7942a62859d3b26a1e86aa40de"></a><!-- doxytag: member="IpProcess::procError" ref="a03641c7942a62859d3b26a1e86aa40de" args="" -->
+ProcessError&nbsp;</td><td class="memItemRight" valign="bottom"><b>procError</b></td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="ipprocess_8h_source.html">ipprocess.h</a></li>
@@ -110,7 +124,7 @@ virtual QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>printCmdLi
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Thu Feb 14 2013 06:06:19 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Fri Feb 15 2013 12:50:10 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>
