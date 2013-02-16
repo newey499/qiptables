@@ -28,7 +28,7 @@ MainWindow::MainWindow(QString organization, QString application, QWidget *paren
 
 
 
-    buildMenuBar();
+    buildMenusAndForms();
 
     this->setCentralWidget(widgetStack);
 
@@ -103,7 +103,7 @@ void MainWindow::quitApplication()
     }
 }
 
-void MainWindow::buildMenuBar()
+void MainWindow::buildMenusAndForms()
 {
     widgetStack = new IpStackedWidget(this);
     formTest = new FormTest(this);
@@ -116,7 +116,7 @@ void MainWindow::buildMenuBar()
 
     fileMenu = menuBar()->addMenu(tr("&Firewall"));
 
-        actFirewallRules = new QAction(tr("Firewall &Rules"), this);
+        actFirewallRules = new QAction(tr("&Firewall Rules"), this);
         actFirewallRules->setStatusTip(tr("Firewall rules"));
         connect(actFirewallRules, SIGNAL(triggered()),
                 this, SLOT(selectFirewallRulesPage()));
@@ -145,24 +145,24 @@ void MainWindow::buildMenuBar()
 
     settingsMenu = menuBar()->addMenu(tr("&Settings"));
 
-        actCfgRuleset = new QAction(tr("Configure Rulesets"), this);
+        actCfgRuleset = new QAction(tr("&Rulesets"), this);
         actCfgRuleset->setStatusTip(tr("Configure Rulesets"));
         connect(actCfgRuleset, SIGNAL(triggered()), this, SLOT(selectCfgRuleset()));
         settingsMenu->addAction(actCfgRuleset);
 
-        actCfgRuleSnippet = new QAction(tr("Configure Rule Snippets"), this);
+        actCfgRuleSnippet = new QAction(tr("Rule &Snippets"), this);
         actCfgRuleSnippet->setStatusTip(tr("Configure Rule Snippets"));
         connect(actCfgRuleSnippet, SIGNAL(triggered()), this, SLOT(selectCfgRuleSnippet()));
         settingsMenu->addAction(actCfgRuleSnippet);
 
         /*************
-        actCfgRuleSettings = new QAction(tr("Configure Defaults"), this);
+        actCfgRuleSettings = new QAction(tr("&Defaults"), this);
         actCfgRuleSettings->setStatusTip(tr("Configure Defaults"));
         connect(actCfgRuleSettings, SIGNAL(triggered()), this, SLOT(selectCfgSettings()));
         settingsMenu->addAction(actCfgRuleSettings);
         ********************/
 
-        actConfigQiptables = new QAction(tr("Configure Defaults"), this);
+        actConfigQiptables = new QAction(tr("&Defaults"), this);
         actConfigQiptables->setStatusTip(tr("Configure Defaults"));
         connect(actConfigQiptables, SIGNAL(triggered()),
                 this, SLOT(selectConfigQiptables()));
@@ -222,12 +222,14 @@ void MainWindow::selectCfgRuleSnippet()
 }
 
 
-
+/*************
+Tabbed widget form - no longer used
 void MainWindow::selectConfigQiptables()
 {
     qDebug("MainWindow::selectconfigQiptables()");
     widgetStack->setCurrentIndex(widgetStack->getPageIndex("formCfgSettings"));
 }
+***********************/
 
 void MainWindow::selectFirewallRulesPage()
 {

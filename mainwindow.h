@@ -51,7 +51,7 @@ public slots:
     virtual void selectTestPage();
     virtual void selectFwSetUp();
     virtual void selectFirewallRulesPage();
-    virtual void selectConfigQiptables();
+    //virtual void selectConfigQiptables();
     virtual void selectCfgRuleset();
     virtual void selectCfgRuleSnippet();
     //virtual void selectCfgSettings();
@@ -62,7 +62,7 @@ protected:
     virtual void closeEvent(QCloseEvent *event);
 
     virtual int quitYesNo();
-    virtual void buildMenuBar();
+    virtual void buildMenusAndForms();
 
     IpStackedWidget *widgetStack;
     FormTest *formTest;
