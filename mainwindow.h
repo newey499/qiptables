@@ -68,6 +68,9 @@ protected:
     FormTest *formTest;
     FormFirewallRules *formFirewallRules;
     FormConfigQiptables *formConfigQiptables;
+    FormCfgRuleset *formCfgRuleset;
+    FormCfgRuleSnippets *formCfgRuleSnippets;
+    FormCfgSettings *formCfgSettings;
 
 
     QMenu *fileMenu;
