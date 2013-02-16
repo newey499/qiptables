@@ -55,6 +55,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>Qiptables application entry point.  
 <a href="#_details">More...</a></p>
 <code>#include &lt;QtGui/QApplication&gt;</code><br/>
+<code>#include &lt;QWidget&gt;</code><br/>
 <code>#include &quot;mainwindow.h&quot;</code><br/>
 <code>#include &quot;ipprocess.h&quot;</code><br/>
 <table class="memberdecls">
@@ -66,6 +67,7 @@ int&nbsp;</td><td class="memItemRight" valign="bottom"><b>main</b> (int argc, ch
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>Qiptables application entry point. </p>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000008">Todo:</a></b></dt><dd>check for root user id disabled during development. Remember to enable it before release.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000009">Todo:</a></b></dt><dd>If the ruleset is passed on the command line then don't start the gui but run the ruleset. This will mean that the application can be started from a shell script thus making it possible to deploy it from the init.d start up process or /etc/network/if-pre-up.d </dd></dl>
 </div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -81,7 +83,7 @@ int&nbsp;</td><td class="memItemRight" valign="bottom"><b>main</b> (int argc, ch
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Fri Feb 15 2013 12:50:10 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Fri Feb 15 2013 21:12:09 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

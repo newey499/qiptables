@@ -11,11 +11,11 @@ class FormFirewallRules;
 class FormFirewallRules : public QWidget
 {
     Q_OBJECT
-    
+
 public:
-    explicit FormFirewallRules(QWidget *parent = 0);
+    explicit FormFirewallRules(QWidget *parent = 0, Qt::WindowFlags f = 0);
     ~FormFirewallRules();
-    
+
 private:
     Ui::FormFirewallRules *ui;
 };

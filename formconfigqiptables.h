@@ -9,6 +9,8 @@
 #include "formcfgrulesnippets.h"
 #include "formcfgsettings.h"
 
+
+
 namespace Ui {
 class FormConfigQiptables;
 }
@@ -16,21 +18,22 @@ class FormConfigQiptables;
 class FormConfigQiptables : public QWidget
 {
     Q_OBJECT
-    
+
 public:
+
     explicit FormConfigQiptables(QWidget *parent = 0);
     ~FormConfigQiptables();
-
-public slots:
-
-
-
-protected:
 
     FormCfgRuleset *formCfgRuleset;
     FormCfgRuleSnippets *formCfgRuleSnippets;
     FormCfgSettings *formCfgSettings;
-    
+
+public slots:
+
+
+protected:
+
+
 private:
     Ui::FormConfigQiptables *ui;
 

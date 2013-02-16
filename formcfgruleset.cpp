@@ -45,6 +45,8 @@ FormCfgRuleset::~FormCfgRuleset()
 ****************/
 void FormCfgRuleset::showEvent(QShowEvent *event)
 {
+    // disable compiler warning for unused parameter - gcc optimizes out this code
+    event = event;
     ui->tblRuleset->setFocus();
     currentRowChanged();
 }

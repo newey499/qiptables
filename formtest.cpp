@@ -83,3 +83,15 @@ void FormTest::slotRunRuleset()
     ui->plainTextEdit->appendPlainText("FormTest::slotRunRuleset() : End");
     ui->plainTextEdit->appendPlainText("====================================");
 }
+
+
+void FormTest::slotIptablesList()
+{
+    qDebug("FormTest::slotIptablesList()");
+    ui->plainTextEdit->clear();
+    ui->plainTextEdit->appendPlainText("FormTest::slotIptablesList()");
+    ui->plainTextEdit->appendPlainText("====================================");
+
+    QString cmdLine = ui->edtCmd->text();
+    ui->plainTextEdit->appendPlainText(proc->execCmdLine("iptables -L"));
+}

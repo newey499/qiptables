@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+
 #include <QAction>
 #include <QCloseEvent>
 #include <QEvent>
@@ -9,6 +10,7 @@
 #include <QMenuBar>
 #include <QMenuItem>
 #include <QMessageBox>
+#include <QPointer>
 #include <QSettings>
 #include <QStackedWidget>
 
@@ -20,7 +22,6 @@
 #include "linuxuserid.h"
 #include "ipprocess.h"
 
-class FormTest;
 
 namespace Ui {
 class MainWindow;
@@ -48,8 +49,12 @@ public slots:
     virtual void aboutQiptables();
     virtual void aboutQt();
     virtual void selectTestPage();
+    virtual void selectFwSetUp();
     virtual void selectFirewallRulesPage();
     virtual void selectConfigQiptables();
+    virtual void selectCfgRuleset();
+    virtual void selectCfgRuleSnippet();
+    //virtual void selectCfgSettings();
     virtual void saveSettings();
 
 protected:
@@ -71,9 +76,13 @@ protected:
 
     QMenu *toolsMenu;
         QAction *actTest;
+        QAction *actFwSetUp;
 
     QMenu *settingsMenu;
         QAction *actConfigQiptables;
+        QAction *actCfgRuleset;
+        QAction *actCfgRuleSnippet;
+        QAction *actCfgRuleSettings;
 
     QMenu *helpMenu;
         QAction *actAboutQt;

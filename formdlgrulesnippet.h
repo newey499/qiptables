@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QPointer>
+#include <QSettings>
 #include <QVariant>
 
 #include "formcfgrulesnippets.h"
@@ -20,6 +21,8 @@ class FormDlgRuleSnippet : public QDialog
 public:
     explicit FormDlgRuleSnippet(int opCode, FormCfgRuleSnippets *parent = 0);
     ~FormDlgRuleSnippet();
+
+public slots:
 
 protected:
 

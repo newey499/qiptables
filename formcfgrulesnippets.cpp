@@ -52,6 +52,9 @@ RuleSnippetsTableView * FormCfgRuleSnippets::getView()
 ****************/
 void FormCfgRuleSnippets::showEvent(QShowEvent *event)
 {
+    // disable compiler warning for unused parameter - gcc optimizes out this code
+    event = event;
+
     ui->tblRuleSnippets->setFocus();
     currentRowChanged();
 }

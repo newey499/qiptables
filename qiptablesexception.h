@@ -6,6 +6,7 @@
 #include <exception>
 using namespace std;
 
+#include <QByteArray>
 #include <QString>
 
 class QIptablesException : public exception
@@ -13,6 +14,7 @@ class QIptablesException : public exception
 public:
 
     QIptablesException(QString msg);
+
     ~QIptablesException() throw();
 
     virtual const char* what();

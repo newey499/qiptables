@@ -30,17 +30,6 @@ MainWindow::MainWindow(QString organization, QString application, QWidget *paren
 
     buildMenuBar();
 
-    widgetStack = new IpStackedWidget(this);
-    formTest = new FormTest(this);
-    formFirewallRules = new FormFirewallRules(this);
-    formConfigQiptables = new FormConfigQiptables(this);
-
-    widgetStack->addWidget("formTest", formTest);
-    widgetStack->addWidget("formFirewallRules", formFirewallRules);
-    widgetStack->addWidget("formConfigQiptables", formConfigQiptables);
-
-    widgetStack->setCurrentIndex(widgetStack->getPageIndex("formTest"));
-
     this->setCentralWidget(widgetStack);
 
 }
@@ -103,24 +92,6 @@ void MainWindow::aboutQt()
     QMessageBox::aboutQt(this, "Qiptables");
 }
 
-void MainWindow::selectConfigQiptables()
-{
-    qDebug("MainWindow::selectconfigQiptables()");
-    widgetStack->setCurrentIndex(widgetStack->getPageIndex("formConfigQiptables"));
-}
-
-void MainWindow::selectFirewallRulesPage()
-{
-    qDebug("MainWindow::selectFirewallRulesPage()");
-    widgetStack->setCurrentIndex(widgetStack->getPageIndex("formFirewallRules"));
-}
-
-void MainWindow::selectTestPage()
-{
-    qDebug("MainWindow::selectTestPage()");
-    widgetStack->setCurrentIndex(widgetStack->getPageIndex("formTest"));
-}
-
 void MainWindow::quitApplication()
 {
     qDebug("MainWindow::quitApplication()");
@@ -134,6 +105,11 @@ void MainWindow::quitApplication()
 
 void MainWindow::buildMenuBar()
 {
+    widgetStack = new IpStackedWidget(this);
+    formTest = new FormTest(this);
+    formFirewallRules = new FormFirewallRules(this);
+    formConfigQiptables = new FormConfigQiptables(this);
+
     fileMenu = menuBar()->addMenu(tr("&Firewall"));
         actFirewallRules = new QAction(tr("Firewall &Rules"), this);
         actFirewallRules->setStatusTip(tr("Firewall rules"));
@@ -152,12 +128,36 @@ void MainWindow::buildMenuBar()
         connect(actTest, SIGNAL(triggered()), this, SLOT(selectTestPage()));
         toolsMenu->addAction(actTest);
 
+        actFwSetUp = new QAction(tr("&Firewall Settings"), this);
+        actFwSetUp->setStatusTip(tr("Firewall settings for different environments"));
+        connect(actFwSetUp, SIGNAL(triggered()), this, SLOT(selectFwSetUp()));
+        toolsMenu->addAction(actFwSetUp);
+
 
     settingsMenu = menuBar()->addMenu(tr("&Settings"));
-        actConfigQiptables = new QAction(tr("Configure Qiptables"), this);
-        actConfigQiptables->setStatusTip(tr("Configure Qiptables options"));
+
+        actCfgRuleset = new QAction(tr("Configure Rulesets"), this);
+        actCfgRuleset->setStatusTip(tr("Configure Rulesets"));
+        connect(actCfgRuleset, SIGNAL(triggered()), this, SLOT(selectCfgRuleset()));
+        settingsMenu->addAction(actCfgRuleset);
+
+        actCfgRuleSnippet = new QAction(tr("Configure Rule Snippets"), this);
+        actCfgRuleSnippet->setStatusTip(tr("Configure Rule Snippets"));
+        connect(actCfgRuleSnippet, SIGNAL(triggered()), this, SLOT(selectCfgRuleSnippet()));
+        settingsMenu->addAction(actCfgRuleSnippet);
+
+        /*************
+        actCfgRuleSettings = new QAction(tr("Configure Defaults"), this);
+        actCfgRuleSettings->setStatusTip(tr("Configure Defaults"));
+        connect(actCfgRuleSettings, SIGNAL(triggered()), this, SLOT(selectCfgSettings()));
+        settingsMenu->addAction(actCfgRuleSettings);
+        ********************/
+
+        actConfigQiptables = new QAction(tr("Configure Defaults"), this);
+        actConfigQiptables->setStatusTip(tr("Configure Defaults"));
         connect(actConfigQiptables, SIGNAL(triggered()), this, SLOT(selectConfigQiptables()));
         settingsMenu->addAction(actConfigQiptables);
+
 
     helpMenu = menuBar()->addMenu(tr("&Help"));
         actAboutQt = new QAction(tr("About &Qt"), this);
@@ -170,9 +170,61 @@ void MainWindow::buildMenuBar()
         connect(actAboutQiptables, SIGNAL(triggered()), this, SLOT(aboutQiptables()));
         helpMenu->addAction(actAboutQiptables);
 
+
+
+
+    widgetStack->addWidget("formTest", formTest);
+    widgetStack->addWidget("formFirewallRules", formFirewallRules);
+
+    // Tabbed Window - no longer used
+    widgetStack->addWidget("formConfigQiptables", formConfigQiptables);
+
+    widgetStack->addWidget("formCfgRuleset",     formConfigQiptables->formCfgRuleset);
+    widgetStack->addWidget("formCfgRuleSnippet", formConfigQiptables->formCfgRuleSnippets);
+    widgetStack->addWidget("formCfgSettings",    formConfigQiptables->formCfgSettings);
+
+    widgetStack->setCurrentIndex(widgetStack->getPageIndex("formTest"));
+}
+
+
+void MainWindow::selectFwSetUp()
+{
+    widgetStack->setCurrentIndex(widgetStack->getPageIndex("formFirewallRules"));
+}
+
+void MainWindow::selectCfgRuleset()
+{
+    widgetStack->setCurrentIndex(widgetStack->getPageIndex("formCfgRuleset"));
+}
+
+/***************
+void MainWindow::selectCfgSettings()
+{
+    widgetStack->setCurrentIndex(widgetStack->getPageIndex("formCfgRuleSnippet"));
+}
+****************/
+
+void MainWindow::selectCfgRuleSnippet()
+{
+    widgetStack->setCurrentIndex(widgetStack->getPageIndex("formCfgRuleSnippet"));
 }
 
 
 
+void MainWindow::selectConfigQiptables()
+{
+    qDebug("MainWindow::selectconfigQiptables()");
+    widgetStack->setCurrentIndex(widgetStack->getPageIndex("formCfgSettings"));
+}
 
+void MainWindow::selectFirewallRulesPage()
+{
+    qDebug("MainWindow::selectFirewallRulesPage()");
+    widgetStack->setCurrentIndex(widgetStack->getPageIndex("formFirewallRules"));
+}
 
+void MainWindow::selectTestPage()
+{
+    qDebug("MainWindow::selectTestPage()");
+    widgetStack->setCurrentIndex(widgetStack->getPageIndex("formTest"));
+}

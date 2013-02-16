@@ -2,10 +2,11 @@
 #define IPPROCESS_H
 
 #include <QMessageBox>
+#include <QPointer>
 #include <QProcess>
 #include <QProcessEnvironment>
 
-#include "mainwindow.h"
+//#include "mainwindow.h"
 #include "linuxuserid.h"
 
 class IpProcess : public QProcess

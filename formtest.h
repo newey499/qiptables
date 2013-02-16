@@ -18,8 +18,6 @@
 #include "install.h"
 #include "databasemanager.h"
 
-class Iptables;
-class IpProcess;
 
 namespace Ui {
 class FormTest;
@@ -46,6 +44,7 @@ public slots:
 
     virtual void slotBtnTest();
     virtual void slotBtnRun();
+    virtual void slotIptablesList();
 
 protected:
 
