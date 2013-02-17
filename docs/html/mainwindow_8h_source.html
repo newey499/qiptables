@@ -60,80 +60,92 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00010"></a>00010 <span class="preprocessor">#include &lt;QMenuBar&gt;</span>
 <a name="l00011"></a>00011 <span class="preprocessor">#include &lt;QMenuItem&gt;</span>
 <a name="l00012"></a>00012 <span class="preprocessor">#include &lt;QMessageBox&gt;</span>
-<a name="l00013"></a>00013 <span class="preprocessor">#include &lt;QSettings&gt;</span>
-<a name="l00014"></a>00014 <span class="preprocessor">#include &lt;QStackedWidget&gt;</span>
-<a name="l00015"></a>00015 
-<a name="l00016"></a>00016 <span class="preprocessor">#include &quot;qiptablesexception.h&quot;</span>
-<a name="l00017"></a>00017 <span class="preprocessor">#include &quot;formtest.h&quot;</span>
-<a name="l00018"></a>00018 <span class="preprocessor">#include &quot;formfirewallrules.h&quot;</span>
-<a name="l00019"></a>00019 <span class="preprocessor">#include &quot;formconfigqiptables.h&quot;</span>
-<a name="l00020"></a>00020 <span class="preprocessor">#include &quot;ipstackedwidget.h&quot;</span>
-<a name="l00021"></a>00021 <span class="preprocessor">#include &quot;linuxuserid.h&quot;</span>
-<a name="l00022"></a>00022 <span class="preprocessor">#include &quot;ipprocess.h&quot;</span>
-<a name="l00023"></a>00023 
+<a name="l00013"></a>00013 <span class="preprocessor">#include &lt;QPointer&gt;</span>
+<a name="l00014"></a>00014 <span class="preprocessor">#include &lt;QSettings&gt;</span>
+<a name="l00015"></a>00015 <span class="preprocessor">#include &lt;QStackedWidget&gt;</span>
+<a name="l00016"></a>00016 
+<a name="l00017"></a>00017 <span class="preprocessor">#include &quot;qiptablesexception.h&quot;</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#include &quot;formtest.h&quot;</span>
+<a name="l00019"></a>00019 <span class="preprocessor">#include &quot;formfirewallrules.h&quot;</span>
+<a name="l00020"></a>00020 <span class="preprocessor">#include &quot;formconfigqiptables.h&quot;</span>
+<a name="l00021"></a>00021 <span class="preprocessor">#include &quot;ipstackedwidget.h&quot;</span>
+<a name="l00022"></a>00022 <span class="preprocessor">#include &quot;<a class="code" href="linuxuserid_8h.html">linuxuserid.h</a>&quot;</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#include &quot;ipprocess.h&quot;</span>
 <a name="l00024"></a>00024 
-<a name="l00025"></a>00025 <span class="keyword">namespace </span>Ui {
-<a name="l00026"></a>00026 <span class="keyword">class </span><a class="code" href="classMainWindow.html">MainWindow</a>;
-<a name="l00027"></a>00027 }
-<a name="l00028"></a>00028 
-<a name="l00029"></a><a class="code" href="classMainWindow.html">00029</a> <span class="keyword">class </span><a class="code" href="classMainWindow.html">MainWindow</a> : <span class="keyword">public</span> QMainWindow
-<a name="l00030"></a>00030 {
-<a name="l00031"></a>00031     Q_OBJECT
-<a name="l00032"></a>00032 
-<a name="l00033"></a>00033 <span class="keyword">public</span>:
-<a name="l00034"></a>00034 
-<a name="l00035"></a>00035     <span class="keyword">static</span> <span class="keyword">const</span> QString VERSION_NUMBER;
-<a name="l00036"></a>00036 
-<a name="l00037"></a>00037     <span class="keyword">explicit</span> <a class="code" href="classMainWindow.html">MainWindow</a>(QString organization = <span class="stringliteral">&quot;git:bitbucket.org:newey499.qiptables.git&quot;</span>,
-<a name="l00038"></a>00038                         QString application  = <span class="stringliteral">&quot;Qiptables&quot;</span>,
-<a name="l00039"></a>00039                         QWidget *parent = 0);
-<a name="l00040"></a>00040     ~<a class="code" href="classMainWindow.html">MainWindow</a>();
-<a name="l00041"></a>00041 
-<a name="l00042"></a>00042     QString organization;
-<a name="l00043"></a>00043     QString application;
-<a name="l00044"></a>00044 
-<a name="l00045"></a>00045 <span class="keyword">public</span> slots:
-<a name="l00046"></a>00046 
-<a name="l00047"></a>00047     <span class="keyword">virtual</span> <span class="keywordtype">void</span> quitApplication();
-<a name="l00048"></a>00048     <span class="keyword">virtual</span> <span class="keywordtype">void</span> aboutQiptables();
-<a name="l00049"></a>00049     <span class="keyword">virtual</span> <span class="keywordtype">void</span> aboutQt();
-<a name="l00050"></a>00050     <span class="keyword">virtual</span> <span class="keywordtype">void</span> selectTestPage();
-<a name="l00051"></a>00051     <span class="keyword">virtual</span> <span class="keywordtype">void</span> selectFirewallRulesPage();
-<a name="l00052"></a>00052     <span class="keyword">virtual</span> <span class="keywordtype">void</span> selectConfigQiptables();
-<a name="l00053"></a>00053     <span class="keyword">virtual</span> <span class="keywordtype">void</span> saveSettings();
-<a name="l00054"></a>00054 
-<a name="l00055"></a>00055 <span class="keyword">protected</span>:
-<a name="l00056"></a>00056 
-<a name="l00057"></a>00057     <span class="keyword">virtual</span> <span class="keywordtype">void</span> closeEvent(QCloseEvent *event);
-<a name="l00058"></a>00058 
-<a name="l00059"></a>00059     <span class="keyword">virtual</span> <span class="keywordtype">int</span> quitYesNo();
-<a name="l00060"></a>00060     <span class="keyword">virtual</span> <span class="keywordtype">void</span> buildMenuBar();
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026 <span class="keyword">namespace </span>Ui {
+<a name="l00027"></a>00027 <span class="keyword">class </span><a class="code" href="classMainWindow.html">MainWindow</a>;
+<a name="l00028"></a>00028 }
+<a name="l00029"></a>00029 
+<a name="l00030"></a><a class="code" href="classMainWindow.html">00030</a> <span class="keyword">class </span><a class="code" href="classMainWindow.html">MainWindow</a> : <span class="keyword">public</span> QMainWindow
+<a name="l00031"></a>00031 {
+<a name="l00032"></a>00032     Q_OBJECT
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034 <span class="keyword">public</span>:
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036     <span class="keyword">static</span> <span class="keyword">const</span> QString VERSION_NUMBER;
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038     <span class="keyword">explicit</span> <a class="code" href="classMainWindow.html">MainWindow</a>(QString organization = <span class="stringliteral">&quot;git:bitbucket.org:newey499.qiptables.git&quot;</span>,
+<a name="l00039"></a>00039                         QString application  = <span class="stringliteral">&quot;Qiptables&quot;</span>,
+<a name="l00040"></a>00040                         QWidget *parent = 0);
+<a name="l00041"></a>00041     ~<a class="code" href="classMainWindow.html">MainWindow</a>();
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043     QString organization;
+<a name="l00044"></a>00044     QString application;
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046 <span class="keyword">public</span> slots:
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048     <span class="keyword">virtual</span> <span class="keywordtype">void</span> quitApplication();
+<a name="l00049"></a>00049     <span class="keyword">virtual</span> <span class="keywordtype">void</span> aboutQiptables();
+<a name="l00050"></a>00050     <span class="keyword">virtual</span> <span class="keywordtype">void</span> aboutQt();
+<a name="l00051"></a>00051     <span class="keyword">virtual</span> <span class="keywordtype">void</span> selectTestPage();
+<a name="l00052"></a>00052     <span class="keyword">virtual</span> <span class="keywordtype">void</span> selectFwSetUp();
+<a name="l00053"></a>00053     <span class="keyword">virtual</span> <span class="keywordtype">void</span> selectFirewallRulesPage();
+<a name="l00054"></a>00054     <span class="comment">//virtual void selectConfigQiptables();</span>
+<a name="l00055"></a>00055     <span class="keyword">virtual</span> <span class="keywordtype">void</span> selectCfgRuleset();
+<a name="l00056"></a>00056     <span class="keyword">virtual</span> <span class="keywordtype">void</span> selectCfgRuleSnippet();
+<a name="l00057"></a>00057     <span class="comment">//virtual void selectCfgSettings();</span>
+<a name="l00058"></a>00058     <span class="keyword">virtual</span> <span class="keywordtype">void</span> saveSettings();
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060 <span class="keyword">protected</span>:
 <a name="l00061"></a>00061 
-<a name="l00062"></a>00062     <a class="code" href="classIpStackedWidget.html">IpStackedWidget</a> *widgetStack;
-<a name="l00063"></a>00063     <a class="code" href="classFormTest.html">FormTest</a> *formTest;
-<a name="l00064"></a>00064     <a class="code" href="classFormFirewallRules.html">FormFirewallRules</a> *formFirewallRules;
-<a name="l00065"></a>00065     <a class="code" href="classFormConfigQiptables.html">FormConfigQiptables</a> *formConfigQiptables;
+<a name="l00062"></a>00062     <span class="keyword">virtual</span> <span class="keywordtype">void</span> closeEvent(QCloseEvent *event);
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064     <span class="keyword">virtual</span> <span class="keywordtype">int</span> quitYesNo();
+<a name="l00065"></a>00065     <span class="keyword">virtual</span> <span class="keywordtype">void</span> buildMenusAndForms();
 <a name="l00066"></a>00066 
-<a name="l00067"></a>00067 
-<a name="l00068"></a>00068     QMenu *fileMenu;
-<a name="l00069"></a>00069         QAction *actFirewallRules;
-<a name="l00070"></a>00070         QAction *actQuit;
-<a name="l00071"></a>00071 
-<a name="l00072"></a>00072     QMenu *toolsMenu;
-<a name="l00073"></a>00073         QAction *actTest;
+<a name="l00067"></a>00067     <a class="code" href="classIpStackedWidget.html">IpStackedWidget</a> *widgetStack;
+<a name="l00068"></a>00068     <a class="code" href="classFormTest.html">FormTest</a> *formTest;
+<a name="l00069"></a>00069     <a class="code" href="classFormFirewallRules.html">FormFirewallRules</a> *formFirewallRules;
+<a name="l00070"></a>00070     <a class="code" href="classFormConfigQiptables.html">FormConfigQiptables</a> *formConfigQiptables;
+<a name="l00071"></a>00071     <a class="code" href="classFormCfgRuleset.html">FormCfgRuleset</a> *formCfgRuleset;
+<a name="l00072"></a>00072     <a class="code" href="classFormCfgRuleSnippets.html">FormCfgRuleSnippets</a> *formCfgRuleSnippets;
+<a name="l00073"></a>00073     <a class="code" href="classFormCfgSettings.html">FormCfgSettings</a> *formCfgSettings;
 <a name="l00074"></a>00074 
-<a name="l00075"></a>00075     QMenu *settingsMenu;
-<a name="l00076"></a>00076         QAction *actConfigQiptables;
-<a name="l00077"></a>00077 
-<a name="l00078"></a>00078     QMenu *helpMenu;
-<a name="l00079"></a>00079         QAction *actAboutQt;
-<a name="l00080"></a>00080         QAction *actAboutQiptables;
-<a name="l00081"></a>00081 
-<a name="l00082"></a>00082 <span class="keyword">private</span>:
-<a name="l00083"></a>00083     Ui::MainWindow *ui;
-<a name="l00084"></a>00084 };
-<a name="l00085"></a>00085 
-<a name="l00086"></a>00086 <span class="preprocessor">#endif // MAINWINDOW_H</span>
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076     QMenu *fileMenu;
+<a name="l00077"></a>00077         QAction *actFirewallRules;
+<a name="l00078"></a>00078         QAction *actQuit;
+<a name="l00079"></a>00079 
+<a name="l00080"></a>00080     QMenu *toolsMenu;
+<a name="l00081"></a>00081         QAction *actTest;
+<a name="l00082"></a>00082         QAction *actFwSetUp;
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084     QMenu *settingsMenu;
+<a name="l00085"></a>00085         QAction *actConfigQiptables;
+<a name="l00086"></a>00086         QAction *actCfgRuleset;
+<a name="l00087"></a>00087         QAction *actCfgRuleSnippet;
+<a name="l00088"></a>00088         QAction *actCfgRuleSettings;
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090     QMenu *helpMenu;
+<a name="l00091"></a>00091         QAction *actAboutQt;
+<a name="l00092"></a>00092         QAction *actAboutQiptables;
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094 <span class="keyword">private</span>:
+<a name="l00095"></a>00095     Ui::MainWindow *ui;
+<a name="l00096"></a>00096 };
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098 <span class="preprocessor">#endif // MAINWINDOW_H</span>
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -150,7 +162,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Fri Feb 15 2013 21:12:09 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Sun Feb 17 2013 12:09:56 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

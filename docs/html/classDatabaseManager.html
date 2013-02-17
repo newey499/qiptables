@@ -84,12 +84,16 @@ QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><b>getRulesetRow</
 QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>getRuleset</b> (QVariant rulesetName)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3e6a384ca033e38d1d9ea796c4705542"></a><!-- doxytag: member="DatabaseManager::getRulesetNames" ref="a3e6a384ca033e38d1d9ea796c4705542" args="()" -->
 QStringList&nbsp;</td><td class="memItemRight" valign="bottom"><b>getRulesetNames</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a396f49a577cdddc2be52bd04d882ec4d"></a><!-- doxytag: member="DatabaseManager::getRuleSnippetRow" ref="a396f49a577cdddc2be52bd04d882ec4d" args="(QVariant ruleSnippetName)" -->
+QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><b>getRuleSnippetRow</b> (QVariant ruleSnippetName)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d786883976ea0f32e3566415138478d"></a><!-- doxytag: member="DatabaseManager::lastError" ref="a0d786883976ea0f32e3566415138478d" args="()" -->
 QSqlError&nbsp;</td><td class="memItemRight" valign="bottom"><b>lastError</b> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afa9cf4ff04b04d87e3968cd8f269c9da"></a><!-- doxytag: member="DatabaseManager::DB_NAME" ref="afa9cf4ff04b04d87e3968cd8f269c9da" args="" -->
 static const QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>DB_NAME</b> = QString(&quot;qiptables.db.sqlite&quot;)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab044dd7cc537c173219b4284fe6c76ff"></a><!-- doxytag: member="DatabaseManager::dbm" ref="ab044dd7cc537c173219b4284fe6c76ff" args="" -->
+static QSqlDatabase&nbsp;</td><td class="memItemRight" valign="bottom"><b>dbm</b></td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad51bbb0ad9f91c50bd86bc190df8ed99"></a><!-- doxytag: member="DatabaseManager::dbPath" ref="ad51bbb0ad9f91c50bd86bc190df8ed99" args="" -->
@@ -100,6 +104,8 @@ QSqlDatabase&nbsp;</td><td class="memItemRight" valign="bottom"><b>db</b></td></
 QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><b>syconfRec</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a624fe8233fd9de7861d051a84403f362"></a><!-- doxytag: member="DatabaseManager::rulesetRec" ref="a624fe8233fd9de7861d051a84403f362" args="" -->
 QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><b>rulesetRec</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a70242dfb0dd8b213fd5d170f0fd3ed83"></a><!-- doxytag: member="DatabaseManager::ruleSnippetRec" ref="a70242dfb0dd8b213fd5d170f0fd3ed83" args="" -->
+QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><b>ruleSnippetRec</b></td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="databasemanager_8h_source.html">databasemanager.h</a></li>
@@ -120,7 +126,7 @@ QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><b>rulesetRec</b><
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Fri Feb 15 2013 21:12:09 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Sun Feb 17 2013 12:09:56 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

@@ -57,6 +57,7 @@ This is the complete list of members for <a class="el" href="classDatabaseManage
   <tr bgcolor="#f0f0f0"><td><b>DatabaseManager</b>(QString dbPath, QObject *parent=0) (defined in <a class="el" href="classDatabaseManager.html">DatabaseManager</a>)</td><td><a class="el" href="classDatabaseManager.html">DatabaseManager</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>db</b> (defined in <a class="el" href="classDatabaseManager.html">DatabaseManager</a>)</td><td><a class="el" href="classDatabaseManager.html">DatabaseManager</a></td><td><code> [protected]</code></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>DB_NAME</b> (defined in <a class="el" href="classDatabaseManager.html">DatabaseManager</a>)</td><td><a class="el" href="classDatabaseManager.html">DatabaseManager</a></td><td><code> [static]</code></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>dbm</b> (defined in <a class="el" href="classDatabaseManager.html">DatabaseManager</a>)</td><td><a class="el" href="classDatabaseManager.html">DatabaseManager</a></td><td><code> [static]</code></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>dbPath</b> (defined in <a class="el" href="classDatabaseManager.html">DatabaseManager</a>)</td><td><a class="el" href="classDatabaseManager.html">DatabaseManager</a></td><td><code> [protected]</code></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>deleteDB</b>() (defined in <a class="el" href="classDatabaseManager.html">DatabaseManager</a>)</td><td><a class="el" href="classDatabaseManager.html">DatabaseManager</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>dropTable</b>(QString tableName) (defined in <a class="el" href="classDatabaseManager.html">DatabaseManager</a>)</td><td><a class="el" href="classDatabaseManager.html">DatabaseManager</a></td><td></td></tr>
@@ -65,10 +66,12 @@ This is the complete list of members for <a class="el" href="classDatabaseManage
   <tr bgcolor="#f0f0f0"><td><b>getRuleset</b>(QVariant rulesetName) (defined in <a class="el" href="classDatabaseManager.html">DatabaseManager</a>)</td><td><a class="el" href="classDatabaseManager.html">DatabaseManager</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>getRulesetNames</b>() (defined in <a class="el" href="classDatabaseManager.html">DatabaseManager</a>)</td><td><a class="el" href="classDatabaseManager.html">DatabaseManager</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>getRulesetRow</b>(QVariant rulesetName) (defined in <a class="el" href="classDatabaseManager.html">DatabaseManager</a>)</td><td><a class="el" href="classDatabaseManager.html">DatabaseManager</a></td><td></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>getRuleSnippetRow</b>(QVariant ruleSnippetName) (defined in <a class="el" href="classDatabaseManager.html">DatabaseManager</a>)</td><td><a class="el" href="classDatabaseManager.html">DatabaseManager</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>getSysconfRow</b>() (defined in <a class="el" href="classDatabaseManager.html">DatabaseManager</a>)</td><td><a class="el" href="classDatabaseManager.html">DatabaseManager</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>lastError</b>() (defined in <a class="el" href="classDatabaseManager.html">DatabaseManager</a>)</td><td><a class="el" href="classDatabaseManager.html">DatabaseManager</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>openDB</b>() (defined in <a class="el" href="classDatabaseManager.html">DatabaseManager</a>)</td><td><a class="el" href="classDatabaseManager.html">DatabaseManager</a></td><td></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>rulesetRec</b> (defined in <a class="el" href="classDatabaseManager.html">DatabaseManager</a>)</td><td><a class="el" href="classDatabaseManager.html">DatabaseManager</a></td><td><code> [protected]</code></td></tr>
+  <tr bgcolor="#f0f0f0"><td><b>ruleSnippetRec</b> (defined in <a class="el" href="classDatabaseManager.html">DatabaseManager</a>)</td><td><a class="el" href="classDatabaseManager.html">DatabaseManager</a></td><td><code> [protected]</code></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>syconfRec</b> (defined in <a class="el" href="classDatabaseManager.html">DatabaseManager</a>)</td><td><a class="el" href="classDatabaseManager.html">DatabaseManager</a></td><td><code> [protected]</code></td></tr>
   <tr bgcolor="#f0f0f0"><td><b>~DatabaseManager</b>() (defined in <a class="el" href="classDatabaseManager.html">DatabaseManager</a>)</td><td><a class="el" href="classDatabaseManager.html">DatabaseManager</a></td><td></td></tr>
 </table></div>
@@ -86,7 +89,7 @@ This is the complete list of members for <a class="el" href="classDatabaseManage
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Fri Feb 15 2013 21:12:09 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Sun Feb 17 2013 12:09:56 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

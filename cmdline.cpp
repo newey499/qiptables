@@ -1,15 +1,16 @@
+
 #include "cmdline.h"
+
+
+
+const QString CmdLine::defaultCommentMark = "#";
+const QString CmdLine::defaultIncludeMark = "#include ";
 
 CmdLine::CmdLine(QObject *parent) :
     QObject(parent)
 {
-    commentMark = "#";
-}
-
-CmdLine::CmdLine(QString commentMark, QObject *parent) :
-    QObject(parent)
-{
-    setCommentMark(commentMark);
+    this->commentMark = CmdLine::defaultCommentMark;
+    //ruleSnippet = new RuleSnippet(this);
 }
 
 void CmdLine::setCommentMark(QString commentMark)
@@ -24,16 +25,47 @@ QString CmdLine::getCommentMark()
 
 QString CmdLine::stripComments(QString rule, QString commentMark)
 {
-
     setCommentMark(commentMark);
+    // first trim off leading and trailing spaces
+    rule = rule.trimmed();
 
     int offset = rule.indexOf(getCommentMark(), 0, Qt::CaseSensitive);
+    int offsetInclude = rule.indexOf(CmdLine::defaultIncludeMark.trimmed(), 0, Qt::CaseSensitive);
 
-    if (offset != -1)
+    if (offsetInclude == -1) // no includes to worry about
     {
-        // remove the comment mark and everything after it
-        // then remove leading and trailing spaces
-        rule = rule.left(offset).trimmed();
+        if (offset != -1)
+        {
+            // remove the comment mark and everything after it
+            // then remove leading and trailing spaces
+            rule = rule.left(offset).trimmed();
+        }
+    }
+    else
+    {
+        if (rule.indexOf(CmdLine::defaultIncludeMark, 0, Qt::CaseSensitive) == -1)
+        {
+            /*******
+            qDebug("invalid call to #include - must be followed by space [%s]",
+                    rule.toAscii().data());
+            *********************/
+        }
+        // find any comment after the include
+        int newOffset = offset + CmdLine::defaultIncludeMark.length();
+        offset = rule.indexOf(getCommentMark(), newOffset, Qt::CaseSensitive);
+        if (offset != -1)
+        {
+            // remove the comment mark and everything after it
+            rule = rule.left(offset);
+        }
+        // remove the CmdLine::defaultIncludeMark String
+        // rule = rule.replace(CmdLine::defaultIncludeMark, "", Qt::CaseSensitive);
+        // remove single and double quotes
+        rule = rule.replace("'", "", Qt::CaseSensitive);
+        rule = rule.replace("\"", "", Qt::CaseSensitive);
+        rule = rule.trimmed(); // remove leading and trailing spaces
+        //qDebug("processed include line [%s]", rule.toAscii().data());
+
     }
     return rule;
 }

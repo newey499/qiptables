@@ -32,14 +32,14 @@ FormCfgSettings::~FormCfgSettings()
 
 void FormCfgSettings::slotButtonStateEnabled()
 {
-    qDebug("FormCfgSettings::slotButtonStateEnabled()");
+    //qDebug("FormCfgSettings::slotButtonStateEnabled()");
     ui->btnCancel->setEnabled(true);
     ui->btnSave->setEnabled(true);
 }
 
 void FormCfgSettings::slotButtonStateDisabled()
 {
-    qDebug("FormCfgSettings::slotButtonStateDisabled()");
+    //qDebug("FormCfgSettings::slotButtonStateDisabled()");
     ui->btnCancel->setEnabled(true);
     ui->btnSave->setEnabled(false);
 }
@@ -90,7 +90,7 @@ QString FormCfgSettings::lastSqlErrorAsString()
 void FormCfgSettings::loadSettings()
 {
 
-    qDebug("FormCfgSettings::loadSettings()");
+    //qDebug("FormCfgSettings::loadSettings()");
 
     if (qry.exec("select id, shell, iptables, defaultRuleName from sysconf"))
     {

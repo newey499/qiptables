@@ -1,6 +1,7 @@
 #ifndef FORMTEST_H
 #define FORMTEST_H
 
+#include <QFrame>
 #include <QPointer>
 #include <QProcessEnvironment>
 #include <QSqlField>
@@ -17,6 +18,7 @@
 #include "iptables.h"
 #include "install.h"
 #include "databasemanager.h"
+#include "rulesnippet.h"
 
 
 namespace Ui {
@@ -47,6 +49,8 @@ public slots:
     virtual void slotIptablesList();
 
 protected:
+
+    QPointer<RuleSnippet> ruleSnippet;
 
 
 protected slots:

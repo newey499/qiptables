@@ -59,6 +59,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <!-- doxytag: class="Iptables" -->
+<p>Class reads commands from SQLite database ruleset table and then performs each command it finds (one per line).  
+<a href="#_details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="iptables_8h_source.html">iptables.h</a>&gt;</code></p>
+
 <p><a href="classIptables-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="signals"></a>
@@ -85,6 +90,8 @@ virtual QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>getComment
 virtual QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><b>getRuleset</b> (QString rulesetName)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7c0e062adec9be4fe1c311e813f0f0f9"></a><!-- doxytag: member="Iptables::getRulesetRows" ref="a7c0e062adec9be4fe1c311e813f0f0f9" args="(QString rulesetName)" -->
 virtual QStringList&nbsp;</td><td class="memItemRight" valign="bottom"><b>getRulesetRows</b> (QString rulesetName)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0e75293a4cbcbd4a2200d102649c9691"></a><!-- doxytag: member="Iptables::processRulesetIncludes" ref="a0e75293a4cbcbd4a2200d102649c9691" args="(QStringList rulesetList)" -->
+virtual QStringList&nbsp;</td><td class="memItemRight" valign="bottom"><b>processRulesetIncludes</b> (QStringList rulesetList)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acfde23b7114a476f26667a5392f6ec00"></a><!-- doxytag: member="Iptables::processRuleset" ref="acfde23b7114a476f26667a5392f6ec00" args="(QString rulesetName)" -->
 virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>processRuleset</b> (QString rulesetName)</td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
@@ -108,12 +115,20 @@ QPointer&lt; <a class="el" href="classIpProcess.html">IpProcess</a> &gt;&nbsp;</
 QPointer&lt; <a class="el" href="classLinuxUserId.html">LinuxUserId</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><b>userId</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a127b6c9179ca8c2dd00d933a3014f2cf"></a><!-- doxytag: member="Iptables::cmdLine" ref="a127b6c9179ca8c2dd00d933a3014f2cf" args="" -->
 QPointer&lt; <a class="el" href="classCmdLine.html">CmdLine</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><b>cmdLine</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a31ad4683218f032b4597d4492eabab4b"></a><!-- doxytag: member="Iptables::ruleSnippet" ref="a31ad4683218f032b4597d4492eabab4b" args="" -->
+QPointer&lt; <a class="el" href="classRuleSnippet.html">RuleSnippet</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><b>ruleSnippet</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8284fb26bab03b78e6b2226d5df007b5"></a><!-- doxytag: member="Iptables::IptablesBinary" ref="a8284fb26bab03b78e6b2226d5df007b5" args="" -->
 QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>IptablesBinary</b></td></tr>
 </table>
+<hr/><a name="_details"></a><h2>Detailed Description</h2>
+<p>Class reads commands from SQLite database ruleset table and then performs each command it finds (one per line). </p>
+<p>This class "knows" about line comments in the style of bash "#" comments. The comment identifier may be changed by using set/get functions but only line comments are recognised. Block comments are not although they may be supported in the future.</p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>Add support for block comments</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>method "Iptables::processRuleset(QString rulesetName)" - add code to process each command found.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000007">Todo:</a></b></dt><dd>method "Iptables::processRuleset(QString rulesetName)" - emit signals for each command executed and the output of each command.</dd></dl>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="iptables_8h_source.html">iptables.h</a></li>
-<li><a class="el" href="iptables_8cpp.html">iptables.cpp</a></li>
+<li>iptables.cpp</li>
 </ul>
 </div>
 <!--- window showing the filter options -->
@@ -130,7 +145,7 @@ QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>IptablesBinary</b>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Fri Feb 15 2013 21:12:09 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Sun Feb 17 2013 12:09:56 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

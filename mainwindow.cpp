@@ -20,7 +20,7 @@ MainWindow::MainWindow(QString organization, QString application, QWidget *paren
 
     Install *install = new Install(this);
     QString instStr(install->performInstall());
-    qDebug("Install Reported [%s]", instStr.toAscii().data());
+    //qDebug("Install Reported [%s]", instStr.toAscii().data());
 
     qDebug("Create new DatabaseManager instance");
     DatabaseManager dm(Install::INSTALL_DIR, this);
@@ -164,8 +164,11 @@ void MainWindow::buildMenusAndForms()
 
         actConfigQiptables = new QAction(tr("&Defaults"), this);
         actConfigQiptables->setStatusTip(tr("Configure Defaults"));
+        /********
+        Releates to tabbed widget which is no longer used
         connect(actConfigQiptables, SIGNAL(triggered()),
                 this, SLOT(selectConfigQiptables()));
+        *******************/
         settingsMenu->addAction(actConfigQiptables);
 
 

@@ -49,6 +49,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a>  </div>
   <div class="headertitle">
 <h1>CmdLine Class Reference</h1>  </div>
@@ -61,22 +62,28 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2f257c59abea2725a30cdf180d374fab"></a><!-- doxytag: member="CmdLine::CmdLine" ref="a2f257c59abea2725a30cdf180d374fab" args="(QObject *parent=0)" -->
 &nbsp;</td><td class="memItemRight" valign="bottom"><b>CmdLine</b> (QObject *parent=0)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4443fdcfa4ef548da6cc761e368619f6"></a><!-- doxytag: member="CmdLine::CmdLine" ref="a4443fdcfa4ef548da6cc761e368619f6" args="(QString commentMark, QObject *parent=0)" -->
-&nbsp;</td><td class="memItemRight" valign="bottom"><b>CmdLine</b> (QString commentMark, QObject *parent=0)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad05707e8ee4335966a1e3790fdae6d29"></a><!-- doxytag: member="CmdLine::setCommentMark" ref="ad05707e8ee4335966a1e3790fdae6d29" args="(QString commentMark)" -->
 virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>setCommentMark</b> (QString commentMark)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac8e99591fdf7f2547c3933f7532a00dd"></a><!-- doxytag: member="CmdLine::getCommentMark" ref="ac8e99591fdf7f2547c3933f7532a00dd" args="()" -->
 virtual QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>getCommentMark</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acfd2196f3f4c9ffc3295c0e88946fa8e"></a><!-- doxytag: member="CmdLine::stripComments" ref="acfd2196f3f4c9ffc3295c0e88946fa8e" args="(QStringList rulesetList, QString commentMark=&quot;#&quot;)" -->
-virtual QStringList&nbsp;</td><td class="memItemRight" valign="bottom"><b>stripComments</b> (QStringList rulesetList, QString commentMark=&quot;#&quot;)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a23e5dd0e529e1abf068a70ee0ea0a044"></a><!-- doxytag: member="CmdLine::stripComments" ref="a23e5dd0e529e1abf068a70ee0ea0a044" args="(QString rule, QString commentMark=&quot;#&quot;)" -->
-virtual QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>stripComments</b> (QString rule, QString commentMark=&quot;#&quot;)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0b030bb38ff8402eecf4cf15bd656df5"></a><!-- doxytag: member="CmdLine::stripComments" ref="a0b030bb38ff8402eecf4cf15bd656df5" args="(QStringList rulesetList, QString commentMark=CmdLine::defaultCommentMark)" -->
+virtual QStringList&nbsp;</td><td class="memItemRight" valign="bottom"><b>stripComments</b> (QStringList rulesetList, QString commentMark=CmdLine::defaultCommentMark)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8f5c536c9d151fa6cfce67acb20f8d1b"></a><!-- doxytag: member="CmdLine::stripComments" ref="a8f5c536c9d151fa6cfce67acb20f8d1b" args="(QString rule, QString commentMark=CmdLine::defaultCommentMark)" -->
+virtual QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>stripComments</b> (QString rule, QString commentMark=CmdLine::defaultCommentMark)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6a2899e6a4523a4797817abba7a58232"></a><!-- doxytag: member="CmdLine::stripBlankLines" ref="a6a2899e6a4523a4797817abba7a58232" args="(QStringList rulesetList)" -->
 virtual QStringList&nbsp;</td><td class="memItemRight" valign="bottom"><b>stripBlankLines</b> (QStringList rulesetList)</td></tr>
+<tr><td colspan="2"><h2><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a53a5ee7cbb2b77ce120abff7aebb0251"></a><!-- doxytag: member="CmdLine::defaultCommentMark" ref="a53a5ee7cbb2b77ce120abff7aebb0251" args="" -->
+static const QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>defaultCommentMark</b> = &quot;#&quot;</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="add80eed64b75c6d90c9f47818e77ee20"></a><!-- doxytag: member="CmdLine::defaultIncludeMark" ref="add80eed64b75c6d90c9f47818e77ee20" args="" -->
+static const QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>defaultIncludeMark</b> = &quot;#include &quot;</td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae6d4a474d648da2e56e53e6776945350"></a><!-- doxytag: member="CmdLine::commentMark" ref="ae6d4a474d648da2e56e53e6776945350" args="" -->
 QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>commentMark</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac3ae3cc530871989ca355756e98a6cce"></a><!-- doxytag: member="CmdLine::ruleSnippet" ref="ac3ae3cc530871989ca355756e98a6cce" args="" -->
+QPointer&lt; <a class="el" href="classRuleSnippet.html">RuleSnippet</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><b>ruleSnippet</b></td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="cmdline_8h_source.html">cmdline.h</a></li>
@@ -97,7 +104,7 @@ QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>commentMark</b></t
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Fri Feb 15 2013 21:12:09 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Sun Feb 17 2013 12:09:56 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

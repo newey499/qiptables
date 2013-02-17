@@ -6,6 +6,7 @@ FormFirewallRules::FormFirewallRules(QWidget *parent, Qt::WindowFlags f) :
     ui(new Ui::FormFirewallRules)
 {
     ui->setupUi(this);
+
 }
 
 FormFirewallRules::~FormFirewallRules()

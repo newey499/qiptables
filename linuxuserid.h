@@ -43,6 +43,17 @@ typedef __kernel_uid32_t        uid_t;
 
 **********************************************************/
 
+/**
+\file linuxuserid.h
+\class LinuxUserId
+
+\brief Obtains user id using Linux system calls
+
+
+Main use is checking for root. The application needs to be running as root
+to run iptables which is the firewall manipulation tool.
+
+***********/
 class LinuxUserId : public QObject
 {
     Q_OBJECT
@@ -59,14 +70,14 @@ public:
     virtual bool isEffectiveUserRoot();
 
 signals:
-    
+
 public slots:
 
 protected:
 
     unsigned int userId;
     unsigned int effectiveUserId;
-    
+
 };
 
 #endif // LINUXUSERID_H

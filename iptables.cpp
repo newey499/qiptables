@@ -1,25 +1,8 @@
 #include "iptables.h"
 
-/**
-\file iptables.cpp
-\brief Iptables class reads commands from SQLite database
-ruleset table and then performs each command it finds (one per line).
+#include "cmdline.h"
+#include "rulesnippet.h"
 
-
-This class "knows" about line comments in the style of bash "#" comments.
-The comment identifier may be changed by using set/get functions but only
-line comments are recognised. Block  comments are not although they may
-be supported in the future.
-
-\todo Add support for block comments
-
-\todo method "Iptables::processRuleset(QString rulesetName)" - add code to process
-each command found.
-
-\todo method "Iptables::processRuleset(QString rulesetName)" - emit signals for
-each command executed and the output of each command.
-
-***************************/
 
 const QString Iptables::IPTABLES_BINARY = QString("/sbin/iptables");
 
@@ -32,9 +15,9 @@ Iptables::Iptables(QObject *parent) :
 
     process = new IpProcess(this);
     userId = new LinuxUserId(this);
-
     cmdLine = new CmdLine(this);
-    cmdLine->setCommentMark("#");  // Default comment mark
+    ruleSnippet = new RuleSnippet(this);
+
     connect(process, SIGNAL(cmdOutput(QString, QStringList, int, QString)),
             this,    SLOT(slotCmdOutput(QString, QStringList, int, QString)));
 
@@ -159,10 +142,15 @@ bool Iptables::processRuleset(QString rulesetName)
     rulesetList = cmdLine->stripComments(rulesetList);
     rulesetList = cmdLine->stripBlankLines(rulesetList);
 
+    // process any includes
+    rulesetList = processRulesetIncludes(rulesetList);
+
     for (int i = 0; i < rulesetList.count(); i++)
     {
         if ("" != rulesetList.at(i).trimmed())
         {
+            //qDebug("Iptables::processRuleset [%s]",
+            //    rulesetList.at(i).toAscii().data());
             this->process->execCmdLine(rulesetList.at(i));
         }
     }
@@ -183,3 +171,41 @@ void Iptables::slotCmdOutput(QString program, QStringList arguments, int exitCod
 }
 
 
+
+QStringList Iptables::processRulesetIncludes(QStringList rulesetList)
+{
+    QStringList result;
+    QString tmp;
+
+    for (int i = 0; i < rulesetList.count(); i++)
+    {
+        tmp = rulesetList.at(i);
+
+        if (tmp.indexOf(CmdLine::defaultIncludeMark) == -1)
+        {
+            // not an include - just copy the string
+            result.append(tmp);
+        }
+        else
+        {
+            // its an include process the snippet
+            QString snippetName = tmp.remove(CmdLine::defaultIncludeMark, Qt::CaseInsensitive);
+            snippetName = snippetName.trimmed();
+            tmp = QString("%1 [%2] is an include - snippet name [%3]").
+                            arg("Iptables::processRulesetIncludes").
+                            arg(rulesetList.at(i)).
+                            arg(snippetName);
+            //qDebug("%s", tmp.toAscii().data());
+            QStringList snippet = ruleSnippet->getRuleSnippetRows(snippetName);
+            for (int i = 0; i < snippet.count(); i++)
+            {
+                result.append(snippet.at(i));
+            }
+        }
+    }
+
+
+
+
+    return result;
+}

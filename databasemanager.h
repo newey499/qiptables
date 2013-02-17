@@ -22,6 +22,8 @@ class DatabaseManager : public QObject
 
         static const QString DB_NAME;
 
+        static QSqlDatabase dbm;
+
         DatabaseManager(QString dbPath, QObject *parent = 0);
         ~DatabaseManager();
 
@@ -37,6 +39,8 @@ class DatabaseManager : public QObject
         QString getRuleset(QVariant rulesetName);
         QStringList getRulesetNames();
 
+        QSqlRecord getRuleSnippetRow(QVariant ruleSnippetName);
+
         QSqlError lastError();
 
     public slots:
@@ -49,6 +53,7 @@ class DatabaseManager : public QObject
         QSqlDatabase db;
         QSqlRecord syconfRec;
         QSqlRecord rulesetRec;
+        QSqlRecord ruleSnippetRec;
 
 
 

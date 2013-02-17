@@ -1,6 +1,12 @@
 #ifndef FORMFIREWALLRULES_H
 #define FORMFIREWALLRULES_H
 
+
+#include <QSplitter>
+#include <QListView>
+#include <QTreeView>
+#include <QTextEdit>
+
 #include <QWidget>
 #include "qiptablesexception.h"
 

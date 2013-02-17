@@ -1,6 +1,7 @@
 #ifndef IPTABLES_H
 #define IPTABLES_H
 
+
 #include <QFile>
 #include <QObject>
 #include <QSqlField>
@@ -12,13 +13,37 @@
 
 #include "ipprocess.h"
 #include "linuxuserid.h"
-#include "cmdline.h"
+
 
 #include "install.h"
 #include "databasemanager.h"
 
 class IpProcess;
+class CmdLine;
+class RuleSnippet;
 
+
+/**
+\file iptables.h
+\class Iptables
+
+\brief Class reads commands from SQLite database
+       ruleset table and then performs each command it finds (one per line).
+
+This class "knows" about line comments in the style of bash "#" comments.
+The comment identifier may be changed by using set/get functions but only
+line comments are recognised. Block  comments are not although they may
+be supported in the future.
+
+\todo Add support for block comments
+
+\todo method "Iptables::processRuleset(QString rulesetName)" - add code to process
+each command found.
+
+\todo method "Iptables::processRuleset(QString rulesetName)" - emit signals for
+each command executed and the output of each command.
+
+***************************/
 class Iptables : public QObject
 {
     Q_OBJECT
@@ -53,8 +78,12 @@ public:
     virtual QStringList getRulesetRows(QString rulesetName);
 
 
+    virtual QStringList processRulesetIncludes(QStringList rulesetList);
+
     // Execute the commands in the ruleset
     virtual bool    processRuleset(QString rulesetName);
+
+
 
 signals:
 
@@ -72,6 +101,7 @@ protected:
     QPointer<IpProcess> process;
     QPointer<LinuxUserId> userId;
     QPointer<CmdLine> cmdLine;
+    QPointer<RuleSnippet> ruleSnippet;
     QString IptablesBinary;
 
 private:

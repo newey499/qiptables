@@ -11,6 +11,8 @@ FormTest::FormTest(QWidget *parent) :
     db = new DatabaseManager(Install::INSTALL_DIR, this);
     proc = new IpProcess(this);
 
+    ruleSnippet = new RuleSnippet(this);
+
     ui->cbxRuleset->clear();
     ui->cbxRuleset->addItems(db->getRulesetNames());
     ui->cbxRuleset->setCurrentIndex(0);
@@ -35,6 +37,11 @@ void FormTest::slotBtnTest()
 
     iptables->processRuleset("aaa");
     //iptables->processRuleset("bbb");
+    //QStringList sl = ruleSnippet->getRuleSnippetRows("test");
+    QStringList sl = ruleSnippet->getIncludeRuleSnippetRows("test");
+
+    ui->plainTextEdit->appendPlainText(sl.join("\n"));
+
 
     ui->plainTextEdit->appendPlainText("====================================");
     ui->plainTextEdit->appendPlainText("FormTest::slotBtnTest() : End");
@@ -70,14 +77,15 @@ void FormTest::slotCmdOutput(QString program, QStringList arguments, int exitCod
 
 void FormTest::slotRunRuleset()
 {
-    qDebug("void FormTest::slotRunRuleset()");
+    //qDebug("void FormTest::slotRunRuleset()");
 
     ui->plainTextEdit->clear();
     ui->plainTextEdit->appendPlainText("====================================");
     ui->plainTextEdit->appendPlainText("FormTest::slotRunRuleset() : Start");
     ui->plainTextEdit->appendPlainText("====================================");
 
-    iptables->processRuleset(ui->cbxRuleset->currentText());
+    QString ruleset = ui->cbxRuleset->currentText();
+    iptables->processRuleset(ruleset);
 
     ui->plainTextEdit->appendPlainText("====================================");
     ui->plainTextEdit->appendPlainText("FormTest::slotRunRuleset() : End");

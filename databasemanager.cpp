@@ -145,16 +145,45 @@ QSqlRecord DatabaseManager::getRulesetRow(QVariant rulesetName)
         }
         else
         {
-            qDebug("Query error on sysconf: [%s]", qry.lastError().text().toAscii().data());
+            qDebug("Query error on ruleset: [%s]", qry.lastError().text().toAscii().data());
         }
     }
     else
     {
-        qDebug("Query error on sysconf: [%s]", qry.lastError().text().toAscii().data());
+        qDebug("Query error on ruleset: [%s]", qry.lastError().text().toAscii().data());
     }
 
     return rulesetRec;
 }
+
+
+
+QSqlRecord DatabaseManager::getRuleSnippetRow(QVariant ruleSnippetName)
+{
+    QSqlQuery qry;
+    ruleSnippetRec = QSqlRecord();
+
+    qry.prepare("select id, name, snippets from rulesetsnippets where name = :name");
+    qry.bindValue(QString(":name"), ruleSnippetName);
+    if (qry.exec())
+    {
+        if (qry.first())
+        {
+            ruleSnippetRec = qry.record();
+        }
+        else
+        {
+            //qDebug("Query error on rulesetsnippets: [%s]", qry.lastError().text().toAscii().data());
+        }
+    }
+    else
+    {
+        //qDebug("Query error on rulesetsnippets: [%s]", qry.lastError().text().toAscii().data());
+    }
+
+    return ruleSnippetRec;
+}
+
 
 QString DatabaseManager::getRuleset(QVariant rulesetName)
 {
