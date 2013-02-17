@@ -80,16 +80,20 @@ void FormTest::slotRunRuleset()
     //qDebug("void FormTest::slotRunRuleset()");
 
     ui->plainTextEdit->clear();
+    /**************
     ui->plainTextEdit->appendPlainText("====================================");
     ui->plainTextEdit->appendPlainText("FormTest::slotRunRuleset() : Start");
     ui->plainTextEdit->appendPlainText("====================================");
+    *********************/
 
     QString ruleset = ui->cbxRuleset->currentText();
     iptables->processRuleset(ruleset);
 
+    /**************
     ui->plainTextEdit->appendPlainText("====================================");
     ui->plainTextEdit->appendPlainText("FormTest::slotRunRuleset() : End");
     ui->plainTextEdit->appendPlainText("====================================");
+    ********************/
 }
 
 
