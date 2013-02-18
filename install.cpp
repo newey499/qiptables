@@ -136,12 +136,7 @@ bool Install::createQiptablesDatabase()
 QString Install::createScriptClearFirewall()
 {
     QStringList script;
-    QString filename = QString("%1/%2/%3").
-            arg(Install::INSTALL_DIR).
-            arg("tools").
-            arg("clearFirewall.sh");
-
-    //QString tmp = QString("# ").append(filename);
+    QString filename = "clearFirewall.sh";
 
     script  << "#!/bin/bash"
             << "################################################"
@@ -171,7 +166,7 @@ QString Install::createScriptClearFirewall()
             << " ";
 
     // Create the file
-    createFile(filename, script, true);
+    filename = createFile(filename, script, true);
 
     return filename;
 }
@@ -179,9 +174,14 @@ QString Install::createScriptClearFirewall()
 
 
 
-bool Install::createFile(QString filename, QString content, bool executable)
+QString Install::createFile(QString filename, QString content, bool executable)
 {
-    QFile data(filename);
+    QString fname = QString("%1/%2/%3").
+            arg(Install::INSTALL_DIR).
+            arg("tools").
+            arg(filename);
+
+    QFile data(fname);
     if (data.open(QFile::WriteOnly | QFile::Truncate)) {
         QTextStream out(&data);
         out << content << "\n\n";
@@ -198,10 +198,10 @@ bool Install::createFile(QString filename, QString content, bool executable)
                             QFile::ExeGroup);
     }
 
-    return true;
+    return fname;
 }
 
-bool Install::createFile(QString filename, QStringList content, bool executable)
+QString Install::createFile(QString filename, QStringList content, bool executable)
 {
     return createFile(filename,
                       content.join("\n"),
@@ -285,46 +285,76 @@ bool Install::createRulesetTable()
     return ret;
 }
 
-
-bool Install::createRulesetRows()
+bool Install::insertRulesetRow(QString rulesName, QStringList rulesList)
 {
-    bool ret = false;
+    bool ret = true;
     if (dm->getDb().isOpen())
     {
+        QString rulesText = rulesList.join("\n");
 
-        QString filename = createScriptClearFirewall();
         QSqlQuery query;
         QString qryMsg = QString(" insert into %1 "
                                  "   (name, rules) "
                                  " values "
-                                 "   ('Clean Firewall - Accept everything', '%2') ");
-        ret = query.exec(qryMsg.arg("ruleset").arg(filename));
-        ret = query.exec(qryMsg.arg("rulesetdef").arg(filename));
-
-        qryMsg = QString(" insert into %1 "
-                         "   (name, rules) "
-                         " values "
-                         "   ('Home', 'Home firewall rules') "
-                        );
-        ret = query.exec(qryMsg.arg("ruleset"));
-        ret = query.exec(qryMsg.arg("rulesetdef"));
-
-
-        qryMsg = QString(" insert into %1 "
-                         "   (name, rules) "
-                         " values "
-                         "   ('Office', 'Office firewall rules') "
-                        );
-        ret = query.exec(qryMsg.arg("ruleset"));
-        ret = query.exec(qryMsg.arg("rulesetdef"));
-
-        qryMsg = QString(" insert into %1 "
-                         "   (name, rules) "
-                         " values "
-                         "   ('Public location', 'Public location firewall rules') "
+                                 "   ('%2', '%3') ");
+        ret = query.exec(qryMsg.
+                            arg("ruleset").
+                            arg(rulesName).
+                            arg(rulesText)
                          );
-        ret = query.exec(qryMsg.arg("ruleset"));
-        ret = query.exec(qryMsg.arg("rulesetdef"));
+        if (! ret)
+        {
+            qDebug("%s %d\t%s",
+                __FILE__ ,
+                __LINE__ ,
+                query.lastError().text().toAscii().data());
+        }
+
+        ret = query.exec(qryMsg.
+                            arg("rulesetdef").
+                            arg(rulesName).
+                            arg(rulesText)
+                        );
+        if (! ret)
+        {
+            qDebug("%s %d\t%s",
+                __FILE__ ,
+                __LINE__ ,
+                query.lastError().text().toAscii().data());
+        }
+
+    }
+    return ret;
+}
+
+
+bool Install::createRulesetRows()
+{
+    QString qryMsg;
+    QString rulesName;
+    QStringList rulesList;
+    bool ret = false;
+
+    if (dm->getDb().isOpen())
+    {
+        rulesName = "Clean Firewall - Accept everything";
+        rulesList << "# Run shell script" << createScriptClearFirewall();
+        insertRulesetRow(rulesName, rulesList);
+
+        rulesName = "Home";
+        rulesList.clear();
+        rulesList << "Home firewall rules";
+        insertRulesetRow(rulesName, rulesList);
+
+        rulesName = "Office";
+        rulesList.clear();
+        rulesList << "Office firewall rules";
+        insertRulesetRow(rulesName, rulesList);
+
+        rulesName = "Public location";
+        rulesList.clear();
+        rulesList << "Public location firewall rules";
+        insertRulesetRow(rulesName, rulesList);
 
     }
     return ret;
@@ -350,43 +380,79 @@ bool Install::createRulesetSnippetsTable()
 }
 
 
+bool Install::insertRuleSnippetRow(QString snippetName, QStringList snippetList)
+{
+    QString snippetText = snippetList.join("\n");
+    QSqlQuery query;
+    QString qryMsg;
+    bool ret = true;
+    qDebug("Install::insertRuleSnippetRow(QString snippetName, QStringList snippetList)");
+
+    if (dm->getDb().isOpen())
+    {
+        qDebug("Install::insertRuleSnippetRow -- Database is open");
+
+        snippetText = snippetList.join("\n");
+        qryMsg = QString(" insert into %1 "
+                         "   (name, snippets) "
+                         " values "
+                         "   ('%2', '%3') ");
+        ret = query.exec(qryMsg.
+                            arg("rulesetsnippets").
+                            arg(snippetName).
+                            arg(snippetText)
+                         );
+        if (! ret)
+        {
+            qDebug("%s %d\t%s",
+                __FILE__ ,
+                __LINE__ ,
+                query.lastError().text().toAscii().data());
+        }
+        ret = query.exec(qryMsg.
+                            arg("rulesetsnippetsdef").
+                            arg(snippetName).
+                            arg(snippetText)
+                        );
+        if (! ret)
+        {
+            qDebug("%s %d\t%s",
+                __FILE__ ,
+                __LINE__ ,
+                query.lastError().text().toAscii().data());
+        }
+
+    }
+    return ret;
+}
+
 bool Install::createRulesetSnippetRows()
 {
     bool ret = false;
+    QString snippetName = "Snippet 1";
+    QStringList snippetList;
+
     if (dm->getDb().isOpen())
     {
-        QSqlQuery query;
-        QString qryMsg = QString(" insert into %1 "
-                                 "   (name, snippets) "
-                                 " values "
-                                 "   ('Snippet 1', 'Snippet 1 iptables statements') ");
-        ret = query.exec(qryMsg.arg("rulesetsnippets"));
-        ret = query.exec(qryMsg.arg("rulesetsnippetsdef"));
+        snippetName = "Snippet 1";
+        snippetList.clear();
+        snippetList << "Snippet 1 iptables statements";
+        insertRuleSnippetRow(snippetName, snippetList);
 
-        qryMsg = QString(" insert into %1 "
-                         "   (name, snippets) "
-                         " values "
-                         "   ('Snippet 2', 'Snippet 2 iptables statements') "
-                        );
-        ret = query.exec(qryMsg.arg("rulesetsnippets"));
-        ret = query.exec(qryMsg.arg("rulesetsnippetsdef"));
+        snippetName = "Snippet 2";
+        snippetList.clear();
+        snippetList << "Snippet 2 iptables statements";
+        insertRuleSnippetRow(snippetName, snippetList);
 
+        snippetName = "Snippet 3";
+        snippetList.clear();
+        snippetList << "Snippet 3 iptables statements";
+        insertRuleSnippetRow(snippetName, snippetList);
 
-        qryMsg = QString(" insert into %1 "
-                         "   (name, snippets) "
-                         " values "
-                         "   ('Snippet 3', 'Snippet 3 iptables statements') "
-                        );
-        ret = query.exec(qryMsg.arg("rulesetsnippets"));
-        ret = query.exec(qryMsg.arg("rulesetsnippetsdef"));
-
-        qryMsg = QString(" insert into %1 "
-                         "   (name, rules) "
-                         " values "
-                         "   ('Snippet 4', 'Snippet 4 iptables statements') "
-                         );
-        ret = query.exec(qryMsg.arg("rulesetsnippets"));
-        ret = query.exec(qryMsg.arg("rulesetsnippetsdef"));
+        snippetName = "Snippet 4";
+        snippetList.clear();
+        snippetList << "Snippet 4 iptables statements";
+        insertRuleSnippetRow(snippetName, snippetList);
 
     }
     return ret;

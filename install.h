@@ -3,6 +3,7 @@
 
 #include <QDir>
 #include <QFile>
+#include <QStringList>
 #include <QTextStream>
 #include <QWidget>
 
@@ -48,11 +49,14 @@ protected:
     bool createQiptablesToolsDir();
 
     bool createRulesetRows();
+    bool insertRulesetRow(QString rulesName, QStringList rulesList);
     bool createRulesetSnippetRows();
+    bool insertRuleSnippetRow(QString snippetName, QStringList snippetList);
     bool createSysconfRow();
 
-    bool createFile(QString filename, QString content, bool executable = false);
-    bool createFile(QString filename, QStringList content, bool executable = false);
+    QString createFile(QString filename, QString content, bool executable = false);
+    QString createFile(QString filename, QStringList content, bool executable = false);
+
 
     QString createScriptClearFirewall();
 
