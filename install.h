@@ -18,6 +18,8 @@ class Install : public QObject
 public:
 
     static const QString INSTALL_DIR;
+    static const int IPTABLES_CHAIN_MAX_NAME_LENGTH;
+    static const QString IPTABLES_CHAIN_NAME_PREFIX;
 
     explicit Install(QObject *parent = 0);
     ~Install();
@@ -28,6 +30,7 @@ public:
     bool createRulesetTable();
     bool createRulesetSnippetsTable();
 
+    QString getRulesetShortName(QString rulesetLongName);
 
     bool createInitialRows();
 
@@ -48,6 +51,8 @@ protected:
     bool createQiptablesTmpDir();
     bool createQiptablesToolsDir();
 
+
+
     bool createRulesetRows();
     bool insertRulesetRow(QString rulesName, QStringList rulesList);
     bool createRulesetSnippetRows();
@@ -57,9 +62,9 @@ protected:
     QString createFile(QString filename, QString content, bool executable = false);
     QString createFile(QString filename, QStringList content, bool executable = false);
 
-
+    bool createShellScripts();
     QString createScriptClearFirewall();
-
+    QString createScriptGetFirewallName();
 
 private:
 

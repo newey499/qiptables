@@ -2,6 +2,10 @@
 
 
 const QString Install::INSTALL_DIR = QString("/etc/qiptables");
+// Max length of iptables chain name as defined by iptables program.
+const int Install::IPTABLES_CHAIN_MAX_NAME_LENGTH = 30;
+// Prefix used to help identify qiptables ruleset on iptables
+const QString Install::IPTABLES_CHAIN_NAME_PREFIX = QString("Q_");
 
 Install::Install(QObject *parent) :
     QObject(parent)
@@ -19,6 +23,19 @@ Install::~Install()
     }
 }
 
+QString Install::getRulesetShortName(QString rulesetLongName)
+{
+    QString result = rulesetLongName;
+
+    result = result.left(Install::IPTABLES_CHAIN_MAX_NAME_LENGTH - 2);
+    result = result.toUpper();
+    result = result.trimmed();
+    result = result.replace(" ", "_");
+    result = result.replace("-", "");
+    result = result.prepend(Install::IPTABLES_CHAIN_NAME_PREFIX);
+
+    return result;
+}
 
 QString Install::performInstall(bool forceInstall)
 {
@@ -63,6 +80,8 @@ bool Install::createQiptablesDir()
     createDir(Install::INSTALL_DIR);
     createDir(QString("%1/%2").arg(Install::INSTALL_DIR).arg("tmp"));
     createDir(QString("%1/%2").arg(Install::INSTALL_DIR).arg("tools"));
+
+    createShellScripts();
 
     return result;
 }
@@ -131,46 +150,6 @@ bool Install::createQiptablesDatabase()
 
     return true;
 }
-
-
-QString Install::createScriptClearFirewall()
-{
-    QStringList script;
-    QString filename = "clearFirewall.sh";
-
-    script  << "#!/bin/bash"
-            << "################################################"
-            << "#"
-            << QString("# ").append(filename)
-            << "#"
-            << "# created by Qiptables install program"
-            << "#"
-            << "# referenced from ruleset table of Sqlite database"
-            << "#"
-            << "#"
-            << "#"
-            << "#"
-            << "################################################"
-            << "echo \"Stopping firewall and allowing everyone...\""
-            << "iptables -F"
-            << "iptables -X"
-            << "iptables -t nat -F"
-            << "iptables -t nat -X"
-            << "iptables -t mangle -F"
-            << "iptables -t mangle -X"
-            << "iptables -P INPUT ACCEPT"
-            << "iptables -P FORWARD ACCEPT"
-            << "iptables -P OUTPUT ACCEPT"
-            << " "
-            << " ";
-
-    // Create the file
-    filename = createFile(filename, script, true);
-
-    return filename;
-}
-
-
 
 
 QString Install::createFile(QString filename, QString content, bool executable)
@@ -278,41 +257,68 @@ bool Install::createRulesetTable()
     if (dm->getDb().isOpen())
     {
         QSqlQuery query;
+
+        // NOTE the shortname column length of 30 matches the
+        // maximum length of an Iptables chain name
+
         QString qryMsg = QString("create table %1 "
                                  "("
                                  " id integer primary key not null, "
-                                 " name     varchar(100) unique not null, "
-                                 " rules	text not null, "
-                                 " foreign key(name) references %2(name) "
+                                 " name         varchar(100) unique not null, "
+                                 " shortname    varchar(%2) unique not null, "
+                                 " rules        text not null, "
+                                 " foreign key(name) references %3(name) "
                                  "         on delete restrict on update restrict "
                                  ")");
-        ret = query.exec(qryMsg.arg("ruleset").arg("sysconf"));
-        ret = query.exec(qryMsg.arg("rulesetdef").arg("sysconfdef"));
+        ret = query.exec(qryMsg.
+                    arg("ruleset").
+                    arg(Install::IPTABLES_CHAIN_MAX_NAME_LENGTH).
+                    arg("sysconf"));
+
+        if (! ret)
+        {
+            qDebug("%s - %s",
+                "Install::createRulesetTable()",
+                query.lastError().text().toAscii().data());
+        }
+
+        ret = query.exec(qryMsg.
+                         arg("rulesetdef").
+                         arg(Install::IPTABLES_CHAIN_MAX_NAME_LENGTH).
+                         arg("sysconfdef"));
     }
     return ret;
 }
+
 
 bool Install::insertRulesetRow(QString rulesName, QStringList rulesList)
 {
     bool ret = true;
 
     // always run a list of the current firewall rules
-    rulesList << "# List current firewall rules" << "iptables -L";
+    //rulesList << "# List current firewall rules" << "iptables -L";
 
     if (dm->getDb().isOpen())
     {
         QString rulesText = rulesList.join("\n");
-
+        QString shortName = getRulesetShortName(rulesName);
+        qDebug("Ruleset->shortname [%s]", shortName.toAscii().data());
         QSqlQuery query;
         QString qryMsg = QString(" insert into %1 "
-                                 "   (name, rules) "
+                                 "   (name, shortname, rules) "
                                  " values "
-                                 "   ('%2', '%3') ");
+                                 "   ('%2', '%3', '%4') ");
+        qDebug("1 qryMsg - [%s]", qryMsg.toAscii().data());
+
         ret = query.exec(qryMsg.
                             arg("ruleset").
                             arg(rulesName).
+                            arg(shortName).
                             arg(rulesText)
                          );
+
+        qDebug("2  qryMsg - [%s]", qryMsg.toAscii().data());
+
         if (! ret)
         {
             qDebug("%s %d\t%s",
@@ -324,8 +330,12 @@ bool Install::insertRulesetRow(QString rulesName, QStringList rulesList)
         ret = query.exec(qryMsg.
                             arg("rulesetdef").
                             arg(rulesName).
+                            arg(shortName).
                             arg(rulesText)
                         );
+        qDebug("3 qryMsg - [%s]", qryMsg.toAscii().data());
+
+
         if (! ret)
         {
             qDebug("%s %d\t%s",
@@ -470,3 +480,81 @@ bool Install::createRulesetSnippetRows()
     }
     return ret;
 }
+
+bool Install::createShellScripts()
+{
+    bool result = true;
+
+    createScriptClearFirewall();
+    createScriptGetFirewallName();
+
+    return result;
+}
+
+QString Install::createScriptClearFirewall()
+{
+    QStringList script;
+    QString filename = "clearFirewall.sh";
+
+    script  << "#!/bin/bash"
+            << "################################################"
+            << "#"
+            << QString("# ").append(filename)
+            << "#"
+            << "# created by Qiptables install program"
+            << "#"
+            << "# referenced from ruleset table of Sqlite database"
+            << "#"
+            << "#"
+            << "#"
+            << "#"
+            << "################################################"
+            << "echo \"Stopping firewall and allowing everyone...\""
+            << "iptables -F"
+            << "iptables -X"
+            << "iptables -t nat -F"
+            << "iptables -t nat -X"
+            << "iptables -t mangle -F"
+            << "iptables -t mangle -X"
+            << "iptables -P INPUT ACCEPT"
+            << "iptables -P FORWARD ACCEPT"
+            << "iptables -P OUTPUT ACCEPT"
+            << " "
+            << " ";
+
+    // Create the file
+    filename = createFile(filename, script, true);
+
+    return filename;
+}
+
+
+QString Install::createScriptGetFirewallName()
+{
+    QStringList script;
+    QString filename = "get-firewall-name.sh";
+
+    script << "#!/bin/bash"
+           << "#!/bin/bash "
+           << "#####################"
+           << "#"
+           << "# firewall-name.sh"
+           << "#"
+           << "# reports name of current firewall using the qiptables convention"
+           << "# of using a chain of zero references whose name is prefixed with"
+           << "# \"Q_\" to match the shortname column of the ruleset table."
+           << "#"
+           << "#####################"
+           << ""
+           << "ZERO_REFERENCES=\"(0 references)\""
+           << "Q_IPTABLES_PREFIX=\"Q_\""
+           << ""
+           << "iptables -L | grep \"$Q_IPTABLES_PREFIX\" | awk '{ print $2; }'";
+
+
+    // Create the file
+    filename = createFile(filename, script, true);
+
+    return filename;
+}
+
