@@ -1,0 +1,9 @@
+###########################
+#
+# Empty .gitignore file
+#
+# Git won't store empty directories so 
+# this file is placed in the empty directory
+# to force Git to recognize the directory.
+#
+###########################

@@ -162,7 +162,6 @@ QString Install::createScriptClearFirewall()
             << "iptables -P FORWARD ACCEPT"
             << "iptables -P OUTPUT ACCEPT"
             << " "
-            << "iptables -L"
             << " ";
 
     // Create the file
@@ -196,6 +195,14 @@ QString Install::createFile(QString filename, QString content, bool executable)
                             QFile::ReadOther  |
                             QFile::ExeOwner   |
                             QFile::ExeGroup);
+    }
+    else
+    {
+        data.setPermissions(QFile::ReadOwner  |
+                            QFile::WriteOwner |
+                            QFile::ReadGroup  |
+                            QFile::WriteGroup |
+                            QFile::ReadOther);
     }
 
     return fname;
@@ -288,6 +295,10 @@ bool Install::createRulesetTable()
 bool Install::insertRulesetRow(QString rulesName, QStringList rulesList)
 {
     bool ret = true;
+
+    // always run a list of the current firewall rules
+    rulesList << "# List current firewall rules" << "iptables -L";
+
     if (dm->getDb().isOpen())
     {
         QString rulesText = rulesList.join("\n");
@@ -343,17 +354,19 @@ bool Install::createRulesetRows()
 
         rulesName = "Home";
         rulesList.clear();
-        rulesList << "Home firewall rules";
+        rulesList << "# Home firewall rules - Accept everything"
+                  << "# Run shell script"
+                  << createScriptClearFirewall();
         insertRulesetRow(rulesName, rulesList);
 
         rulesName = "Office";
         rulesList.clear();
-        rulesList << "Office firewall rules";
+        rulesList << "# Office firewall rules";
         insertRulesetRow(rulesName, rulesList);
 
         rulesName = "Public location";
         rulesList.clear();
-        rulesList << "Public location firewall rules";
+        rulesList << "# Public location firewall rules";
         insertRulesetRow(rulesName, rulesList);
 
     }
@@ -436,22 +449,22 @@ bool Install::createRulesetSnippetRows()
     {
         snippetName = "Snippet 1";
         snippetList.clear();
-        snippetList << "Snippet 1 iptables statements";
+        snippetList << "# Snippet 1 iptables statements";
         insertRuleSnippetRow(snippetName, snippetList);
 
         snippetName = "Snippet 2";
         snippetList.clear();
-        snippetList << "Snippet 2 iptables statements";
+        snippetList << "# Snippet 2 iptables statements";
         insertRuleSnippetRow(snippetName, snippetList);
 
         snippetName = "Snippet 3";
         snippetList.clear();
-        snippetList << "Snippet 3 iptables statements";
+        snippetList << "# Snippet 3 iptables statements";
         insertRuleSnippetRow(snippetName, snippetList);
 
         snippetName = "Snippet 4";
         snippetList.clear();
-        snippetList << "Snippet 4 iptables statements";
+        snippetList << "# Snippet 4 iptables statements";
         insertRuleSnippetRow(snippetName, snippetList);
 
     }

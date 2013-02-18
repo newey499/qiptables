@@ -7,6 +7,12 @@ FormFirewallRules::FormFirewallRules(QWidget *parent, Qt::WindowFlags f) :
 {
     ui->setupUi(this);
 
+    databaseManager = new DatabaseManager(Install::INSTALL_DIR, this);
+    QStringList sl = databaseManager->getRulesetNames();
+    for (int i = 0; i < sl.count(); i++)
+    {
+        ui->cbxFirewalls->addItem(sl.at(i));
+    }
 }
 
 FormFirewallRules::~FormFirewallRules()
