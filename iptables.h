@@ -85,7 +85,7 @@ public:
     // Execute the commands in the ruleset
     virtual bool    processRuleset(QString rulesetName);
 
-
+    virtual void processStringList(QString title, QStringList list);
 
 signals:
 

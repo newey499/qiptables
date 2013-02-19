@@ -158,11 +158,11 @@ void FormFirewallRules::slotEnableRuleset()
     ui->edtCurrentRules->clear();
     ui->edtCurrentRules->appendPlainText("Enabling Ruleset");
     ui->edtCurrentRules->appendPlainText("================");
-    QStringList rules = ipTables->getRulesetRows(ui->cbxFirewalls->currentText());
+    //QStringList rules = ipTables->getRulesetRows(ui->cbxFirewalls->currentText());
     ui->edtCurrentRules->appendPlainText("Executing Ruleset Commands");
     QString shortName = this->ipTables->getRulesetShortName(ui->cbxFirewalls->currentText());
 
-    //this->ipTables->processRuleset(ui->cbxFirewalls->currentText());
+    this->ipTables->processRuleset(ui->cbxFirewalls->currentText());
     /************
     for (int i = 0; i < rules.count(); i++)
     {
@@ -170,10 +170,16 @@ void FormFirewallRules::slotEnableRuleset()
         ui->edtCurrentRules->appendPlainText(proc->execCmdLine(rules.at(i)));
     }
     ********************/
-    ui->edtCurrentRules->appendPlainText(proc->execCmdLine(shortName.prepend("iptables -N ")));
+    QString tmp = shortName;
+    tmp.prepend("iptables -N ");
+    ui->edtCurrentRules->appendPlainText(proc->execCmdLine(tmp));
     ui->edtCurrentRules->appendPlainText(proc->execCmdLine("iptables -L"));
 
-    ui->edtCurrentRules->appendPlainText(shortName);
+    ui->edtCurrentRules->appendPlainText("======================");
+    ui->edtCurrentRules->appendPlainText("Ruleset Applied");
+    ui->edtCurrentRules->appendPlainText("======================");
+    ui->edtCurrentRules->appendPlainText(ui->cbxFirewalls->currentText().prepend("Full ruleset Name: "));
+    ui->edtCurrentRules->appendPlainText(shortName.prepend("Short Name: "));
 
 
 }

@@ -70,7 +70,15 @@ QString IpProcess::executeSynchronous(const QString &program, const QStringList 
 
     printCmdLine(program, arguments);
 
-    start(program, arguments);
+    if (arguments.count() > 0)
+    {
+        start(program, arguments);
+    }
+    else
+    {
+        start(program);
+    }
+
     if (! waitForStarted())
         return empty;
 
@@ -84,7 +92,7 @@ QString IpProcess::executeSynchronous(const QString &program, const QStringList 
     //QByteArray err = readAllStandardError();
     // exit code of zero means command completed ok
     // and that output is from stdout - error output is on stderrs
-    if (exitCode() == 0 || (! errStr.isEmpty()) )
+    if ( (exitCode() == 0) && (errStr.isEmpty()) )
     {
         result = QString(QString(readAllStandardOutput()));
     }
@@ -95,7 +103,7 @@ QString IpProcess::executeSynchronous(const QString &program, const QStringList 
 
     if (result.isEmpty())
     {
-        result = parseErrorCode();
+        // result = parseErrorCode();
     }
 
     // Send the result of executing the command
@@ -129,6 +137,10 @@ QString IpProcess::printCmdLine(QString cmd, QStringList argList)
 QString IpProcess::exec(QString cmd, QStringList argList)
 {
     QString result;
+
+    qDebug("Executing cmd [%s] args [%s]",
+           cmd.toAscii().data(),
+           argList.join(" ").toAscii().data());
     result = executeSynchronous(cmd, argList);
     return result;
 }
