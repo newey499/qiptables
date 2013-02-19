@@ -144,13 +144,15 @@ bool Iptables::processRuleset(QString rulesetName)
 
     // process any includes
     rulesetList = processRulesetIncludes(rulesetList);
+    rulesetList = cmdLine->stripComments(rulesetList);
+    rulesetList = cmdLine->stripBlankLines(rulesetList);
 
     for (int i = 0; i < rulesetList.count(); i++)
     {
         if ("" != rulesetList.at(i).trimmed())
         {
-            //qDebug("Iptables::processRuleset [%s]",
-            //    rulesetList.at(i).toAscii().data());
+            qDebug("Iptables::processRuleset [%s]",
+                   rulesetList.at(i).toAscii().data());
             this->process->execCmdLine(rulesetList.at(i));
         }
     }
@@ -206,6 +208,22 @@ QStringList Iptables::processRulesetIncludes(QStringList rulesetList)
 
 
 
+
+    return result;
+}
+
+
+
+QString Iptables::getRulesetShortName(QString rulesetLongName)
+{
+    QString result = rulesetLongName;
+
+    result = result.left(Install::IPTABLES_CHAIN_MAX_NAME_LENGTH - 2);
+    result = result.toUpper();
+    result = result.trimmed();
+    result = result.replace(" ", "_");
+    result = result.replace("-", "");
+    result = result.prepend(Install::IPTABLES_CHAIN_NAME_PREFIX);
 
     return result;
 }

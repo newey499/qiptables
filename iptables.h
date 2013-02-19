@@ -57,6 +57,8 @@ public:
     explicit Iptables(QObject *parent = 0);
     ~Iptables();
 
+    QString getRulesetShortName(QString rulesetLongName);
+
     virtual QString getIptablesBinary();
     virtual void setIptablesBinary();
 

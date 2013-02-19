@@ -7,12 +7,16 @@ FormFirewallRules::FormFirewallRules(QWidget *parent, Qt::WindowFlags f) :
 {
     ui->setupUi(this);
 
+    ui->btnCurrentRules->setToolTip("Display iptables rules currently operating on this computer");
+    ui->btnEnableRuleset->setToolTip("Overwrite current firewall rules with selected Ruleset");
+
     connect(
             ui->cbxFirewalls, SIGNAL(currentIndexChanged(int)),
-            this, SLOT(slotCbcFirewallsIndexChanged(int))
+            this, SLOT(slotCbxFirewallsIndexChanged(int))
            );
 
     proc = new IpProcess(this);
+    ipTables = new Iptables(this);
 
     databaseManager = new DatabaseManager(Install::INSTALL_DIR, this);
     QStringList sl = databaseManager->getRulesetNames();
@@ -58,7 +62,7 @@ void FormFirewallRules::showCurrentFirewallRules()
                                              arg(shortName));
         ui->edtCurrentRules->appendPlainText(QString("Ruleset Name [%1]").
                                              arg(rulesetName));
-        ui->edtCurrentFirewall->setText(rulesetName);
+
         int index = ui->cbxFirewalls->findText(rulesetName);
         if (index != -1)
         {
@@ -125,21 +129,7 @@ void FormFirewallRules::slotCurrentRules()
     showCurrentFirewallRules();
 }
 
-void FormFirewallRules::slotEnableRuleset()
-{
-    qDebug("FormFirewallRules::slotEnableRuleset()");
-    if (ui->cbxFirewalls->currentIndex() == 0)
-    {
-        QMessageBox::warning(this, "Qiptables",
-                             "A Ruleset is not selected",
-                             QMessageBox::Ok,
-                             QMessageBox::Ok);
-    }
-
-}
-
-
-void FormFirewallRules::slotCbcFirewallsIndexChanged(int index)
+void FormFirewallRules::slotCbxFirewallsIndexChanged(int index)
 {
     if (index == 0)
     {
@@ -149,4 +139,45 @@ void FormFirewallRules::slotCbcFirewallsIndexChanged(int index)
     {
         ui->btnEnableRuleset->setEnabled(true);
     }
+
 }
+
+
+void FormFirewallRules::slotEnableRuleset()
+{
+    qDebug("FormFirewallRules::slotEnableRuleset()");
+    if (ui->cbxFirewalls->currentIndex() == 0)
+    {
+        QMessageBox::warning(this, "Qiptables",
+                             "A Ruleset is not selected",
+                             QMessageBox::Ok,
+                             QMessageBox::Ok);
+        return;
+    }
+
+    ui->edtCurrentRules->clear();
+    ui->edtCurrentRules->appendPlainText("Enabling Ruleset");
+    ui->edtCurrentRules->appendPlainText("================");
+    QStringList rules = ipTables->getRulesetRows(ui->cbxFirewalls->currentText());
+    ui->edtCurrentRules->appendPlainText("Executing Ruleset Commands");
+    QString shortName = this->ipTables->getRulesetShortName(ui->cbxFirewalls->currentText());
+
+    //this->ipTables->processRuleset(ui->cbxFirewalls->currentText());
+    /************
+    for (int i = 0; i < rules.count(); i++)
+    {
+        ui->edtCurrentRules->appendPlainText(rules.at(i));
+        ui->edtCurrentRules->appendPlainText(proc->execCmdLine(rules.at(i)));
+    }
+    ********************/
+    ui->edtCurrentRules->appendPlainText(proc->execCmdLine(shortName.prepend("iptables -N ")));
+    ui->edtCurrentRules->appendPlainText(proc->execCmdLine("iptables -L"));
+
+    ui->edtCurrentRules->appendPlainText(shortName);
+
+
+}
+
+
+
+

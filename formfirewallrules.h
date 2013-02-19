@@ -9,6 +9,7 @@
 #include <QShowEvent>
 #include <QSqlQuery>
 #include <QSqlRecord>
+#include <QString>
 #include <QTreeView>
 #include <QTextEdit>
 #include <QVariant>
@@ -17,6 +18,7 @@
 
 #include "install.h"
 #include "ipprocess.h"
+#include "iptables.h"
 #include "qiptablesexception.h"
 #include "databasemanager.h"
 
@@ -46,12 +48,13 @@ public slots:
     virtual void showCurrentFirewallRules();
     virtual void slotCurrentRules();
     virtual void slotEnableRuleset();
-    virtual void slotCbcFirewallsIndexChanged(int index);
+    virtual void slotCbxFirewallsIndexChanged(int index);
 
 protected:
 
     QPointer<DatabaseManager> databaseManager;
     QPointer<IpProcess> proc;
+    QPointer<Iptables> ipTables;
 
     virtual void showEvent(QShowEvent *event);
 
