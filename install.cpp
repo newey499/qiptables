@@ -21,6 +21,14 @@ Install::~Install()
     {
         delete dir;
     }
+    if (file)
+    {
+        delete file;
+    }
+    if (dm)
+    {
+        delete dm;
+    }
 }
 
 QString Install::getRulesetShortName(QString rulesetLongName)
