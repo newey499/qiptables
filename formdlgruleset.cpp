@@ -74,30 +74,21 @@ FormDlgRuleset::FormDlgRuleset(int opCode, FormCfgRuleset *parent) :
     name = formRuleset->getColumnData("name").toString();
     rules = formRuleset->getColumnData("rules").toString();
 
-    if (opcode == FormCfgRuleset::REC_DELETE)
-    {
-        ui->edtRulesetName->setReadOnly(true);
-        ui->edtRuleset->setReadOnly(true);
-        ui->btnSave->setText("&Delete");
-        buttonsEnabled(true);
-    }
-    else
-    {
-        buttonsEnabled(false);
-    }
-
     if (opcode == FormCfgRuleset::REC_ADD)
     {
         ui->btnSave->setText("&Create");
         ui->edtRulesetName->setText("");
         ui->edtRuleset->clear();
         ui->edtRuleset->appendPlainText("");
+        ui->btnAddSnippet->setEnabled(true);
     }
-    else
+
+    if (opcode == FormCfgRuleset::REC_EDIT)
     {
         ui->edtRulesetName->setText(name);
         ui->edtRuleset->clear();
         ui->edtRuleset->appendPlainText(rules);
+        ui->btnAddSnippet->setEnabled(true);
         // Cannot edit ruleset name if its the default held
         // on the sysconf table.
         if (isDefaultRuleset())
@@ -107,6 +98,14 @@ FormDlgRuleset::FormDlgRuleset(int opCode, FormCfgRuleset *parent) :
     }
 
 
+    if (opcode == FormCfgRuleset::REC_DELETE)
+    {
+        ui->edtRulesetName->setReadOnly(true);
+        ui->edtRuleset->setReadOnly(true);
+        ui->btnSave->setText("&Delete");
+        ui->btnAddSnippet->setEnabled(false);
+        buttonsEnabled(true);
+    }
 
     connect(ui->edtRulesetName, SIGNAL(textEdited(QString)),
             this, SLOT(dataChanged()));
@@ -390,4 +389,10 @@ bool FormDlgRuleset::writeRow()
     }
 
     return result;
+}
+
+
+void FormDlgRuleset::slotAddSnippet()
+{
+    qDebug("void FormDlgRuleset::slotAddSnippet()");
 }

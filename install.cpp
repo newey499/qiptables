@@ -512,6 +512,42 @@ bool Install::createRulesetSnippetRows()
         snippetList << "# Snippet 4 iptables statements";
         insertRuleSnippetRow(snippetName, snippetList);
 
+        snippetName = "Default Policy Accept";
+        snippetList.clear();
+        snippetList << "# Default Policy Accept Snippet" <<
+                       "iptables -P INPUT ACCEPT" <<
+                       "iptables -P FORWARD ACCEPT" <<
+                       "iptables -P OUTPUT ACCEPT" <<
+                       "# always allow local loopback" <<
+                       "iptables -I INPUT -i lo -j ACCEPT";
+        insertRuleSnippetRow(snippetName, snippetList);
+
+
+        snippetName = "Default Policy Drop";
+        snippetList.clear();
+        snippetList << "# Default Policy Drop Snippet" <<
+                       "iptables -P INPUT DROP" <<
+                       "iptables -P FORWARD DROP" <<
+                       "iptables -P OUTPUT DROP" <<
+                       "# always allow local loopback" <<
+                       "iptables -I INPUT -i lo -j ACCEPT";
+        insertRuleSnippetRow(snippetName, snippetList);
+
+
+        snippetName = "Accept Established Related";
+        snippetList.clear();
+        snippetList << "# Accept Established Related" <<
+                       "iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT";
+        insertRuleSnippetRow(snippetName, snippetList);
+
+        snippetName = "Hide Firewall";
+        snippetList.clear();
+        snippetList << "# Hide presence of firewall by returning specific codes" <<
+                       "iptables -A INPUT -p tcp -j REJECT --reject-with tcp-reset" <<
+                       "iptables -A INPUT -p udp -j REJECT --reject-with icmp-port-unreachable";
+        insertRuleSnippetRow(snippetName, snippetList);
+
+
     }
     return ret;
 }

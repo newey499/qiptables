@@ -80,6 +80,13 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
+      <widget class="QPushButton" name="btnAddSnippet">
+       <property name="text">
+        <string>Add Snippet</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -144,10 +151,27 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>btnAddSnippet</sender>
+   <signal>clicked()</signal>
+   <receiver>FormDlgRuleset</receiver>
+   <slot>slotAddSnippet()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>55</x>
+     <y>381</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>209</x>
+     <y>202</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>slotSave()</slot>
   <slot>slotCancel()</slot>
   <slot>dataChanged()</slot>
+  <slot>slotAddSnippet()</slot>
  </slots>
 </ui>

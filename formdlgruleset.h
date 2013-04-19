@@ -56,6 +56,7 @@ public slots:
 
     virtual void slotSave();
     virtual void slotCancel();
+    virtual void slotAddSnippet();
 
 protected:
 
