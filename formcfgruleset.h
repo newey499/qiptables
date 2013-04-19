@@ -1,6 +1,8 @@
-
 /************************************************************************
 Copyright Chris Newey 2013
+
+qiptables@hotmail.com
+
 
 This file is part of Qiptables.
 
