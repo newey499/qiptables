@@ -28,6 +28,7 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <QDir>
 #include <QFile>
+#include <QPointer>
 #include <QStringList>
 #include <QTextStream>
 #include <QWidget>
