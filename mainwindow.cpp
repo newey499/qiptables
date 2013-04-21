@@ -134,11 +134,15 @@ void MainWindow::buildMenusAndForms()
     widgetStack = new IpStackedWidget(this);
     formTest = new FormTest(this);
     formFirewallRules = new FormFirewallRules(this);
-    // tabbed widge  - no longer used
+    // tabbed widget  - no longer used
     // formConfigQiptables = new FormConfigQiptables(this);
     FormCfgRuleset *formCfgRuleset = new FormCfgRuleset();
     FormCfgRuleSnippets *formCfgRuleSnippets = new FormCfgRuleSnippets();
     FormCfgSettings *formCfgSettings = new FormCfgSettings();
+
+    connect(this, SIGNAL(closeSnippetWindow()),
+            formCfgRuleset->formSnippets, SLOT(slotCloseWindow()));
+
 
     fileMenu = menuBar()->addMenu(tr("&Firewall"));
 

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>401</width>
-    <height>176</height>
+    <width>524</width>
+    <height>259</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -47,6 +47,27 @@
         </size>
        </property>
       </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnIncludeSnippet">
+       <property name="text">
+        <string>Include</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnPasteSnippet">
+       <property name="text">
+        <string>Paste</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnClose">
+       <property name="text">
+        <string>Close</string>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QPushButton" name="btnAdd">
@@ -130,10 +151,60 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>btnClose</sender>
+   <signal>clicked()</signal>
+   <receiver>FormCfgRuleSnippets</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>170</x>
+     <y>241</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>202</x>
+     <y>129</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnIncludeSnippet</sender>
+   <signal>clicked()</signal>
+   <receiver>FormCfgRuleSnippets</receiver>
+   <slot>slotIncludeSnippet()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>79</x>
+     <y>241</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>202</x>
+     <y>129</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnPasteSnippet</sender>
+   <signal>clicked()</signal>
+   <receiver>FormCfgRuleSnippets</receiver>
+   <slot>slotPasteSnippet()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>212</x>
+     <y>241</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>261</x>
+     <y>129</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>slotBtnAdd()</slot>
   <slot>slotBtnEdit()</slot>
   <slot>slotBtnDelete()</slot>
+  <slot>slotIncludeSnippet()</slot>
+  <slot>slotPasteSnippet()</slot>
  </slots>
 </ui>

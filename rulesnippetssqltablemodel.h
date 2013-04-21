@@ -33,14 +33,21 @@ class RuleSnippetsSqlTableModel : public QSqlTableModel
     Q_OBJECT
 public:
     explicit RuleSnippetsSqlTableModel(QObject *parent = 0);
+    explicit RuleSnippetsSqlTableModel(bool readOnly, QObject *parent = 0);
 
     virtual bool updateRowInTable(int row, const QSqlRecord &values);
+
+    bool readOnly;
 
 signals:
 
 public slots:
 
+    virtual void dropChanges();
+
 protected:
+
+
 
 
 

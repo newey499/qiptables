@@ -29,9 +29,36 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 RuleSnippetsSqlTableModel::RuleSnippetsSqlTableModel(QObject *parent) :
     QSqlTableModel(parent)
 {
+    readOnly = false;
 }
+
+RuleSnippetsSqlTableModel::RuleSnippetsSqlTableModel(bool readOnly, QObject *parent) :
+    QSqlTableModel(parent)
+{
+    this->readOnly = readOnly;
+    if (this->readOnly)
+    {
+        connect(this, SIGNAL(beforeInsert(QSqlRecord &)),
+                this, SLOT(dropChanges()) );
+        connect(this, SIGNAL(primeInsert(int, QSqlRecord &)),
+                this, SLOT(dropChanges()) );
+        connect(this, SIGNAL(beforeUpdate(int, QSqlRecord &)),
+                this, SLOT(dropChanges()) );
+        connect(this, SIGNAL(beforeDelete(int)),
+                this, SLOT(dropChanges()) );
+    }
+}
+
+
 
 bool RuleSnippetsSqlTableModel::updateRowInTable(int row, const QSqlRecord &values)
 {
     return QSqlTableModel::updateRowInTable(row, values);
+}
+
+
+void RuleSnippetsSqlTableModel::dropChanges()
+{
+    qDebug("RuleSnippetsSqlTableModel::dropChanges() - REVERTALL");
+    //revertAll();
 }

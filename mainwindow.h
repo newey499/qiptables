@@ -83,6 +83,9 @@ public slots:
     //virtual void selectCfgSettings();
     virtual void saveSettings();
 
+signals:
+
+
 protected:
 
     virtual void closeEvent(QCloseEvent *event);

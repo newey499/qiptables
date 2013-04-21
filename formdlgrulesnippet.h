@@ -49,7 +49,11 @@ public:
 
 public slots:
 
+
 protected:
+
+    QString organization;
+    QString application;
 
     QPointer<FormCfgRuleSnippets> formCfgRuleSnippets;
     int opCode;

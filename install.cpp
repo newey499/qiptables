@@ -393,6 +393,11 @@ bool Install::createRulesetRows()
 
     if (dm->getDb().isOpen())
     {
+        rulesName = "Test";
+        rulesList << "# Test";
+        insertRulesetRow(rulesName, rulesList);
+
+
         rulesName = "Clean Firewall - Accept everything";
         rulesList << "# Run shell script" << createScriptClearFirewall();
         insertRulesetRow(rulesName, rulesList);
@@ -492,25 +497,19 @@ bool Install::createRulesetSnippetRows()
 
     if (dm->getDb().isOpen())
     {
-        snippetName = "Snippet 1";
+
+        snippetName = "Test Snippet";
         snippetList.clear();
-        snippetList << "# Snippet 1 iptables statements";
+        snippetList << "# Test Snippet";
         insertRuleSnippetRow(snippetName, snippetList);
 
-        snippetName = "Snippet 2";
+        snippetName = "Clear Firewall rules - accept everything";
         snippetList.clear();
-        snippetList << "# Snippet 2 iptables statements";
+        snippetList << "# Clear Firewall rules - accept everything" <<
+                       "# Run shell script" <<
+                       "/etc/qiptables/tools/clearFirewall.sh";
         insertRuleSnippetRow(snippetName, snippetList);
 
-        snippetName = "Snippet 3";
-        snippetList.clear();
-        snippetList << "# Snippet 3 iptables statements";
-        insertRuleSnippetRow(snippetName, snippetList);
-
-        snippetName = "Snippet 4";
-        snippetList.clear();
-        snippetList << "# Snippet 4 iptables statements";
-        insertRuleSnippetRow(snippetName, snippetList);
 
         snippetName = "Default Policy Accept";
         snippetList.clear();
@@ -547,6 +546,44 @@ bool Install::createRulesetSnippetRows()
                        "iptables -A INPUT -p udp -j REJECT --reject-with icmp-port-unreachable";
         insertRuleSnippetRow(snippetName, snippetList);
 
+
+        snippetName = "Accept Incoming HTTP";
+        snippetList.clear();
+        snippetList << "# Accept Incoming HTTP" <<
+                       "iptables -A INPUT -m state --state NEW -p tcp --dport 80 -j ACCEPT";
+        insertRuleSnippetRow(snippetName, snippetList);
+
+        snippetName = "Accept Incoming HTTPS";
+        snippetList.clear();
+        snippetList << "# Accept Incoming HTTPS" <<
+                       "iptables -A INPUT -m state --state NEW -p tcp --dport 443 -j ACCEPT";
+        insertRuleSnippetRow(snippetName, snippetList);
+
+
+        snippetName = "Accept Incoming SSH";
+        snippetList.clear();
+        snippetList << "# Accept Incoming SSH" <<
+                       "iptables -A INPUT -p tcp --dport 22 -j ACCEPT";
+        insertRuleSnippetRow(snippetName, snippetList);
+
+
+        snippetName = "Accept Incoming VNC";
+        snippetList.clear();
+        snippetList << "# Accept Incoming VNC" <<
+                       "# A VNC server listens for a VNC client on " <<
+                       "# TCP ports 5800+N, 5900+N, and 6000+N where" <<
+                       "# N is the display which starts at zero." <<
+                       "# 5800+N - Java-based vncviewer" <<
+                       "# 5900+N - VNC Client Port" <<
+                       "# 6000+N - X Server port" <<
+                       "# VNC Display 1" <<
+                       "# 5800+N - Java-based vncviewer" <<
+                       "iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 5801  -j ACCEPT" <<
+                       "# 5900+N - VNC Client Port" <<
+                       "iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 5901  -j ACCEPT" <<
+                       "# 6000+N - X Server port" <<
+                       "iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 6001  -j ACCEPT";
+        insertRuleSnippetRow(snippetName, snippetList);
 
     }
     return ret;

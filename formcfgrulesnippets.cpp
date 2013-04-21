@@ -31,13 +31,65 @@ const int FormCfgRuleSnippets::REC_ADD       = 1;
 const int FormCfgRuleSnippets::REC_EDIT      = 2;
 const int FormCfgRuleSnippets::REC_DELETE    = 3;
 
-FormCfgRuleSnippets::FormCfgRuleSnippets(QWidget *parent) :
-    QWidget(parent),
+FormCfgRuleSnippets::FormCfgRuleSnippets(QWidget *parent, Qt::WindowFlags f) :
+    QWidget(parent, f),
     ui(new Ui::FormCfgRuleSnippets)
 {
+    popupSnippetSelect = false;
+
+    commonConstructor();
+
+    ui->btnAdd->setVisible(true);
+    ui->btnEdit->setVisible(true);
+    ui->btnDelete->setVisible(true);
+    ui->btnIncludeSnippet->setVisible(false);
+    ui->btnPasteSnippet->setVisible(false);
+    ui->btnClose->setVisible(false);
+
+}
+
+
+FormCfgRuleSnippets::FormCfgRuleSnippets(bool popupSnippetSelect, QWidget *parent, Qt::WindowFlags f) :
+    QWidget(parent, f),
+    ui(new Ui::FormCfgRuleSnippets)
+{
+
+    this->popupSnippetSelect = popupSnippetSelect;
+    commonConstructor();
+
+
+    if (this->popupSnippetSelect)
+    {
+        QSettings settings(organization, application);
+        restoreGeometry(settings.value("geometry").toByteArray());
+    }
+
+    ui->btnAdd->setVisible(false);
+    ui->btnEdit->setVisible(false);
+    ui->btnDelete->setVisible(false);
+    ui->btnIncludeSnippet->setVisible(true);
+    ui->btnPasteSnippet->setVisible(true);
+    ui->btnClose->setVisible(true);
+
+}
+
+
+void FormCfgRuleSnippets::commonConstructor()
+{
+
+    organization = "git:bitbucket.org:newey499.qiptables.git";
+    application  = "QiptablesFormCfgRuleSnippets";
+
+    // Zero pointers
+    model = 0;
+
     ui->setupUi(this);
 
+    ui->btnIncludeSnippet->setToolTip("Use #include to incorporate snippet in rule");
+    ui->btnPasteSnippet->setToolTip("Paste contents of snippet into rule");
+
     ui->edtRuleSnippets->setReadOnly(true);
+
 
     model = new RuleSnippetsSqlTableModel(this);
     model->setTable("rulesetsnippets");
@@ -46,10 +98,10 @@ FormCfgRuleSnippets::FormCfgRuleSnippets(QWidget *parent) :
     model->setHeaderData(0, Qt::Horizontal, tr("Id"));
     model->setHeaderData(1, Qt::Horizontal, tr("Snippet Name"));
     model->setHeaderData(2, Qt::Horizontal, tr("Snippet"));
+
     model->select();
-
-
     ui->tblRuleSnippets->setModel(model);
+
     ui->tblRuleSnippets->hideColumn(0); // don't show the ID
     ui->tblRuleSnippets->hideColumn(2); // don't show the Ruleset Snippets - displayed
                                    // in text edit box
@@ -59,12 +111,16 @@ FormCfgRuleSnippets::FormCfgRuleSnippets(QWidget *parent) :
             this, SLOT(currentRowChanged()));
 
     ui->tblRuleSnippets->show();
-
 }
+
 
 FormCfgRuleSnippets::~FormCfgRuleSnippets()
 {
     delete ui;
+    if (model)
+    {
+        delete model;
+    }
 }
 
 RuleSnippetsTableView * FormCfgRuleSnippets::getView()
@@ -171,3 +227,72 @@ void FormCfgRuleSnippets::slotBtnDelete()
 
 }
 
+
+void FormCfgRuleSnippets::saveSettings()
+{
+    QSettings settings(organization,application);
+    settings.setValue("geometry", saveGeometry());
+}
+
+void FormCfgRuleSnippets::closeEvent(QCloseEvent *event)
+{
+
+    qDebug("MainWindow::closeEvent");
+    //int ret = quitYesNo();
+
+    //if (ret == QMessageBox::Yes)
+    if (true)
+    {
+        saveSettings();
+        event->accept();
+    }
+    else
+    {
+        event->ignore();
+    }
+}
+
+
+int FormCfgRuleSnippets::quitYesNo()
+{
+    QString exit = QString("Exit ");
+    exit = exit.append(this->application);
+
+    int ret = QMessageBox::question(this, tr(this->application.toAscii().data()),
+                                   tr(exit.toAscii().data()),
+                                   QMessageBox::Yes | QMessageBox::No,
+                                   QMessageBox::Yes);
+
+    return ret;
+}
+
+
+void FormCfgRuleSnippets::slotIncludeSnippet()
+{
+    int row = ui->tblRuleSnippets->currentRow();
+    int id = getColumnData("id").toInt();
+    QString name = getColumnData("name").toString();
+    QString snippets = getColumnData("snippets").toString();
+    emit addSnippet(true, id, name, snippets);
+    qDebug("FormCfgRuleSnippets::slotIncludeSnippet() row [%d] name [%s]",
+           row, name.toAscii().data());
+}
+
+
+void FormCfgRuleSnippets::slotPasteSnippet()
+{
+    int row = ui->tblRuleSnippets->currentRow();
+    int id = getColumnData("id").toInt();
+    QString name = getColumnData("name").toString();
+    QString snippets = getColumnData("snippets").toString();
+    emit addSnippet(false, id, name, snippets);
+    qDebug("FormCfgRuleSnippets::slotPasteSnippet() row [%d] name [%s]",
+           row, name.toAscii().data());
+}
+
+
+void FormCfgRuleSnippets::slotCloseWindow()
+{
+    qDebug("FormCfgRuleSnippets::slotCloseWindow()");
+    close();
+}

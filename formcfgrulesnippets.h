@@ -28,13 +28,17 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef FORMCFGRULESNIPPETS_H
 #define FORMCFGRULESNIPPETS_H
 
+#include <QCloseEvent>
 #include <QMessageBox>
 #include <QPointer>
+#include <QSettings>
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QVariant>
 #include <QWidget>
+
+
 
 #include "formdlgrulesnippet.h"
 #include "rulesnippetssqltablemodel.h"
@@ -58,12 +62,17 @@ public:
     static const int REC_DELETE;
 
 
-    explicit FormCfgRuleSnippets(QWidget *parent = 0);
+    explicit FormCfgRuleSnippets(QWidget *parent = 0, Qt::WindowFlags f = 0);
+    explicit FormCfgRuleSnippets(bool popupSnippetSelect, QWidget *parent = 0, Qt::WindowFlags f = 0);
     ~FormCfgRuleSnippets();
 
     RuleSnippetsTableView * getView();
     RuleSnippetsSqlTableModel *getModel() { return model; }
     virtual QVariant getColumnData(QString colName);
+
+signals:
+
+    void addSnippet(bool useInclude, int id, QString name, QString snippets);
 
 public slots:
 
@@ -73,10 +82,23 @@ public slots:
     virtual void slotBtnAdd();
     virtual void slotBtnEdit();
     virtual void slotBtnDelete();
+    virtual void slotIncludeSnippet();
+    virtual void slotPasteSnippet();
+    virtual void slotCloseWindow();
 
 protected:
 
     QPointer<RuleSnippetsSqlTableModel> model;
+    bool popupSnippetSelect;
+    QString organization;
+    QString application;
+
+    virtual void commonConstructor();
+
+
+    virtual void saveSettings();
+    void closeEvent(QCloseEvent *event);
+    virtual int quitYesNo();
 
 private:
 

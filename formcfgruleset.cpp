@@ -36,6 +36,10 @@ FormCfgRuleset::FormCfgRuleset(QWidget *parent) :
     ui(new Ui::FormCfgRuleset)
 {
     ui->setupUi(this);
+    //formSnippets = new FormCfgRuleSnippets(true, this, Qt::Popup);
+    formSnippets = new FormCfgRuleSnippets(true, this, Qt::Window);
+    connect(formSnippets, SIGNAL(addSnippet(bool, int, QString, QString)),
+            this, SLOT(slotAddSnippet(bool, int, QString, QString)));
 
     ui->edtRuleSet->setReadOnly(true);
 
@@ -45,13 +49,17 @@ FormCfgRuleset::FormCfgRuleset(QWidget *parent) :
     //model->setSort(1, Qt::AscendingOrder); // Sort by ruleset Name
     model->setHeaderData(0, Qt::Horizontal, tr("Id"));
     model->setHeaderData(1, Qt::Horizontal, tr("Ruleset Name"));
-    model->setHeaderData(2, Qt::Horizontal, tr("Ruleset"));
+    model->setHeaderData(2, Qt::Horizontal, tr("Internal Name"));
+    model->setHeaderData(3, Qt::Horizontal, tr("Ruleset"));
     model->select();
 
     ui->tblRuleset->setModel(model);
     ui->tblRuleset->hideColumn(0); // don't show the ID
-    ui->tblRuleset->hideColumn(2); // don't show the Ruleset - displayed
+    ui->tblRuleset->hideColumn(2); // don't show the internal Ruleset name
+    ui->tblRuleset->hideColumn(3); // don't show the Ruleset - displayed
                                    // in text edit box
+
+
     ui->tblRuleset->selectRow(0);  // select first row
 
     connect(ui->tblRuleset, SIGNAL(rowChanged(QModelIndex)),
@@ -62,6 +70,10 @@ FormCfgRuleset::FormCfgRuleset(QWidget *parent) :
 
 FormCfgRuleset::~FormCfgRuleset()
 {
+    if (formSnippets)
+    {
+        delete formSnippets;
+    }
     delete ui;
 }
 
@@ -207,4 +219,48 @@ bool FormCfgRuleset::isRulesetDefault()
     }
 
     return result;
+}
+
+
+void FormCfgRuleset::slotCodeSnippets()
+{
+    qDebug("FormCfgRuleset::slotCodeSnippets()");
+    formSnippets->show();
+}
+
+
+void FormCfgRuleset::slotAddSnippet(bool useInclude, int id, QString name, QString snippets)
+{
+    qDebug("FormCfgRuleset::slotAddSnippet(int id, QString name, QString snippets)");
+    QString include;
+    ui->edtRuleSet->appendPlainText(include);
+
+    int currentRow = getView()->currentRow();
+    QSqlRecord rec = getModel()->record(currentRow);
+    //rec.setValue("name", ui->edtRulesetName->text());
+    QString rules = rec.value("rules").toString();
+    if (useInclude)
+    {
+        include = QString("\n#include %1").arg(name);
+    }
+    else
+    {
+        include = QString("\n%1").arg(snippets);
+    }
+    rules = rules.append(include);
+    rec.setValue("rules", rules);
+
+    // update row
+    if (getModel()->setRecord(currentRow, rec))
+    {
+        qDebug("row update write submitAll() Ok");
+        getModel()->submitAll();
+    }
+    else
+    {
+        qDebug("row not updated - setRecord call failed");
+        getModel()->revertAll();
+    }
+    ui->tblRuleset->selectRow(currentRow);
+
 }

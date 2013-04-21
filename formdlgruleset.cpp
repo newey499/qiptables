@@ -32,8 +32,6 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
  \todo Data validation
 
- \todo Insert, update and delete sql
-
  \todo Investigate and implement a mechanism for validating firewall rules
 
  \todo If ruleset being edited is the default ruleset held on the sysconf table
@@ -69,7 +67,7 @@ FormDlgRuleset::FormDlgRuleset(int opCode, FormCfgRuleset *parent) :
     formRuleset = parent;
 
     ui->setupUi(this);
-
+    qDebug("QQQQQQQQQQQQQQQQQQQQQQQQQQQ");
     id = formRuleset->getColumnData("id").toInt();
     name = formRuleset->getColumnData("name").toString();
     rules = formRuleset->getColumnData("rules").toString();
