@@ -27,8 +27,14 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef RULESNIPPETSTABLEVIEW_H
 #define RULESNIPPETSTABLEVIEW_H
 
+#include <QApplication>
+#include <QDrag>
 #include <QHeaderView>
+#include <QMimeData>
+
 #include <QModelIndex>
+#include <QMouseEvent>
+#include <QPoint>
 #include <QTableView>
 
 class RuleSnippetsTableView : public QTableView
@@ -51,7 +57,10 @@ public slots:
 
 protected:
 
+    //virtual void mousePressEvent(QMouseEvent *event);
+    //virtual void mouseMoveEvent(QMouseEvent *event);
 
+    QPoint dragStartPosition;
 };
 
 #endif // RULESNIPPETSTABLEVIEW_H

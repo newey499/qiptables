@@ -38,6 +38,8 @@ FormCfgRuleset::FormCfgRuleset(QWidget *parent) :
     ui->setupUi(this);
     //formSnippets = new FormCfgRuleSnippets(true, this, Qt::Popup);
     formSnippets = new FormCfgRuleSnippets(true, this, Qt::Window);
+    //formSnippets->enableDrag();
+
     connect(formSnippets, SIGNAL(addSnippet(bool, int, QString, QString)),
             this, SLOT(slotAddSnippet(bool, int, QString, QString)));
 

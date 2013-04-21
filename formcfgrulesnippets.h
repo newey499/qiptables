@@ -86,6 +86,8 @@ public slots:
     virtual void slotPasteSnippet();
     virtual void slotCloseWindow();
 
+    virtual void enableDrag(bool enable = true);
+
 protected:
 
     QPointer<RuleSnippetsSqlTableModel> model;
