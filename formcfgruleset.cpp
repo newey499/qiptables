@@ -39,7 +39,7 @@ FormCfgRuleset::FormCfgRuleset(QWidget *parent) :
     //formSnippets = new FormCfgRuleSnippets(true, this, Qt::Popup);
     formSnippets = new FormCfgRuleSnippets(true, this, Qt::Window);
     //formSnippets->enableDrag();
-
+    formSnippets->enableContextMenu(true);
     connect(formSnippets, SIGNAL(addSnippet(bool, int, QString, QString)),
             this, SLOT(slotAddSnippet(bool, int, QString, QString)));
 
@@ -233,6 +233,8 @@ void FormCfgRuleset::slotCodeSnippets()
 
 void FormCfgRuleset::slotAddSnippet(bool useInclude, int id, QString name, QString snippets)
 {
+    id = id;  // suppress compiler warning - copiler optimises this out
+
     qDebug("FormCfgRuleset::slotAddSnippet(int id, QString name, QString snippets)");
     QString include;
     ui->edtRuleSet->appendPlainText(include);

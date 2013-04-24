@@ -23,11 +23,10 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 ***************************************************************************/
 
-
-
 #ifndef FORMCFGRULESNIPPETS_H
 #define FORMCFGRULESNIPPETS_H
 
+#include <QAction>
 #include <QCloseEvent>
 #include <QMessageBox>
 #include <QPointer>
@@ -39,10 +38,10 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #include <QWidget>
 
 
-
+#include "rulesnippetstableview.h"
 #include "formdlgrulesnippet.h"
 #include "rulesnippetssqltablemodel.h"
-#include "rulesnippetstableview.h"
+
 
 
 
@@ -85,8 +84,10 @@ public slots:
     virtual void slotIncludeSnippet();
     virtual void slotPasteSnippet();
     virtual void slotCloseWindow();
+    virtual void slotMenuSelection(QAction * selectedAction);
 
     virtual void enableDrag(bool enable = true);
+    virtual void enableContextMenu(bool enable = true);
 
 protected:
 

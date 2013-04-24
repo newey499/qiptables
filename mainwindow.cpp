@@ -140,10 +140,6 @@ void MainWindow::buildMenusAndForms()
     FormCfgRuleSnippets *formCfgRuleSnippets = new FormCfgRuleSnippets();
     FormCfgSettings *formCfgSettings = new FormCfgSettings();
 
-    connect(this, SIGNAL(closeSnippetWindow()),
-            formCfgRuleset->formSnippets, SLOT(slotCloseWindow()));
-
-
     fileMenu = menuBar()->addMenu(tr("&Firewall"));
 
         actFirewallRules = new QAction(tr("&Firewall Rules"), this);

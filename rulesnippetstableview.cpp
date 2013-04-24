@@ -22,10 +22,14 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 ***************************************************************************/
 
-
-
-
 #include "rulesnippetstableview.h"
+
+
+
+const int RuleSnippetsTableView::INCLUDE_SNIPPET = 1;
+const int RuleSnippetsTableView::PASTE_SNIPPET   = 2;
+
+
 
 RuleSnippetsTableView::RuleSnippetsTableView(QWidget *parent) :
     QTableView(parent)
@@ -98,3 +102,46 @@ void RuleSnippetsTableView::mouseMoveEvent(QMouseEvent *event)
 
 }
 **********************************/
+
+void RuleSnippetsTableView::enableContextMenu(bool enable)
+{
+    if (enable)
+    {
+        this->setContextMenuPolicy(Qt::CustomContextMenu);
+        connect(this, SIGNAL(customContextMenuRequested(const QPoint&)),
+                this, SLOT(slotShowContextMenu(const QPoint&)));
+    }
+}
+
+
+void RuleSnippetsTableView::slotShowContextMenu(const QPoint & pos)
+{
+    qDebug("slotShowContextMenu(const QPoint&)");
+    // for most widgets
+    QPoint globalPos = this->mapToGlobal(pos);
+    // for QAbstractScrollArea and derived classes you would use:
+    // QPoint globalPos = myWidget->viewport()->mapToGlobal(pos);
+
+    QMenu myMenu;
+
+    QString tmp1 = QString("Include Snippet [%1]").arg(currentRow());
+    QString tmp2 = QString("Paste Snippet Item [%1]").arg(currentRow());
+
+    myMenu.addAction(tmp1);
+    myMenu.addAction(tmp2);
+
+    myMenu.actions()[0]->setData(INCLUDE_SNIPPET);
+    myMenu.actions()[1]->setData(PASTE_SNIPPET);
+
+    QAction* selectedItem = myMenu.exec(globalPos);
+    qDebug("Menu Selection [%d]", selectedItem->data().toInt());
+    if (selectedItem)
+    {
+        emit menuItemSelected(selectedItem);
+    }
+    else
+    {
+        // nothing was chosen
+    }
+}
+

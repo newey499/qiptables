@@ -30,30 +30,39 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #include <QApplication>
 #include <QDrag>
 #include <QHeaderView>
+#include <QMenu>
 #include <QMimeData>
 
 #include <QModelIndex>
 #include <QMouseEvent>
 #include <QPoint>
 #include <QTableView>
+#include <QVariant>
 
 class RuleSnippetsTableView : public QTableView
 {
     Q_OBJECT
 public:
+
+    static const int INCLUDE_SNIPPET;
+    static const int PASTE_SNIPPET;
+
     explicit RuleSnippetsTableView(QWidget *parent = 0);
 
     virtual void configureView();
     virtual int currentRow();
+    virtual void enableContextMenu(bool enable = true);
 
 signals:
 
     void rowChanged(QModelIndex);
+    void menuItemSelected(QAction *);
 
 public slots:
 
     virtual void currentChanged(const QModelIndex &current,
                                 const QModelIndex &previous );
+    virtual void slotShowContextMenu(const QPoint & pos);
 
 protected:
 

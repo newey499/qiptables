@@ -62,6 +62,9 @@ FormCfgRuleSnippets::FormCfgRuleSnippets(bool popupSnippetSelect, QWidget *paren
     {
         QSettings settings(organization, application);
         restoreGeometry(settings.value("geometry").toByteArray());
+
+        connect(ui->tblRuleSnippets, SIGNAL(menuItemSelected(QAction*)),
+                this, SLOT(slotMenuSelection(QAction *)));
     }
 
     ui->btnAdd->setVisible(false);
@@ -309,6 +312,28 @@ void FormCfgRuleSnippets::enableDrag(bool enable)
     else
     {
         ui->tblRuleSnippets->setDragEnabled(true);
+    }
+
+}
+
+void FormCfgRuleSnippets::enableContextMenu(bool enable)
+{
+    ui->tblRuleSnippets->enableContextMenu(enable);
+}
+
+
+void FormCfgRuleSnippets::slotMenuSelection(QAction * selectedAction)
+{
+    qDebug("FormCfgRuleSnippets::slotMenuSelection(QAction * selectedAction) [%s]",
+           selectedAction->text().toAscii().data());
+    if (selectedAction->data().toInt() == RuleSnippetsTableView::INCLUDE_SNIPPET)
+    //if (selectedAction->data().toInt() == RuleSnippetsTableView::INCLUDE_SNIPPET)
+    {
+        slotIncludeSnippet();
+    }
+    if (selectedAction->data().toInt() == RuleSnippetsTableView::PASTE_SNIPPET)
+    {
+        slotPasteSnippet();
     }
 
 }
