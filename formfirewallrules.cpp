@@ -22,7 +22,12 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 ***************************************************************************/
 
+/**
+ \file formfirewallrules.cpp
 
+ \brief Get Ruleset from application database
+
+*/
 
 #include "formfirewallrules.h"
 #include "ui_formfirewallrules.h"

@@ -22,6 +22,12 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 ***************************************************************************/
 
+/**
+\file formcfgruleset.cpp
+
+\brief Browse Rulesets and call add amend delete ruleset form
+
+***************************/
 
 
 #include "formcfgruleset.h"

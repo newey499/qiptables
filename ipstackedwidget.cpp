@@ -22,7 +22,13 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 ***************************************************************************/
 
+/**
+ \file ipstackedwidget.cpp
 
+ \brief Class to contain application formss
+
+
+*/
 
 #include "ipstackedwidget.h"
 

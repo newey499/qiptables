@@ -22,7 +22,12 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 ***************************************************************************/
 
+/**
+ \file qiptablesexception.cpp
 
+ \brief Exception class for application
+
+*/
 
 #include "qiptablesexception.h"
 

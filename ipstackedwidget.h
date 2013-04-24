@@ -35,7 +35,7 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
  \class IpStackedWidget
 
- \brief Class to contain application forms
+ \brief Class to contain application formss
 
 
 */

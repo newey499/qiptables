@@ -22,7 +22,12 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 ***************************************************************************/
 
+/**
+ \file rulesettableview.cpp
 
+ \brief Subclass of QTableView tweaked for Rulesets
+
+*/
 
 
 #include "rulesettableview.h"

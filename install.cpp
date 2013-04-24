@@ -22,7 +22,12 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 ***************************************************************************/
 
+/**
+ \file install.cpp
 
+ \brief Builds application database
+
+*/
 
 
 #include "install.h"

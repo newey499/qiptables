@@ -22,7 +22,13 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 ***************************************************************************/
 
+/**
+ \file formtest.cpp
 
+
+ \brief Form for various test routines used during development
+
+*/
 
 #include "formtest.h"
 #include "ui_formtest.h"

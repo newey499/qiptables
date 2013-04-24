@@ -22,7 +22,13 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 ***************************************************************************/
 
+/**
+ \file ipprocess.cpp
 
+ \brief Executes commands read from database
+
+
+*/
 
 #include "ipprocess.h"
 

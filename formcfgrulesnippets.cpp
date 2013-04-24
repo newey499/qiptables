@@ -22,7 +22,12 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 ***************************************************************************/
 
+/**
+\file formcfgrulesnippets.cpp
 
+\brief Browse Rulesnippets and call add amend delete rulesnippet form
+
+***************************/
 
 #include "formcfgrulesnippets.h"
 #include "ui_formcfgrulesnippets.h"

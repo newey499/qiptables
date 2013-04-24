@@ -22,7 +22,12 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 ***************************************************************************/
 
+/**
+\file linuxuserid.cpp
 
+\brief Obtains user id using Linux system calls
+
+***********/
 
 #include "linuxuserid.h"
 

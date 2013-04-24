@@ -22,7 +22,13 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 ***************************************************************************/
 
+/**
+\file iptables.cpp
 
+\brief Class reads commands from SQLite database
+       ruleset table and then performs each command it finds (one per line).
+
+***************************/
 
 #include "iptables.h"
 

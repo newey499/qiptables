@@ -22,6 +22,13 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 ***************************************************************************/
 
+/**
+\file databasemanager.cpp
+
+\brief Manipulate application database
+
+
+***************************/
 
 
 #include "databasemanager.h"

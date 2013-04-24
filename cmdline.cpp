@@ -22,13 +22,23 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 ***************************************************************************/
 
-
 #include "cmdline.h"
 
 
 
 const QString CmdLine::defaultCommentMark = "#";
 const QString CmdLine::defaultIncludeMark = "#include ";
+
+/**
+\file cmdline.cpp
+
+\brief Process a command line
+
+
+Strips comments (#) and include (#include) from
+a command line.
+
+***************************/
 
 CmdLine::CmdLine(QObject *parent) :
     QObject(parent)

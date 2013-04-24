@@ -22,7 +22,13 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 ***************************************************************************/
 
+/**
+ \file rulesnippetssqltablemodel.cpp
 
+ \brief Subclass of QSqlTableModel tweaked for Rulesnippets
+
+
+*/
 
 #include "rulesnippetssqltablemodel.h"
 

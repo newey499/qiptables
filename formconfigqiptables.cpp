@@ -22,6 +22,15 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 ***************************************************************************/
 
+/**
+\file formconfigqiptables.cpp
+
+\brief REDUNDANT: add forms to tabbed widget
+
+This code is no longer used
+
+
+***************************/
 
 
 #include "formconfigqiptables.h"

@@ -22,7 +22,13 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 ***************************************************************************/
 
+/**
+ \file mainwindow.cpp
 
+ \brief Main Window of application
+
+
+*/
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"

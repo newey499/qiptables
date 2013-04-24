@@ -22,6 +22,13 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 ***************************************************************************/
 
+/**
+\file formcfgsettings.cpp
+
+
+\brief Maintain application configuration settings
+
+***************************/
 
 #include "formcfgsettings.h"
 #include "ui_formcfgsettings.h"
