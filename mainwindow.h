@@ -53,6 +53,15 @@ namespace Ui {
 class MainWindow;
 }
 
+/**
+ \file mainwindow.h
+
+ \class MainWindow
+
+ \brief Main Window of application
+
+
+*/
 class MainWindow : public QMainWindow
 {
     Q_OBJECT

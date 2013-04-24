@@ -33,12 +33,24 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "formcfgrulesnippets.h"
 
+
+
 class FormCfgRuleSnippets;
 
 namespace Ui {
 class FormDlgRuleSnippet;
 }
 
+
+/**
+ \file formdlgrulesnippet.h
+
+ \class FormDlgRuleSnippet
+
+ \brief Add/Amend/Delete Rulesnippets
+
+
+*/
 class FormDlgRuleSnippet : public QDialog
 {
     Q_OBJECT

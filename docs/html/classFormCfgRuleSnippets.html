@@ -49,14 +49,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-slots">Public Slots</a> &#124;
+<a href="#signals">Signals</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a>  </div>
   <div class="headertitle">
 <h1>FormCfgRuleSnippets Class Reference</h1>  </div>
 </div>
 <div class="contents">
 <!-- doxytag: class="FormCfgRuleSnippets" -->
+<p>Browse Rulesnippets and call add amend delete rulesnippet form.  
+<a href="#_details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="formcfgrulesnippets_8h_source.html">formcfgrulesnippets.h</a>&gt;</code></p>
+
 <p><a href="classFormCfgRuleSnippets-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-slots"></a>
@@ -72,10 +79,28 @@ virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>slotBtnAdd</b
 virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>slotBtnEdit</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8d27d01a70a5eb59b46fe33a33ab9ce9"></a><!-- doxytag: member="FormCfgRuleSnippets::slotBtnDelete" ref="a8d27d01a70a5eb59b46fe33a33ab9ce9" args="()" -->
 virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>slotBtnDelete</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a66017530b7ae56ce271b16a26d5ab5be"></a><!-- doxytag: member="FormCfgRuleSnippets::slotIncludeSnippet" ref="a66017530b7ae56ce271b16a26d5ab5be" args="()" -->
+virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>slotIncludeSnippet</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a84b55c83c0c643dcc3f7be3aa334cf4d"></a><!-- doxytag: member="FormCfgRuleSnippets::slotPasteSnippet" ref="a84b55c83c0c643dcc3f7be3aa334cf4d" args="()" -->
+virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>slotPasteSnippet</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3aa770ed486f1765b7a3b42df6be920f"></a><!-- doxytag: member="FormCfgRuleSnippets::slotCloseWindow" ref="a3aa770ed486f1765b7a3b42df6be920f" args="()" -->
+virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>slotCloseWindow</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab0c8be97ab06f81fa148b3e2d96cfefc"></a><!-- doxytag: member="FormCfgRuleSnippets::slotMenuSelection" ref="ab0c8be97ab06f81fa148b3e2d96cfefc" args="(QAction *selectedAction)" -->
+virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>slotMenuSelection</b> (QAction *selectedAction)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a06130d329dd047321e8c500a9c9d1e34"></a><!-- doxytag: member="FormCfgRuleSnippets::enableDrag" ref="a06130d329dd047321e8c500a9c9d1e34" args="(bool enable=true)" -->
+virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>enableDrag</b> (bool enable=true)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a32c1436830bbe96ac143323cc6bcba8a"></a><!-- doxytag: member="FormCfgRuleSnippets::enableContextMenu" ref="a32c1436830bbe96ac143323cc6bcba8a" args="(bool enable=true)" -->
+virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>enableContextMenu</b> (bool enable=true)</td></tr>
+<tr><td colspan="2"><h2><a name="signals"></a>
+Signals</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5c6ec1838da7acfb0e91bed3f14ac499"></a><!-- doxytag: member="FormCfgRuleSnippets::addSnippet" ref="a5c6ec1838da7acfb0e91bed3f14ac499" args="(bool useInclude, int id, QString name, QString snippets)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>addSnippet</b> (bool useInclude, int id, QString name, QString snippets)</td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aff837f7d0ae12112cc37acee14d16ab5"></a><!-- doxytag: member="FormCfgRuleSnippets::FormCfgRuleSnippets" ref="aff837f7d0ae12112cc37acee14d16ab5" args="(QWidget *parent=0)" -->
-&nbsp;</td><td class="memItemRight" valign="bottom"><b>FormCfgRuleSnippets</b> (QWidget *parent=0)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad7497b92024b4665f7fc55474fe8f29e"></a><!-- doxytag: member="FormCfgRuleSnippets::FormCfgRuleSnippets" ref="ad7497b92024b4665f7fc55474fe8f29e" args="(QWidget *parent=0, Qt::WindowFlags f=0)" -->
+&nbsp;</td><td class="memItemRight" valign="bottom"><b>FormCfgRuleSnippets</b> (QWidget *parent=0, Qt::WindowFlags f=0)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abbe98907c4199d06e5d750783f86ff7f"></a><!-- doxytag: member="FormCfgRuleSnippets::FormCfgRuleSnippets" ref="abbe98907c4199d06e5d750783f86ff7f" args="(bool popupSnippetSelect, QWidget *parent=0, Qt::WindowFlags f=0)" -->
+&nbsp;</td><td class="memItemRight" valign="bottom"><b>FormCfgRuleSnippets</b> (bool popupSnippetSelect, QWidget *parent=0, Qt::WindowFlags f=0)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac3e237d60b6abbda6fcfb48243080767"></a><!-- doxytag: member="FormCfgRuleSnippets::getView" ref="ac3e237d60b6abbda6fcfb48243080767" args="()" -->
 <a class="el" href="classRuleSnippetsTableView.html">RuleSnippetsTableView</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><b>getView</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa8a494da0e8939b8323c801c23c71013"></a><!-- doxytag: member="FormCfgRuleSnippets::getModel" ref="aa8a494da0e8939b8323c801c23c71013" args="()" -->
@@ -90,12 +115,30 @@ static const int&nbsp;</td><td class="memItemRight" valign="bottom"><b>REC_ADD</
 static const int&nbsp;</td><td class="memItemRight" valign="bottom"><b>REC_EDIT</b> = 2</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9487145ebc6c59b5cfaff6d3123035ca"></a><!-- doxytag: member="FormCfgRuleSnippets::REC_DELETE" ref="a9487145ebc6c59b5cfaff6d3123035ca" args="" -->
 static const int&nbsp;</td><td class="memItemRight" valign="bottom"><b>REC_DELETE</b> = 3</td></tr>
+<tr><td colspan="2"><h2><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1ec5a6eab4c9c92629361b199d83cc7c"></a><!-- doxytag: member="FormCfgRuleSnippets::commonConstructor" ref="a1ec5a6eab4c9c92629361b199d83cc7c" args="()" -->
+virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>commonConstructor</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acc955d02fa8169a0a51d6a020e1891d7"></a><!-- doxytag: member="FormCfgRuleSnippets::saveSettings" ref="acc955d02fa8169a0a51d6a020e1891d7" args="()" -->
+virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>saveSettings</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a886a3a6d486ae5db4bdcd39be1b48ec2"></a><!-- doxytag: member="FormCfgRuleSnippets::closeEvent" ref="a886a3a6d486ae5db4bdcd39be1b48ec2" args="(QCloseEvent *event)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>closeEvent</b> (QCloseEvent *event)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a87b81cfa05a38c368996b0f1fdfb4359"></a><!-- doxytag: member="FormCfgRuleSnippets::quitYesNo" ref="a87b81cfa05a38c368996b0f1fdfb4359" args="()" -->
+virtual int&nbsp;</td><td class="memItemRight" valign="bottom"><b>quitYesNo</b> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae84ebe67c654a665da4a19527549097c"></a><!-- doxytag: member="FormCfgRuleSnippets::model" ref="ae84ebe67c654a665da4a19527549097c" args="" -->
 QPointer<br class="typebreak"/>
 &lt; <a class="el" href="classRuleSnippetsSqlTableModel.html">RuleSnippetsSqlTableModel</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><b>model</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a556984da0c862d82e7509bc566fc8ac5"></a><!-- doxytag: member="FormCfgRuleSnippets::popupSnippetSelect" ref="a556984da0c862d82e7509bc566fc8ac5" args="" -->
+bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>popupSnippetSelect</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6467402f9abcf3e7a909c3a64cec826d"></a><!-- doxytag: member="FormCfgRuleSnippets::organization" ref="a6467402f9abcf3e7a909c3a64cec826d" args="" -->
+QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>organization</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac893fd90f5d88ddce8afea2256e27ced"></a><!-- doxytag: member="FormCfgRuleSnippets::application" ref="ac893fd90f5d88ddce8afea2256e27ced" args="" -->
+QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>application</b></td></tr>
 </table>
+<hr/><a name="_details"></a><h2>Detailed Description</h2>
+<p>Browse Rulesnippets and call add amend delete rulesnippet form. </p>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="formcfgrulesnippets_8h_source.html">formcfgrulesnippets.h</a></li>
 <li>formcfgrulesnippets.cpp</li>
@@ -115,7 +158,7 @@ QPointer<br class="typebreak"/>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Feb 17 2013 12:09:56 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Wed Apr 24 2013 12:17:07 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

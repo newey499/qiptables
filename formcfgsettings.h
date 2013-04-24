@@ -42,6 +42,14 @@ namespace Ui {
 class FormCfgSettings;
 }
 
+/**
+\file formcfgsettings.h
+\class FormCfgSettings
+
+\brief Maintain application configuration settings
+
+
+***************************/
 class FormCfgSettings : public QWidget
 {
     Q_OBJECT

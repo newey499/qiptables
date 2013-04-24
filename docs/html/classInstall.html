@@ -57,6 +57,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <!-- doxytag: class="Install" -->
+<p>Builds application database.  
+<a href="#_details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="install_8h_source.html">install.h</a>&gt;</code></p>
+
 <p><a href="classInstall-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
@@ -71,12 +76,18 @@ bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>createSysconfTable</b
 bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>createRulesetTable</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adce2f652164263bdeb01acc13e59d41d"></a><!-- doxytag: member="Install::createRulesetSnippetsTable" ref="adce2f652164263bdeb01acc13e59d41d" args="()" -->
 bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>createRulesetSnippetsTable</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4ca9c1c4b344c12c48eb77f56c988e98"></a><!-- doxytag: member="Install::getRulesetShortName" ref="a4ca9c1c4b344c12c48eb77f56c988e98" args="(QString rulesetLongName)" -->
+QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>getRulesetShortName</b> (QString rulesetLongName)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac86b817b745892d965bfc786229bffe4"></a><!-- doxytag: member="Install::createInitialRows" ref="ac86b817b745892d965bfc786229bffe4" args="()" -->
 bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>createInitialRows</b> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adc973b3e6643502782374acadf5eaccc"></a><!-- doxytag: member="Install::INSTALL_DIR" ref="adc973b3e6643502782374acadf5eaccc" args="" -->
 static const QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>INSTALL_DIR</b> = QString(&quot;/etc/qiptables&quot;)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae046ad45f32f6073e208022c5db86b4b"></a><!-- doxytag: member="Install::IPTABLES_CHAIN_MAX_NAME_LENGTH" ref="ae046ad45f32f6073e208022c5db86b4b" args="" -->
+static const int&nbsp;</td><td class="memItemRight" valign="bottom"><b>IPTABLES_CHAIN_MAX_NAME_LENGTH</b> = 30</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae518034f82f26630b81548c8f443ad0a"></a><!-- doxytag: member="Install::IPTABLES_CHAIN_NAME_PREFIX" ref="ae518034f82f26630b81548c8f443ad0a" args="" -->
+static const QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>IPTABLES_CHAIN_NAME_PREFIX</b> = QString(&quot;Q_&quot;)</td></tr>
 <tr><td colspan="2"><h2><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a442a9502aebecc903aeff91391864f2f"></a><!-- doxytag: member="Install::createQiptablesDatabase" ref="a442a9502aebecc903aeff91391864f2f" args="()" -->
@@ -91,16 +102,24 @@ bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>createQiptablesTmpDir
 bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>createQiptablesToolsDir</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9b05fa7ab484796e18ba39ef806ee1cf"></a><!-- doxytag: member="Install::createRulesetRows" ref="a9b05fa7ab484796e18ba39ef806ee1cf" args="()" -->
 bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>createRulesetRows</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9315f1f50514ac31add47d80b8a55ef7"></a><!-- doxytag: member="Install::insertRulesetRow" ref="a9315f1f50514ac31add47d80b8a55ef7" args="(QString rulesName, QStringList rulesList)" -->
+bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>insertRulesetRow</b> (QString rulesName, QStringList rulesList)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac5729b52bc92b9c4516b6f03e58b3db8"></a><!-- doxytag: member="Install::createRulesetSnippetRows" ref="ac5729b52bc92b9c4516b6f03e58b3db8" args="()" -->
 bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>createRulesetSnippetRows</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6d6020cd144c44d937817c399c6b59fe"></a><!-- doxytag: member="Install::insertRuleSnippetRow" ref="a6d6020cd144c44d937817c399c6b59fe" args="(QString snippetName, QStringList snippetList)" -->
+bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>insertRuleSnippetRow</b> (QString snippetName, QStringList snippetList)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af1528ca1204a506964ed88f1617e6f75"></a><!-- doxytag: member="Install::createSysconfRow" ref="af1528ca1204a506964ed88f1617e6f75" args="()" -->
 bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>createSysconfRow</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3a4790eb7bb473b2c3e9a7262d0d54c9"></a><!-- doxytag: member="Install::createFile" ref="a3a4790eb7bb473b2c3e9a7262d0d54c9" args="(QString filename, QString content, bool executable=false)" -->
-bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>createFile</b> (QString filename, QString content, bool executable=false)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a17466e02bacdba130996e60cae4738d2"></a><!-- doxytag: member="Install::createFile" ref="a17466e02bacdba130996e60cae4738d2" args="(QString filename, QStringList content, bool executable=false)" -->
-bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>createFile</b> (QString filename, QStringList content, bool executable=false)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a818608ebaf368bd244690a2f91f45ac9"></a><!-- doxytag: member="Install::createFile" ref="a818608ebaf368bd244690a2f91f45ac9" args="(QString filename, QString content, bool executable=false)" -->
+QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>createFile</b> (QString filename, QString content, bool executable=false)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a693e7a889fafbb0953badaf0af69f566"></a><!-- doxytag: member="Install::createFile" ref="a693e7a889fafbb0953badaf0af69f566" args="(QString filename, QStringList content, bool executable=false)" -->
+QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>createFile</b> (QString filename, QStringList content, bool executable=false)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a587c4ee53855a8cb6039b4c6b13cc4ca"></a><!-- doxytag: member="Install::createShellScripts" ref="a587c4ee53855a8cb6039b4c6b13cc4ca" args="()" -->
+bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>createShellScripts</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa3296bb8022791c9bbbc5611f063e18d"></a><!-- doxytag: member="Install::createScriptClearFirewall" ref="aa3296bb8022791c9bbbc5611f063e18d" args="()" -->
 QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>createScriptClearFirewall</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2e093e745442fe5311a0c035b969bc37"></a><!-- doxytag: member="Install::createScriptGetFirewallName" ref="a2e093e745442fe5311a0c035b969bc37" args="()" -->
+QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>createScriptGetFirewallName</b> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a816176587c48a49e018500f5884808b4"></a><!-- doxytag: member="Install::dir" ref="a816176587c48a49e018500f5884808b4" args="" -->
@@ -110,6 +129,8 @@ QFile *&nbsp;</td><td class="memItemRight" valign="bottom"><b>file</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae4ddcdcc1f29836903494b25ab3f0edb"></a><!-- doxytag: member="Install::dm" ref="ae4ddcdcc1f29836903494b25ab3f0edb" args="" -->
 <a class="el" href="classDatabaseManager.html">DatabaseManager</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><b>dm</b></td></tr>
 </table>
+<hr/><a name="_details"></a><h2>Detailed Description</h2>
+<p>Builds application database. </p>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="install_8h_source.html">install.h</a></li>
 <li>install.cpp</li>
@@ -129,7 +150,7 @@ QFile *&nbsp;</td><td class="memItemRight" valign="bottom"><b>file</b></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Feb 17 2013 12:09:56 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Wed Apr 24 2013 12:17:07 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

@@ -50,6 +50,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-slots">Public Slots</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a>  </div>
@@ -58,6 +59,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <!-- doxytag: class="FormCfgRuleset" -->
+<p>Browse Rulesets and call add amend delete ruleset form.  
+<a href="#_details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="formcfgruleset_8h_source.html">formcfgruleset.h</a>&gt;</code></p>
+
 <p><a href="classFormCfgRuleset-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-slots"></a>
@@ -73,6 +79,10 @@ virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>slotBtnAdd</b
 virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>slotBtnEdit</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a446f6f1a44e4cdd98df61aa8bee6c47a"></a><!-- doxytag: member="FormCfgRuleset::slotBtnDelete" ref="a446f6f1a44e4cdd98df61aa8bee6c47a" args="()" -->
 virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>slotBtnDelete</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeecfa200c64f3169e76a26e65dbe9f9d"></a><!-- doxytag: member="FormCfgRuleset::slotCodeSnippets" ref="aeecfa200c64f3169e76a26e65dbe9f9d" args="()" -->
+virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>slotCodeSnippets</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6b3965e2cb20ad7a553ea3e9c650570a"></a><!-- doxytag: member="FormCfgRuleset::slotAddSnippet" ref="a6b3965e2cb20ad7a553ea3e9c650570a" args="(bool useInclude, int id, QString name, QString snippets)" -->
+virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>slotAddSnippet</b> (bool useInclude, int id, QString name, QString snippets)</td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7e4472a7c3cbd8891cdd95df3eeb4be3"></a><!-- doxytag: member="FormCfgRuleset::FormCfgRuleset" ref="a7e4472a7c3cbd8891cdd95df3eeb4be3" args="(QWidget *parent=0)" -->
@@ -83,6 +93,10 @@ virtual QVariant&nbsp;</td><td class="memItemRight" valign="bottom"><b>getColumn
 virtual <a class="el" href="classRulesetTableView.html">RulesetTableView</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><b>getView</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad57eb6cfbeb96a5e6fdf6912f856b04e"></a><!-- doxytag: member="FormCfgRuleset::getModel" ref="ad57eb6cfbeb96a5e6fdf6912f856b04e" args="()" -->
 virtual <a class="el" href="classRulesetSqlTableModel.html">RulesetSqlTableModel</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><b>getModel</b> ()</td></tr>
+<tr><td colspan="2"><h2><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a395859b7eea6c87efe17a060d6abb770"></a><!-- doxytag: member="FormCfgRuleset::formSnippets" ref="a395859b7eea6c87efe17a060d6abb770" args="" -->
+QPointer&lt; <a class="el" href="classFormCfgRuleSnippets.html">FormCfgRuleSnippets</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><b>formSnippets</b></td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ada245a912320c30b255a5afefc941a2c"></a><!-- doxytag: member="FormCfgRuleset::REC_ADD" ref="ada245a912320c30b255a5afefc941a2c" args="" -->
@@ -95,11 +109,15 @@ static const int&nbsp;</td><td class="memItemRight" valign="bottom"><b>REC_DELET
 Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7c7e3e79691538d2335436293b5c4191"></a><!-- doxytag: member="FormCfgRuleset::isRulesetDefault" ref="a7c7e3e79691538d2335436293b5c4191" args="()" -->
 virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>isRulesetDefault</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a24e245cd89fffe24a6b73919dbec3170"></a><!-- doxytag: member="FormCfgRuleset::hideEvent" ref="a24e245cd89fffe24a6b73919dbec3170" args="(QHideEvent *event)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>hideEvent</b> (QHideEvent *event)</td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a349309eeb67e579ccb70e58ece0090e4"></a><!-- doxytag: member="FormCfgRuleset::model" ref="a349309eeb67e579ccb70e58ece0090e4" args="" -->
 QPointer&lt; <a class="el" href="classRulesetSqlTableModel.html">RulesetSqlTableModel</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><b>model</b></td></tr>
 </table>
+<hr/><a name="_details"></a><h2>Detailed Description</h2>
+<p>Browse Rulesets and call add amend delete ruleset form. </p>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="formcfgruleset_8h_source.html">formcfgruleset.h</a></li>
 <li>formcfgruleset.cpp</li>
@@ -119,7 +137,7 @@ QPointer&lt; <a class="el" href="classRulesetSqlTableModel.html">RulesetSqlTable
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Feb 17 2013 12:09:56 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Wed Apr 24 2013 12:17:07 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

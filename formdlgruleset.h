@@ -44,6 +44,19 @@ namespace Ui {
 class FormDlgRuleset;
 }
 
+/**
+ \file formdlgruleset.h
+
+ \class FormDlgRuleset
+
+ \brief Add/Amend/Delete Rulesets
+
+ \todo Data validation
+
+ \todo Investigate and implement a mechanism for validating firewall rules
+
+
+*/
 class FormDlgRuleset : public QDialog
 {
     Q_OBJECT

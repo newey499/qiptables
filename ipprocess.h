@@ -34,6 +34,15 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 //#include "mainwindow.h"
 #include "linuxuserid.h"
 
+/**
+ \file ipprocess.h
+
+ \class IpProcess
+
+ \brief Executes commands read from database
+
+
+*/
 class IpProcess : public QProcess
 {
     Q_OBJECT

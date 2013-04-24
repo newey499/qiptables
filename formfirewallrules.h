@@ -55,6 +55,15 @@ class FormFirewallRules;
 
 class DatabaseManager;
 
+/**
+ \file formfirewallrules.h
+
+ \class FormFirewallRules
+
+ \brief Get Ruleset from application database
+
+
+*/
 class FormFirewallRules : public QWidget
 {
     Q_OBJECT

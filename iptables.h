@@ -62,12 +62,6 @@ be supported in the future.
 
 \todo Add support for block comments
 
-\todo method "Iptables::processRuleset(QString rulesetName)" - add code to process
-each command found.
-
-\todo method "Iptables::processRuleset(QString rulesetName)" - emit signals for
-each command executed and the output of each command.
-
 ***************************/
 class Iptables : public QObject
 {

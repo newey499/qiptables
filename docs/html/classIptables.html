@@ -74,6 +74,8 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><b>cmdOutput</b> (QStrin
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a16721cd32801d76b19f8d6af94fc04d4"></a><!-- doxytag: member="Iptables::Iptables" ref="a16721cd32801d76b19f8d6af94fc04d4" args="(QObject *parent=0)" -->
 &nbsp;</td><td class="memItemRight" valign="bottom"><b>Iptables</b> (QObject *parent=0)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac9cd6822500d5a9e3f00e8ef93fdd55f"></a><!-- doxytag: member="Iptables::getRulesetShortName" ref="ac9cd6822500d5a9e3f00e8ef93fdd55f" args="(QString rulesetLongName)" -->
+QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>getRulesetShortName</b> (QString rulesetLongName)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2ac686f4b0b6a77f38826b1fe872da06"></a><!-- doxytag: member="Iptables::getIptablesBinary" ref="a2ac686f4b0b6a77f38826b1fe872da06" args="()" -->
 virtual QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>getIptablesBinary</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa62680c76d130996ab6ccae8b1c4f5ec"></a><!-- doxytag: member="Iptables::setIptablesBinary" ref="aa62680c76d130996ab6ccae8b1c4f5ec" args="()" -->
@@ -94,6 +96,8 @@ virtual QStringList&nbsp;</td><td class="memItemRight" valign="bottom"><b>getRul
 virtual QStringList&nbsp;</td><td class="memItemRight" valign="bottom"><b>processRulesetIncludes</b> (QStringList rulesetList)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acfde23b7114a476f26667a5392f6ec00"></a><!-- doxytag: member="Iptables::processRuleset" ref="acfde23b7114a476f26667a5392f6ec00" args="(QString rulesetName)" -->
 virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>processRuleset</b> (QString rulesetName)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a491d93c5fe078db01cc715b64196c252"></a><!-- doxytag: member="Iptables::processStringList" ref="a491d93c5fe078db01cc715b64196c252" args="(QString title, QStringList list)" -->
+virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>processStringList</b> (QString title, QStringList list)</td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3ec97d9a79d5181dd5ddd6fedf547579"></a><!-- doxytag: member="Iptables::db" ref="a3ec97d9a79d5181dd5ddd6fedf547579" args="" -->
@@ -106,7 +110,7 @@ static const QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>IPTAB
 Protected Slots</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d8b30481d475487313802a21450e3aa"></a><!-- doxytag: member="Iptables::slotCmdOutput" ref="a0d8b30481d475487313802a21450e3aa" args="(QString program, QStringList arguments, int exitCode, QString result)" -->
 void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIptables.html#a0d8b30481d475487313802a21450e3aa">slotCmdOutput</a> (QString program, QStringList arguments, int exitCode, QString result)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This slot is only ever called from the <a class="el" href="classIpProcess.html">IpProcess</a> Class via the signal slot mechanism. It is used to propogate the results of one command in a ruleset when it is processed by the ipProcess class. <br/></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This slot is only ever called from the <a class="el" href="classIpProcess.html" title="Executes commands read from database.">IpProcess</a> Class via the signal slot mechanism. It is used to propogate the results of one command in a ruleset when it is processed by the ipProcess class. <br/></td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0eaf66a69942ba75659f65f12b8c1709"></a><!-- doxytag: member="Iptables::process" ref="a0eaf66a69942ba75659f65f12b8c1709" args="" -->
@@ -123,9 +127,7 @@ QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>IptablesBinary</b>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>Class reads commands from SQLite database ruleset table and then performs each command it finds (one per line). </p>
 <p>This class "knows" about line comments in the style of bash "#" comments. The comment identifier may be changed by using set/get functions but only line comments are recognised. Block comments are not although they may be supported in the future.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>Add support for block comments</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>method "Iptables::processRuleset(QString rulesetName)" - add code to process each command found.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000007">Todo:</a></b></dt><dd>method "Iptables::processRuleset(QString rulesetName)" - emit signals for each command executed and the output of each command.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>Add support for block comments</dd></dl>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="iptables_8h_source.html">iptables.h</a></li>
 <li>iptables.cpp</li>
@@ -145,7 +147,7 @@ QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>IptablesBinary</b>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Feb 17 2013 12:09:56 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Wed Apr 24 2013 12:17:07 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

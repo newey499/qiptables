@@ -27,38 +27,6 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #include "formdlgruleset.h"
 #include "ui_formdlgruleset.h"
 
-/**
- \file formdlgruleset.cpp
-
- \todo Data validation
-
- \todo Investigate and implement a mechanism for validating firewall rules
-
- \todo If ruleset being edited is the default ruleset held on the sysconf table
- then the validation needs to make the ruleset name edit box readonly.
-
-
-iptables
-
-DIAGNOSTICS
-       Various error messages are printed to standard error.  The exit code is
-       0 for correct functioning.  Errors which appear to be caused by invalid
-       or  abused  command  line parameters cause an exit code of 2, and other
-       errors cause an exit code of 1.
-
-Perhaps load the ruleset into a stringlist, trim each line and pass
-each line that starts with "iptables " (note trailing space) to iptables
-and check return code.
-
-Would have to save and restore current firewall.
-
-machine firewall would be knackered during the test - must think
-this through <g>.
-
-
-
-*/
-
 FormDlgRuleset::FormDlgRuleset(int opCode, FormCfgRuleset *parent) :
     QDialog(parent),
     ui(new Ui::FormDlgRuleset)

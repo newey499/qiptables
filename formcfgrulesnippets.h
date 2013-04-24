@@ -50,6 +50,15 @@ namespace Ui {
 class FormCfgRuleSnippets;
 }
 
+/**
+\file formcfgrulesnippets.h
+
+\class FormCfgRuleSnippets
+
+\brief Browse Rulesnippets and call add amend delete rulesnippet form
+
+
+***************************/
 class FormCfgRuleSnippets : public QWidget
 {
     Q_OBJECT

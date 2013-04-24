@@ -30,6 +30,15 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #include <QHeaderView>
 #include <QTableView>
 
+/**
+ \file rulesettableview.h
+
+ \class RulesetTableView
+
+ \brief Subclass of QTableView tweaked for Rulesets
+
+
+*/
 class RulesetTableView : public QTableView
 {
     Q_OBJECT

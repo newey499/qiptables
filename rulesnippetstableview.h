@@ -39,6 +39,16 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #include <QTableView>
 #include <QVariant>
 
+
+/**
+ \file rulesnippetstableview.h
+
+ \class RuleSnippetsTableView
+
+ \brief Subclass of QTableView tweaked for Rulesnippets
+
+
+*/
 class RuleSnippetsTableView : public QTableView
 {
     Q_OBJECT

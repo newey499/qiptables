@@ -30,6 +30,15 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #include <QStackedWidget>
 #include "qiptablesexception.h"
 
+/**
+ \file ipstackedwidget.h
+
+ \class IpStackedWidget
+
+ \brief Class to contain application forms
+
+
+*/
 class IpStackedWidget : public QStackedWidget
 {
     Q_OBJECT

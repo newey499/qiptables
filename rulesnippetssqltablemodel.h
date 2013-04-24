@@ -28,6 +28,16 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <QSqlTableModel>
 
+
+/**
+ \file rulesnippetssqltablemodel.h
+
+ \class RuleSnippetsSqlTableModel
+
+ \brief Subclass of QSqlTableModel tweaked for Rulesnippets
+
+
+*/
 class RuleSnippetsSqlTableModel : public QSqlTableModel
 {
     Q_OBJECT

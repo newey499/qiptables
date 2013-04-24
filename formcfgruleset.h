@@ -48,6 +48,15 @@ namespace Ui {
 class FormCfgRuleset;
 }
 
+
+/**
+\file formcfgruleset.h
+\class FormCfgRuleset
+
+\brief Browse Rulesets and call add amend delete ruleset form
+
+
+***************************/
 class FormCfgRuleset : public QWidget
 {
     Q_OBJECT

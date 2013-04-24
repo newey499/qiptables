@@ -29,6 +29,15 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <QSqlTableModel>
 
+/**
+ \file rulesetsqltablemodel.h
+
+ \class RulesetSqlTableModel
+
+ \brief Subclass of QSqlTableModel tweaked for Rulesets
+
+
+*/
 class RulesetSqlTableModel : public QSqlTableModel
 {
     Q_OBJECT

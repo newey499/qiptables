@@ -41,7 +41,14 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #include "install.h"
 
 
+/**
+\file databasemanager.h
+\class DatabaseManager
 
+\brief Class to manipulate application database
+
+
+***************************/
 class DatabaseManager : public QObject
 {
     public:

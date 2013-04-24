@@ -50,6 +50,16 @@ namespace Ui {
 class FormTest;
 }
 
+
+/**
+ \file formtest.h
+
+ \class FormTest
+
+ \brief Form for various test routines used during development
+
+
+*/
 class FormTest : public QWidget
 {
     Q_OBJECT

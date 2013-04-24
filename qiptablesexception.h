@@ -34,6 +34,15 @@ using namespace std;
 #include <QByteArray>
 #include <QString>
 
+/**
+ \file qiptablesexception.h
+
+ \class QIptablesException
+
+ \brief Exception class for application
+
+
+*/
 class QIptablesException : public exception
 {
 public:

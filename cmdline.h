@@ -33,6 +33,17 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "rulesnippet.h"
 
+/**
+\file cmdline.h
+\class CmdLine
+
+\brief Class to process a command line
+
+
+Strips comments (#) and include (#include) from
+a command line.
+
+***************************/
 class RuleSnippet;
 
 class CmdLine : public QObject

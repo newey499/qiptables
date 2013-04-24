@@ -41,6 +41,16 @@ namespace Ui {
 class FormConfigQiptables;
 }
 
+/**
+\file formconfigqiptables.h
+\class FormConfigQiptables
+
+\brief REDUNDANT: add forms to tabbed widget
+
+This code is no longer used
+
+
+***************************/
 class FormConfigQiptables : public QWidget
 {
     Q_OBJECT

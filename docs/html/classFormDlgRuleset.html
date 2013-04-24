@@ -58,6 +58,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <!-- doxytag: class="FormDlgRuleset" -->
+<p>Add/Amend/Delete Rulesets.  
+<a href="#_details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="formdlgruleset_8h_source.html">formdlgruleset.h</a>&gt;</code></p>
+
 <p><a href="classFormDlgRuleset-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-slots"></a>
@@ -66,6 +71,8 @@ Public Slots</h2></td></tr>
 virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>slotSave</b> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9563b1fa05daa5efe4caff2367f8225d"></a><!-- doxytag: member="FormDlgRuleset::slotCancel" ref="a9563b1fa05daa5efe4caff2367f8225d" args="()" -->
 virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>slotCancel</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af1e33915ae21d1de66a4daa5ef713535"></a><!-- doxytag: member="FormDlgRuleset::slotAddSnippet" ref="af1e33915ae21d1de66a4daa5ef713535" args="()" -->
+virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>slotAddSnippet</b> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab4862c6465781d7a29afd646c854c1de"></a><!-- doxytag: member="FormDlgRuleset::FormDlgRuleset" ref="ab4862c6465781d7a29afd646c854c1de" args="(int opCode, FormCfgRuleset *parent)" -->
@@ -97,9 +104,13 @@ QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>rules</b></td></tr
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab3148388b64bd7a9c4ad8bae39144265"></a><!-- doxytag: member="FormDlgRuleset::opcode" ref="ab3148388b64bd7a9c4ad8bae39144265" args="" -->
 int&nbsp;</td><td class="memItemRight" valign="bottom"><b>opcode</b></td></tr>
 </table>
+<hr/><a name="_details"></a><h2>Detailed Description</h2>
+<p>Add/Amend/Delete Rulesets. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Data validation</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Investigate and implement a mechanism for validating firewall rules</dd></dl>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="formdlgruleset_8h_source.html">formdlgruleset.h</a></li>
-<li><a class="el" href="formdlgruleset_8cpp.html">formdlgruleset.cpp</a></li>
+<li>formdlgruleset.cpp</li>
 </ul>
 </div>
 <!--- window showing the filter options -->
@@ -116,7 +127,7 @@ int&nbsp;</td><td class="memItemRight" valign="bottom"><b>opcode</b></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sun Feb 17 2013 12:09:56 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Wed Apr 24 2013 12:17:07 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

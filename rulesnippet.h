@@ -43,6 +43,16 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 class CmdLine;
 
+
+/**
+ \file rulesnippet.h
+
+ \class RuleSnippet
+
+ \brief Get Rulesnippets from application database
+
+
+*/
 class RuleSnippet : public QObject
 {
     Q_OBJECT

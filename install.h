@@ -37,6 +37,15 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 class DatabaseManager;
 
+/**
+ \file install.h
+
+ \class Install
+
+ \brief Builds application database
+
+
+*/
 class Install : public QObject
 {
     Q_OBJECT
