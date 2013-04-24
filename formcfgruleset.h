@@ -28,6 +28,7 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef FORMCFGRULESET_H
 #define FORMCFGRULESET_H
 
+#include <QHideEvent>
 #include <QPointer>
 #include <QShowEvent>
 #include <QSqlRecord>
@@ -87,6 +88,8 @@ protected:
 
     QPointer<RulesetSqlTableModel> model;
     virtual bool isRulesetDefault();
+
+    void hideEvent(QHideEvent * event);
 
 private:
     Ui::FormCfgRuleset *ui;

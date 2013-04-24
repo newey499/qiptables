@@ -268,3 +268,13 @@ void FormCfgRuleset::slotAddSnippet(bool useInclude, int id, QString name, QStri
     ui->tblRuleset->selectRow(currentRow);
 
 }
+
+void FormCfgRuleset::hideEvent(QHideEvent *event)
+{
+    qDebug("FormCfgRuleset::hideEvent(QHideEvent *event)");
+    if (formSnippets->isVisible())
+    {
+        formSnippets->hide();
+    }
+    event->ignore();
+}
