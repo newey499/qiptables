@@ -70,6 +70,12 @@ public:
 
     static const QString VERSION_NUMBER;
 
+    /**
+    \brief Constructor the organization and application are used to uniquely identify
+           the application when storing window size and position so that the windows
+           can be restored.
+
+      **************************/
     explicit MainWindow(QString organization = "git:bitbucket.org:newey499.qiptables.git",
                         QString application  = "Qiptables",
                         QWidget *parent = 0);
@@ -80,16 +86,52 @@ public:
 
 public slots:
 
+    /**
+    \brief Message Box popped to confirm exit from application
+      *************/
     virtual void quitApplication();
+
+    /**
+    \brief About box for application
+    ****************/
     virtual void aboutQiptables();
+
+    /**
+    \brief About box for QT
+    ****************/
     virtual void aboutQt();
+
+    /**
+    \brief selects development test page
+      *************/
     virtual void selectTestPage();
+
+    /**
+    \brief selects firewall set up page
+      *************/
     virtual void selectFwSetUp();
+
+    /**
+    \brief selects firewall Rules page
+      *************/
     virtual void selectFirewallRulesPage();
+
     //virtual void selectConfigQiptables();
+
+    /**
+    \brief selects ruleset configuration page
+      *************/
     virtual void selectCfgRuleset();
+
+    /**
+    \brief selects rulesnippet configuration page
+      *************/
     virtual void selectCfgRuleSnippet();
     //virtual void selectCfgSettings();
+
+    /**
+    \brief save form size and position on exit
+      **************/
     virtual void saveSettings();
 
 signals:
@@ -97,9 +139,19 @@ signals:
 
 protected:
 
+    /**
+    \brief called by QT when request is made to exit the application
+      ***************/
     virtual void closeEvent(QCloseEvent *event);
 
+    /**
+    \brief Message Box that asks for confirmation of application exit
+      ******************/
     virtual int quitYesNo();
+
+    /**
+    \brief Create menus and forms used by application
+      ************************/
     virtual void buildMenusAndForms();
 
     IpStackedWidget *widgetStack;

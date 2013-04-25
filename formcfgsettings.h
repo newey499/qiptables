@@ -60,10 +60,29 @@ public:
 
 public slots:
 
+    /**
+    \brief Wrapper for file dialogue used to select iptables location
+      ***********************/
     virtual void slotFileDialog();
+
+    /**
+    \brief Save Configuration to table
+      *****************/
     virtual void slotSave();
+
+    /**
+    \brief Cancel any changes made to configuration by reloading defaults from table
+      ***********************/
     virtual void slotCancel();
+
+    /**
+    \brief Change button enabled state depending on edit state
+      *****************/
     virtual void slotButtonStateEnabled();
+
+    /**
+    \brief Change button enabled state depending on edit state
+      *****************/
     virtual void slotButtonStateDisabled();
 
 protected:
@@ -76,8 +95,20 @@ protected:
     QString iptables;
     QString defaultRuleName;
 
+    /**
+    \brief Load configuration settings from table
+      ***********************/
     virtual void loadSettings();
+
+    /**
+    \brief Save configuration settings to table
+      ***********************/
     virtual void saveSettings();
+
+    /**
+    \brief Return last error if any from last executed SQL command
+    \return Error string
+      *****************/
     virtual QString lastSqlErrorAsString();
 
 private:

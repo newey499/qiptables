@@ -56,6 +56,13 @@ class FormDlgRuleSnippet : public QDialog
     Q_OBJECT
 
 public:
+
+    /**
+    \brief  Constructor
+    \param  opCode - whether the dialogue is to be used to add, amend or
+            delete a rulesnippet.
+    \param  parent - Pointer to configuration form parent
+      ***********************/
     explicit FormDlgRuleSnippet(int opCode, FormCfgRuleSnippets *parent = 0);
     ~FormDlgRuleSnippet();
 
@@ -70,7 +77,14 @@ protected:
     QPointer<FormCfgRuleSnippets> formCfgRuleSnippets;
     int opCode;
 
+    /**
+    \brief Sanity check on data
+      *******************/
     bool validateData();
+
+    /**
+    \brief Write data to table
+      *******************/
     bool writeRow();
 
     // row contents
@@ -80,10 +94,24 @@ protected:
 
 protected slots:
 
+    /**
+    \brief Changes the enabled state of form buttons if the displayed data is changed
+      *******************/
     virtual void dataChanged();
+
+    /**
+    \brief Save changes
+      ***************/
     virtual void slotBtnSave();
+
+    /**
+    \brief Cancel changes
+      ***************/
     virtual void slotBtnCancel();
 
+    /**
+    \brief Enable/disable buttons dependant on edit state
+      ***************/
     virtual void buttonsEnabled(bool enabled);
 
 

@@ -45,15 +45,35 @@ class RulesetTableView : public QTableView
 public:
     explicit RulesetTableView(QWidget *parent = 0);
 
+    /**
+    \brief configure view behaviour
+      **************/
     virtual void configureView();
+
+    /**
+    \brief get current row
+
+    \return current row number
+      *****************/
     virtual int currentRow();
 
 signals:
 
+    /**
+    \brief propogates index of new row
+      ******************/
     void rowChanged(QModelIndex);
 
 public slots:
 
+    /**
+    \brief called when row changes
+
+    Selects the current row and emits the rowChanged signal
+
+    \param current - index of current row
+    \param previous - index of row moved from
+      ***************/
     virtual void currentChanged(const QModelIndex &current,
                                 const QModelIndex &previous );
 

@@ -42,8 +42,17 @@ class RulesetSqlTableModel : public QSqlTableModel
 {
     Q_OBJECT
 public:
+
     explicit RulesetSqlTableModel(QObject *parent = 0);
 
+    /**
+    \brief update a table row
+
+    \param row - number of row to be updated
+    \param values - row contents
+
+    \return true if update succeeds else false
+      *****************/
     virtual bool updateRowInTable(int row, const QSqlRecord &values);
 
 signals:

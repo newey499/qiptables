@@ -97,44 +97,48 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00056"></a>00056     Q_OBJECT
 <a name="l00057"></a>00057 
 <a name="l00058"></a>00058 <span class="keyword">public</span>:
-<a name="l00059"></a>00059     <span class="keyword">explicit</span> <a class="code" href="classFormDlgRuleSnippet.html" title="Add/Amend/Delete Rulesnippets.">FormDlgRuleSnippet</a>(<span class="keywordtype">int</span> opCode, <a class="code" href="classFormCfgRuleSnippets.html" title="Browse Rulesnippets and call add amend delete rulesnippet form.">FormCfgRuleSnippets</a> *parent = 0);
-<a name="l00060"></a>00060     ~<a class="code" href="classFormDlgRuleSnippet.html" title="Add/Amend/Delete Rulesnippets.">FormDlgRuleSnippet</a>();
-<a name="l00061"></a>00061 
-<a name="l00062"></a>00062 <span class="keyword">public</span> slots:
-<a name="l00063"></a>00063 
-<a name="l00064"></a>00064 
-<a name="l00065"></a>00065 <span class="keyword">protected</span>:
-<a name="l00066"></a>00066 
-<a name="l00067"></a>00067     QString organization;
-<a name="l00068"></a>00068     QString application;
-<a name="l00069"></a>00069 
-<a name="l00070"></a>00070     QPointer&lt;FormCfgRuleSnippets&gt; formCfgRuleSnippets;
-<a name="l00071"></a>00071     <span class="keywordtype">int</span> opCode;
-<a name="l00072"></a>00072 
-<a name="l00073"></a>00073     <span class="keywordtype">bool</span> validateData();
-<a name="l00074"></a>00074     <span class="keywordtype">bool</span> writeRow();
-<a name="l00075"></a>00075 
-<a name="l00076"></a>00076     <span class="comment">// row contents</span>
-<a name="l00077"></a>00077     <span class="keywordtype">int</span> id;
-<a name="l00078"></a>00078     QString name;
-<a name="l00079"></a>00079     QString snippets;
-<a name="l00080"></a>00080 
-<a name="l00081"></a>00081 <span class="keyword">protected</span> slots:
-<a name="l00082"></a>00082 
-<a name="l00083"></a>00083     <span class="keyword">virtual</span> <span class="keywordtype">void</span> dataChanged();
-<a name="l00084"></a>00084     <span class="keyword">virtual</span> <span class="keywordtype">void</span> slotBtnSave();
-<a name="l00085"></a>00085     <span class="keyword">virtual</span> <span class="keywordtype">void</span> slotBtnCancel();
-<a name="l00086"></a>00086 
-<a name="l00087"></a>00087     <span class="keyword">virtual</span> <span class="keywordtype">void</span> buttonsEnabled(<span class="keywordtype">bool</span> enabled);
-<a name="l00088"></a>00088 
+<a name="l00059"></a>00059 
+<a name="l00066"></a>00066     <span class="keyword">explicit</span> <a class="code" href="classFormDlgRuleSnippet.html#a646d8a42a331efac265e593c21223c91" title="Constructor.">FormDlgRuleSnippet</a>(<span class="keywordtype">int</span> opCode, <a class="code" href="classFormCfgRuleSnippets.html" title="Browse Rulesnippets and call add amend delete rulesnippet form.">FormCfgRuleSnippets</a> *parent = 0);
+<a name="l00067"></a>00067     ~<a class="code" href="classFormDlgRuleSnippet.html" title="Add/Amend/Delete Rulesnippets.">FormDlgRuleSnippet</a>();
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069 <span class="keyword">public</span> slots:
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072 <span class="keyword">protected</span>:
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074     QString organization;
+<a name="l00075"></a>00075     QString application;
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077     QPointer&lt;FormCfgRuleSnippets&gt; formCfgRuleSnippets;
+<a name="l00078"></a>00078     <span class="keywordtype">int</span> opCode;
+<a name="l00079"></a>00079 
+<a name="l00083"></a>00083     <span class="keywordtype">bool</span> <a class="code" href="classFormDlgRuleSnippet.html#aec0615416e9e5f0418a454e020df1a0c" title="Sanity check on data.">validateData</a>();
+<a name="l00084"></a>00084 
+<a name="l00088"></a>00088     <span class="keywordtype">bool</span> <a class="code" href="classFormDlgRuleSnippet.html#ab64e188646bc468e9c822d138f51e3e8" title="Write data to table.">writeRow</a>();
 <a name="l00089"></a>00089 
-<a name="l00090"></a>00090 <span class="keyword">private</span>:
-<a name="l00091"></a>00091 
-<a name="l00092"></a>00092     Ui::FormDlgRuleSnippet *ui;
-<a name="l00093"></a>00093 
-<a name="l00094"></a>00094 };
-<a name="l00095"></a>00095 
-<a name="l00096"></a>00096 <span class="preprocessor">#endif // FORMDLGRULESNIPPET_H</span>
+<a name="l00090"></a>00090     <span class="comment">// row contents</span>
+<a name="l00091"></a>00091     <span class="keywordtype">int</span> id;
+<a name="l00092"></a>00092     QString name;
+<a name="l00093"></a>00093     QString snippets;
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095 <span class="keyword">protected</span> slots:
+<a name="l00096"></a>00096 
+<a name="l00100"></a>00100     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classFormDlgRuleSnippet.html#a780b26a546b37bc2746a384c353540bf" title="Changes the enabled state of form buttons if the displayed data is changed.">dataChanged</a>();
+<a name="l00101"></a>00101 
+<a name="l00105"></a>00105     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classFormDlgRuleSnippet.html#aca7bacc7491c8b9ae89a7b9d502bc78d" title="Save changes.">slotBtnSave</a>();
+<a name="l00106"></a>00106 
+<a name="l00110"></a>00110     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classFormDlgRuleSnippet.html#a581b091f42b56f681e74de4027a19260" title="Cancel changes.">slotBtnCancel</a>();
+<a name="l00111"></a>00111 
+<a name="l00115"></a>00115     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classFormDlgRuleSnippet.html#a8a9e88d796bb3ec5f2eaa5c1059c290e" title="Enable/disable buttons dependant on edit state.">buttonsEnabled</a>(<span class="keywordtype">bool</span> enabled);
+<a name="l00116"></a>00116 
+<a name="l00117"></a>00117 
+<a name="l00118"></a>00118 <span class="keyword">private</span>:
+<a name="l00119"></a>00119 
+<a name="l00120"></a>00120     Ui::FormDlgRuleSnippet *ui;
+<a name="l00121"></a>00121 
+<a name="l00122"></a>00122 };
+<a name="l00123"></a>00123 
+<a name="l00124"></a>00124 <span class="preprocessor">#endif // FORMDLGRULESNIPPET_H</span>
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -142,7 +146,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -151,7 +155,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Wed Apr 24 2013 17:52:07 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Thu Apr 25 2013 14:21:54 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

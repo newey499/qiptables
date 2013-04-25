@@ -40,7 +40,6 @@ FormDlgRuleset::FormDlgRuleset(int opCode, FormCfgRuleset *parent) :
     formRuleset = parent;
 
     ui->setupUi(this);
-    qDebug("QQQQQQQQQQQQQQQQQQQQQQQQQQQ");
     id = formRuleset->getColumnData("id").toInt();
     name = formRuleset->getColumnData("name").toString();
     rules = formRuleset->getColumnData("rules").toString();

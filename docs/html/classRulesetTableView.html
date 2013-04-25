@@ -65,23 +65,83 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-slots"></a>
 Public Slots</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab1283cd4717af050f7949cd86f12c584"></a><!-- doxytag: member="RulesetTableView::currentChanged" ref="ab1283cd4717af050f7949cd86f12c584" args="(const QModelIndex &amp;current, const QModelIndex &amp;previous)" -->
-virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>currentChanged</b> (const QModelIndex &amp;current, const QModelIndex &amp;previous)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRulesetTableView.html#ab1283cd4717af050f7949cd86f12c584">currentChanged</a> (const QModelIndex &amp;current, const QModelIndex &amp;previous)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">called when row changes  <a href="#ab1283cd4717af050f7949cd86f12c584"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="signals"></a>
 Signals</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae0ae12e29dcc1d620e27f39dce52b65f"></a><!-- doxytag: member="RulesetTableView::rowChanged" ref="ae0ae12e29dcc1d620e27f39dce52b65f" args="(QModelIndex)" -->
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>rowChanged</b> (QModelIndex)</td></tr>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRulesetTableView.html#ae0ae12e29dcc1d620e27f39dce52b65f">rowChanged</a> (QModelIndex)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">propogates index of new row <br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1b11ca533ec4d689280abce05a333b65"></a><!-- doxytag: member="RulesetTableView::RulesetTableView" ref="a1b11ca533ec4d689280abce05a333b65" args="(QWidget *parent=0)" -->
 &nbsp;</td><td class="memItemRight" valign="bottom"><b>RulesetTableView</b> (QWidget *parent=0)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5936b763a30e72d7941b0022d6786c95"></a><!-- doxytag: member="RulesetTableView::configureView" ref="a5936b763a30e72d7941b0022d6786c95" args="()" -->
-virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>configureView</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a34972725f2ebd1b11c64ad8e94412fa8"></a><!-- doxytag: member="RulesetTableView::currentRow" ref="a34972725f2ebd1b11c64ad8e94412fa8" args="()" -->
-virtual int&nbsp;</td><td class="memItemRight" valign="bottom"><b>currentRow</b> ()</td></tr>
+virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRulesetTableView.html#a5936b763a30e72d7941b0022d6786c95">configureView</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">configure view behaviour <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRulesetTableView.html#a34972725f2ebd1b11c64ad8e94412fa8">currentRow</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">get current row  <a href="#a34972725f2ebd1b11c64ad8e94412fa8"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>Subclass of QTableView tweaked for Rulesets. </p>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="ab1283cd4717af050f7949cd86f12c584"></a><!-- doxytag: member="RulesetTableView::currentChanged" ref="ab1283cd4717af050f7949cd86f12c584" args="(const QModelIndex &amp;current, const QModelIndex &amp;previous)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RulesetTableView::currentChanged </td>
+          <td>(</td>
+          <td class="paramtype">const QModelIndex &amp;&nbsp;</td>
+          <td class="paramname"> <em>current</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QModelIndex &amp;&nbsp;</td>
+          <td class="paramname"> <em>previous</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual, slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>called when row changes </p>
+<p>Selects the current row and emits the rowChanged signal</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>current</em>&nbsp;</td><td>- index of current row </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>previous</em>&nbsp;</td><td>- index of row moved from </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a34972725f2ebd1b11c64ad8e94412fa8"></a><!-- doxytag: member="RulesetTableView::currentRow" ref="a34972725f2ebd1b11c64ad8e94412fa8" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int RulesetTableView::currentRow </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>get current row </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>current row number </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="rulesettableview_8h_source.html">rulesettableview.h</a></li>
 <li><a class="el" href="rulesettableview_8cpp.html">rulesettableview.cpp</a></li>
@@ -92,7 +152,7 @@ virtual int&nbsp;</td><td class="memItemRight" valign="bottom"><b>currentRow</b>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,7 +161,7 @@ virtual int&nbsp;</td><td class="memItemRight" valign="bottom"><b>currentRow</b>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Wed Apr 24 2013 17:52:07 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Thu Apr 25 2013 14:21:54 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

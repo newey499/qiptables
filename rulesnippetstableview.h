@@ -59,27 +59,52 @@ public:
 
     explicit RuleSnippetsTableView(QWidget *parent = 0);
 
+    /**
+    \brief Configures view
+      ***************/
     virtual void configureView();
+
+    /**
+    \brief Get current row number
+
+    \return number of current row
+      **********************/
     virtual int currentRow();
+
+    /**
+    \brief enable/disable context menu activated by right mouse button click
+      *********************/
     virtual void enableContextMenu(bool enable = true);
 
 signals:
 
+    /**
+    \brief prpogate the index of the row that has been moved to
+      ******************/
     void rowChanged(QModelIndex);
+
+    /**
+    \brief propogates selected context menu option
+      ******************/
     void menuItemSelected(QAction *);
 
 public slots:
 
+    /**
+    \brief Selects <current> row and emits rowChanged signal passing <current> row
+      ***************************/
     virtual void currentChanged(const QModelIndex &current,
                                 const QModelIndex &previous );
+
+    /**
+    \brief builds and displays context menu as a result of right mouse button click
+
+    The menu is positioned with its top left corner at <pos>
+      *********************/
     virtual void slotShowContextMenu(const QPoint & pos);
 
 protected:
 
-    //virtual void mousePressEvent(QMouseEvent *event);
-    //virtual void mouseMoveEvent(QMouseEvent *event);
-
-    QPoint dragStartPosition;
 };
 
 #endif // RULESNIPPETSTABLEVIEW_H

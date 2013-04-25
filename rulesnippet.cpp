@@ -70,12 +70,14 @@ void RuleSnippet::setIptablesBinary()
         {
             qDebug("Cannot find first record on sysconf table\n[%s]",
                    qry.lastError().text().toAscii().data());
+            location = "";
         }
     }
     else
     {
         qDebug("sysconf query failed\n[%s]",
                qry.lastError().text().toAscii().data());
+        location = "";
     }
 
     QFile file(location);
@@ -87,6 +89,7 @@ void RuleSnippet::setIptablesBinary()
     {
         qDebug("Iptables::setIptablesBinary: location for iptables [%s] does not exist",
                location.toAscii().data());
+        location = "";
     }
 }
 

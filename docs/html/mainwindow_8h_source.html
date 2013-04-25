@@ -111,70 +111,80 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00070"></a>00070 
 <a name="l00071"></a>00071     <span class="keyword">static</span> <span class="keyword">const</span> QString VERSION_NUMBER;
 <a name="l00072"></a>00072 
-<a name="l00073"></a>00073     <span class="keyword">explicit</span> <a class="code" href="classMainWindow.html" title="Main Window of application.">MainWindow</a>(QString organization = <span class="stringliteral">&quot;git:bitbucket.org:newey499.qiptables.git&quot;</span>,
-<a name="l00074"></a>00074                         QString application  = <span class="stringliteral">&quot;Qiptables&quot;</span>,
-<a name="l00075"></a>00075                         QWidget *parent = 0);
-<a name="l00076"></a>00076     ~<a class="code" href="classMainWindow.html" title="Main Window of application.">MainWindow</a>();
-<a name="l00077"></a>00077 
-<a name="l00078"></a>00078     QString organization;
-<a name="l00079"></a>00079     QString application;
-<a name="l00080"></a>00080 
-<a name="l00081"></a>00081 <span class="keyword">public</span> slots:
-<a name="l00082"></a>00082 
-<a name="l00083"></a>00083     <span class="keyword">virtual</span> <span class="keywordtype">void</span> quitApplication();
-<a name="l00084"></a>00084     <span class="keyword">virtual</span> <span class="keywordtype">void</span> aboutQiptables();
-<a name="l00085"></a>00085     <span class="keyword">virtual</span> <span class="keywordtype">void</span> aboutQt();
-<a name="l00086"></a>00086     <span class="keyword">virtual</span> <span class="keywordtype">void</span> selectTestPage();
-<a name="l00087"></a>00087     <span class="keyword">virtual</span> <span class="keywordtype">void</span> selectFwSetUp();
-<a name="l00088"></a>00088     <span class="keyword">virtual</span> <span class="keywordtype">void</span> selectFirewallRulesPage();
-<a name="l00089"></a>00089     <span class="comment">//virtual void selectConfigQiptables();</span>
-<a name="l00090"></a>00090     <span class="keyword">virtual</span> <span class="keywordtype">void</span> selectCfgRuleset();
-<a name="l00091"></a>00091     <span class="keyword">virtual</span> <span class="keywordtype">void</span> selectCfgRuleSnippet();
-<a name="l00092"></a>00092     <span class="comment">//virtual void selectCfgSettings();</span>
-<a name="l00093"></a>00093     <span class="keyword">virtual</span> <span class="keywordtype">void</span> saveSettings();
-<a name="l00094"></a>00094 
-<a name="l00095"></a>00095 signals:
-<a name="l00096"></a>00096 
-<a name="l00097"></a>00097 
-<a name="l00098"></a>00098 <span class="keyword">protected</span>:
-<a name="l00099"></a>00099 
-<a name="l00100"></a>00100     <span class="keyword">virtual</span> <span class="keywordtype">void</span> closeEvent(QCloseEvent *event);
-<a name="l00101"></a>00101 
-<a name="l00102"></a>00102     <span class="keyword">virtual</span> <span class="keywordtype">int</span> quitYesNo();
-<a name="l00103"></a>00103     <span class="keyword">virtual</span> <span class="keywordtype">void</span> buildMenusAndForms();
-<a name="l00104"></a>00104 
-<a name="l00105"></a>00105     <a class="code" href="classIpStackedWidget.html" title="Class to contain application formss.">IpStackedWidget</a> *widgetStack;
-<a name="l00106"></a>00106     <a class="code" href="classFormTest.html" title="Form for various test routines used during development.">FormTest</a> *formTest;
-<a name="l00107"></a>00107     <a class="code" href="classFormFirewallRules.html" title="Get Ruleset from application database.">FormFirewallRules</a> *formFirewallRules;
-<a name="l00108"></a>00108     <a class="code" href="classFormConfigQiptables.html" title="REDUNDANT: add forms to tabbed widget.">FormConfigQiptables</a> *formConfigQiptables;
-<a name="l00109"></a>00109     <a class="code" href="classFormCfgRuleset.html" title="Browse Rulesets and call add amend delete ruleset form.">FormCfgRuleset</a> *formCfgRuleset;
-<a name="l00110"></a>00110     <a class="code" href="classFormCfgRuleSnippets.html" title="Browse Rulesnippets and call add amend delete rulesnippet form.">FormCfgRuleSnippets</a> *formCfgRuleSnippets;
-<a name="l00111"></a>00111     <a class="code" href="classFormCfgSettings.html" title="Maintain application configuration settings.">FormCfgSettings</a> *formCfgSettings;
-<a name="l00112"></a>00112 
+<a name="l00079"></a>00079     <span class="keyword">explicit</span> <a class="code" href="classMainWindow.html#a2a9c90b81e647a70bdb46c78edc5617a" title="Constructor the organization and application are used to uniquely identify the application when stori...">MainWindow</a>(QString organization = <span class="stringliteral">&quot;git:bitbucket.org:newey499.qiptables.git&quot;</span>,
+<a name="l00080"></a>00080                         QString application  = <span class="stringliteral">&quot;Qiptables&quot;</span>,
+<a name="l00081"></a>00081                         QWidget *parent = 0);
+<a name="l00082"></a>00082     ~<a class="code" href="classMainWindow.html" title="Main Window of application.">MainWindow</a>();
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084     QString organization;
+<a name="l00085"></a>00085     QString application;
+<a name="l00086"></a>00086 
+<a name="l00087"></a>00087 <span class="keyword">public</span> slots:
+<a name="l00088"></a>00088 
+<a name="l00092"></a>00092     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a6adafd638f504afb2f1abe228a2df4e8" title="Message Box popped to confirm exit from application.">quitApplication</a>();
+<a name="l00093"></a>00093 
+<a name="l00097"></a>00097     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a6649f17c77c52b2c9cc88b33f4095b82" title="About box for application.">aboutQiptables</a>();
+<a name="l00098"></a>00098 
+<a name="l00102"></a>00102     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a4710d90108bd39f7b80bdc6c3a1b1aef" title="About box for QT.">aboutQt</a>();
+<a name="l00103"></a>00103 
+<a name="l00107"></a>00107     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#adf654a2cd089b71e8cc2fe919de7fe0f" title="selects development test page">selectTestPage</a>();
+<a name="l00108"></a>00108 
+<a name="l00112"></a>00112     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a4bb1447502d129c12d4bdf4db6e6799a" title="selects firewall set up page">selectFwSetUp</a>();
 <a name="l00113"></a>00113 
-<a name="l00114"></a>00114     QMenu *fileMenu;
-<a name="l00115"></a>00115         QAction *actFirewallRules;
-<a name="l00116"></a>00116         QAction *actQuit;
-<a name="l00117"></a>00117 
-<a name="l00118"></a>00118     QMenu *toolsMenu;
-<a name="l00119"></a>00119         QAction *actTest;
-<a name="l00120"></a>00120         QAction *actFwSetUp;
-<a name="l00121"></a>00121 
-<a name="l00122"></a>00122     QMenu *settingsMenu;
-<a name="l00123"></a>00123         QAction *actConfigQiptables;
-<a name="l00124"></a>00124         QAction *actCfgRuleset;
-<a name="l00125"></a>00125         QAction *actCfgRuleSnippet;
-<a name="l00126"></a>00126         QAction *actCfgRuleSettings;
-<a name="l00127"></a>00127 
-<a name="l00128"></a>00128     QMenu *helpMenu;
-<a name="l00129"></a>00129         QAction *actAboutQt;
-<a name="l00130"></a>00130         QAction *actAboutQiptables;
+<a name="l00117"></a>00117     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a700fcb8911ef192c4f53288d97833c50" title="selects firewall Rules page">selectFirewallRulesPage</a>();
+<a name="l00118"></a>00118 
+<a name="l00119"></a>00119     <span class="comment">//virtual void selectConfigQiptables();</span>
+<a name="l00120"></a>00120 
+<a name="l00124"></a>00124     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#af2170d349cb00ae63ea11bc6399e8ba6" title="selects ruleset configuration page">selectCfgRuleset</a>();
+<a name="l00125"></a>00125 
+<a name="l00129"></a>00129     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#ad81bb4ada8c5d6628ad9359670ced631" title="selects rulesnippet configuration page">selectCfgRuleSnippet</a>();
+<a name="l00130"></a>00130     <span class="comment">//virtual void selectCfgSettings();</span>
 <a name="l00131"></a>00131 
-<a name="l00132"></a>00132 <span class="keyword">private</span>:
-<a name="l00133"></a>00133     Ui::MainWindow *ui;
-<a name="l00134"></a>00134 };
-<a name="l00135"></a>00135 
-<a name="l00136"></a>00136 <span class="preprocessor">#endif // MAINWINDOW_H</span>
+<a name="l00135"></a>00135     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#abb30531afee763d0586ee6323fd332e2" title="save form size and position on exit">saveSettings</a>();
+<a name="l00136"></a>00136 
+<a name="l00137"></a>00137 signals:
+<a name="l00138"></a>00138 
+<a name="l00139"></a>00139 
+<a name="l00140"></a>00140 <span class="keyword">protected</span>:
+<a name="l00141"></a>00141 
+<a name="l00145"></a>00145     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a4e20a4a065fbb0e4d3532a45a0a91425" title="called by QT when request is made to exit the application">closeEvent</a>(QCloseEvent *event);
+<a name="l00146"></a>00146 
+<a name="l00150"></a>00150     <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="classMainWindow.html#a00b1a6087f9f43c04a716ddfefcf3c92" title="Message Box that asks for confirmation of application exit.">quitYesNo</a>();
+<a name="l00151"></a>00151 
+<a name="l00155"></a>00155     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classMainWindow.html#a96ce05648efd69f4506211a28f9993f2" title="Create menus and forms used by application.">buildMenusAndForms</a>();
+<a name="l00156"></a>00156 
+<a name="l00157"></a>00157     <a class="code" href="classIpStackedWidget.html" title="Class to contain application forms.">IpStackedWidget</a> *widgetStack;
+<a name="l00158"></a>00158     <a class="code" href="classFormTest.html" title="Form for various test routines used during development.">FormTest</a> *formTest;
+<a name="l00159"></a>00159     <a class="code" href="classFormFirewallRules.html" title="Get Ruleset from application database.">FormFirewallRules</a> *formFirewallRules;
+<a name="l00160"></a>00160     <a class="code" href="classFormConfigQiptables.html" title="REDUNDANT: add forms to tabbed widget.">FormConfigQiptables</a> *formConfigQiptables;
+<a name="l00161"></a>00161     <a class="code" href="classFormCfgRuleset.html" title="Browse Rulesets and call add amend delete ruleset form.">FormCfgRuleset</a> *formCfgRuleset;
+<a name="l00162"></a>00162     <a class="code" href="classFormCfgRuleSnippets.html" title="Browse Rulesnippets and call add amend delete rulesnippet form.">FormCfgRuleSnippets</a> *formCfgRuleSnippets;
+<a name="l00163"></a>00163     <a class="code" href="classFormCfgSettings.html" title="Maintain application configuration settings.">FormCfgSettings</a> *formCfgSettings;
+<a name="l00164"></a>00164 
+<a name="l00165"></a>00165 
+<a name="l00166"></a>00166     QMenu *fileMenu;
+<a name="l00167"></a>00167         QAction *actFirewallRules;
+<a name="l00168"></a>00168         QAction *actQuit;
+<a name="l00169"></a>00169 
+<a name="l00170"></a>00170     QMenu *toolsMenu;
+<a name="l00171"></a>00171         QAction *actTest;
+<a name="l00172"></a>00172         QAction *actFwSetUp;
+<a name="l00173"></a>00173 
+<a name="l00174"></a>00174     QMenu *settingsMenu;
+<a name="l00175"></a>00175         QAction *actConfigQiptables;
+<a name="l00176"></a>00176         QAction *actCfgRuleset;
+<a name="l00177"></a>00177         QAction *actCfgRuleSnippet;
+<a name="l00178"></a>00178         QAction *actCfgRuleSettings;
+<a name="l00179"></a>00179 
+<a name="l00180"></a>00180     QMenu *helpMenu;
+<a name="l00181"></a>00181         QAction *actAboutQt;
+<a name="l00182"></a>00182         QAction *actAboutQiptables;
+<a name="l00183"></a>00183 
+<a name="l00184"></a>00184 <span class="keyword">private</span>:
+<a name="l00185"></a>00185     Ui::MainWindow *ui;
+<a name="l00186"></a>00186 };
+<a name="l00187"></a>00187 
+<a name="l00188"></a>00188 <span class="preprocessor">#endif // MAINWINDOW_H</span>
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -182,7 +192,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -191,7 +201,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Wed Apr 24 2013 17:52:07 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Thu Apr 25 2013 14:21:54 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

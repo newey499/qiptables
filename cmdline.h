@@ -51,24 +51,57 @@ class CmdLine : public QObject
     Q_OBJECT
 public:
 
+    /**
+      Comments are shell script style "#". Everything from # to end
+      of line are treated as a comment.
+      ******************/
     static const QString defaultCommentMark;
+
+    /**
+      "#include" is used to include a code snippet into a ruleset
+      instead of pasting the content of the snippet into a ruleset.
+      ************************/
     static const QString defaultIncludeMark;
 
     explicit CmdLine(QObject *parent = 0);
 
+    /**
+      \brief Change comment mark
+      \param commentMark - new comment mark
+      ********************/
     virtual void setCommentMark(QString commentMark);
+
+    /**
+      \brief Get current comment mark
+      \return Current comment mark
+      **********************/
     virtual QString getCommentMark();
 
-    // Strip any comments from the ruleset
+    /**
+    \brief Strip any comments from the ruleset
+    \param rulesetList - Series of lines from ruleset
+    \param commentMark - String to be used to recognize a comment
+    \return rulesetList with comments removed
+    ****************/
     virtual QStringList stripComments(QStringList rulesetList,
                                       QString commentMark = CmdLine::defaultCommentMark);
+
+    /**
+    \brief Strip any comments from a single ruleset line
+    \param rule - line from ruleset
+    \param commentMark - String to be used to recognize a comment
+    \return rule with comment removed
+    ****************/
     virtual QString     stripComments(QString rule,
                                       QString commentMark = CmdLine::defaultCommentMark);
 
-    // Strip any blank lines from the ruleset
+    /**
+    \brief Strip any blank lines from the ruleset
+    \param rulesetList - Series of lines from ruleset
+    \return rulesetList with comments removed
+    ****************************/
     virtual QStringList stripBlankLines(QStringList rulesetList);
 
-    // Find any "#includes" in ruleset
 
 signals:
 

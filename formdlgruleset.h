@@ -62,13 +62,31 @@ class FormDlgRuleset : public QDialog
     Q_OBJECT
 
 public:
+
+    /**
+    \brief  Constructor
+    \param  opCode - whether the dialogue is to be used to add, amend or
+            delete a ruleset.
+    \param  parent - Pointer to configuration form parent
+      ***********************/
     explicit FormDlgRuleset(int opCode, FormCfgRuleset *parent);
     ~FormDlgRuleset();
 
 public slots:
 
+    /**
+    \brief Save changes
+      ***************/
     virtual void slotSave();
+
+    /**
+    \brief Cancel changes
+      ***************/
     virtual void slotCancel();
+
+    /**
+    \brief Add a new snippet
+      ***************/
     virtual void slotAddSnippet();
 
 protected:
@@ -79,13 +97,32 @@ protected:
     QString rules;
     int opcode;
 
+    /**
+    \brief checks to see if current ruleset is the default
+    \return true if ruleset is default else false
+      *******************/
     bool isDefaultRuleset();
+
+    /**
+    \brief Sanity check on data
+      *******************/
     bool validateData();
+
+    /**
+    \brief Write data to table
+      *******************/
     bool writeRow();
 
 protected slots:
 
+    /**
+    \brief Enable/disable buttons dependant on edit state
+      ***************/
     virtual void buttonsEnabled(bool enabled);
+
+    /**
+    \brief Changes the enabled state of form buttons if the displayed data is changed
+      *******************/
     virtual void dataChanged();
 
 

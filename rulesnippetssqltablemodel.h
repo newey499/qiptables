@@ -43,8 +43,20 @@ class RuleSnippetsSqlTableModel : public QSqlTableModel
     Q_OBJECT
 public:
     explicit RuleSnippetsSqlTableModel(QObject *parent = 0);
+
+    /**
+    \brief Constructor that allows model to be set up as readonly
+      **************/
     explicit RuleSnippetsSqlTableModel(bool readOnly, QObject *parent = 0);
 
+    /**
+    \brief updates rulesnippet row
+
+    \param row - row number (primary key of table)
+    \param values - row data
+
+    \return true if successful else false
+      ************************/
     virtual bool updateRowInTable(int row, const QSqlRecord &values);
 
     bool readOnly;
@@ -53,6 +65,9 @@ signals:
 
 public slots:
 
+    /**
+    \brief redundant debug code - does nothing except issue a qDebug message
+      ******************/
     virtual void dropChanges();
 
 protected:

@@ -80,28 +80,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00030"></a>00030 <span class="preprocessor">#include &lt;QStackedWidget&gt;</span>
 <a name="l00031"></a>00031 <span class="preprocessor">#include &quot;<a class="code" href="qiptablesexception_8h.html">qiptablesexception.h</a>&quot;</span>
 <a name="l00032"></a>00032 
-<a name="l00042"></a><a class="code" href="classIpStackedWidget.html">00042</a> <span class="keyword">class </span><a class="code" href="classIpStackedWidget.html" title="Class to contain application formss.">IpStackedWidget</a> : <span class="keyword">public</span> QStackedWidget
+<a name="l00042"></a><a class="code" href="classIpStackedWidget.html">00042</a> <span class="keyword">class </span><a class="code" href="classIpStackedWidget.html" title="Class to contain application forms.">IpStackedWidget</a> : <span class="keyword">public</span> QStackedWidget
 <a name="l00043"></a>00043 {
 <a name="l00044"></a>00044     Q_OBJECT
 <a name="l00045"></a>00045 <span class="keyword">public</span>:
-<a name="l00046"></a>00046     <span class="keyword">explicit</span> <a class="code" href="classIpStackedWidget.html" title="Class to contain application formss.">IpStackedWidget</a>(QWidget *parent = 0);
-<a name="l00047"></a>00047 
-<a name="l00048"></a>00048     <span class="keyword">virtual</span> <span class="keywordtype">int</span> addWidget(QString widgetName, QWidget *widget);
-<a name="l00049"></a>00049 
-<a name="l00050"></a>00050     <span class="keyword">virtual</span> <span class="keywordtype">int</span> getPageIndex(QString widgetName);
-<a name="l00051"></a>00051 
-<a name="l00052"></a>00052 
-<a name="l00053"></a>00053 signals:
-<a name="l00054"></a>00054 
-<a name="l00055"></a>00055 <span class="keyword">public</span> slots:
-<a name="l00056"></a>00056 
-<a name="l00057"></a>00057 <span class="keyword">protected</span>:
+<a name="l00046"></a>00046 
+<a name="l00047"></a>00047     <span class="keyword">explicit</span> <a class="code" href="classIpStackedWidget.html" title="Class to contain application forms.">IpStackedWidget</a>(QWidget *parent = 0);
+<a name="l00048"></a>00048 
+<a name="l00057"></a>00057     <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="classIpStackedWidget.html#a6b5aeeac5ae1945ad7990595dea32288" title="Adds a widget to IpStackedWidget.">addWidget</a>(QString widgetName, QWidget *widget);
 <a name="l00058"></a>00058 
-<a name="l00059"></a>00059      QMap&lt;QString, int&gt; *widgetMap;
-<a name="l00060"></a>00060 
-<a name="l00061"></a>00061 };
-<a name="l00062"></a>00062 
-<a name="l00063"></a>00063 <span class="preprocessor">#endif // IPSTACKEDWIDGET_H</span>
+<a name="l00066"></a>00066     <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="classIpStackedWidget.html#a4e556cbd4010cf51674b6a0aa1ef83c6" title="get index number of widget using widget name">getPageIndex</a>(QString widgetName);
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069 signals:
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071 <span class="keyword">public</span> slots:
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073 <span class="keyword">protected</span>:
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075      QMap&lt;QString, int&gt; *widgetMap;
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077 };
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079 <span class="preprocessor">#endif // IPSTACKEDWIDGET_H</span>
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -109,7 +110,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -118,7 +119,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Wed Apr 24 2013 17:52:07 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Thu Apr 25 2013 14:21:54 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

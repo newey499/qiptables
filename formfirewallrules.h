@@ -69,20 +69,62 @@ class FormFirewallRules : public QWidget
     Q_OBJECT
 
 public:
+
     explicit FormFirewallRules(QWidget *parent = 0, Qt::WindowFlags f = 0);
     ~FormFirewallRules();
 
+    /**
+    \brief Get the short name of the currently functioning firewall ruleset
+
+    When a ruleset is exported from the database and made the active firewall
+    configuration by the use of iptables commands the ruleset full name is
+    massaged to create a short name which is stored in the firewall
+
+    \return String containing short firewall name
+      *****************/
     QString getCurrentFirewallShortName();
+
+    /**
+    \brief Get the ruleset row from the database using the short name
+
+    \param shortName - The short name of the ruleset
+    \return the row of the ruleset
+      **********************/
     QSqlRecord getFirewallRulesetFromShortName(QString shortName);
+
+    /**
+    \brief Get the full ruleset name from the short name
+
+    \param shortName - The short name of the ruleset
+    \return the full name of the ruleset
+      ****************/
     QString getRulesetNameFromShortName(QString shortName);
 
 signals:
 
 public slots:
 
+    /**
+    \brief Displays current firewall rules in a text edit box
+      *****************/
     virtual void showCurrentFirewallRules();
+
+    /**
+    \brief synonym for showCurrentFirewallRules()
+      ***************/
     virtual void slotCurrentRules();
+
+    /**
+    \brief Enables currently selected firewall ruleset
+
+    Loads the currently selected ruleset using iptables and then displays
+    the new firewall rules in the text edit box
+      *****************/
     virtual void slotEnableRuleset();
+
+    /**
+    \brief Called when the ruleset selected in the combobox changes
+      *****************/
     virtual void slotCbxFirewallsIndexChanged(int index);
 
 protected:
@@ -91,6 +133,10 @@ protected:
     QPointer<IpProcess> proc;
     QPointer<Iptables> ipTables;
 
+    /**
+    \brief Called when form becomes visible
+    \param event - QT generated event
+      **************/
     virtual void showEvent(QShowEvent *event);
 
 private:

@@ -102,31 +102,37 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00060"></a>00060 
 <a name="l00061"></a>00061 <span class="keyword">public</span> slots:
 <a name="l00062"></a>00062 
-<a name="l00063"></a>00063     <span class="keyword">virtual</span> <span class="keywordtype">void</span> slotFileDialog();
-<a name="l00064"></a>00064     <span class="keyword">virtual</span> <span class="keywordtype">void</span> slotSave();
-<a name="l00065"></a>00065     <span class="keyword">virtual</span> <span class="keywordtype">void</span> slotCancel();
-<a name="l00066"></a>00066     <span class="keyword">virtual</span> <span class="keywordtype">void</span> slotButtonStateEnabled();
-<a name="l00067"></a>00067     <span class="keyword">virtual</span> <span class="keywordtype">void</span> slotButtonStateDisabled();
-<a name="l00068"></a>00068 
-<a name="l00069"></a>00069 <span class="keyword">protected</span>:
-<a name="l00070"></a>00070 
-<a name="l00071"></a>00071     <a class="code" href="classDatabaseManager.html" title="Class to manipulate application database.">DatabaseManager</a> *databaseManager;
-<a name="l00072"></a>00072     QSqlQuery qry;
-<a name="l00073"></a>00073 
-<a name="l00074"></a>00074     <span class="keywordtype">int</span> id;
-<a name="l00075"></a>00075     QString shell;
-<a name="l00076"></a>00076     QString iptables;
-<a name="l00077"></a>00077     QString defaultRuleName;
-<a name="l00078"></a>00078 
-<a name="l00079"></a>00079     <span class="keyword">virtual</span> <span class="keywordtype">void</span> loadSettings();
-<a name="l00080"></a>00080     <span class="keyword">virtual</span> <span class="keywordtype">void</span> saveSettings();
-<a name="l00081"></a>00081     <span class="keyword">virtual</span> QString lastSqlErrorAsString();
+<a name="l00066"></a>00066     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classFormCfgSettings.html#a7ec23d88c45e545ebd5369000a23715c" title="Wrapper for file dialogue used to select iptables location.">slotFileDialog</a>();
+<a name="l00067"></a>00067 
+<a name="l00071"></a>00071     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classFormCfgSettings.html#a2a79033fe5a99ec095831f9e60d5ad9f" title="Save Configuration to table.">slotSave</a>();
+<a name="l00072"></a>00072 
+<a name="l00076"></a>00076     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classFormCfgSettings.html#a01d5c87b6fc0f516244e12741cde5e80" title="Cancel any changes made to configuration by reloading defaults from table.">slotCancel</a>();
+<a name="l00077"></a>00077 
+<a name="l00081"></a>00081     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classFormCfgSettings.html#a0899a6866f590d85d40778ddb5bbfe65" title="Change button enabled state depending on edit state.">slotButtonStateEnabled</a>();
 <a name="l00082"></a>00082 
-<a name="l00083"></a>00083 <span class="keyword">private</span>:
-<a name="l00084"></a>00084     Ui::FormCfgSettings *ui;
-<a name="l00085"></a>00085 };
-<a name="l00086"></a>00086 
-<a name="l00087"></a>00087 <span class="preprocessor">#endif // FORMCFGSETTINGS_H</span>
+<a name="l00086"></a>00086     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classFormCfgSettings.html#a6621dbdebd19de0944618733f29f7ae5" title="Change button enabled state depending on edit state.">slotButtonStateDisabled</a>();
+<a name="l00087"></a>00087 
+<a name="l00088"></a>00088 <span class="keyword">protected</span>:
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090     <a class="code" href="classDatabaseManager.html" title="Class to manipulate application database.">DatabaseManager</a> *databaseManager;
+<a name="l00091"></a>00091     QSqlQuery qry;
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093     <span class="keywordtype">int</span> id;
+<a name="l00094"></a>00094     QString shell;
+<a name="l00095"></a>00095     QString iptables;
+<a name="l00096"></a>00096     QString defaultRuleName;
+<a name="l00097"></a>00097 
+<a name="l00101"></a>00101     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classFormCfgSettings.html#a4019dc79da8192c57bef803ecffa587e" title="Load configuration settings from table.">loadSettings</a>();
+<a name="l00102"></a>00102 
+<a name="l00106"></a>00106     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classFormCfgSettings.html#ae971a47ace4c47a13854322171877ff8" title="Save configuration settings to table.">saveSettings</a>();
+<a name="l00107"></a>00107 
+<a name="l00112"></a>00112     <span class="keyword">virtual</span> QString <a class="code" href="classFormCfgSettings.html#a5a1054a8bc3666898dbc72181e94a77b" title="Return last error if any from last executed SQL command.">lastSqlErrorAsString</a>();
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114 <span class="keyword">private</span>:
+<a name="l00115"></a>00115     Ui::FormCfgSettings *ui;
+<a name="l00116"></a>00116 };
+<a name="l00117"></a>00117 
+<a name="l00118"></a>00118 <span class="preprocessor">#endif // FORMCFGSETTINGS_H</span>
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -134,7 +140,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -143,7 +149,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Wed Apr 24 2013 17:52:07 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Thu Apr 25 2013 14:21:54 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

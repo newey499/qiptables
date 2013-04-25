@@ -85,10 +85,7 @@ FormCfgRuleset::~FormCfgRuleset()
     delete ui;
 }
 
-/**
-\brief When the form is displayed set the focus to the ruleset browse
- window and select the first row
-****************/
+
 void FormCfgRuleset::showEvent(QShowEvent *event)
 {
     // disable compiler warning for unused parameter - gcc optimizes out this code
@@ -102,7 +99,7 @@ QVariant FormCfgRuleset::getColumnData(QString colName)
     return model->record(ui->tblRuleset->currentIndex().row()).value(colName);
 }
 
-//void FormCfgRuleset::currentRowChanged(QModelIndex currentRow)
+
 void FormCfgRuleset::currentRowChanged()
 {
     QString txt = getColumnData("rules").toString();
@@ -239,7 +236,7 @@ void FormCfgRuleset::slotCodeSnippets()
 
 void FormCfgRuleset::slotAddSnippet(bool useInclude, int id, QString name, QString snippets)
 {
-    id = id;  // suppress compiler warning - copiler optimises this out
+    id = id;  // suppress compiler warning - compiler optimises this out
 
     qDebug("FormCfgRuleset::slotAddSnippet(int id, QString name, QString snippets)");
     QString include;

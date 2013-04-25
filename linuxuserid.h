@@ -85,14 +85,35 @@ class LinuxUserId : public QObject
     Q_OBJECT
 public:
 
+    /**
+    Linux numeric user id of root. This is always zero.
+    ****************************/
     static const unsigned int ROOT_USERID;
 
+    /**
+      \brief Constructor
+      \param parent
+      *******************/
     explicit LinuxUserId(QObject *parent = 0);
 
+    /**
+      \return user id of user running application
+      ***************/
     virtual unsigned int getUserId();
+
+    /**
+      \return effective user id of user running application
+      ***************/
     virtual unsigned int getEffectiveUserId();
 
+    /**
+      \return true if user running application is root else false
+      ***************/
     virtual bool isUserRoot();
+
+    /**
+      \return true if effective user running application is root else false
+      ***************/
     virtual bool isEffectiveUserRoot();
 
 signals:

@@ -306,21 +306,6 @@ void FormCfgRuleSnippets::slotCloseWindow()
 }
 
 
-void FormCfgRuleSnippets::enableDrag(bool enable)
-{
-    if (enable)
-    {
-        ui->tblRuleSnippets->setSelectionMode(QAbstractItemView::SingleSelection);
-        ui->tblRuleSnippets->setDragDropMode(QAbstractItemView::DragOnly);
-        ui->tblRuleSnippets->setDragEnabled(true);
-    }
-    else
-    {
-        ui->tblRuleSnippets->setDragEnabled(true);
-    }
-
-}
-
 void FormCfgRuleSnippets::enableContextMenu(bool enable)
 {
     ui->tblRuleSnippets->enableContextMenu(enable);

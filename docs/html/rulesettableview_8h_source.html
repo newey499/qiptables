@@ -86,21 +86,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00045"></a>00045 <span class="keyword">public</span>:
 <a name="l00046"></a>00046     <span class="keyword">explicit</span> <a class="code" href="classRulesetTableView.html" title="Subclass of QTableView tweaked for Rulesets.">RulesetTableView</a>(QWidget *parent = 0);
 <a name="l00047"></a>00047 
-<a name="l00048"></a>00048     <span class="keyword">virtual</span> <span class="keywordtype">void</span> configureView();
-<a name="l00049"></a>00049     <span class="keyword">virtual</span> <span class="keywordtype">int</span> currentRow();
-<a name="l00050"></a>00050 
-<a name="l00051"></a>00051 signals:
+<a name="l00051"></a>00051     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classRulesetTableView.html#a5936b763a30e72d7941b0022d6786c95" title="configure view behaviour">configureView</a>();
 <a name="l00052"></a>00052 
-<a name="l00053"></a>00053     <span class="keywordtype">void</span> rowChanged(QModelIndex);
-<a name="l00054"></a>00054 
-<a name="l00055"></a>00055 <span class="keyword">public</span> slots:
-<a name="l00056"></a>00056 
-<a name="l00057"></a>00057     <span class="keyword">virtual</span> <span class="keywordtype">void</span> currentChanged(<span class="keyword">const</span> QModelIndex &amp;current,
-<a name="l00058"></a>00058                                 <span class="keyword">const</span> QModelIndex &amp;previous );
+<a name="l00058"></a>00058     <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="classRulesetTableView.html#a34972725f2ebd1b11c64ad8e94412fa8" title="get current row">currentRow</a>();
 <a name="l00059"></a>00059 
-<a name="l00060"></a>00060 };
+<a name="l00060"></a>00060 signals:
 <a name="l00061"></a>00061 
-<a name="l00062"></a>00062 <span class="preprocessor">#endif // RULESETTABLEVIEW_H</span>
+<a name="l00065"></a>00065     <span class="keywordtype">void</span> <a class="code" href="classRulesetTableView.html#ae0ae12e29dcc1d620e27f39dce52b65f" title="propogates index of new row">rowChanged</a>(QModelIndex);
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067 <span class="keyword">public</span> slots:
+<a name="l00068"></a>00068 
+<a name="l00077"></a>00077     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classRulesetTableView.html#ab1283cd4717af050f7949cd86f12c584" title="called when row changes">currentChanged</a>(<span class="keyword">const</span> QModelIndex &amp;current,
+<a name="l00078"></a>00078                                 <span class="keyword">const</span> QModelIndex &amp;previous );
+<a name="l00079"></a>00079 
+<a name="l00080"></a>00080 };
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082 <span class="preprocessor">#endif // RULESETTABLEVIEW_H</span>
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -108,7 +109,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -117,7 +118,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Wed Apr 24 2013 17:52:07 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Thu Apr 25 2013 14:21:54 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

@@ -65,20 +65,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af01f4be71b6da2b26e9201ff3db5e604"></a><!-- doxytag: member="LinuxUserId::LinuxUserId" ref="af01f4be71b6da2b26e9201ff3db5e604" args="(QObject *parent=0)" -->
-&nbsp;</td><td class="memItemRight" valign="bottom"><b>LinuxUserId</b> (QObject *parent=0)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a09500d36bc440fac51e80e972c3cb9b6"></a><!-- doxytag: member="LinuxUserId::getUserId" ref="a09500d36bc440fac51e80e972c3cb9b6" args="()" -->
-virtual unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><b>getUserId</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae2000e3814f458ac8e84585472e2871f"></a><!-- doxytag: member="LinuxUserId::getEffectiveUserId" ref="ae2000e3814f458ac8e84585472e2871f" args="()" -->
-virtual unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><b>getEffectiveUserId</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a025aec6b6bef63d34872750583a0be88"></a><!-- doxytag: member="LinuxUserId::isUserRoot" ref="a025aec6b6bef63d34872750583a0be88" args="()" -->
-virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>isUserRoot</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab970b36200b984846d55d8fed9efabf1"></a><!-- doxytag: member="LinuxUserId::isEffectiveUserRoot" ref="ab970b36200b984846d55d8fed9efabf1" args="()" -->
-virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>isEffectiveUserRoot</b> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinuxUserId.html#af01f4be71b6da2b26e9201ff3db5e604">LinuxUserId</a> (QObject *parent=0)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="#af01f4be71b6da2b26e9201ff3db5e604"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinuxUserId.html#a09500d36bc440fac51e80e972c3cb9b6">getUserId</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinuxUserId.html#ae2000e3814f458ac8e84585472e2871f">getEffectiveUserId</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinuxUserId.html#a025aec6b6bef63d34872750583a0be88">isUserRoot</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinuxUserId.html#ab970b36200b984846d55d8fed9efabf1">isEffectiveUserRoot</a> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7a229d8237521d4c0a8034cea9554273"></a><!-- doxytag: member="LinuxUserId::ROOT_USERID" ref="a7a229d8237521d4c0a8034cea9554273" args="" -->
-static const unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><b>ROOT_USERID</b> = 0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static const unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLinuxUserId.html#a7a229d8237521d4c0a8034cea9554273">ROOT_USERID</a> = 0</td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0dd899affc02d67fdf782caf6732988e"></a><!-- doxytag: member="LinuxUserId::userId" ref="a0dd899affc02d67fdf782caf6732988e" args="" -->
@@ -89,6 +84,121 @@ unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><b>effectiveUser
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>Obtains user id using Linux system calls. </p>
 <p>Main use is checking for root. The application needs to be running as root to run iptables which is the firewall manipulation tool. </p>
+<hr/><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="af01f4be71b6da2b26e9201ff3db5e604"></a><!-- doxytag: member="LinuxUserId::LinuxUserId" ref="af01f4be71b6da2b26e9201ff3db5e604" args="(QObject *parent=0)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LinuxUserId::LinuxUserId </td>
+          <td>(</td>
+          <td class="paramtype">QObject *&nbsp;</td>
+          <td class="paramname"> <em>parent</em> = <code>0</code></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [explicit]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Constructor. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>parent</em>&nbsp;</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="ae2000e3814f458ac8e84585472e2871f"></a><!-- doxytag: member="LinuxUserId::getEffectiveUserId" ref="ae2000e3814f458ac8e84585472e2871f" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int LinuxUserId::getEffectiveUserId </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="return"><dt><b>Returns:</b></dt><dd>effective user id of user running application </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a09500d36bc440fac51e80e972c3cb9b6"></a><!-- doxytag: member="LinuxUserId::getUserId" ref="a09500d36bc440fac51e80e972c3cb9b6" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int LinuxUserId::getUserId </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="return"><dt><b>Returns:</b></dt><dd>user id of user running application </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ab970b36200b984846d55d8fed9efabf1"></a><!-- doxytag: member="LinuxUserId::isEffectiveUserRoot" ref="ab970b36200b984846d55d8fed9efabf1" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LinuxUserId::isEffectiveUserRoot </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="return"><dt><b>Returns:</b></dt><dd>true if effective user running application is root else false </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a025aec6b6bef63d34872750583a0be88"></a><!-- doxytag: member="LinuxUserId::isUserRoot" ref="a025aec6b6bef63d34872750583a0be88" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LinuxUserId::isUserRoot </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<dl class="return"><dt><b>Returns:</b></dt><dd>true if user running application is root else false </dd></dl>
+
+</div>
+</div>
+<hr/><h2>Member Data Documentation</h2>
+<a class="anchor" id="a7a229d8237521d4c0a8034cea9554273"></a><!-- doxytag: member="LinuxUserId::ROOT_USERID" ref="a7a229d8237521d4c0a8034cea9554273" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned int <a class="el" href="classLinuxUserId.html#a7a229d8237521d4c0a8034cea9554273">LinuxUserId::ROOT_USERID</a> = 0<code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Linux numeric user id of root. This is always zero. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="linuxuserid_8h_source.html">linuxuserid.h</a></li>
 <li><a class="el" href="linuxuserid_8cpp.html">linuxuserid.cpp</a></li>
@@ -99,7 +209,7 @@ unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><b>effectiveUser
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -108,7 +218,7 @@ unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><b>effectiveUser
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Wed Apr 24 2013 17:52:07 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Thu Apr 25 2013 14:21:54 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

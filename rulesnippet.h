@@ -61,19 +61,50 @@ public:
     explicit RuleSnippet(QObject *parent = 0);
     ~RuleSnippet();
 
+    /**
+    \brief get path and name of iptables application
+
+    \return path and name of iptables application
+      *******************/
     virtual QString getIptablesBinary();
+
+
+    /**
+    \brief get path and name of iptables location
+
+    if the file exists the path and filename is set in the IptablesBinary class
+    variable.
+      *********************/
     virtual void setIptablesBinary();
 
 
     QPointer<DatabaseManager> db;
 
-    // Get the required SQLRecord containing the rule snippet
+    /**
+    \brief Get the required SQLRecord containing the rule snippet
+
+    \param ruleSnippetName - name of rule snippet
+
+    \return row of rulesnippet from database
+      **************************/
     virtual QSqlRecord getRuleSnippet(QString ruleSnippetName);
 
+    /**
+    \brief Get the rulesnippet as a QStringList off the rule snippet table using the rule snippet name
 
-    // Get the ruleset as a QStringList off the rule snippet table using the rule snippet name
+    \param ruleSnippetName - name of rule snippet
+
+    \return rulesnippet as a list
+      *********************/
     virtual QStringList getRuleSnippetRows(QString ruleSnippetName);
 
+    /**
+    \brief Get the rulesnippet as a QStringList off the rule snippet table using the rule snippet name
+
+    \param ruleSnippetName - name of rule snippet
+
+    \return rulesnippet as a list. The return value is used for display purposes in a text box.
+      *********************/
     virtual QStringList getIncludeRuleSnippetRows(QString ruleSnippetName);
 
 signals:

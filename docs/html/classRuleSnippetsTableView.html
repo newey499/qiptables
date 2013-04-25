@@ -51,8 +51,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#pub-slots">Public Slots</a> &#124;
 <a href="#signals">Signals</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a>  </div>
+<a href="#pub-static-attribs">Static Public Attributes</a>  </div>
   <div class="headertitle">
 <h1>RuleSnippetsTableView Class Reference</h1>  </div>
 </div>
@@ -68,38 +67,81 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td colspan="2"><h2><a name="pub-slots"></a>
 Public Slots</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a09fe7d7cc86f9a74d58ba3a6808ebb33"></a><!-- doxytag: member="RuleSnippetsTableView::currentChanged" ref="a09fe7d7cc86f9a74d58ba3a6808ebb33" args="(const QModelIndex &amp;current, const QModelIndex &amp;previous)" -->
-virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>currentChanged</b> (const QModelIndex &amp;current, const QModelIndex &amp;previous)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aba9017d0105d2a458a9d637b681e901d"></a><!-- doxytag: member="RuleSnippetsTableView::slotShowContextMenu" ref="aba9017d0105d2a458a9d637b681e901d" args="(const QPoint &amp;pos)" -->
-virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>slotShowContextMenu</b> (const QPoint &amp;pos)</td></tr>
+virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRuleSnippetsTableView.html#a09fe7d7cc86f9a74d58ba3a6808ebb33">currentChanged</a> (const QModelIndex &amp;current, const QModelIndex &amp;previous)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Selects &lt;current&gt; row and emits rowChanged signal passing &lt;current&gt; row. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRuleSnippetsTableView.html#aba9017d0105d2a458a9d637b681e901d">slotShowContextMenu</a> (const QPoint &amp;pos)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">builds and displays context menu as a result of right mouse button click  <a href="#aba9017d0105d2a458a9d637b681e901d"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="signals"></a>
 Signals</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a76ff96da4c3414bc050016f8dabd06af"></a><!-- doxytag: member="RuleSnippetsTableView::rowChanged" ref="a76ff96da4c3414bc050016f8dabd06af" args="(QModelIndex)" -->
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>rowChanged</b> (QModelIndex)</td></tr>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRuleSnippetsTableView.html#a76ff96da4c3414bc050016f8dabd06af">rowChanged</a> (QModelIndex)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">prpogate the index of the row that has been moved to <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7adeb5685e05b5b00c5cda7551507227"></a><!-- doxytag: member="RuleSnippetsTableView::menuItemSelected" ref="a7adeb5685e05b5b00c5cda7551507227" args="(QAction *)" -->
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>menuItemSelected</b> (QAction *)</td></tr>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRuleSnippetsTableView.html#a7adeb5685e05b5b00c5cda7551507227">menuItemSelected</a> (QAction *)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">propogates selected context menu option <br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a31f4a83efb903f9964380ebf742510fc"></a><!-- doxytag: member="RuleSnippetsTableView::RuleSnippetsTableView" ref="a31f4a83efb903f9964380ebf742510fc" args="(QWidget *parent=0)" -->
 &nbsp;</td><td class="memItemRight" valign="bottom"><b>RuleSnippetsTableView</b> (QWidget *parent=0)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae00bcadf94ec8be050ff579d8502f02b"></a><!-- doxytag: member="RuleSnippetsTableView::configureView" ref="ae00bcadf94ec8be050ff579d8502f02b" args="()" -->
-virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>configureView</b> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a86777172fa6ee87d2c1794f59eb8e63d"></a><!-- doxytag: member="RuleSnippetsTableView::currentRow" ref="a86777172fa6ee87d2c1794f59eb8e63d" args="()" -->
-virtual int&nbsp;</td><td class="memItemRight" valign="bottom"><b>currentRow</b> ()</td></tr>
+virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRuleSnippetsTableView.html#ae00bcadf94ec8be050ff579d8502f02b">configureView</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Configures view. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRuleSnippetsTableView.html#a86777172fa6ee87d2c1794f59eb8e63d">currentRow</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get current row number.  <a href="#a86777172fa6ee87d2c1794f59eb8e63d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad7481108be2f611561747dcfa54bba9d"></a><!-- doxytag: member="RuleSnippetsTableView::enableContextMenu" ref="ad7481108be2f611561747dcfa54bba9d" args="(bool enable=true)" -->
-virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>enableContextMenu</b> (bool enable=true)</td></tr>
+virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRuleSnippetsTableView.html#ad7481108be2f611561747dcfa54bba9d">enableContextMenu</a> (bool enable=true)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">enable/disable context menu activated by right mouse button click <br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa42c12cbb48a0f7da6aec78c34872fdf"></a><!-- doxytag: member="RuleSnippetsTableView::INCLUDE_SNIPPET" ref="aa42c12cbb48a0f7da6aec78c34872fdf" args="" -->
 static const int&nbsp;</td><td class="memItemRight" valign="bottom"><b>INCLUDE_SNIPPET</b> = 1</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9c4753340af8d583ce495fa515e587b7"></a><!-- doxytag: member="RuleSnippetsTableView::PASTE_SNIPPET" ref="a9c4753340af8d583ce495fa515e587b7" args="" -->
 static const int&nbsp;</td><td class="memItemRight" valign="bottom"><b>PASTE_SNIPPET</b> = 2</td></tr>
-<tr><td colspan="2"><h2><a name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac3f41ee042b302b9e90412221874b62a"></a><!-- doxytag: member="RuleSnippetsTableView::dragStartPosition" ref="ac3f41ee042b302b9e90412221874b62a" args="" -->
-QPoint&nbsp;</td><td class="memItemRight" valign="bottom"><b>dragStartPosition</b></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>Subclass of QTableView tweaked for Rulesnippets. </p>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a86777172fa6ee87d2c1794f59eb8e63d"></a><!-- doxytag: member="RuleSnippetsTableView::currentRow" ref="a86777172fa6ee87d2c1794f59eb8e63d" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int RuleSnippetsTableView::currentRow </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Get current row number. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>number of current row </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aba9017d0105d2a458a9d637b681e901d"></a><!-- doxytag: member="RuleSnippetsTableView::slotShowContextMenu" ref="aba9017d0105d2a458a9d637b681e901d" args="(const QPoint &amp;pos)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RuleSnippetsTableView::slotShowContextMenu </td>
+          <td>(</td>
+          <td class="paramtype">const QPoint &amp;&nbsp;</td>
+          <td class="paramname"> <em>pos</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual, slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>builds and displays context menu as a result of right mouse button click </p>
+<p>The menu is positioned with its top left corner at &lt;pos&gt; </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="rulesnippetstableview_8h_source.html">rulesnippetstableview.h</a></li>
 <li><a class="el" href="rulesnippetstableview_8cpp.html">rulesnippetstableview.cpp</a></li>
@@ -110,7 +152,7 @@ QPoint&nbsp;</td><td class="memItemRight" valign="bottom"><b>dragStartPosition</
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -119,7 +161,7 @@ QPoint&nbsp;</td><td class="memItemRight" valign="bottom"><b>dragStartPosition</
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Wed Apr 24 2013 17:52:07 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Thu Apr 25 2013 14:21:54 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

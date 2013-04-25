@@ -65,11 +65,49 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a86b6e37c6778739675a72bc0dad2e7cd"></a><!-- doxytag: member="RulesetSqlTableModel::RulesetSqlTableModel" ref="a86b6e37c6778739675a72bc0dad2e7cd" args="(QObject *parent=0)" -->
 &nbsp;</td><td class="memItemRight" valign="bottom"><b>RulesetSqlTableModel</b> (QObject *parent=0)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab97801dfcdb34af869440171c18e8fe9"></a><!-- doxytag: member="RulesetSqlTableModel::updateRowInTable" ref="ab97801dfcdb34af869440171c18e8fe9" args="(int row, const QSqlRecord &amp;values)" -->
-virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>updateRowInTable</b> (int row, const QSqlRecord &amp;values)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRulesetSqlTableModel.html#ab97801dfcdb34af869440171c18e8fe9">updateRowInTable</a> (int row, const QSqlRecord &amp;values)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">update a table row  <a href="#ab97801dfcdb34af869440171c18e8fe9"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>Subclass of QSqlTableModel tweaked for Rulesets. </p>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="ab97801dfcdb34af869440171c18e8fe9"></a><!-- doxytag: member="RulesetSqlTableModel::updateRowInTable" ref="ab97801dfcdb34af869440171c18e8fe9" args="(int row, const QSqlRecord &amp;values)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool RulesetSqlTableModel::updateRowInTable </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>row</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QSqlRecord &amp;&nbsp;</td>
+          <td class="paramname"> <em>values</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>update a table row </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>row</em>&nbsp;</td><td>- number of row to be updated </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>values</em>&nbsp;</td><td>- row contents</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>true if update succeeds else false </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="rulesetsqltablemodel_8h_source.html">rulesetsqltablemodel.h</a></li>
 <li><a class="el" href="rulesetsqltablemodel_8cpp.html">rulesetsqltablemodel.cpp</a></li>
@@ -80,7 +118,7 @@ virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>updateRowInTa
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -89,7 +127,7 @@ virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>updateRowInTa
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Wed Apr 24 2013 17:52:07 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Thu Apr 25 2013 14:21:54 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

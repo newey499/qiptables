@@ -94,12 +94,14 @@ void Iptables::setIptablesBinary()
         {
             qDebug("Cannot find first record on sysconf table\n[%s]",
                    qry.lastError().text().toAscii().data());
+            IptablesBinary = "";
         }
     }
     else
     {
         qDebug("sysconf query failed\n[%s]",
                qry.lastError().text().toAscii().data());
+        IptablesBinary = "";
     }
 
     QFile file(location);
@@ -111,6 +113,7 @@ void Iptables::setIptablesBinary()
     {
         qDebug("Iptables::setIptablesBinary: location for iptables [%s] does not exist",
                location.toAscii().data());
+        IptablesBinary = "";
     }
 }
 
@@ -193,13 +196,7 @@ bool Iptables::processRuleset(QString rulesetName)
     return result;
 }
 
-/**
 
-\brief This slot is only ever called from the IpProcess Class via the signal slot
-mechanism. It is used to propogate the results of one command in a ruleset when
-it is processed by the ipProcess class
-
-****************/
 void Iptables::slotCmdOutput(QString program, QStringList arguments, int exitCode, QString result)
 {
     emit cmdOutput(program, arguments, exitCode, result);

@@ -66,15 +66,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td colspan="2"><h2><a name="pub-slots"></a>
 Public Slots</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abc8e1ce5353e87042da968fbb3477bcc"></a><!-- doxytag: member="RuleSnippetsSqlTableModel::dropChanges" ref="abc8e1ce5353e87042da968fbb3477bcc" args="()" -->
-virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><b>dropChanges</b> ()</td></tr>
+virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRuleSnippetsSqlTableModel.html#abc8e1ce5353e87042da968fbb3477bcc">dropChanges</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">redundant debug code - does nothing except issue a qDebug message <br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad1a13344fa2f389eed476afc9589dc45"></a><!-- doxytag: member="RuleSnippetsSqlTableModel::RuleSnippetsSqlTableModel" ref="ad1a13344fa2f389eed476afc9589dc45" args="(QObject *parent=0)" -->
 &nbsp;</td><td class="memItemRight" valign="bottom"><b>RuleSnippetsSqlTableModel</b> (QObject *parent=0)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2562805c19a9fdde35ed12c5be6891ed"></a><!-- doxytag: member="RuleSnippetsSqlTableModel::RuleSnippetsSqlTableModel" ref="a2562805c19a9fdde35ed12c5be6891ed" args="(bool readOnly, QObject *parent=0)" -->
-&nbsp;</td><td class="memItemRight" valign="bottom"><b>RuleSnippetsSqlTableModel</b> (bool readOnly, QObject *parent=0)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a39447877a4536eff4c96bfc045125fcf"></a><!-- doxytag: member="RuleSnippetsSqlTableModel::updateRowInTable" ref="a39447877a4536eff4c96bfc045125fcf" args="(int row, const QSqlRecord &amp;values)" -->
-virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>updateRowInTable</b> (int row, const QSqlRecord &amp;values)</td></tr>
+&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRuleSnippetsSqlTableModel.html#a2562805c19a9fdde35ed12c5be6891ed">RuleSnippetsSqlTableModel</a> (bool readOnly, QObject *parent=0)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor that allows model to be set up as readonly. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRuleSnippetsSqlTableModel.html#a39447877a4536eff4c96bfc045125fcf">updateRowInTable</a> (int row, const QSqlRecord &amp;values)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">updates rulesnippet row  <a href="#a39447877a4536eff4c96bfc045125fcf"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a740626016782466243bc795b5d6bba57"></a><!-- doxytag: member="RuleSnippetsSqlTableModel::readOnly" ref="a740626016782466243bc795b5d6bba57" args="" -->
@@ -82,6 +84,44 @@ bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>readOnly</b></td></tr
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>Subclass of QSqlTableModel tweaked for Rulesnippets. </p>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a39447877a4536eff4c96bfc045125fcf"></a><!-- doxytag: member="RuleSnippetsSqlTableModel::updateRowInTable" ref="a39447877a4536eff4c96bfc045125fcf" args="(int row, const QSqlRecord &amp;values)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool RuleSnippetsSqlTableModel::updateRowInTable </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>row</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QSqlRecord &amp;&nbsp;</td>
+          <td class="paramname"> <em>values</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>updates rulesnippet row </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>row</em>&nbsp;</td><td>- row number (primary key of table) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>values</em>&nbsp;</td><td>- row data</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>true if successful else false </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="rulesnippetssqltablemodel_8h_source.html">rulesnippetssqltablemodel.h</a></li>
 <li><a class="el" href="rulesnippetssqltablemodel_8cpp.html">rulesnippetssqltablemodel.cpp</a></li>
@@ -92,7 +132,7 @@ bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>readOnly</b></td></tr
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,7 +141,7 @@ bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>readOnly</b></td></tr
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Wed Apr 24 2013 17:52:07 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Thu Apr 25 2013 14:21:54 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

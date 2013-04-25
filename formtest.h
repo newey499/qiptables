@@ -58,6 +58,8 @@ class FormTest;
 
  \brief Form for various test routines used during development
 
+ This form is not documented as its used as a testbed during development
+ and subject to ad-hoc changes.
 
 */
 class FormTest : public QWidget

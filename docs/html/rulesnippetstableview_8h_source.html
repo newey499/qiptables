@@ -100,30 +100,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00059"></a>00059 
 <a name="l00060"></a>00060     <span class="keyword">explicit</span> <a class="code" href="classRuleSnippetsTableView.html" title="Subclass of QTableView tweaked for Rulesnippets.">RuleSnippetsTableView</a>(QWidget *parent = 0);
 <a name="l00061"></a>00061 
-<a name="l00062"></a>00062     <span class="keyword">virtual</span> <span class="keywordtype">void</span> configureView();
-<a name="l00063"></a>00063     <span class="keyword">virtual</span> <span class="keywordtype">int</span> currentRow();
-<a name="l00064"></a>00064     <span class="keyword">virtual</span> <span class="keywordtype">void</span> enableContextMenu(<span class="keywordtype">bool</span> enable = <span class="keyword">true</span>);
-<a name="l00065"></a>00065 
-<a name="l00066"></a>00066 signals:
-<a name="l00067"></a>00067 
-<a name="l00068"></a>00068     <span class="keywordtype">void</span> rowChanged(QModelIndex);
-<a name="l00069"></a>00069     <span class="keywordtype">void</span> menuItemSelected(QAction *);
-<a name="l00070"></a>00070 
-<a name="l00071"></a>00071 <span class="keyword">public</span> slots:
-<a name="l00072"></a>00072 
-<a name="l00073"></a>00073     <span class="keyword">virtual</span> <span class="keywordtype">void</span> currentChanged(<span class="keyword">const</span> QModelIndex &amp;current,
-<a name="l00074"></a>00074                                 <span class="keyword">const</span> QModelIndex &amp;previous );
-<a name="l00075"></a>00075     <span class="keyword">virtual</span> <span class="keywordtype">void</span> slotShowContextMenu(<span class="keyword">const</span> QPoint &amp; pos);
-<a name="l00076"></a>00076 
-<a name="l00077"></a>00077 <span class="keyword">protected</span>:
+<a name="l00065"></a>00065     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classRuleSnippetsTableView.html#ae00bcadf94ec8be050ff579d8502f02b" title="Configures view.">configureView</a>();
+<a name="l00066"></a>00066 
+<a name="l00072"></a>00072     <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="classRuleSnippetsTableView.html#a86777172fa6ee87d2c1794f59eb8e63d" title="Get current row number.">currentRow</a>();
+<a name="l00073"></a>00073 
+<a name="l00077"></a>00077     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classRuleSnippetsTableView.html#ad7481108be2f611561747dcfa54bba9d" title="enable/disable context menu activated by right mouse button click">enableContextMenu</a>(<span class="keywordtype">bool</span> enable = <span class="keyword">true</span>);
 <a name="l00078"></a>00078 
-<a name="l00079"></a>00079     <span class="comment">//virtual void mousePressEvent(QMouseEvent *event);</span>
-<a name="l00080"></a>00080     <span class="comment">//virtual void mouseMoveEvent(QMouseEvent *event);</span>
-<a name="l00081"></a>00081 
-<a name="l00082"></a>00082     QPoint dragStartPosition;
-<a name="l00083"></a>00083 };
-<a name="l00084"></a>00084 
-<a name="l00085"></a>00085 <span class="preprocessor">#endif // RULESNIPPETSTABLEVIEW_H</span>
+<a name="l00079"></a>00079 signals:
+<a name="l00080"></a>00080 
+<a name="l00084"></a>00084     <span class="keywordtype">void</span> <a class="code" href="classRuleSnippetsTableView.html#a76ff96da4c3414bc050016f8dabd06af" title="prpogate the index of the row that has been moved to">rowChanged</a>(QModelIndex);
+<a name="l00085"></a>00085 
+<a name="l00089"></a>00089     <span class="keywordtype">void</span> <a class="code" href="classRuleSnippetsTableView.html#a7adeb5685e05b5b00c5cda7551507227" title="propogates selected context menu option">menuItemSelected</a>(QAction *);
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091 <span class="keyword">public</span> slots:
+<a name="l00092"></a>00092 
+<a name="l00096"></a>00096     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classRuleSnippetsTableView.html#a09fe7d7cc86f9a74d58ba3a6808ebb33" title="Selects &amp;lt;current&amp;gt; row and emits rowChanged signal passing &amp;lt;current&amp;gt; row.">currentChanged</a>(<span class="keyword">const</span> QModelIndex &amp;current,
+<a name="l00097"></a>00097                                 <span class="keyword">const</span> QModelIndex &amp;previous );
+<a name="l00098"></a>00098 
+<a name="l00104"></a>00104     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classRuleSnippetsTableView.html#aba9017d0105d2a458a9d637b681e901d" title="builds and displays context menu as a result of right mouse button click">slotShowContextMenu</a>(<span class="keyword">const</span> QPoint &amp; pos);
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106 <span class="keyword">protected</span>:
+<a name="l00107"></a>00107 
+<a name="l00108"></a>00108 };
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110 <span class="preprocessor">#endif // RULESNIPPETSTABLEVIEW_H</span>
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -131,7 +131,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -140,7 +140,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Wed Apr 24 2013 17:52:07 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Thu Apr 25 2013 14:21:54 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

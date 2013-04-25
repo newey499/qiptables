@@ -90,38 +90,38 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00051"></a>00051     Q_OBJECT
 <a name="l00052"></a>00052 <span class="keyword">public</span>:
 <a name="l00053"></a>00053 
-<a name="l00054"></a>00054     <span class="keyword">static</span> <span class="keyword">const</span> QString defaultCommentMark;
-<a name="l00055"></a>00055     <span class="keyword">static</span> <span class="keyword">const</span> QString defaultIncludeMark;
-<a name="l00056"></a>00056 
-<a name="l00057"></a>00057     <span class="keyword">explicit</span> <a class="code" href="classCmdLine.html" title="Class to process a command line.">CmdLine</a>(QObject *parent = 0);
-<a name="l00058"></a>00058 
-<a name="l00059"></a>00059     <span class="keyword">virtual</span> <span class="keywordtype">void</span> setCommentMark(QString commentMark);
-<a name="l00060"></a>00060     <span class="keyword">virtual</span> QString getCommentMark();
-<a name="l00061"></a>00061 
-<a name="l00062"></a>00062     <span class="comment">// Strip any comments from the ruleset</span>
-<a name="l00063"></a>00063     <span class="keyword">virtual</span> QStringList stripComments(QStringList rulesetList,
-<a name="l00064"></a>00064                                       QString commentMark = CmdLine::defaultCommentMark);
-<a name="l00065"></a>00065     <span class="keyword">virtual</span> QString     stripComments(QString rule,
-<a name="l00066"></a>00066                                       QString commentMark = CmdLine::defaultCommentMark);
+<a name="l00058"></a><a class="code" href="classCmdLine.html#a53a5ee7cbb2b77ce120abff7aebb0251">00058</a>     <span class="keyword">static</span> <span class="keyword">const</span> QString <a class="code" href="classCmdLine.html#a53a5ee7cbb2b77ce120abff7aebb0251">defaultCommentMark</a>;
+<a name="l00059"></a>00059 
+<a name="l00064"></a><a class="code" href="classCmdLine.html#add80eed64b75c6d90c9f47818e77ee20">00064</a>     <span class="keyword">static</span> <span class="keyword">const</span> QString <a class="code" href="classCmdLine.html#add80eed64b75c6d90c9f47818e77ee20">defaultIncludeMark</a>;
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066     <span class="keyword">explicit</span> <a class="code" href="classCmdLine.html" title="Class to process a command line.">CmdLine</a>(QObject *parent = 0);
 <a name="l00067"></a>00067 
-<a name="l00068"></a>00068     <span class="comment">// Strip any blank lines from the ruleset</span>
-<a name="l00069"></a>00069     <span class="keyword">virtual</span> QStringList stripBlankLines(QStringList rulesetList);
-<a name="l00070"></a>00070 
-<a name="l00071"></a>00071     <span class="comment">// Find any &quot;#includes&quot; in ruleset</span>
-<a name="l00072"></a>00072 
-<a name="l00073"></a>00073 signals:
-<a name="l00074"></a>00074 
-<a name="l00075"></a>00075 <span class="keyword">public</span> slots:
-<a name="l00076"></a>00076 
-<a name="l00077"></a>00077 
-<a name="l00078"></a>00078 <span class="keyword">protected</span>:
+<a name="l00072"></a>00072     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classCmdLine.html#ad05707e8ee4335966a1e3790fdae6d29" title="Change comment mark.">setCommentMark</a>(QString commentMark);
+<a name="l00073"></a>00073 
+<a name="l00078"></a>00078     <span class="keyword">virtual</span> QString <a class="code" href="classCmdLine.html#ac8e99591fdf7f2547c3933f7532a00dd" title="Get current comment mark.">getCommentMark</a>();
 <a name="l00079"></a>00079 
-<a name="l00080"></a>00080     QString commentMark;
-<a name="l00081"></a>00081     QPointer&lt;RuleSnippet&gt; ruleSnippet;
-<a name="l00082"></a>00082 
-<a name="l00083"></a>00083 };
-<a name="l00084"></a>00084 
-<a name="l00085"></a>00085 <span class="preprocessor">#endif // CMDLINE_H</span>
+<a name="l00086"></a>00086     <span class="keyword">virtual</span> QStringList <a class="code" href="classCmdLine.html#a0b030bb38ff8402eecf4cf15bd656df5" title="Strip any comments from the ruleset.">stripComments</a>(QStringList rulesetList,
+<a name="l00087"></a>00087                                       QString commentMark = <a class="code" href="classCmdLine.html#a53a5ee7cbb2b77ce120abff7aebb0251">CmdLine::defaultCommentMark</a>);
+<a name="l00088"></a>00088 
+<a name="l00095"></a>00095     <span class="keyword">virtual</span> QString     <a class="code" href="classCmdLine.html#a0b030bb38ff8402eecf4cf15bd656df5" title="Strip any comments from the ruleset.">stripComments</a>(QString rule,
+<a name="l00096"></a>00096                                       QString commentMark = <a class="code" href="classCmdLine.html#a53a5ee7cbb2b77ce120abff7aebb0251">CmdLine::defaultCommentMark</a>);
+<a name="l00097"></a>00097 
+<a name="l00103"></a>00103     <span class="keyword">virtual</span> QStringList <a class="code" href="classCmdLine.html#a6a2899e6a4523a4797817abba7a58232" title="Strip any blank lines from the ruleset.">stripBlankLines</a>(QStringList rulesetList);
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106 signals:
+<a name="l00107"></a>00107 
+<a name="l00108"></a>00108 <span class="keyword">public</span> slots:
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110 
+<a name="l00111"></a>00111 <span class="keyword">protected</span>:
+<a name="l00112"></a>00112 
+<a name="l00113"></a>00113     QString commentMark;
+<a name="l00114"></a>00114     QPointer&lt;RuleSnippet&gt; ruleSnippet;
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116 };
+<a name="l00117"></a>00117 
+<a name="l00118"></a>00118 <span class="preprocessor">#endif // CMDLINE_H</span>
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -129,7 +129,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -138,7 +138,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Wed Apr 24 2013 17:52:07 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Thu Apr 25 2013 14:21:54 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

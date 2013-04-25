@@ -35,7 +35,7 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
  \class IpStackedWidget
 
- \brief Class to contain application formss
+ \brief Class to contain application forms
 
 
 */
@@ -43,10 +43,26 @@ class IpStackedWidget : public QStackedWidget
 {
     Q_OBJECT
 public:
+
     explicit IpStackedWidget(QWidget *parent = 0);
 
+    /**
+    \brief Adds a widget to IpStackedWidget
+
+    \param widgetName - name to identify widget
+    \param widget - pointer to widget to add
+
+    \return index of newly added widget
+      **************************/
     virtual int	addWidget(QString widgetName, QWidget *widget);
 
+    /**
+    \brief get index number of widget using widget name
+
+    \param widgetName - name of widget as used when calling addWidget method
+
+    \return index number of widget
+      **********************/
     virtual int getPageIndex(QString widgetName);
 
 

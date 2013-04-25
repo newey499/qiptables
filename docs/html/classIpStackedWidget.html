@@ -55,7 +55,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <!-- doxytag: class="IpStackedWidget" -->
-<p>Class to contain application formss.  
+<p>Class to contain application forms.  
 <a href="#_details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="ipstackedwidget_8h_source.html">ipstackedwidget.h</a>&gt;</code></p>
@@ -66,17 +66,82 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acccf2c3272a0254e680560f135bbb101"></a><!-- doxytag: member="IpStackedWidget::IpStackedWidget" ref="acccf2c3272a0254e680560f135bbb101" args="(QWidget *parent=0)" -->
 &nbsp;</td><td class="memItemRight" valign="bottom"><b>IpStackedWidget</b> (QWidget *parent=0)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6b5aeeac5ae1945ad7990595dea32288"></a><!-- doxytag: member="IpStackedWidget::addWidget" ref="a6b5aeeac5ae1945ad7990595dea32288" args="(QString widgetName, QWidget *widget)" -->
-virtual int&nbsp;</td><td class="memItemRight" valign="bottom"><b>addWidget</b> (QString widgetName, QWidget *widget)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4e556cbd4010cf51674b6a0aa1ef83c6"></a><!-- doxytag: member="IpStackedWidget::getPageIndex" ref="a4e556cbd4010cf51674b6a0aa1ef83c6" args="(QString widgetName)" -->
-virtual int&nbsp;</td><td class="memItemRight" valign="bottom"><b>getPageIndex</b> (QString widgetName)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIpStackedWidget.html#a6b5aeeac5ae1945ad7990595dea32288">addWidget</a> (QString widgetName, QWidget *widget)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Adds a widget to <a class="el" href="classIpStackedWidget.html" title="Class to contain application forms.">IpStackedWidget</a>.  <a href="#a6b5aeeac5ae1945ad7990595dea32288"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIpStackedWidget.html#a4e556cbd4010cf51674b6a0aa1ef83c6">getPageIndex</a> (QString widgetName)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">get index number of widget using widget name  <a href="#a4e556cbd4010cf51674b6a0aa1ef83c6"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a38ee0d191b6f4adf0053ba721c39f663"></a><!-- doxytag: member="IpStackedWidget::widgetMap" ref="a38ee0d191b6f4adf0053ba721c39f663" args="" -->
 QMap&lt; QString, int &gt; *&nbsp;</td><td class="memItemRight" valign="bottom"><b>widgetMap</b></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
-<p>Class to contain application formss. </p>
+<p>Class to contain application forms. </p>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a6b5aeeac5ae1945ad7990595dea32288"></a><!-- doxytag: member="IpStackedWidget::addWidget" ref="a6b5aeeac5ae1945ad7990595dea32288" args="(QString widgetName, QWidget *widget)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int IpStackedWidget::addWidget </td>
+          <td>(</td>
+          <td class="paramtype">QString&nbsp;</td>
+          <td class="paramname"> <em>widgetName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QWidget *&nbsp;</td>
+          <td class="paramname"> <em>widget</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Adds a widget to <a class="el" href="classIpStackedWidget.html" title="Class to contain application forms.">IpStackedWidget</a>. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>widgetName</em>&nbsp;</td><td>- name to identify widget </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>widget</em>&nbsp;</td><td>- pointer to widget to add</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>index of newly added widget </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a4e556cbd4010cf51674b6a0aa1ef83c6"></a><!-- doxytag: member="IpStackedWidget::getPageIndex" ref="a4e556cbd4010cf51674b6a0aa1ef83c6" args="(QString widgetName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int IpStackedWidget::getPageIndex </td>
+          <td>(</td>
+          <td class="paramtype">QString&nbsp;</td>
+          <td class="paramname"> <em>widgetName</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>get index number of widget using widget name </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>widgetName</em>&nbsp;</td><td>- name of widget as used when calling addWidget method</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>index number of widget </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="ipstackedwidget_8h_source.html">ipstackedwidget.h</a></li>
 <li><a class="el" href="ipstackedwidget_8cpp.html">ipstackedwidget.cpp</a></li>
@@ -87,7 +152,7 @@ QMap&lt; QString, int &gt; *&nbsp;</td><td class="memItemRight" valign="bottom">
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -96,7 +161,7 @@ QMap&lt; QString, int &gt; *&nbsp;</td><td class="memItemRight" valign="bottom">
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Wed Apr 24 2013 17:52:07 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Thu Apr 25 2013 14:21:54 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>
