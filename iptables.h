@@ -47,7 +47,6 @@ class IpProcess;
 class CmdLine;
 class RuleSnippet;
 
-
 /**
 \file iptables.h
 \class Iptables

@@ -29,6 +29,8 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
+#include <QToolTip>
+
 #include "formdlgrulesnippet.h"
 #include "ui_formdlgrulesnippet.h"
 
@@ -143,7 +145,7 @@ bool FormDlgRuleSnippet::validateData()
         if (result)
         {
             QSqlQuery qry;
-            qry.prepare(" select count(*) as count from ruleset"
+            qry.prepare("select count(*) as count from rulesetsnippets "
                         " where id <> :id and upper(name) = upper(:name)");
             qry.bindValue(":id", this->id);
             qry.bindValue(":name", ui->edtRuleSnippetName->text());
@@ -164,6 +166,7 @@ bool FormDlgRuleSnippet::validateData()
                 {
                     qDebug("first row not returned from query\n%s",
                            qry.lastError().text().toAscii().data());
+                    result = false;
                 }
 
             }
@@ -181,14 +184,14 @@ bool FormDlgRuleSnippet::validateData()
 
 
     // Editing a new record
-    // If ok so far make a case insensitive check that a ruleset with
+    // If ok so far make a case insensitive check that a rulesnippet with
     // the entered name does not already exist
     if (result && opCode == FormCfgRuleSnippets::REC_ADD)
     {
         if (result)
         {
             QSqlQuery qry;
-            qry.prepare(" select count(*) as count from ruleset"
+            qry.prepare("select count(*) as count from rulesetsnippets "
                         " where upper(name) = upper(:name)");
             qry.bindValue(":name", ui->edtRuleSnippetName->text());
 
@@ -208,6 +211,7 @@ bool FormDlgRuleSnippet::validateData()
                 {
                     qDebug("first row not returned from query\n%s",
                            qry.lastError().text().toAscii().data());
+                    result = false;
                 }
 
             }
@@ -216,13 +220,14 @@ bool FormDlgRuleSnippet::validateData()
                 errMsg = errMsg.append("%1%2").
                         arg((result ? "" : "\n")).
                         arg(qry.lastError().text());
-                qDebug("%s",qry.lastError().text().toAscii().data());
+                qDebug("%s \nExecuted Query [%s]",
+                       qry.lastError().text().toAscii().data(),
+                       qry.executedQuery().toAscii().data());
                 result = false;
             }
 
             }
         }
-
 
 
     // Check snippet has something in it
@@ -312,3 +317,18 @@ bool FormDlgRuleSnippet::writeRow()
     return result;
 }
 
+
+void FormDlgRuleSnippet::setSnippetNameReadOnly(bool readOnly)
+{
+    if (readOnly)
+    {
+        ui->edtRuleSnippetName->setReadOnly(true);
+        ui->edtRuleSnippetName->setToolTip("Snippet name cannot be changed as it \nis included in one or more rulesets");
+    }
+    else
+    {
+        ui->edtRuleSnippetName->setReadOnly(false);
+        ui->edtRuleSnippetName->setToolTip("");
+    }
+    return;
+}

@@ -29,7 +29,7 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 ***************************/
 
-
+#include "genlib.h"
 #include "formcfgruleset.h"
 #include "ui_formcfgruleset.h"
 
@@ -248,7 +248,8 @@ void FormCfgRuleset::slotAddSnippet(bool useInclude, int id, QString name, QStri
     QString rules = rec.value("rules").toString();
     if (useInclude)
     {
-        include = QString("\n#include %1").arg(name);
+        GenLib gl(this);
+        include = gl.getIncludeString(name);
     }
     else
     {

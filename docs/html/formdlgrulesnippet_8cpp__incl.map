@@ -1,6 +1,8 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$formdlgrulesnippet_8h.html" title="formdlgrulesnippet.h" alt="" coords="609,83,764,112"/>
-<area shape="rect" id="node13" href="$formcfgrulesnippets_8h.html" title="formcfgrulesnippets.h" alt="" coords="665,160,825,189"/>
-<area shape="rect" id="node32" href="$rulesnippetstableview_8h.html" title="rulesnippetstableview.h" alt="" coords="1141,237,1312,267"/>
-<area shape="rect" id="node54" href="$rulesnippetssqltablemodel_8h.html" title="rulesnippetssqltablemodel.h" alt="" coords="216,237,419,267"/>
+<area shape="rect" id="node5" href="$formdlgrulesnippet_8h.html" title="formdlgrulesnippet.h" alt="" coords="468,83,623,112"/>
+<area shape="rect" id="node15" href="$formcfgrulesnippets_8h.html" title="formcfgrulesnippets.h" alt="" coords="691,160,851,189"/>
+<area shape="rect" id="node34" href="$install_8h.html" title="install.h" alt="" coords="667,237,736,267"/>
+<area shape="rect" id="node46" href="$databasemanager_8h.html" title="databasemanager.h" alt="" coords="464,315,613,344"/>
+<area shape="rect" id="node61" href="$rulesnippetstableview_8h.html" title="rulesnippetstableview.h" alt="" coords="1527,237,1697,267"/>
+<area shape="rect" id="node83" href="$rulesnippetssqltablemodel_8h.html" title="rulesnippetssqltablemodel.h" alt="" coords="2233,237,2436,267"/>
 </map>

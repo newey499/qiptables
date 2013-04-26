@@ -195,8 +195,8 @@ bool FormDlgRuleset::validateData()
         if (result)
         {
             QSqlQuery qry;
-            qry.prepare(" select count(*) as count from ruleset"
-                        " where id <> :id and upper(name) = upper(:name)");
+            qry.prepare("select count(*) as count from ruleset "
+                        "where id <> :id and upper(name) = upper(:name)");
             qry.bindValue(":id", this->id);
             qry.bindValue(":name", ui->edtRulesetName->text());
 
@@ -224,7 +224,9 @@ bool FormDlgRuleset::validateData()
                 errMsg = errMsg.append("%1%2").
                         arg((result ? "" : "\n")).
                         arg(qry.lastError().text());
-                qDebug("%s",qry.lastError().text().toAscii().data());
+                qDebug("%s\nExecuted Query [%s]",
+                       qry.lastError().text().toAscii().data(),
+                       qry.executedQuery().toAscii().data());
                 result = false;
             }
 
@@ -260,6 +262,7 @@ bool FormDlgRuleset::validateData()
                 {
                     qDebug("first row not returned from query\n%s",
                            qry.lastError().text().toAscii().data());
+                    result = false;
                 }
 
             }

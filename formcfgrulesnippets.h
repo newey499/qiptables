@@ -38,10 +38,11 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #include <QWidget>
 
 
+#include "install.h"
 #include "rulesnippetstableview.h"
 #include "formdlgrulesnippet.h"
 #include "rulesnippetssqltablemodel.h"
-
+#include "databasemanager.h"
 
 
 
@@ -107,6 +108,17 @@ public:
       \return data contained in colName
       **************/
     virtual QVariant getColumnData(QString colName);
+
+    /**
+    \brief Displays message box anouncing snippet cannot be deleted as its in use.
+
+    \param title - Message Box Title
+    \param snippet - name of snippet that was to be deleted
+    \param rulesets - list of ruleset names in which the snippet occurs
+
+    \return void
+      ************************/
+    virtual void displayMsgBox(QString title, QString snippet, QStringList rulesets);
 
 signals:
 

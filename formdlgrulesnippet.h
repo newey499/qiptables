@@ -66,6 +66,15 @@ public:
     explicit FormDlgRuleSnippet(int opCode, FormCfgRuleSnippets *parent = 0);
     ~FormDlgRuleSnippet();
 
+    /**
+    \brief set snippet name readonly
+
+    This method can also be used to make the snippet name text box writeable
+
+    \param readOnly - default true
+      ****************/
+    virtual void setSnippetNameReadOnly(bool readOnly = true);
+
 public slots:
 
 

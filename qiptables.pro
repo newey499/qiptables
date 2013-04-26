@@ -61,7 +61,8 @@ SOURCES += main.cpp\
     rulesnippetssqltablemodel.cpp \
     cmdline.cpp \
     formdlgrulesnippet.cpp \
-    rulesnippet.cpp
+    rulesnippet.cpp \
+    genlib.cpp
 
 HEADERS  += mainwindow.h \
     formtest.h \
@@ -84,7 +85,8 @@ HEADERS  += mainwindow.h \
     rulesnippetssqltablemodel.h \
     cmdline.h \
     formdlgrulesnippet.h \
-    rulesnippet.h
+    rulesnippet.h \
+    genlib.h
 
 FORMS    += mainwindow.ui \
     formtest.ui \

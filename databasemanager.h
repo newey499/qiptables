@@ -41,6 +41,7 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #include "install.h"
 
 
+
 /**
 \file databasemanager.h
 \class DatabaseManager
@@ -68,14 +69,14 @@ class DatabaseManager : public QObject
         /**
           \brief Close the database
           *************/
-        void closeDB();
+        virtual void closeDB();
 
         /**
           \brief Checks for existence of database
           \return true if database exists else false
 
           **************/
-        bool databaseExists();
+        virtual bool databaseExists();
 
         /**
           \brief Deletes Database
@@ -84,32 +85,32 @@ class DatabaseManager : public QObject
 
           \return true if database deleted else false
           ****************/
-        bool deleteDB();
+        virtual bool deleteDB();
 
         /**
           \brief Deletes table from database
           \param tableName - name of table to be deleted
           \return true if table deleted else false
           *****************/
-        bool dropTable(QString tableName);
+        virtual bool dropTable(QString tableName);
 
         /**
           \brief returns file name of current database
           \return file name of current database
           ***************/
-        QString getDatabaseFileName();
+        virtual QString getDatabaseFileName();
 
         /**
           \brief Get a reference to the current database
           \return reference to the current database
           *************************/
-        QSqlDatabase getDb();
+        virtual QSqlDatabase getDb();
 
         /**
           \brief Open the application database
           \return true if database opened else false
           *****************/
-        bool openDB();
+        virtual bool openDB();
 
         /**
           \brief Get system configuration settings
@@ -120,40 +121,59 @@ class DatabaseManager : public QObject
 
           \return Row of system configuration table.
           ********************/
-        QSqlRecord getSysconfRow();
+        virtual QSqlRecord getSysconfRow();
 
         /**
           \brief Get row of ruleset table
           \param rulesetName - name of ruleset used to identify required row
           \return Row of ruleset table
           ******************/
-        QSqlRecord getRulesetRow(QVariant rulesetName);
+        virtual QSqlRecord getRulesetRow(QVariant rulesetName);
 
         /**
           \brief Get ruleset from ruleset name.
           \param rulesetName - name of ruleset used to identify required row
           \return string containing ruleset
           ***********************/
-        QString getRuleset(QVariant rulesetName);
+        virtual QString getRuleset(QVariant rulesetName);
 
         /**
           \brief Get list of ruleset names
           \return List of ruleset names
           *******************/
-        QStringList getRulesetNames();
+        virtual QStringList getRulesetNames();
 
         /**
           \brief Get row of rulesnippet table
           \param rulesnippetName - name of rulesnippet used to identify required row
           \return Row of rulesnippet table
           ******************/
-        QSqlRecord getRuleSnippetRow(QVariant ruleSnippetName);
+        virtual QSqlRecord getRuleSnippetRow(QVariant ruleSnippetName);
 
         /**
           \brief Get error (if any) resulting from most recent SQL command
           \return SQL error object
           **********************/
-        QSqlError lastError();
+        virtual QSqlError lastError();
+
+        /**
+        \brief Check to see if rulesnippet is in use as an include in a ruleset
+
+        \param rulesnippetName;
+
+        \return true if rulesnippet is in use else false
+          *********************/
+        virtual QStringList isRulesnippetInUse(QString rulesnippetName);
+
+        /**
+        \brief check if rulesnippet is included in line of ruleset
+
+        \param rulesnippetName - name of rule snippet
+        \param rulesetline - line of ruleset
+
+        \return true if line contains included rulesnippet name else false
+          *****************/
+        virtual bool rulesnippetInLine(QString rulesnippetName, QString rulesetLine);
 
     public slots:
 

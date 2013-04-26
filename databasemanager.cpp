@@ -30,9 +30,9 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 ***************************/
 
-
+#include "genlib.h"
 #include "databasemanager.h"
-
+#include "cmdline.h"
 
 const QString DatabaseManager::DB_NAME = QString("qiptables.db.sqlite");
 
@@ -245,4 +245,70 @@ QStringList DatabaseManager::getRulesetNames()
     }
 
     return rs;
+}
+
+
+QStringList DatabaseManager::isRulesnippetInUse(QString rulesnippetName)
+{
+    QStringList result;
+    QSqlQuery qry;
+    QStringList ruleset;
+
+    qry.prepare("select id, name, shortname, rules from ruleset");
+
+    if (! qry.exec())
+    {
+        qDebug("%s", lastError().text().toAscii().data());
+        result.append(lastError().text());
+        return result;
+    }
+
+    while (qry.next())
+    {
+        ruleset.clear();
+        ruleset = qry.record().value("rules").toString().split("\n");
+        qDebug("=============================");
+        for (int i = 0; i < ruleset.count(); i++)
+        {
+            // does line contain #include for the rulesnippet
+            if (rulesnippetInLine(rulesnippetName, ruleset.at(i)))
+            {
+                result.append(qry.record().value("name").toString().trimmed());
+            }
+        }
+
+    }
+
+
+    return result;
+}
+
+
+bool DatabaseManager::rulesnippetInLine(QString rulesnippetName, QString rulesetLine)
+{
+    bool result = false;
+    GenLib gl(this);
+    QString includeString = gl.getIncludeString(rulesnippetName);
+    CmdLine cmdLine(this);
+
+    qDebug("DatabaseManager::rulesnippetInLine(QString rulesnippetName, QString rulesetLine)");
+    qDebug("Searching for snippet [%s]", rulesnippetName.toAscii().data());
+    qDebug("Original rulesetLine [%s]", rulesetLine.toAscii().data());
+    rulesetLine = cmdLine.stripComments(rulesetLine);
+    rulesetLine = rulesetLine.trimmed();
+    qDebug("rulesetLine after comment strip [%s]", rulesetLine.toAscii().data());
+
+    qDebug("Searching for Include [%s] in ruleset line [%s]",
+           includeString.toAscii().data(),
+           rulesetLine.toAscii().data());
+
+    if ( rulesetLine.contains(includeString, Qt::CaseSensitive))
+    {
+        result = true;
+        qDebug("Include [%s] found in ruleset line [%s]",
+               includeString.toAscii().data(),
+               rulesetLine.toAscii().data());
+    }
+
+    return result;
 }

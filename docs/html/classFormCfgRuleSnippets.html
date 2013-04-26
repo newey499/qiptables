@@ -73,12 +73,10 @@ Public Slots</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad28177f66f27acf9f396527b5e425869"></a><!-- doxytag: member="FormCfgRuleSnippets::currentRowChanged" ref="ad28177f66f27acf9f396527b5e425869" args="()" -->
 virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormCfgRuleSnippets.html#ad28177f66f27acf9f396527b5e425869">currentRowChanged</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">When the current row changes the rulesnippet is displayed in a readonly text box. <br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a44cbf915ad17246197dc85964ab01d67"></a><!-- doxytag: member="FormCfgRuleSnippets::slotBtnAdd" ref="a44cbf915ad17246197dc85964ab01d67" args="()" -->
-virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormCfgRuleSnippets.html#a44cbf915ad17246197dc85964ab01d67">slotBtnAdd</a> ()</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Calls routine to add a rulesnippet row. <br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab055eee734e6ff50eed3a12be63ed2c6"></a><!-- doxytag: member="FormCfgRuleSnippets::slotBtnEdit" ref="ab055eee734e6ff50eed3a12be63ed2c6" args="()" -->
-virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormCfgRuleSnippets.html#ab055eee734e6ff50eed3a12be63ed2c6">slotBtnEdit</a> ()</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Calls routine to edit a rulesnippet row. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormCfgRuleSnippets.html#a44cbf915ad17246197dc85964ab01d67">slotBtnAdd</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Calls routine to add a rulesnippet row.  <a href="#a44cbf915ad17246197dc85964ab01d67"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormCfgRuleSnippets.html#ab055eee734e6ff50eed3a12be63ed2c6">slotBtnEdit</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Calls routine to edit a rulesnippet row.  <a href="#ab055eee734e6ff50eed3a12be63ed2c6"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8d27d01a70a5eb59b46fe33a33ab9ce9"></a><!-- doxytag: member="FormCfgRuleSnippets::slotBtnDelete" ref="a8d27d01a70a5eb59b46fe33a33ab9ce9" args="()" -->
 virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormCfgRuleSnippets.html#a8d27d01a70a5eb59b46fe33a33ab9ce9">slotBtnDelete</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Calls routine to delete a rulesnippet row. <br/></td></tr>
@@ -113,6 +111,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get a reference to the rulesnippet model.  <a href="#aa8a494da0e8939b8323c801c23c71013"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual QVariant&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormCfgRuleSnippets.html#a741dcd0e954f6b2c149960f5ac2cc70d">getColumnData</a> (QString colName)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get data from column of current record by using the column name.  <a href="#a741dcd0e954f6b2c149960f5ac2cc70d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormCfgRuleSnippets.html#afd008ba21a16fb162a51c3a35b807f80">displayMsgBox</a> (QString title, QString snippet, QStringList rulesets)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Displays message box anouncing snippet cannot be deleted as its in use.  <a href="#afd008ba21a16fb162a51c3a35b807f80"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a38628596c3bc77ebba34510434a4244f"></a><!-- doxytag: member="FormCfgRuleSnippets::REC_ADD" ref="a38628596c3bc77ebba34510434a4244f" args="" -->
@@ -269,6 +269,50 @@ QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>application</b></t
 
 </div>
 </div>
+<a class="anchor" id="afd008ba21a16fb162a51c3a35b807f80"></a><!-- doxytag: member="FormCfgRuleSnippets::displayMsgBox" ref="afd008ba21a16fb162a51c3a35b807f80" args="(QString title, QString snippet, QStringList rulesets)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FormCfgRuleSnippets::displayMsgBox </td>
+          <td>(</td>
+          <td class="paramtype">QString&nbsp;</td>
+          <td class="paramname"> <em>title</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QString&nbsp;</td>
+          <td class="paramname"> <em>snippet</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QStringList&nbsp;</td>
+          <td class="paramname"> <em>rulesets</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Displays message box anouncing snippet cannot be deleted as its in use. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>title</em>&nbsp;</td><td>- Message Box Title </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>snippet</em>&nbsp;</td><td>- name of snippet that was to be deleted </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rulesets</em>&nbsp;</td><td>- list of ruleset names in which the snippet occurs</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>void </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a741dcd0e954f6b2c149960f5ac2cc70d"></a><!-- doxytag: member="FormCfgRuleSnippets::getColumnData" ref="a741dcd0e954f6b2c149960f5ac2cc70d" args="(QString colName)" -->
 <div class="memitem">
 <div class="memproto">
@@ -383,6 +427,50 @@ QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>application</b></t
 
 </div>
 </div>
+<a class="anchor" id="a44cbf915ad17246197dc85964ab01d67"></a><!-- doxytag: member="FormCfgRuleSnippets::slotBtnAdd" ref="a44cbf915ad17246197dc85964ab01d67" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FormCfgRuleSnippets::slotBtnAdd </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual, slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Calls routine to add a rulesnippet row. </p>
+
+<p><p>Don't allow snippet name to be added if the snippet name already exists</p>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ab055eee734e6ff50eed3a12be63ed2c6"></a><!-- doxytag: member="FormCfgRuleSnippets::slotBtnEdit" ref="ab055eee734e6ff50eed3a12be63ed2c6" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FormCfgRuleSnippets::slotBtnEdit </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual, slot]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Calls routine to edit a rulesnippet row. </p>
+
+<p><p>Don't allow snippet name to be changed if the snippet is included in a ruleset</p>
+</p>
+
+</div>
+</div>
 <a class="anchor" id="ab0c8be97ab06f81fa148b3e2d96cfefc"></a><!-- doxytag: member="FormCfgRuleSnippets::slotMenuSelection" ref="ab0c8be97ab06f81fa148b3e2d96cfefc" args="(QAction *selectedAction)" -->
 <div class="memitem">
 <div class="memproto">
@@ -428,7 +516,7 @@ QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>application</b></t
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Thu Apr 25 2013 14:57:51 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Fri Apr 26 2013 17:20:38 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

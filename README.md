@@ -23,10 +23,9 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 ***************************************************************************/
 
 
-A QT based project to enable switching of iptables firewall
-sets.
+A QT based project to enable switching of iptables firewall rule sets.
 
-Developed using QT 4.8
+Developed using QT 4.8.1
 
 
 

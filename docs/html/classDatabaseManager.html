@@ -68,32 +68,36 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDatabaseManager.html#a2fd53a095ef95d302f33361070a26bf5">DatabaseManager</a> (QString dbPath, QObject *parent=0)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="#a2fd53a095ef95d302f33361070a26bf5"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae642d8692ee2f8e78d7beffe23571fae"></a><!-- doxytag: member="DatabaseManager::closeDB" ref="ae642d8692ee2f8e78d7beffe23571fae" args="()" -->
-void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDatabaseManager.html#ae642d8692ee2f8e78d7beffe23571fae">closeDB</a> ()</td></tr>
+virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDatabaseManager.html#ae642d8692ee2f8e78d7beffe23571fae">closeDB</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Close the database. <br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDatabaseManager.html#a98edcbe5987db3cbde43947b45532ab2">databaseExists</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDatabaseManager.html#a98edcbe5987db3cbde43947b45532ab2">databaseExists</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Checks for existence of database.  <a href="#a98edcbe5987db3cbde43947b45532ab2"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDatabaseManager.html#ad18daebfccba52a402d9831429934c8e">deleteDB</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDatabaseManager.html#ad18daebfccba52a402d9831429934c8e">deleteDB</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Deletes Database.  <a href="#ad18daebfccba52a402d9831429934c8e"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDatabaseManager.html#a904ccb93d458dbdde15fcbb7b831dc34">dropTable</a> (QString tableName)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDatabaseManager.html#a904ccb93d458dbdde15fcbb7b831dc34">dropTable</a> (QString tableName)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Deletes table from database.  <a href="#a904ccb93d458dbdde15fcbb7b831dc34"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">QString&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDatabaseManager.html#a1612816ef33368587cb574bc8a715880">getDatabaseFileName</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual QString&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDatabaseManager.html#a1612816ef33368587cb574bc8a715880">getDatabaseFileName</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns file name of current database  <a href="#a1612816ef33368587cb574bc8a715880"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">QSqlDatabase&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDatabaseManager.html#ab34238b0e349bccca9d8d26080bc2691">getDb</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual QSqlDatabase&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDatabaseManager.html#ab34238b0e349bccca9d8d26080bc2691">getDb</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get a reference to the current database.  <a href="#ab34238b0e349bccca9d8d26080bc2691"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDatabaseManager.html#a0b3e9d4f35fff725ca5cf56b5d178913">openDB</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDatabaseManager.html#a0b3e9d4f35fff725ca5cf56b5d178913">openDB</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Open the application database.  <a href="#a0b3e9d4f35fff725ca5cf56b5d178913"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDatabaseManager.html#ac17db5077b4f1853cb97914974f3e9a8">getSysconfRow</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDatabaseManager.html#ac17db5077b4f1853cb97914974f3e9a8">getSysconfRow</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get system configuration settings.  <a href="#ac17db5077b4f1853cb97914974f3e9a8"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDatabaseManager.html#aaa2bf9379def45ebab72f6f927b252a2">getRulesetRow</a> (QVariant rulesetName)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDatabaseManager.html#aaa2bf9379def45ebab72f6f927b252a2">getRulesetRow</a> (QVariant rulesetName)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get row of ruleset table.  <a href="#aaa2bf9379def45ebab72f6f927b252a2"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">QString&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDatabaseManager.html#a3aab8da88df5ee2ee8807a85e966fea2">getRuleset</a> (QVariant rulesetName)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual QString&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDatabaseManager.html#a3aab8da88df5ee2ee8807a85e966fea2">getRuleset</a> (QVariant rulesetName)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get ruleset from ruleset name.  <a href="#a3aab8da88df5ee2ee8807a85e966fea2"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">QStringList&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDatabaseManager.html#a3e6a384ca033e38d1d9ea796c4705542">getRulesetNames</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual QStringList&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDatabaseManager.html#a3e6a384ca033e38d1d9ea796c4705542">getRulesetNames</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get list of ruleset names.  <a href="#a3e6a384ca033e38d1d9ea796c4705542"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDatabaseManager.html#a396f49a577cdddc2be52bd04d882ec4d">getRuleSnippetRow</a> (QVariant ruleSnippetName)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDatabaseManager.html#a396f49a577cdddc2be52bd04d882ec4d">getRuleSnippetRow</a> (QVariant ruleSnippetName)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get row of rulesnippet table.  <a href="#a396f49a577cdddc2be52bd04d882ec4d"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">QSqlError&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDatabaseManager.html#a0d786883976ea0f32e3566415138478d">lastError</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual QSqlError&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDatabaseManager.html#a0d786883976ea0f32e3566415138478d">lastError</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get error (if any) resulting from most recent SQL command.  <a href="#a0d786883976ea0f32e3566415138478d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual QStringList&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDatabaseManager.html#a2d61a3579a5ecc67ea2bb9a2d42ec7d1">isRulesnippetInUse</a> (QString rulesnippetName)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Check to see if rulesnippet is in use as an include in a ruleset.  <a href="#a2d61a3579a5ecc67ea2bb9a2d42ec7d1"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDatabaseManager.html#a42578f9dd16f83aa5770e4150513b74a">rulesnippetInLine</a> (QString rulesnippetName, QString rulesetLine)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">check if rulesnippet is included in line of ruleset  <a href="#a42578f9dd16f83aa5770e4150513b74a"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afa9cf4ff04b04d87e3968cd8f269c9da"></a><!-- doxytag: member="DatabaseManager::DB_NAME" ref="afa9cf4ff04b04d87e3968cd8f269c9da" args="" -->
@@ -162,7 +166,7 @@ QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><b>ruleSnippetRec<
           <td>(</td>
           <td class="paramname"></td>
           <td>&nbsp;)&nbsp;</td>
-          <td></td>
+          <td><code> [virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -182,7 +186,7 @@ QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><b>ruleSnippetRec<
           <td>(</td>
           <td class="paramname"></td>
           <td>&nbsp;)&nbsp;</td>
-          <td></td>
+          <td><code> [virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -204,7 +208,7 @@ QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><b>ruleSnippetRec<
           <td class="paramtype">QString&nbsp;</td>
           <td class="paramname"> <em>tableName</em></td>
           <td>&nbsp;)&nbsp;</td>
-          <td></td>
+          <td><code> [virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -230,7 +234,7 @@ QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><b>ruleSnippetRec<
           <td>(</td>
           <td class="paramname"></td>
           <td>&nbsp;)&nbsp;</td>
-          <td></td>
+          <td><code> [virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -250,7 +254,7 @@ QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><b>ruleSnippetRec<
           <td>(</td>
           <td class="paramname"></td>
           <td>&nbsp;)&nbsp;</td>
-          <td></td>
+          <td><code> [virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -271,7 +275,7 @@ QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><b>ruleSnippetRec<
           <td class="paramtype">QVariant&nbsp;</td>
           <td class="paramname"> <em>rulesetName</em></td>
           <td>&nbsp;)&nbsp;</td>
-          <td></td>
+          <td><code> [virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -297,7 +301,7 @@ QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><b>ruleSnippetRec<
           <td>(</td>
           <td class="paramname"></td>
           <td>&nbsp;)&nbsp;</td>
-          <td></td>
+          <td><code> [virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -318,7 +322,7 @@ QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><b>ruleSnippetRec<
           <td class="paramtype">QVariant&nbsp;</td>
           <td class="paramname"> <em>rulesetName</em></td>
           <td>&nbsp;)&nbsp;</td>
-          <td></td>
+          <td><code> [virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -345,7 +349,7 @@ QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><b>ruleSnippetRec<
           <td class="paramtype">QVariant&nbsp;</td>
           <td class="paramname"> <em>ruleSnippetName</em></td>
           <td>&nbsp;)&nbsp;</td>
-          <td></td>
+          <td><code> [virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -371,7 +375,7 @@ QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><b>ruleSnippetRec<
           <td>(</td>
           <td class="paramname"></td>
           <td>&nbsp;)&nbsp;</td>
-          <td></td>
+          <td><code> [virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -380,6 +384,33 @@ QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><b>ruleSnippetRec<
 <p>Get system configuration settings. </p>
 <p>System configuration settings are held in a table on the application database. This table only has one row. Each column of the table contains a configuration setting.</p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Row of system configuration table. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a2d61a3579a5ecc67ea2bb9a2d42ec7d1"></a><!-- doxytag: member="DatabaseManager::isRulesnippetInUse" ref="a2d61a3579a5ecc67ea2bb9a2d42ec7d1" args="(QString rulesnippetName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QStringList DatabaseManager::isRulesnippetInUse </td>
+          <td>(</td>
+          <td class="paramtype">QString&nbsp;</td>
+          <td class="paramname"> <em>rulesnippetName</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Check to see if rulesnippet is in use as an include in a ruleset. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>rulesnippetName;</em>&nbsp;</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>true if rulesnippet is in use else false </dd></dl>
 
 </div>
 </div>
@@ -392,7 +423,7 @@ QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><b>ruleSnippetRec<
           <td>(</td>
           <td class="paramname"></td>
           <td>&nbsp;)&nbsp;</td>
-          <td></td>
+          <td><code> [virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -412,7 +443,7 @@ QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><b>ruleSnippetRec<
           <td>(</td>
           <td class="paramname"></td>
           <td>&nbsp;)&nbsp;</td>
-          <td></td>
+          <td><code> [virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -420,6 +451,43 @@ QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><b>ruleSnippetRec<
 
 <p>Open the application database. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if database opened else false </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a42578f9dd16f83aa5770e4150513b74a"></a><!-- doxytag: member="DatabaseManager::rulesnippetInLine" ref="a42578f9dd16f83aa5770e4150513b74a" args="(QString rulesnippetName, QString rulesetLine)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool DatabaseManager::rulesnippetInLine </td>
+          <td>(</td>
+          <td class="paramtype">QString&nbsp;</td>
+          <td class="paramname"> <em>rulesnippetName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QString&nbsp;</td>
+          <td class="paramname"> <em>rulesetLine</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>check if rulesnippet is included in line of ruleset </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>rulesnippetName</em>&nbsp;</td><td>- name of rule snippet </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rulesetline</em>&nbsp;</td><td>- line of ruleset</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>true if line contains included rulesnippet name else false </dd></dl>
 
 </div>
 </div>
@@ -442,7 +510,7 @@ QSqlRecord&nbsp;</td><td class="memItemRight" valign="bottom"><b>ruleSnippetRec<
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Thu Apr 25 2013 14:57:51 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Fri Apr 26 2013 17:20:38 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>
