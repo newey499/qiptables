@@ -248,8 +248,7 @@ void FormCfgRuleset::slotAddSnippet(bool useInclude, int id, QString name, QStri
     QString rules = rec.value("rules").toString();
     if (useInclude)
     {
-        GenLib gl(this);
-        include = gl.getIncludeString(name);
+        include = GenLib::getIncludeString(name);
     }
     else
     {

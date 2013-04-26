@@ -287,8 +287,7 @@ QStringList DatabaseManager::isRulesnippetInUse(QString rulesnippetName)
 bool DatabaseManager::rulesnippetInLine(QString rulesnippetName, QString rulesetLine)
 {
     bool result = false;
-    GenLib gl(this);
-    QString includeString = gl.getIncludeString(rulesnippetName);
+    QString includeString = GenLib::getIncludeString(rulesnippetName);
     CmdLine cmdLine(this);
 
     qDebug("DatabaseManager::rulesnippetInLine(QString rulesnippetName, QString rulesetLine)");
