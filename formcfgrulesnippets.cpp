@@ -159,9 +159,6 @@ QVariant FormCfgRuleSnippets::getColumnData(QString colName)
 void FormCfgRuleSnippets::currentRowChanged()
 {
     QString txt = getColumnData("snippets").toString();
-
-    qDebug("column text [%s]",txt.toAscii().data());
-
     ui->edtRuleSnippets->clear();
     ui->edtRuleSnippets->appendPlainText(txt);
 }

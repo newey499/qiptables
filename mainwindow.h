@@ -127,7 +127,12 @@ public slots:
     \brief selects rulesnippet configuration page
       *************/
     virtual void selectCfgRuleSnippet();
-    //virtual void selectCfgSettings();
+
+    /**
+    \brief selects application configuration page
+      ****************/
+    virtual void selectCfgSettings();
+
 
     /**
     \brief save form size and position on exit

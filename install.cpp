@@ -79,9 +79,8 @@ QString Install::getRulesetShortName(QString rulesetLongName)
 
 QString Install::performInstall(bool forceInstall)
 {
-    QString msg("Install::performInstall()");
-    qDebug("%s", msg.toAscii().data());
-    msg = "";
+    QString msg("");
+
     if (forceInstall)
     {
         qDebug("Install forced");
@@ -101,11 +100,6 @@ QString Install::performInstall(bool forceInstall)
         dbFile.setPermissions(QFile::ReadOwner  | QFile::WriteOwner |
                               QFile::ReadGroup  | QFile::WriteGroup |
                               QFile::ReadOther  | QFile::WriteOther );
-    }
-    else
-    {
-        msg = "Install not required - not performed";
-        qDebug("%s", msg.toAscii().data());
     }
 
     return msg;

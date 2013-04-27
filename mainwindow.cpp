@@ -131,9 +131,9 @@ void MainWindow::buildMenusAndForms()
     formFirewallRules = new FormFirewallRules(this);
     // tabbed widget  - no longer used
     // formConfigQiptables = new FormConfigQiptables(this);
-    FormCfgRuleset *formCfgRuleset = new FormCfgRuleset();
-    FormCfgRuleSnippets *formCfgRuleSnippets = new FormCfgRuleSnippets();
-    FormCfgSettings *formCfgSettings = new FormCfgSettings();
+    FormCfgRuleset *formCfgRuleset = new FormCfgRuleset(this);
+    FormCfgRuleSnippets *formCfgRuleSnippets = new FormCfgRuleSnippets(this);
+    FormCfgSettings *formCfgSettings = new FormCfgSettings(this);
 
     fileMenu = menuBar()->addMenu(tr("&Firewall"));
 
@@ -176,22 +176,20 @@ void MainWindow::buildMenusAndForms()
         connect(actCfgRuleSnippet, SIGNAL(triggered()), this, SLOT(selectCfgRuleSnippet()));
         settingsMenu->addAction(actCfgRuleSnippet);
 
-        /*************
+
         actCfgRuleSettings = new QAction(tr("&Defaults"), this);
         actCfgRuleSettings->setStatusTip(tr("Configure Defaults"));
         connect(actCfgRuleSettings, SIGNAL(triggered()), this, SLOT(selectCfgSettings()));
         settingsMenu->addAction(actCfgRuleSettings);
-        ********************/
 
+
+        /***************
         actConfigQiptables = new QAction(tr("&Defaults"), this);
         actConfigQiptables->setStatusTip(tr("Configure Defaults"));
-        /********
-        Releates to tabbed widget which is no longer used
         connect(actConfigQiptables, SIGNAL(triggered()),
                 this, SLOT(selectConfigQiptables()));
-        *******************/
         settingsMenu->addAction(actConfigQiptables);
-
+        ****************************/
 
     helpMenu = menuBar()->addMenu(tr("&Help"));
         actAboutQt = new QAction(tr("About &Qt"), this);
@@ -238,6 +236,14 @@ void MainWindow::selectCfgRuleSnippet()
 {
     widgetStack->setCurrentIndex(widgetStack->getPageIndex("formCfgRuleSnippet"));
 }
+
+
+void MainWindow::selectCfgSettings()
+{
+    int pageIndex = widgetStack->getPageIndex("formCfgSettings");
+    widgetStack->setCurrentIndex(pageIndex);
+}
+
 
 
 void MainWindow::selectFirewallRulesPage()

@@ -35,7 +35,7 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #include "cmdline.h"
 
 const QString DatabaseManager::DB_NAME = QString("qiptables.db.sqlite");
-
+bool DatabaseManager::DB_OPEN = false;
 
 DatabaseManager::DatabaseManager(QString dbPath, QObject *parent) :
     QObject(parent)
@@ -78,7 +78,7 @@ bool DatabaseManager::openDB()
 {
     bool result = false;
 
-    if (db.isOpen())
+    if (DatabaseManager::DB_OPEN)
     {
         result = true;
     }
@@ -91,8 +91,13 @@ bool DatabaseManager::openDB()
 
         // Open database
         result = db.open();
-        if (! result)
+        if (result)
         {
+            DatabaseManager::DB_OPEN = true;
+        }
+        else
+        {
+            DatabaseManager::DB_OPEN = false;
             qDebug("DatabaseManager::openDB(): failed to open db - error \n[%s]",
                 db.lastError().text().toAscii().data());
         }

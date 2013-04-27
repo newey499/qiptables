@@ -53,6 +53,8 @@ class DatabaseManager : public QObject
 {
     public:
 
+        static bool DB_OPEN;
+
         static const QString DB_NAME;
 
         static QSqlDatabase dbm;
