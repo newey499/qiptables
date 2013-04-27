@@ -253,8 +253,6 @@ bool FormDlgRuleSnippet::writeRow()
     bool result = false;
     QString qryStr;
 
-    qDebug("FormDlgRuleSnippet::writeRow()");
-
     if (opCode == FormCfgRuleSnippets::REC_ADD)
     {
         QSqlRecord rec = formCfgRuleSnippets->getModel()->record();
@@ -264,13 +262,11 @@ bool FormDlgRuleSnippet::writeRow()
         // insert new row at end of model
         if (formCfgRuleSnippets->getModel()->insertRecord(-1, rec))
         {
-            qDebug("row inserted");
             formCfgRuleSnippets->getModel()->submitAll();
             result = true;
         }
         else
         {
-            qDebug("row not inserted");
             formCfgRuleSnippets->getModel()->revertAll();
         }
     }
@@ -285,13 +281,11 @@ bool FormDlgRuleSnippet::writeRow()
         // update row
         if (formCfgRuleSnippets->getModel()->setRecord(currentRow, rec))
         {
-            qDebug("row update write submitAll() Ok");
             formCfgRuleSnippets->getModel()->submitAll();
             result = true;
         }
         else
         {
-            qDebug("row not updated - setRecord call failed");
             formCfgRuleSnippets->getModel()->revertAll();
         }
     }
@@ -303,13 +297,11 @@ bool FormDlgRuleSnippet::writeRow()
         // delete row
         if (formCfgRuleSnippets->getModel()->removeRow(currentRow))
         {
-            qDebug("row delete submitAll() Ok");
             formCfgRuleSnippets->getModel()->submitAll();
             result = true;
         }
         else
         {
-            qDebug("row not deleted - removeRow call failed");
             formCfgRuleSnippets->getModel()->revertAll();
         }
     }

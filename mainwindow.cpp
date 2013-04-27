@@ -40,8 +40,6 @@ MainWindow::MainWindow(QString organization, QString application, QWidget *paren
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    qDebug("\n============| qiptables debug terminal messages |============\n");
-
     setObjectName("MainWindow");
     this->organization = organization;
     this->application = application;
@@ -52,13 +50,9 @@ MainWindow::MainWindow(QString organization, QString application, QWidget *paren
 
     Install *install = new Install(this);
     QString instStr(install->performInstall());
-    //qDebug("Install Reported [%s]", instStr.toAscii().data());
 
-    qDebug("Create new DatabaseManager instance");
     DatabaseManager dm(Install::INSTALL_DIR, this);
     dm.openDB();
-
-
 
     buildMenusAndForms();
 
@@ -92,8 +86,6 @@ void MainWindow::saveSettings()
 
 void MainWindow::closeEvent(QCloseEvent *event)
 {
-
-    qDebug("MainWindow::closeEvent");
     int ret = quitYesNo();
 
     if (ret == QMessageBox::Yes)
@@ -110,7 +102,6 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
 void MainWindow::aboutQiptables()
 {
-    qDebug("void MainWindow::aboutQiptables()");
     QString title = QString("%1 %2 %3").arg(application).
                                         arg(" version: ").
                                         arg(MainWindow::VERSION_NUMBER);
@@ -120,13 +111,11 @@ void MainWindow::aboutQiptables()
 
 void MainWindow::aboutQt()
 {
-    qDebug("void MainWindow::aboutQt()");
     QMessageBox::aboutQt(this, "Qiptables");
 }
 
 void MainWindow::quitApplication()
 {
-    qDebug("MainWindow::quitApplication()");
     int ret = quitYesNo();
     if (ret == QMessageBox::Yes)
     {
@@ -244,27 +233,12 @@ void MainWindow::selectCfgRuleset()
     widgetStack->setCurrentIndex(widgetStack->getPageIndex("formCfgRuleset"));
 }
 
-/***************
-void MainWindow::selectCfgSettings()
-{
-    widgetStack->setCurrentIndex(widgetStack->getPageIndex("formCfgRuleSnippet"));
-}
-****************/
 
 void MainWindow::selectCfgRuleSnippet()
 {
     widgetStack->setCurrentIndex(widgetStack->getPageIndex("formCfgRuleSnippet"));
 }
 
-
-/*************
-Tabbed widget form - no longer used
-void MainWindow::selectConfigQiptables()
-{
-    qDebug("MainWindow::selectconfigQiptables()");
-    widgetStack->setCurrentIndex(widgetStack->getPageIndex("formCfgSettings"));
-}
-***********************/
 
 void MainWindow::selectFirewallRulesPage()
 {
@@ -274,6 +248,5 @@ void MainWindow::selectFirewallRulesPage()
 
 void MainWindow::selectTestPage()
 {
-    qDebug("MainWindow::selectTestPage()");
     widgetStack->setCurrentIndex(widgetStack->getPageIndex("formTest"));
 }

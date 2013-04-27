@@ -77,13 +77,6 @@ QString CmdLine::stripComments(QString rule, QString commentMark)
     }
     else
     {
-        if (rule.indexOf(CmdLine::defaultIncludeMark, 0, Qt::CaseSensitive) == -1)
-        {
-            /*******
-            qDebug("invalid call to #include - must be followed by space [%s]",
-                    rule.toAscii().data());
-            *********************/
-        }
         // find any comment after the include
         int newOffset = offset + CmdLine::defaultIncludeMark.length();
         offset = rule.indexOf(getCommentMark(), newOffset, Qt::CaseSensitive);
@@ -98,7 +91,7 @@ QString CmdLine::stripComments(QString rule, QString commentMark)
         rule = rule.replace("'", "", Qt::CaseSensitive);
         rule = rule.replace("\"", "", Qt::CaseSensitive);
         rule = rule.trimmed(); // remove leading and trailing spaces
-        //qDebug("processed include line [%s]", rule.toAscii().data());
+
 
     }
     return rule;

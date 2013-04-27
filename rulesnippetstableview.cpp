@@ -123,7 +123,6 @@ void RuleSnippetsTableView::enableContextMenu(bool enable)
 
 void RuleSnippetsTableView::slotShowContextMenu(const QPoint & pos)
 {
-    qDebug("slotShowContextMenu(const QPoint&)");
     // for most widgets
     QPoint globalPos = this->mapToGlobal(pos);
     // for QAbstractScrollArea and derived classes you would use:
@@ -141,7 +140,6 @@ void RuleSnippetsTableView::slotShowContextMenu(const QPoint & pos)
     myMenu.actions()[1]->setData(PASTE_SNIPPET);
 
     QAction* selectedItem = myMenu.exec(globalPos);
-    qDebug("Menu Selection [%d]", selectedItem->data().toInt());
     if (selectedItem)
     {
         emit menuItemSelected(selectedItem);

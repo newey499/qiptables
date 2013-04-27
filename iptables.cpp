@@ -187,8 +187,6 @@ bool Iptables::processRuleset(QString rulesetName)
     {
         if ("" != rulesetList.at(i).trimmed())
         {
-            qDebug("Iptables::processRuleset execCmdLine(\"%s\")",
-                   rulesetList.at(i).toAscii().data());
             this->process->execCmdLine(rulesetList.at(i));
         }
     }
@@ -227,7 +225,6 @@ QStringList Iptables::processRulesetIncludes(QStringList rulesetList)
                             arg("Iptables::processRulesetIncludes").
                             arg(rulesetList.at(i)).
                             arg(snippetName);
-            //qDebug("%s", tmp.toAscii().data());
             QStringList snippet = ruleSnippet->getRuleSnippetRows(snippetName);
             for (int i = 0; i < snippet.count(); i++)
             {

@@ -141,14 +141,14 @@ QSqlRecord FormFirewallRules::getFirewallRulesetFromShortName(QString shortName)
         }
         else
         {
-            qDebug("1 FormFirewallRules::getFirewallRulesetFromShortName [%s]",
+            qDebug("FormFirewallRules::getFirewallRulesetFromShortName Can't move to first row [%s]",
                    qry.lastError().text().toAscii().data());
         }
 
     }
     else
     {
-        qDebug("2 FormFirewallRules::getFirewallRulesetFromShortName [%s]",
+        qDebug("FormFirewallRules::getFirewallRulesetFromShortName query failed [%s]",
                qry.lastError().text().toAscii().data());
     }
 
@@ -176,7 +176,6 @@ void FormFirewallRules::slotCbxFirewallsIndexChanged(int index)
 
 void FormFirewallRules::slotEnableRuleset()
 {
-    qDebug("FormFirewallRules::slotEnableRuleset()");
     if (ui->cbxFirewalls->currentIndex() == 0)
     {
         QMessageBox::warning(this, "Qiptables",
@@ -194,13 +193,7 @@ void FormFirewallRules::slotEnableRuleset()
     QString shortName = this->ipTables->getRulesetShortName(ui->cbxFirewalls->currentText());
 
     this->ipTables->processRuleset(ui->cbxFirewalls->currentText());
-    /************
-    for (int i = 0; i < rules.count(); i++)
-    {
-        ui->edtCurrentRules->appendPlainText(rules.at(i));
-        ui->edtCurrentRules->appendPlainText(proc->execCmdLine(rules.at(i)));
-    }
-    ********************/
+
     QString tmp = shortName;
     tmp.prepend("iptables -N ");
     ui->edtCurrentRules->appendPlainText(proc->execCmdLine(tmp));

@@ -342,13 +342,11 @@ bool Install::insertRulesetRow(QString rulesName, QStringList rulesList)
     {
         QString rulesText = rulesList.join("\n");
         QString shortName = getRulesetShortName(rulesName);
-        qDebug("Ruleset->shortname [%s]", shortName.toAscii().data());
         QSqlQuery query;
         QString qryMsg = QString(" insert into %1 "
                                  "   (name, shortname, rules) "
                                  " values "
                                  "   ('%2', '%3', '%4') ");
-        qDebug("1 qryMsg - [%s]", qryMsg.toAscii().data());
 
         ret = query.exec(qryMsg.
                             arg("ruleset").
@@ -357,11 +355,9 @@ bool Install::insertRulesetRow(QString rulesName, QStringList rulesList)
                             arg(rulesText)
                          );
 
-        qDebug("2  qryMsg - [%s]", qryMsg.toAscii().data());
-
         if (! ret)
         {
-            qDebug("%s %d\t%s",
+            qDebug("%s %d: Query failed [%s]",
                 __FILE__ ,
                 __LINE__ ,
                 query.lastError().text().toAscii().data());
@@ -373,12 +369,11 @@ bool Install::insertRulesetRow(QString rulesName, QStringList rulesList)
                             arg(shortName).
                             arg(rulesText)
                         );
-        qDebug("3 qryMsg - [%s]", qryMsg.toAscii().data());
 
 
         if (! ret)
         {
-            qDebug("%s %d\t%s",
+            qDebug("%s %d: Query failed [%s]",
                 __FILE__ ,
                 __LINE__ ,
                 query.lastError().text().toAscii().data());
@@ -421,7 +416,18 @@ bool Install::createRulesetRows()
 
         rulesName = "Public location";
         rulesList.clear();
-        rulesList << "# Public location firewall rules";
+        rulesList << "# Public location firewall rules" <<
+                     "# Clear Firewall rules with Shell script" <<
+                     "# Run shell script" <<
+                     "/etc/qiptables/tools/clearFirewall.sh" <<
+                     "# Refuse any attempt to initiate an incoming connection" <<
+                     "iptables -P INPUT DROP" <<
+                     "# Forward nothing" <<
+                     "iptables -P FORWARD DROP" <<
+                     "# Allow anything going out" <<
+                     "iptables -P OUTPUT ACCEPT" <<
+                     "# All all established connections" <<
+                     "iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT";
         insertRulesetRow(rulesName, rulesList);
 
     }
@@ -454,12 +460,9 @@ bool Install::insertRuleSnippetRow(QString snippetName, QStringList snippetList)
     QSqlQuery query;
     QString qryMsg;
     bool ret = true;
-    qDebug("Install::insertRuleSnippetRow(QString snippetName, QStringList snippetList)");
 
     if (dm->getDb().isOpen())
     {
-        qDebug("Install::insertRuleSnippetRow -- Database is open");
-
         snippetText = snippetList.join("\n");
         qryMsg = QString(" insert into %1 "
                          "   (name, snippets) "
@@ -472,7 +475,7 @@ bool Install::insertRuleSnippetRow(QString snippetName, QStringList snippetList)
                          );
         if (! ret)
         {
-            qDebug("%s %d\t%s",
+            qDebug("%s %d: Query failed [%s]",
                 __FILE__ ,
                 __LINE__ ,
                 query.lastError().text().toAscii().data());
@@ -508,17 +511,33 @@ bool Install::createRulesetSnippetRows()
         snippetList << "# Test Snippet";
         insertRuleSnippetRow(snippetName, snippetList);
 
-        snippetName = "Clear Firewall rules - accept everything";
+        snippetName = "Clear Firewall rules with Shell script";
         snippetList.clear();
-        snippetList << "# Clear Firewall rules - accept everything" <<
+        snippetList << "# Clear Firewall rules with Shell script" <<
                        "# Run shell script" <<
                        "/etc/qiptables/tools/clearFirewall.sh";
         insertRuleSnippetRow(snippetName, snippetList);
 
 
+        snippetName = "Clear Firewall Rules";
+        snippetList.clear();
+        snippetList << "# Clear Firewall Rules" <<
+                       "# Does the same as \"Clear Firewall rules with Shell script\"" <<
+                       "# without calling a shell script" <<
+                       "iptables -F" <<
+                       "iptables -X" <<
+                       "iptables -t nat -F" <<
+                       "iptables -t nat -X" <<
+                       "iptables -t mangle -F" <<
+                       "iptables -t mangle -X" <<
+                       "iptables -P INPUT ACCEPT" <<
+                       "iptables -P FORWARD ACCEPT" <<
+                       "iptables -P OUTPUT ACCEPT";
+        insertRuleSnippetRow(snippetName, snippetList);
+
         snippetName = "Default Policy Accept";
         snippetList.clear();
-        snippetList << "# Default Policy Accept Snippet" <<
+        snippetList << "# Default Policy Accept" <<
                        "iptables -P INPUT ACCEPT" <<
                        "iptables -P FORWARD ACCEPT" <<
                        "iptables -P OUTPUT ACCEPT" <<
@@ -529,7 +548,7 @@ bool Install::createRulesetSnippetRows()
 
         snippetName = "Default Policy Drop";
         snippetList.clear();
-        snippetList << "# Default Policy Drop Snippet" <<
+        snippetList << "# Default Policy Drop" <<
                        "iptables -P INPUT DROP" <<
                        "iptables -P FORWARD DROP" <<
                        "iptables -P OUTPUT DROP" <<
@@ -540,7 +559,7 @@ bool Install::createRulesetSnippetRows()
 
         snippetName = "Accept Established Related";
         snippetList.clear();
-        snippetList << "# Accept Established Related" <<
+        snippetList << "# Accept all previously established connections" <<
                        "iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT";
         insertRuleSnippetRow(snippetName, snippetList);
 
@@ -569,6 +588,65 @@ bool Install::createRulesetSnippetRows()
         snippetList.clear();
         snippetList << "# Accept Incoming SSH" <<
                        "iptables -A INPUT -p tcp --dport 22 -j ACCEPT";
+        insertRuleSnippetRow(snippetName, snippetList);
+
+
+        snippetName = "Accept Incoming FTP";
+        snippetList.clear();
+        snippetList << "# Accept Incoming FTP" <<
+                       "iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 20 -j ACCEPT" <<
+                       "iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 21 -j ACCEPT";
+        insertRuleSnippetRow(snippetName, snippetList);
+
+
+        snippetName = "Permit Windows file sharing";
+        snippetList.clear();
+        snippetList << "# Accept Windows file sharing" <<
+                       "iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 137:139 -j ACCEPT" <<
+                       "iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 426 -j ACCEPT" <<
+                       "iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 445 -j ACCEPT";
+        insertRuleSnippetRow(snippetName, snippetList);
+
+
+        snippetName = "Accept Incoming Samba";
+        snippetList.clear();
+        snippetList << "# Accept Incoming Samba" <<
+                       "# NOTE: 192.168.1.0/24 is a typical home network IP" <<
+                       "# This IP may have to be changed for your network" <<
+                       "# run the program \"ifconfig\" to find your home network settings." <<
+                       "iptables -A INPUT -p udp -m udp -s 192.168.0.0/24 --dport 137 -j ACCEPT" <<
+                       "iptables -A INPUT -p udp -m udp -s 192.168.0.0/24 --dport 138 -j ACCEPT" <<
+                       "iptables -A INPUT -m state --state NEW -m tcp -p tcp -s 192.168.0.0/24 --dport 139 -j ACCEPT" <<
+                       "iptables -A INPUT -m state --state NEW -m tcp -p tcp -s 192.168.0.0/24 --dport 445 -j ACCEPT";
+        insertRuleSnippetRow(snippetName, snippetList);
+
+
+        snippetName = "Permit five ports for Bitorrent";
+        snippetList.clear();
+        snippetList << "# Permit five ports for Bitorrent" <<
+                       "iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 6881:6886 -j ACCEPT";
+        insertRuleSnippetRow(snippetName, snippetList);
+
+        snippetName = "Allow IRC";
+        snippetList.clear();
+        snippetList << "# Allow IRC" <<
+                       "iptables -A INPUT -p tcp --syn --destination-port 6667 -j ACCEPT";
+        insertRuleSnippetRow(snippetName, snippetList);
+
+
+        snippetName = "Allow ping";
+        snippetList.clear();
+        snippetList << "# Allow ping" <<
+                       "iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT";
+        insertRuleSnippetRow(snippetName, snippetList);
+
+
+        snippetName = "Allow certain critical ICMP types";
+        snippetList.clear();
+        snippetList << "# Allow certain critical ICMP types" <<
+                       "iptables -A INPUT -p icmp --icmp-type destination-unreachable -j ACCEPT # Dest unreachable" <<
+                       "iptables -A INPUT -p icmp --icmp-type time-exceeded -j ACCEPT # Time exceeded" <<
+                       "iptables -A INPUT -p icmp --icmp-type parameter-problem -j ACCEPT # Parameter Problem";
         insertRuleSnippetRow(snippetName, snippetList);
 
 

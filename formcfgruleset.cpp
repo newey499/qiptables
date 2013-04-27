@@ -104,7 +104,6 @@ void FormCfgRuleset::currentRowChanged()
 {
     QString txt = getColumnData("rules").toString();
 
-    qDebug("column text [%s]",txt.toAscii().data());
     ui->edtRuleSet->clear();
     ui->edtRuleSet->appendPlainText(txt);
 }
@@ -112,7 +111,6 @@ void FormCfgRuleset::currentRowChanged()
 void FormCfgRuleset::slotBtnAdd()
 {
     FormDlgRuleset dlg(REC_ADD, this);
-    qDebug("FormCfgRuleset::slotBtnAdd()");
     dlg.setWindowTitle("Add a Ruleset");
     dlg.setModal(true);
     if (dlg.exec())
@@ -129,7 +127,6 @@ void FormCfgRuleset::slotBtnAdd()
 void FormCfgRuleset::slotBtnEdit()
 {
     FormDlgRuleset dlg(REC_EDIT, this);
-    qDebug("FormCfgRuleset::slotBtnEdit()");
     dlg.setWindowTitle("Edit this Ruleset");
     dlg.setModal(true);
     int currentRow = getView()->currentRow();
@@ -152,7 +149,6 @@ void FormCfgRuleset::slotBtnDelete()
     if (! isRulesetDefault())
     {
         FormDlgRuleset dlg(REC_DELETE, this);
-        qDebug("FormCfgRuleset::slotBtnDelete()");
         dlg.setWindowTitle("Delete this Ruleset");
         dlg.setModal(true);
         int currentRow = getView()->currentRow();
@@ -229,7 +225,6 @@ bool FormCfgRuleset::isRulesetDefault()
 
 void FormCfgRuleset::slotCodeSnippets()
 {
-    qDebug("FormCfgRuleset::slotCodeSnippets()");
     formSnippets->show();
 }
 
@@ -238,7 +233,6 @@ void FormCfgRuleset::slotAddSnippet(bool useInclude, int id, QString name, QStri
 {
     id = id;  // suppress compiler warning - compiler optimises this out
 
-    qDebug("FormCfgRuleset::slotAddSnippet(int id, QString name, QString snippets)");
     QString include;
     ui->edtRuleSet->appendPlainText(include);
 
@@ -248,7 +242,7 @@ void FormCfgRuleset::slotAddSnippet(bool useInclude, int id, QString name, QStri
     QString rules = rec.value("rules").toString();
     if (useInclude)
     {
-        include = GenLib::getIncludeString(name);
+        include = GenLib::getIncludeString(name).prepend("\n");
     }
     else
     {
@@ -260,12 +254,10 @@ void FormCfgRuleset::slotAddSnippet(bool useInclude, int id, QString name, QStri
     // update row
     if (getModel()->setRecord(currentRow, rec))
     {
-        qDebug("row update write submitAll() Ok");
         getModel()->submitAll();
     }
     else
     {
-        qDebug("row not updated - setRecord call failed");
         getModel()->revertAll();
     }
     ui->tblRuleset->selectRow(currentRow);
@@ -274,7 +266,6 @@ void FormCfgRuleset::slotAddSnippet(bool useInclude, int id, QString name, QStri
 
 void FormCfgRuleset::hideEvent(QHideEvent *event)
 {
-    qDebug("FormCfgRuleset::hideEvent(QHideEvent *event)");
     if (formSnippets->isVisible())
     {
         formSnippets->hide();

@@ -72,6 +72,9 @@ FormDlgRuleset::FormDlgRuleset(int opCode, FormCfgRuleset *parent) :
     {
         ui->edtRulesetName->setReadOnly(true);
         ui->edtRuleset->setReadOnly(true);
+        ui->edtRulesetName->setText(name);
+        ui->edtRuleset->clear();
+        ui->edtRuleset->appendPlainText(rules);
         ui->btnSave->setText("&Delete");
         ui->btnAddSnippet->setEnabled(false);
         buttonsEnabled(true);

@@ -119,9 +119,6 @@ QString IpProcess::executeSynchronous(const QString &program, const QStringList 
     if (! waitForFinished())
         return empty;
 
-    //qDebug("IpProcess::executeSynchronous");
-    //QByteArray std = readAllStandardOutput();
-    //QByteArray err = readAllStandardError();
     // exit code of zero means command completed ok
     // and that output is from stdout - error output is on stderrs
     if ( (exitCode() == 0) && (errStr.isEmpty()) )
@@ -141,26 +138,14 @@ QString IpProcess::executeSynchronous(const QString &program, const QStringList 
     // Send the result of executing the command
     emit cmdOutput(program, arguments, exitCode(), result);
 
-    /***********
-    qDebug("IpProcess::executeSynchronous\n"
-           "cmd [%s] exit code [%d]\n"
-           "result %s",
-           program.toAscii().data(),
-           exitCode(),
-           result.toAscii().data() );
-    ********************/
     return QString(result);
 }
 
 QString IpProcess::printCmdLine(QString cmd, QStringList argList)
 {
-
-    //qDebug("IpProcess::printCmdLine(QString cmd, QStringList argList)");
     QString msg = QString("cmd: %1 %2").
                     arg(cmd.toAscii().data()).
                     arg(argList.join(" ").toAscii().data());
-
-    //qDebug("%s", msg.toAscii().data());
 
     return msg;
 }
@@ -169,10 +154,6 @@ QString IpProcess::printCmdLine(QString cmd, QStringList argList)
 QString IpProcess::exec(QString cmd, QStringList argList)
 {
     QString result;
-
-    qDebug("Executing cmd [%s] args [%s]",
-           cmd.toAscii().data(),
-           argList.join(" ").toAscii().data());
     result = executeSynchronous(cmd, argList);
     return result;
 }
@@ -197,7 +178,6 @@ void IpProcess::slotError(QProcess::ProcessError error)
 {
     procError = error;
     QString tmp = parseErrorCode();
-    //qDebug("%s", tmp.toAscii().data());
 }
 
 

@@ -169,7 +169,6 @@ void FormCfgRuleSnippets::currentRowChanged()
 
 void FormCfgRuleSnippets::slotBtnAdd()
 {
-    qDebug("FormCfgRuleSnippets::slotBtnAdd()");
     FormDlgRuleSnippet dlg(FormCfgRuleSnippets::REC_ADD, this);
     DatabaseManager dm(Install::INSTALL_DIR, this);
 
@@ -192,11 +191,8 @@ void FormCfgRuleSnippets::slotBtnAdd()
 
 void FormCfgRuleSnippets::slotBtnEdit()
 {
-    qDebug("FormCfgRuleSnippets::slotBtnEdit()");
     FormDlgRuleSnippet dlg(FormCfgRuleSnippets::REC_EDIT, this);
     DatabaseManager dm(Install::INSTALL_DIR, this);
-
-    qDebug("FormCfgRuleset::slotBtnEdit()");
 
     /*
     Don't allow snippet name to be changed if the snippet is included in a ruleset
@@ -232,24 +228,12 @@ void FormCfgRuleSnippets::slotBtnDelete()
     QStringList rulesets = dm.isRulesnippetInUse(snippet);
     if (rulesets.count() > 0)
     {
-        qDebug("rulesnippet [%s] is in use as include - cannot delete rulesnippet",
-               snippet.toAscii().data());
-        for (int i = 0; i < rulesets.count(); i++)
-        {
-            qDebug("snippet found in ruleset [%s]",
-                   rulesets.at(i).trimmed().toAscii().data());
-        }
         displayMsgBox("Delete Snippet", snippet, rulesets);
-
         return;
     }
 
-    // development - force return with deleting
-    return;
-
     FormDlgRuleSnippet dlg(REC_DELETE, this);
-    qDebug("FormCfgRuleset::slotBtnDelete()");
-    dlg.setWindowTitle("Delete this Ruleset");
+    dlg.setWindowTitle("Delete this Snippet");
     dlg.setModal(true);
     int currentRow = getView()->currentRow();
     if (dlg.exec())

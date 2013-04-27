@@ -267,7 +267,6 @@ QStringList DatabaseManager::isRulesnippetInUse(QString rulesnippetName)
     {
         ruleset.clear();
         ruleset = qry.record().value("rules").toString().split("\n");
-        qDebug("=============================");
         for (int i = 0; i < ruleset.count(); i++)
         {
             // does line contain #include for the rulesnippet
@@ -290,23 +289,12 @@ bool DatabaseManager::rulesnippetInLine(QString rulesnippetName, QString ruleset
     QString includeString = GenLib::getIncludeString(rulesnippetName);
     CmdLine cmdLine(this);
 
-    qDebug("DatabaseManager::rulesnippetInLine(QString rulesnippetName, QString rulesetLine)");
-    qDebug("Searching for snippet [%s]", rulesnippetName.toAscii().data());
-    qDebug("Original rulesetLine [%s]", rulesetLine.toAscii().data());
     rulesetLine = cmdLine.stripComments(rulesetLine);
     rulesetLine = rulesetLine.trimmed();
-    qDebug("rulesetLine after comment strip [%s]", rulesetLine.toAscii().data());
-
-    qDebug("Searching for Include [%s] in ruleset line [%s]",
-           includeString.toAscii().data(),
-           rulesetLine.toAscii().data());
 
     if ( rulesetLine.contains(includeString, Qt::CaseSensitive))
     {
         result = true;
-        qDebug("Include [%s] found in ruleset line [%s]",
-               includeString.toAscii().data(),
-               rulesetLine.toAscii().data());
     }
 
     return result;

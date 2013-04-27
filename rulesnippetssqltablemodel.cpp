@@ -65,6 +65,5 @@ bool RuleSnippetsSqlTableModel::updateRowInTable(int row, const QSqlRecord &valu
 
 void RuleSnippetsSqlTableModel::dropChanges()
 {
-    qDebug("RuleSnippetsSqlTableModel::dropChanges() - REVERTALL");
     //revertAll();
 }

@@ -109,8 +109,6 @@ void FormTest::slotCmdOutput(QString program, QStringList arguments, int exitCod
 
 void FormTest::slotRunRuleset()
 {
-    //qDebug("void FormTest::slotRunRuleset()");
-
     ui->plainTextEdit->clear();
     /**************
     ui->plainTextEdit->appendPlainText("====================================");
@@ -131,7 +129,6 @@ void FormTest::slotRunRuleset()
 
 void FormTest::slotIptablesList()
 {
-    qDebug("FormTest::slotIptablesList()");
     ui->plainTextEdit->clear();
     ui->plainTextEdit->appendPlainText("FormTest::slotIptablesList()");
     ui->plainTextEdit->appendPlainText("====================================");
