@@ -294,13 +294,10 @@ bool FormDlgRuleSnippet::writeRow()
     {
         int currentRow = this->formCfgRuleSnippets->getView()->currentRow();
 
-        int reply =
-                QMessageBox::question(this,
-                                      "Delete Snippet",
-                                      "Confirm deletion of Snippet",
-                                      QMessageBox::Yes, QMessageBox::Cancel);
-
-        if (reply == QMessageBox::Yes)
+        if (QMessageBox::Yes == QMessageBox::question(this,
+                                                      "Delete Snippet",
+                                                      "Confirm deletion of Snippet",
+                                                      QMessageBox::Yes, QMessageBox::Cancel))
         {
             // delete row
             if (formCfgRuleSnippets->getModel()->removeRow(currentRow))

@@ -350,13 +350,10 @@ bool FormDlgRuleset::writeRow()
     {
         int currentRow = this->formRuleset->getView()->currentRow();
 
-        int reply =
-                QMessageBox::question(this,
-                                      "Delete Recordset",
-                                      "Confirm deletion of recordset",
-                                      QMessageBox::Yes, QMessageBox::Cancel);
-
-        if (reply == QMessageBox::Yes)
+        if (QMessageBox::Yes == QMessageBox::question(this,
+                                                      "Delete Ruleset",
+                                                      "Confirm deletion of ruleset",
+                                                      QMessageBox::Yes, QMessageBox::Cancel))
         {
             // delete row
             if (formRuleset->getModel()->removeRow(currentRow))
