@@ -85,6 +85,9 @@ public slots:
     virtual void slotBtnRun();
     virtual void slotIptablesList();
 
+signals:
+
+
 protected:
 
     QPointer<RuleSnippet> ruleSnippet;

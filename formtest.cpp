@@ -32,6 +32,7 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "formtest.h"
 #include "ui_formtest.h"
+#include "genlib.h"
 
 FormTest::FormTest(QWidget *parent) :
     QWidget(parent),
@@ -63,9 +64,9 @@ FormTest::~FormTest()
 void FormTest::slotBtnTest()
 {
     ui->plainTextEdit->clear();
-    ui->plainTextEdit->appendPlainText("====================================");
-    ui->plainTextEdit->appendPlainText("FormTest::slotBtnTest() : Start");
-    ui->plainTextEdit->appendPlainText("====================================");
+    //ui->plainTextEdit->appendPlainText("====================================");
+    //ui->plainTextEdit->appendPlainText("FormTest::slotBtnTest() : Start");
+    //ui->plainTextEdit->appendPlainText("====================================");
 
     //iptables->processRuleset("aaa");
     //iptables->processRuleset("bbb");
@@ -75,9 +76,9 @@ void FormTest::slotBtnTest()
     ui->plainTextEdit->appendPlainText("No test currently set up - nothing to report");
 
 
-    ui->plainTextEdit->appendPlainText("====================================");
-    ui->plainTextEdit->appendPlainText("FormTest::slotBtnTest() : End");
-    ui->plainTextEdit->appendPlainText("====================================");
+    //ui->plainTextEdit->appendPlainText("====================================");
+    //ui->plainTextEdit->appendPlainText("FormTest::slotBtnTest() : End");
+    //ui->plainTextEdit->appendPlainText("====================================");
 
 }
 
@@ -89,11 +90,19 @@ void FormTest::slotBtnRun()
 
     QString cmdLine = ui->edtCmd->text();
     ui->plainTextEdit->appendPlainText(proc->execCmdLine(cmdLine));
+
+
 }
 
 void FormTest::slotCmdOutput(QString program, QStringList arguments, int exitCode, QString result)
 {
     QString args = arguments.join(" ");
+
+    // Suppress compiler warnings - the compiler optimizes these lines out
+    exitCode = exitCode;
+    result = result;
+
+    /***********
     QString tmp = QString("%1 args [%2] returned [%3]\n"
                           "=============================\n"
                           "%4\n"
@@ -103,6 +112,11 @@ void FormTest::slotCmdOutput(QString program, QStringList arguments, int exitCod
             arg(args).
             arg(exitCode).
             arg(result);
+    *******************/
+    QString tmp = QString("%1 %2\n").
+            arg(program).
+            arg(args);
+
     ui->plainTextEdit->appendPlainText(tmp);
 }
 
@@ -116,22 +130,35 @@ void FormTest::slotRunRuleset()
     ui->plainTextEdit->appendPlainText("====================================");
     *********************/
 
-    QString ruleset = ui->cbxRuleset->currentText();
-    iptables->processRuleset(ruleset);
+    //QString ruleset = ui->cbxRuleset->currentText();
+    //iptables->processRuleset(ruleset);
 
-    /**************
-    ui->plainTextEdit->appendPlainText("====================================");
-    ui->plainTextEdit->appendPlainText("FormTest::slotRunRuleset() : End");
-    ui->plainTextEdit->appendPlainText("====================================");
-    ********************/
+    QString shortName = iptables->getRulesetShortName(ui->cbxRuleset->currentText());
+
+    ui->plainTextEdit->appendPlainText("===========================================");
+    ui->plainTextEdit->appendPlainText("Executing Commands to set firewall rules");
+    ui->plainTextEdit->appendPlainText("===========================================");
+    iptables->processRuleset(ui->cbxRuleset->currentText());
+
+    // create a new empty chain with the short name of the Ruleset
+    QString tmp = shortName;
+    tmp.prepend("iptables -N ");
+    proc->execCmdLine(tmp);
+
+    // Display the firewall rules after the selected ruleset has been run
+    ui->plainTextEdit->appendPlainText("===========================================");
+    ui->plainTextEdit->appendPlainText("Firewall Rules");
+    ui->plainTextEdit->appendPlainText("===========================================");
+    ui->plainTextEdit->appendPlainText(proc->execCmdLine("iptables -L"));
+
 }
 
 
 void FormTest::slotIptablesList()
 {
     ui->plainTextEdit->clear();
-    ui->plainTextEdit->appendPlainText("FormTest::slotIptablesList()");
-    ui->plainTextEdit->appendPlainText("====================================");
+    //ui->plainTextEdit->appendPlainText("FormTest::slotIptablesList()");
+    //ui->plainTextEdit->appendPlainText("====================================");
 
     QString cmdLine = ui->edtCmd->text();
     ui->plainTextEdit->appendPlainText(proc->execCmdLine("iptables -L"));

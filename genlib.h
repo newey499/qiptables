@@ -37,6 +37,9 @@ public:
       **********************/
     static QString getIncludeString(QString snippetName);
 
+
+    static QString getRulesetName();
+
 signals:
 
 public slots:

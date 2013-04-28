@@ -32,9 +32,9 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "genlib.h"
 
-
-const QString MainWindow::VERSION_NUMBER = "0.1";
+const QString MainWindow::VERSION_NUMBER = "0.2";
 
 MainWindow::MainWindow(QString organization, QString application, QWidget *parent) :
     QMainWindow(parent),
@@ -123,6 +123,8 @@ void MainWindow::quitApplication()
         qApp->quit();
     }
 }
+
+
 
 void MainWindow::buildMenusAndForms()
 {
@@ -248,7 +250,6 @@ void MainWindow::selectCfgSettings()
 
 void MainWindow::selectFirewallRulesPage()
 {
-    qDebug("MainWindow::selectFirewallRulesPage()");
     widgetStack->setCurrentIndex(widgetStack->getPageIndex("formFirewallRules"));
 }
 

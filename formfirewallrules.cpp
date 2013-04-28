@@ -198,6 +198,8 @@ void FormFirewallRules::slotEnableRuleset()
     tmp.prepend("iptables -N ");
     ui->edtCurrentRules->appendPlainText(proc->execCmdLine(tmp));
     ui->edtCurrentRules->appendPlainText(proc->execCmdLine("iptables -L"));
+    //qDebug("short name chain [%s]", tmp.toAscii().data());
+
 
     ui->edtCurrentRules->appendPlainText("======================");
     ui->edtCurrentRules->appendPlainText("Ruleset Applied");

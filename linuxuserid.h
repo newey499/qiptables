@@ -61,7 +61,6 @@ ERRORS
        These functions are always successful.
 
 
-====================================
 NOTE
 
 typedef unsigned int    __kernel_uid32_t;

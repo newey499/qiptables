@@ -116,7 +116,8 @@ QString IpProcess::executeSynchronous(const QString &program, const QStringList 
 
     closeWriteChannel();
 
-    if (! waitForFinished())
+    int secondsToWait = 30;
+    if (! waitForFinished(secondsToWait * 1000))
         return empty;
 
     // exit code of zero means command completed ok

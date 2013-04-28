@@ -170,7 +170,7 @@ public:
 
     \return always returns true
     *********************/
-    virtual bool    processRuleset(QString rulesetName);
+    virtual bool processRuleset(QString rulesetName);
 
     /**
     \brief For debugging purposes prints arguments to console using qDebug
