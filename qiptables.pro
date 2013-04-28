@@ -62,7 +62,12 @@ SOURCES += main.cpp\
     cmdline.cpp \
     formdlgrulesnippet.cpp \
     rulesnippet.cpp \
-    genlib.cpp
+    genlib.cpp \
+    threadworker.cpp \
+    threadwrapper.cpp \
+    workersubclass.cpp
+
+
 
 HEADERS  += mainwindow.h \
     formtest.h \
@@ -86,7 +91,11 @@ HEADERS  += mainwindow.h \
     cmdline.h \
     formdlgrulesnippet.h \
     rulesnippet.h \
-    genlib.h
+    genlib.h \
+    threadworker.h \
+    threadwrapper.h \
+    workersubclass.h
+
 
 FORMS    += mainwindow.ui \
     formtest.ui \
