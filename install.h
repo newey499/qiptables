@@ -53,6 +53,8 @@ class Install : public QObject
 public:
 
     static const QString INSTALL_DIR;
+    static const QString TOOLS_DIR;
+
     static const int IPTABLES_CHAIN_MAX_NAME_LENGTH;
     static const QString IPTABLES_CHAIN_NAME_PREFIX;
 
@@ -179,7 +181,7 @@ protected:
 
     \return name of file
       ****************/
-    QString createFile(QString filename, QString content, bool executable = false);
+    QString createFile(QString path, QString filename, QString content, bool executable = false);
 
     /**
     \brief Create a file providing its content as string list
@@ -190,7 +192,7 @@ protected:
 
     \return name of file
       ****************/
-    QString createFile(QString filename, QStringList content, bool executable = false);
+    QString createFile(QString path, QString filename, QStringList content, bool executable = false);
 
     /**
     \brief Create shell scripts used by qiptables

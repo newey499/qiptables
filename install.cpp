@@ -34,6 +34,8 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 
 const QString Install::INSTALL_DIR = QString("/etc/qiptables");
+const QString Install::TOOLS_DIR = QString("/etc/qiptables/tools");
+
 // Max length of iptables chain name as defined by iptables program.
 const int Install::IPTABLES_CHAIN_MAX_NAME_LENGTH = 30;
 // Prefix used to help identify qiptables ruleset on iptables
@@ -186,11 +188,10 @@ bool Install::createQiptablesDatabase()
 }
 
 
-QString Install::createFile(QString filename, QString content, bool executable)
+QString Install::createFile(QString path, QString filename, QString content, bool executable)
 {
-    QString fname = QString("%1/%2/%3").
-            arg(Install::INSTALL_DIR).
-            arg("tools").
+    QString fname = QString("%1/%2").
+            arg(path).
             arg(filename);
 
     QFile data(fname);
@@ -221,9 +222,11 @@ QString Install::createFile(QString filename, QString content, bool executable)
     return fname;
 }
 
-QString Install::createFile(QString filename, QStringList content, bool executable)
+// calls createFile above by passing the file content as a QString
+QString Install::createFile(QString path, QString filename, QStringList content, bool executable)
 {
-    return createFile(filename,
+    return createFile(path,
+                      filename,
                       content.join("\n"),
                       executable);
 }
@@ -711,7 +714,7 @@ QString Install::createScriptClearFirewall()
             << " ";
 
     // Create the file
-    filename = createFile(filename, script, true);
+    filename = createFile(Install::TOOLS_DIR,  filename, script, true);
 
     return filename;
 }
@@ -723,7 +726,6 @@ QString Install::createScriptGetFirewallName()
     QString filename = "get-firewall-name.sh";
 
     script << "#!/bin/bash"
-           << "#!/bin/bash "
            << "#####################"
            << "#"
            << "# firewall-name.sh"
@@ -741,7 +743,7 @@ QString Install::createScriptGetFirewallName()
 
 
     // Create the file
-    filename = createFile(filename, script, true);
+    filename = createFile(Install::TOOLS_DIR, filename, script, true);
 
     return filename;
 }
