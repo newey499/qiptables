@@ -63,7 +63,20 @@ public slots:
     /**
     \brief Wrapper for file dialogue used to select iptables location
       ***********************/
-    virtual void slotFileDialog();
+    virtual void slotIptables();
+
+
+    /**
+    \brief Wrapper for file dialogue used to select shell location
+      ***********************/
+    virtual void slotShell();
+
+    /**
+    \brief Wrapper for file dialogue used to select directory for temporary files
+      ***********************/
+    virtual void slotTempDir();
+
+
 
     /**
     \brief Save Configuration to table

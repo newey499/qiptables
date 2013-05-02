@@ -75,25 +75,53 @@ void FormCfgSettings::slotButtonStateDisabled()
     ui->btnSave->setEnabled(false);
 }
 
-void FormCfgSettings::slotFileDialog()
+void FormCfgSettings::slotIptables()
 {
     QFileDialog fd(this);
     QString fileName;
 
     fd.setReadOnly(true);
-    fd.setDirectory("/sbin/iptables");
+    fd.setDirectory("/sbin");
     fd.setFileMode(QFileDialog::ExistingFile);
     if (fd.exec())
     {
         fileName = fd.selectedFiles().at(0);
         ui->edtIptables->setText(fileName);
     }
-
-    qDebug("FormConfigQiptables::slotFileDialog()\nselected file [%s]",
-           fileName.toAscii().data());
-
 }
 
+
+void FormCfgSettings::slotShell()
+{
+    QFileDialog fd(this);
+    QString fileName;
+
+    fd.setReadOnly(true);
+    fd.setDirectory("/bin");
+    fd.setFileMode(QFileDialog::ExistingFile);
+    if (fd.exec())
+    {
+        fileName = fd.selectedFiles().at(0);
+        ui->edtShell->setText(fileName);
+    }
+}
+
+
+void FormCfgSettings::slotTempDir()
+{
+    QFileDialog fd(this);
+    QString fileName;
+
+    fd.setReadOnly(true);
+    fd.setDirectory("/tmp");
+    fd.setFileMode(QFileDialog::Directory);
+    fd.setOption(QFileDialog::ShowDirsOnly);
+    if (fd.exec())
+    {
+        fileName = fd.selectedFiles().at(0);
+        ui->edtTempDir->setText(fileName);
+    }
+}
 
 void FormCfgSettings::slotSave()
 {
@@ -134,7 +162,7 @@ void FormCfgSettings::loadSettings()
             defaultRuleName = qry.record().value("defaultRuleName").toString();
             ui->edtShell->setText(shell);
             ui->edtIptables->setText(iptables);
-            ui->edtTempDir->setText(iptables);
+            ui->edtTempDir->setText(tempdir);
         }
         else
         {
