@@ -240,6 +240,7 @@ bool Install::createSysconfTable()
                                  " id integer primary key not null, "
                                  " shell	        varchar(100) not null, "
                                  " iptables         varchar(100) not null, "
+                                 " tempdir          varchar(100) not null, "
                                  " defaultRuleName	varchar(100) not null, "
                                  " foreign key(defaultRuleName) references %2(name) "
                                  "         on delete restrict on update restrict "
@@ -259,9 +260,11 @@ bool Install::createSysconfRow()
     {
         QSqlQuery query;
         QString qryMsg = QString(" insert into %1 "
-                                 "   (shell, iptables, defaultRuleName) "
+                                 "   (shell, iptables, defaultRuleName, "
+                                 "    tempdir ) "
                                  " values "
-                                 "   ('/bin/bash', '/sbin/iptables', 'Clean Firewall') "
+                                 "   ('/bin/bash', '/sbin/iptables', "
+                                 "    'Clean Firewall - Accept everything', '/tmp' ) "
                                 );
         ret = query.exec(qryMsg.arg("sysconf"));
         ret = query.exec(qryMsg.arg("sysconfdef"));

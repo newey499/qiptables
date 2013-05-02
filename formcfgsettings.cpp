@@ -123,15 +123,18 @@ void FormCfgSettings::loadSettings()
 
     //qDebug("FormCfgSettings::loadSettings()");
 
-    if (qry.exec("select id, shell, iptables, defaultRuleName from sysconf"))
+    if (qry.exec("select id, shell, iptables, tempdir, defaultRuleName from sysconf"))
     {
         if (qry.first())
         {
             id = qry.record().value("id").toInt();
             shell = qry.record().value("shell").toString();
             iptables = qry.record().value("iptables").toString();
+            tempdir = qry.record().value("tempdir").toString();
             defaultRuleName = qry.record().value("defaultRuleName").toString();
+            ui->edtShell->setText(shell);
             ui->edtIptables->setText(iptables);
+            ui->edtTempDir->setText(iptables);
         }
         else
         {
@@ -161,8 +164,14 @@ void FormCfgSettings::loadSettings()
 
 void FormCfgSettings::saveSettings()
 {
-    qry.prepare("update sysconf set iptables = :iptables, defaultRuleName = :defaultRuleName");
+    qry.prepare("update sysconf set "
+                "  iptables = :iptables, "
+                "  shell = :shell, "
+                "  tempdir = :tempdir, "
+                "  defaultRuleName = :defaultRuleName ");
     qry.bindValue(":iptables", ui->edtIptables->text());
+    qry.bindValue(":shell", ui->edtShell->text());
+    qry.bindValue(":tempdir", ui->edtTempDir->text());
     qry.bindValue(":defaultRuleName", ui->cbxDefRuleset->currentText());
 
     if (qry.exec())

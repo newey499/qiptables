@@ -93,6 +93,7 @@ protected:
     int id;
     QString shell;
     QString iptables;
+    QString tempdir;
     QString defaultRuleName;
 
     /**
