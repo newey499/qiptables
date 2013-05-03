@@ -556,6 +556,26 @@ bool Install::createRulesetSnippetRows()
                        "iptables -I INPUT -i lo -j ACCEPT";
         insertRuleSnippetRow(snippetName, snippetList);
 
+        snippetName = "Policy Drop but accept outgoing";
+        snippetList.clear();
+        snippetList << "# Policy Drop but accept outgoing" <<
+                       "iptables -P INPUT DROP" <<
+                       "iptables -P FORWARD DROP" <<
+                       "iptables -P OUTPUT ACCEPT" <<
+                       "# always allow local loopback" <<
+                       "iptables -I INPUT -i lo -j ACCEPT";
+        insertRuleSnippetRow(snippetName, snippetList);
+
+
+        snippetName = "Accept Everything from 192.168.1.0/24";
+        snippetList.clear();
+        snippetList << "# "
+                    << "Accept Everything from 192.168.1.0/24"
+                    << "iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT"
+                    << "iptables -A INPUT -s 192.168.1.0/24 -m state --state NEW -p tcp -j ACCEPT"
+                    << "iptables -A INPUT -s 192.168.1.0/24 -m state --state NEW -p udp -j ACCEPT";
+        insertRuleSnippetRow(snippetName, snippetList);
+
 
         snippetName = "Accept Established Related";
         snippetList.clear();

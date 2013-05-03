@@ -14,7 +14,7 @@
 #include <QThread>
 
 #include "threadworker.h"
-#include "workersubclass.h"
+#include "threadworkersubclass.h"
 
 class ThreadWrapper : public QObject
 {

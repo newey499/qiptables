@@ -1,6 +1,7 @@
 #ifndef GENLIB_H
 #define GENLIB_H
 
+#include <QApplication>
 #include <QObject>
 #include <QString>
 
@@ -37,8 +38,22 @@ public:
       **********************/
     static QString getIncludeString(QString snippetName);
 
+    /**
+    \brief gets long ruleset name using the the short name which is
+           qiptables writes as the name of an empty qiptables chain.
 
+    \return long ruleset name
+      **************/
     static QString getRulesetName();
+
+    /**
+    \brief get pointer to top level widget using widget instance name
+
+    The return pointer (if not null) has to be cast to the required widget type
+
+    \return pointer to QWidget or 0 if not found.
+      *****************************/
+    static QWidget * getWidgetPointer(QString widgetObjectName);
 
 signals:
 

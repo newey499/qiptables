@@ -30,9 +30,13 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
+#include <QStatusBar>
+
 #include "formtest.h"
 #include "ui_formtest.h"
 #include "genlib.h"
+
+#include "mainwindow.h"
 
 FormTest::FormTest(QWidget *parent) :
     QWidget(parent),
@@ -123,6 +127,12 @@ void FormTest::slotCmdOutput(QString program, QStringList arguments, int exitCod
 
 void FormTest::slotRunRuleset()
 {
+    MainWindow *mainWindow = (MainWindow *) GenLib::getWidgetPointer("MainWindow");
+    if (mainWindow)
+    {
+        mainWindow->statusBar()->showMessage("Please Wait - Activating Ruleset..........");
+    }
+
     ui->plainTextEdit->clear();
     /**************
     ui->plainTextEdit->appendPlainText("====================================");
@@ -151,15 +161,31 @@ void FormTest::slotRunRuleset()
     ui->plainTextEdit->appendPlainText("===========================================");
     ui->plainTextEdit->appendPlainText(proc->execCmdLine("iptables -L"));
 
+    if (mainWindow)
+    {
+        mainWindow->statusBar()->clearMessage();
+    }
+
 }
 
 
 void FormTest::slotIptablesList()
 {
+    MainWindow *mainWindow = (MainWindow *) GenLib::getWidgetPointer("MainWindow");
+    if (mainWindow)
+    {
+        mainWindow->statusBar()->showMessage("Please Wait - Obtaining Ruleset from iptables..........");
+    }
+
     ui->plainTextEdit->clear();
     //ui->plainTextEdit->appendPlainText("FormTest::slotIptablesList()");
     //ui->plainTextEdit->appendPlainText("====================================");
 
     QString cmdLine = ui->edtCmd->text();
     ui->plainTextEdit->appendPlainText(proc->execCmdLine("iptables -L"));
+
+    if (mainWindow)
+    {
+        mainWindow->statusBar()->clearMessage();
+    }
 }

@@ -45,7 +45,6 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #include "databasemanager.h"
 #include "rulesnippet.h"
 
-
 namespace Ui {
 class FormTest;
 }
@@ -91,7 +90,6 @@ signals:
 protected:
 
     QPointer<RuleSnippet> ruleSnippet;
-
 
 protected slots:
 

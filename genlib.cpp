@@ -30,3 +30,17 @@ QString GenLib::getRulesetName()
 
     return rulesetName;
 }
+
+
+QWidget * GenLib::getWidgetPointer(QString widgetObjectName)
+{
+    foreach (QWidget *widget, QApplication::topLevelWidgets())
+    {
+        if (widget->objectName().compare(widgetObjectName, Qt::CaseSensitive) == 0)
+        {
+            return widget;
+        }
+    }
+
+    return 0; // Widget not found - return null pointer
+}

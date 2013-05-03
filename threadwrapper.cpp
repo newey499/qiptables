@@ -13,7 +13,7 @@ void ThreadWrapper::run()
 {
     QThread* thread = new QThread;
     //ThreadWorker *worker = new ThreadWorker();
-    WorkerSubClass *worker = new WorkerSubClass();
+    ThreadWorkerSubClass *worker = new ThreadWorkerSubClass();
 
     worker->moveToThread(thread);
     connect(worker, SIGNAL(error(QString)), this, SLOT(errorString(QString)));
@@ -29,7 +29,7 @@ void ThreadWrapper::run(ThreadWorker *worker)
 {
     QThread* thread = new QThread;
     //ThreadWorker *worker = new ThreadWorker();
-    //WorkerSubClass *worker = new WorkerSubClass();
+    //ThreadWorkerSubClass *worker = new ThreadWorkerSubClass();
 
     worker->moveToThread(thread);
     connect(worker, SIGNAL(error(QString)), this, SLOT(errorString(QString)));
