@@ -72,6 +72,9 @@ void FormFirewallRules::showEvent(QShowEvent *event)
     QWidget::showEvent(event);
 }
 
+/**
+    \todo FormFirewallRules::showCurrentFirewallRules() - implement threads
+********/
 void FormFirewallRules::showCurrentFirewallRules()
 {
     QString shortName = getCurrentFirewallShortName();
@@ -174,6 +177,9 @@ void FormFirewallRules::slotCbxFirewallsIndexChanged(int index)
 }
 
 
+/**
+    \todo FormFirewallRules::slotEnableRuleset() - implement threads
+********/
 void FormFirewallRules::slotEnableRuleset()
 {
     if (ui->cbxFirewalls->currentIndex() == 0)

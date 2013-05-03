@@ -22,6 +22,14 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 ***************************************************************************/
 
+/**
+\file threadworker.cpp
+
+\class ThreadWorker
+
+\brief Class that performs work in a QThread
+
+***************************************/
 
 #include "threadworker.h"
 

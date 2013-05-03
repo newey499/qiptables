@@ -22,9 +22,9 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 ***************************************************************************/
 
-
 #ifndef THREADTEST_H
 #define THREADTEST_H
+
 /**
 \file threadwrapper.h
 

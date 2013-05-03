@@ -22,6 +22,15 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 ***************************************************************************/
 
+/**
+\file threadiptableswrapper.h
+
+\class ThreadIptablesWorker
+
+\brief Class that executes tasks contained in
+       a ThreadWorker object in a new QThread
+
+***************************************/
 
 #ifndef THREADIPTABLESWRAPPER_H
 #define THREADIPTABLESWRAPPER_H

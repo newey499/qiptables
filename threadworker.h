@@ -22,9 +22,9 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 ***************************************************************************/
 
-
 #ifndef WORKER_H
 #define WORKER_H
+
 /**
 \file threadworker.h
 

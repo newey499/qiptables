@@ -22,12 +22,8 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 ***************************************************************************/
 
-
-
 #ifndef FORMFIREWALLRULES_H
 #define FORMFIREWALLRULES_H
-
-
 
 #include <QListView>
 #include <QMessageBox>
@@ -89,6 +85,7 @@ public:
 
     \param shortName - The short name of the ruleset
     \return the row of the ruleset
+
       **********************/
     QSqlRecord getFirewallRulesetFromShortName(QString shortName);
 
@@ -106,6 +103,7 @@ public slots:
 
     /**
     \brief Displays current firewall rules in a text edit box
+
       *****************/
     virtual void showCurrentFirewallRules();
 

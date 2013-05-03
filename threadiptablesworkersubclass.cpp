@@ -22,6 +22,17 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 ***************************************************************************/
 
+/**
+\file threadiptablesworkersubclass.cpp
+
+\class ThreadIptablesWorkerSubClass
+
+\brief Class that performs work in a QThread
+
+A Request type can be passed into this class via the constructor enabling
+various operations to be performed.
+***************************************/
+
 #include "threadiptablesworkersubclass.h"
 #include "iptables.h"
 #include "ipprocess.h"
