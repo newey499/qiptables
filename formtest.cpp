@@ -38,6 +38,9 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "mainwindow.h"
 
+#include "threadwrapper.h"
+#include "threadiptablesworkersubclass.h"
+
 FormTest::FormTest(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::FormTest)
@@ -133,7 +136,15 @@ void FormTest::slotRunRuleset()
         mainWindow->statusBar()->showMessage("Please Wait - Activating Ruleset..........");
     }
 
-    ui->plainTextEdit->clear();
+    ThreadWrapper *wrapper = new ThreadWrapper(this);
+    ThreadIptablesWorkerSubClass *worker =
+        new ThreadIptablesWorkerSubClass(ThreadIptablesWorkerSubClass::SET_CURRENT_RULESET,
+                                         ui->cbxRuleset->currentText());
+
+    connect(worker, SIGNAL(sigCurrentRules(QString)),
+            this, SLOT(slotDisplayString(QString)));
+
+    wrapper->run(worker);
     /**************
     ui->plainTextEdit->appendPlainText("====================================");
     ui->plainTextEdit->appendPlainText("FormTest::slotRunRuleset() : Start");
@@ -143,6 +154,7 @@ void FormTest::slotRunRuleset()
     //QString ruleset = ui->cbxRuleset->currentText();
     //iptables->processRuleset(ruleset);
 
+    /***********************
     QString shortName = iptables->getRulesetShortName(ui->cbxRuleset->currentText());
 
     ui->plainTextEdit->appendPlainText("===========================================");
@@ -154,12 +166,10 @@ void FormTest::slotRunRuleset()
     QString tmp = shortName;
     tmp.prepend("iptables -N ");
     proc->execCmdLine(tmp);
+    ************************/
 
     // Display the firewall rules after the selected ruleset has been run
-    ui->plainTextEdit->appendPlainText("===========================================");
-    ui->plainTextEdit->appendPlainText("Firewall Rules");
-    ui->plainTextEdit->appendPlainText("===========================================");
-    ui->plainTextEdit->appendPlainText(proc->execCmdLine("iptables -L"));
+    slotIptablesList();
 
     if (mainWindow)
     {
@@ -177,15 +187,27 @@ void FormTest::slotIptablesList()
         mainWindow->statusBar()->showMessage("Please Wait - Obtaining Ruleset from iptables..........");
     }
 
-    ui->plainTextEdit->clear();
-    //ui->plainTextEdit->appendPlainText("FormTest::slotIptablesList()");
-    //ui->plainTextEdit->appendPlainText("====================================");
+    ThreadWrapper *wrapper = new ThreadWrapper(this);
+    ThreadIptablesWorkerSubClass *worker =
+            new ThreadIptablesWorkerSubClass(ThreadIptablesWorkerSubClass::GET_CURRENT_RULESET);
 
-    QString cmdLine = ui->edtCmd->text();
-    ui->plainTextEdit->appendPlainText(proc->execCmdLine("iptables -L"));
+    connect(worker, SIGNAL(sigCurrentRules(QString)),
+            this, SLOT(slotDisplayString(QString)));
+
+    wrapper->run(worker);
 
     if (mainWindow)
     {
         mainWindow->statusBar()->clearMessage();
     }
 }
+
+
+void FormTest::slotDisplayString(QString msg)
+{
+    qDebug("FormTest::slotDisplayString()");
+    ui->plainTextEdit->clear();
+    ui->plainTextEdit->appendPlainText(msg);
+}
+
+

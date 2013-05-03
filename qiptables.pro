@@ -65,7 +65,9 @@ SOURCES += main.cpp\
     genlib.cpp \
     threadworker.cpp \
     threadwrapper.cpp \
-    threadworkersubclass.cpp
+    threadworkersubclass.cpp \
+    threadiptablesworkersubclass.cpp \
+    threadiptableswrapper.cpp
 
 
 
@@ -94,7 +96,9 @@ HEADERS  += mainwindow.h \
     genlib.h \
     threadworker.h \
     threadwrapper.h \
-    threadworkersubclass.h
+    threadworkersubclass.h \
+    threadiptablesworkersubclass.h \
+    threadiptableswrapper.h
 
 
 FORMS    += mainwindow.ui \

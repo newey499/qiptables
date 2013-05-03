@@ -93,8 +93,9 @@ protected:
 
 protected slots:
 
-    void slotCmdOutput(QString program, QStringList arguments, int exitCode, QString result);
-    void slotRunRuleset();
+    virtual void slotCmdOutput(QString program, QStringList arguments, int exitCode, QString result);
+    virtual void slotRunRuleset();
+    virtual void slotDisplayString(QString msg);
 
 private:
     Ui::FormTest *ui;
