@@ -32,6 +32,12 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #include "formfirewallrules.h"
 #include "ui_formfirewallrules.h"
 
+#include "genlib.h"
+#include "mainwindow.h"
+#include "threadwrapper.h"
+#include "threadiptablesworkersubclass.h"
+
+
 FormFirewallRules::FormFirewallRules(QWidget *parent, Qt::WindowFlags f) :
     QWidget(parent, f),
     ui(new Ui::FormFirewallRules)
@@ -68,47 +74,11 @@ FormFirewallRules::~FormFirewallRules()
 
 void FormFirewallRules::showEvent(QShowEvent *event)
 {
-    showCurrentFirewallRules();
+    //showCurrentFirewallRules();
     QWidget::showEvent(event);
+    qDebug("FormFirewallRules::showEvent(QShowEvent *event) Called - WHY???");
 }
 
-/**
-    \todo FormFirewallRules::showCurrentFirewallRules() - implement threads
-********/
-void FormFirewallRules::showCurrentFirewallRules()
-{
-    QString shortName = getCurrentFirewallShortName();
-    QString rulesetName("");
-    if (! shortName.isEmpty())
-    {
-        rulesetName = getRulesetNameFromShortName(shortName);
-    }
-
-
-    ui->edtCurrentRules->clear();
-    ui->edtCurrentRules->appendPlainText("Current Rules");
-    ui->edtCurrentRules->appendPlainText("=============");
-    ui->edtCurrentRules->appendPlainText(proc->execCmdLine("iptables -L"));
-
-    if (! rulesetName.isEmpty())
-    {
-        ui->edtCurrentRules->appendPlainText(QString("Ruleset short name [%1]").
-                                             arg(shortName));
-        ui->edtCurrentRules->appendPlainText(QString("Ruleset Name [%1]").
-                                             arg(rulesetName));
-
-        int index = ui->cbxFirewalls->findText(rulesetName);
-        if (index != -1)
-        {
-            ui->cbxFirewalls->setCurrentIndex(index);
-        }
-        else
-        {
-            ui->cbxFirewalls->setCurrentIndex(0);
-        }
-     }
-
-}
 
 QString FormFirewallRules::getCurrentFirewallShortName()
 {
@@ -160,7 +130,36 @@ QSqlRecord FormFirewallRules::getFirewallRulesetFromShortName(QString shortName)
 
 void FormFirewallRules::slotCurrentRules()
 {
-    showCurrentFirewallRules();
+    MainWindow *mainWindow = (MainWindow *) GenLib::getWidgetPointer("MainWindow");
+    if (mainWindow)
+    {
+        mainWindow->statusBar()->showMessage("Please Wait - Obtaining Ruleset from iptables..........");
+    }
+
+    ThreadWrapper *wrapper = new ThreadWrapper(this);
+    ThreadIptablesWorkerSubClass *worker =
+            new ThreadIptablesWorkerSubClass(ThreadIptablesWorkerSubClass::GET_CURRENT_RULESET);
+
+    connect(worker, SIGNAL(sigCurrentRules(QString)),
+            this, SLOT(slotDisplayString(QString)));
+
+    wrapper->run(worker);
+
+    if (mainWindow)
+    {
+        mainWindow->statusBar()->clearMessage();
+    }
+
+
+}
+
+
+void FormFirewallRules::slotDisplayString(QString msg)
+{
+    qDebug("FormFirewallRules::slotDisplayString()");
+
+    ui->edtCurrentRules->clear();
+    ui->edtCurrentRules->appendPlainText(msg);
 }
 
 void FormFirewallRules::slotCbxFirewallsIndexChanged(int index)
@@ -177,9 +176,6 @@ void FormFirewallRules::slotCbxFirewallsIndexChanged(int index)
 }
 
 
-/**
-    \todo FormFirewallRules::slotEnableRuleset() - implement threads
-********/
 void FormFirewallRules::slotEnableRuleset()
 {
     if (ui->cbxFirewalls->currentIndex() == 0)
@@ -191,28 +187,29 @@ void FormFirewallRules::slotEnableRuleset()
         return;
     }
 
-    ui->edtCurrentRules->clear();
-    ui->edtCurrentRules->appendPlainText("Enabling Ruleset");
-    ui->edtCurrentRules->appendPlainText("================");
-    //QStringList rules = ipTables->getRulesetRows(ui->cbxFirewalls->currentText());
-    ui->edtCurrentRules->appendPlainText("Executing Ruleset Commands");
-    QString shortName = this->ipTables->getRulesetShortName(ui->cbxFirewalls->currentText());
+    MainWindow *mainWindow = (MainWindow *) GenLib::getWidgetPointer("MainWindow");
+    if (mainWindow)
+    {
+        mainWindow->statusBar()->showMessage("Please Wait - Activating Ruleset..........");
+    }
 
-    this->ipTables->processRuleset(ui->cbxFirewalls->currentText());
+    ThreadWrapper *wrapper = new ThreadWrapper(this);
+    ThreadIptablesWorkerSubClass *worker =
+        new ThreadIptablesWorkerSubClass(ThreadIptablesWorkerSubClass::SET_CURRENT_RULESET,
+                                         ui->cbxFirewalls->currentText());
 
-    QString tmp = shortName;
-    tmp.prepend("iptables -N ");
-    ui->edtCurrentRules->appendPlainText(proc->execCmdLine(tmp));
-    ui->edtCurrentRules->appendPlainText(proc->execCmdLine("iptables -L"));
-    //qDebug("short name chain [%s]", tmp.toAscii().data());
+    connect(worker, SIGNAL(sigCurrentRules(QString)),
+            this, SLOT(slotDisplayString(QString)));
 
+    wrapper->run(worker);
 
-    ui->edtCurrentRules->appendPlainText("======================");
-    ui->edtCurrentRules->appendPlainText("Ruleset Applied");
-    ui->edtCurrentRules->appendPlainText("======================");
-    ui->edtCurrentRules->appendPlainText(ui->cbxFirewalls->currentText().prepend("Full ruleset Name: "));
-    ui->edtCurrentRules->appendPlainText(shortName.prepend("Short Name: "));
+    // Display the firewall rules after the selected ruleset has been run
+    slotCurrentRules();
 
+    if (mainWindow)
+    {
+        mainWindow->statusBar()->clearMessage();
+    }
 
 }
 

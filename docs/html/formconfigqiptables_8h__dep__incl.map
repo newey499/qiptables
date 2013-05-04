@@ -1,6 +1,7 @@
 <map id="G" name="G">
 <area shape="rect" id="node3" href="$formconfigqiptables_8cpp.html" title="REDUNDANT: add forms to tabbed widget." alt="" coords="5,83,179,112"/>
 <area shape="rect" id="node5" href="$mainwindow_8h.html" title="mainwindow.h" alt="" coords="203,83,312,112"/>
-<area shape="rect" id="node7" href="$main_8cpp.html" title="Qiptables application entry point." alt="" coords="153,160,233,189"/>
-<area shape="rect" id="node9" href="$mainwindow_8cpp.html" title="Main Window of application." alt="" coords="257,160,383,189"/>
+<area shape="rect" id="node7" href="$formtest_8cpp.html" title="Form for various test routines used during development." alt="" coords="89,160,193,189"/>
+<area shape="rect" id="node9" href="$main_8cpp.html" title="Qiptables application entry point." alt="" coords="217,160,297,189"/>
+<area shape="rect" id="node11" href="$mainwindow_8cpp.html" title="Main Window of application." alt="" coords="321,160,447,189"/>
 </map>

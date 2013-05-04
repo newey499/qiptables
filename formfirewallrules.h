@@ -31,6 +31,7 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #include <QShowEvent>
 #include <QSqlQuery>
 #include <QSqlRecord>
+#include <QStatusBar>
 #include <QString>
 #include <QTreeView>
 #include <QTextEdit>
@@ -102,10 +103,9 @@ signals:
 public slots:
 
     /**
-    \brief Displays current firewall rules in a text edit box
-
-      *****************/
-    virtual void showCurrentFirewallRules();
+    \brief Displays string in plain text edit box
+      ******************************/
+    virtual void slotDisplayString(QString msg);
 
     /**
     \brief synonym for showCurrentFirewallRules()

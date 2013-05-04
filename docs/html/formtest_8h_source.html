@@ -95,50 +95,52 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00045"></a>00045 <span class="preprocessor">#include &quot;<a class="code" href="databasemanager_8h.html">databasemanager.h</a>&quot;</span>
 <a name="l00046"></a>00046 <span class="preprocessor">#include &quot;<a class="code" href="rulesnippet_8h.html">rulesnippet.h</a>&quot;</span>
 <a name="l00047"></a>00047 
-<a name="l00048"></a>00048 
-<a name="l00049"></a>00049 <span class="keyword">namespace </span>Ui {
-<a name="l00050"></a>00050 <span class="keyword">class </span><a class="code" href="classFormTest.html" title="Form for various test routines used during development.">FormTest</a>;
-<a name="l00051"></a>00051 }
+<a name="l00048"></a>00048 <span class="keyword">namespace </span>Ui {
+<a name="l00049"></a>00049 <span class="keyword">class </span><a class="code" href="classFormTest.html" title="Form for various test routines used during development.">FormTest</a>;
+<a name="l00050"></a>00050 }
+<a name="l00051"></a>00051 
 <a name="l00052"></a>00052 
-<a name="l00053"></a>00053 
-<a name="l00065"></a><a class="code" href="classFormTest.html">00065</a> <span class="keyword">class </span><a class="code" href="classFormTest.html" title="Form for various test routines used during development.">FormTest</a> : <span class="keyword">public</span> QWidget
-<a name="l00066"></a>00066 {
-<a name="l00067"></a>00067     Q_OBJECT
-<a name="l00068"></a>00068 
-<a name="l00069"></a>00069 <span class="keyword">public</span>:
-<a name="l00070"></a>00070 
-<a name="l00071"></a>00071     QPointer&lt;DatabaseManager&gt; db;
-<a name="l00072"></a>00072     QPointer&lt;Iptables&gt; iptables;
-<a name="l00073"></a>00073     QPointer&lt;IpProcess&gt; proc;
+<a name="l00064"></a><a class="code" href="classFormTest.html">00064</a> <span class="keyword">class </span><a class="code" href="classFormTest.html" title="Form for various test routines used during development.">FormTest</a> : <span class="keyword">public</span> QWidget
+<a name="l00065"></a>00065 {
+<a name="l00066"></a>00066     Q_OBJECT
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068 <span class="keyword">public</span>:
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070     QPointer&lt;DatabaseManager&gt; db;
+<a name="l00071"></a>00071     QPointer&lt;Iptables&gt; iptables;
+<a name="l00072"></a>00072     QPointer&lt;IpProcess&gt; proc;
+<a name="l00073"></a>00073 
 <a name="l00074"></a>00074 
-<a name="l00075"></a>00075 
-<a name="l00076"></a>00076     <span class="keyword">explicit</span> <a class="code" href="classFormTest.html" title="Form for various test routines used during development.">FormTest</a>(QWidget *parent = 0);
-<a name="l00077"></a>00077     ~<a class="code" href="classFormTest.html" title="Form for various test routines used during development.">FormTest</a>();
+<a name="l00075"></a>00075     <span class="keyword">explicit</span> <a class="code" href="classFormTest.html" title="Form for various test routines used during development.">FormTest</a>(QWidget *parent = 0);
+<a name="l00076"></a>00076     ~<a class="code" href="classFormTest.html" title="Form for various test routines used during development.">FormTest</a>();
+<a name="l00077"></a>00077 
 <a name="l00078"></a>00078 
 <a name="l00079"></a>00079 
 <a name="l00080"></a>00080 
-<a name="l00081"></a>00081 
-<a name="l00082"></a>00082 <span class="keyword">public</span> slots:
-<a name="l00083"></a>00083 
-<a name="l00084"></a>00084     <span class="keyword">virtual</span> <span class="keywordtype">void</span> slotBtnTest();
-<a name="l00085"></a>00085     <span class="keyword">virtual</span> <span class="keywordtype">void</span> slotBtnRun();
-<a name="l00086"></a>00086     <span class="keyword">virtual</span> <span class="keywordtype">void</span> slotIptablesList();
-<a name="l00087"></a>00087 
-<a name="l00088"></a>00088 <span class="keyword">protected</span>:
+<a name="l00081"></a>00081 <span class="keyword">public</span> slots:
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083     <span class="keyword">virtual</span> <span class="keywordtype">void</span> slotBtnTest();
+<a name="l00084"></a>00084     <span class="keyword">virtual</span> <span class="keywordtype">void</span> slotBtnRun();
+<a name="l00085"></a>00085     <span class="keyword">virtual</span> <span class="keywordtype">void</span> slotIptablesList();
+<a name="l00086"></a>00086 
+<a name="l00087"></a>00087 signals:
+<a name="l00088"></a>00088 
 <a name="l00089"></a>00089 
-<a name="l00090"></a>00090     QPointer&lt;RuleSnippet&gt; ruleSnippet;
+<a name="l00090"></a>00090 <span class="keyword">protected</span>:
 <a name="l00091"></a>00091 
-<a name="l00092"></a>00092 
-<a name="l00093"></a>00093 <span class="keyword">protected</span> slots:
-<a name="l00094"></a>00094 
-<a name="l00095"></a>00095     <span class="keywordtype">void</span> slotCmdOutput(QString program, QStringList arguments, <span class="keywordtype">int</span> exitCode, QString result);
-<a name="l00096"></a>00096     <span class="keywordtype">void</span> slotRunRuleset();
-<a name="l00097"></a>00097 
-<a name="l00098"></a>00098 <span class="keyword">private</span>:
-<a name="l00099"></a>00099     Ui::FormTest *ui;
-<a name="l00100"></a>00100 };
-<a name="l00101"></a>00101 
-<a name="l00102"></a>00102 <span class="preprocessor">#endif // FORMTEST_H</span>
+<a name="l00092"></a>00092     QPointer&lt;RuleSnippet&gt; ruleSnippet;
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094 <span class="keyword">protected</span> slots:
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096     <span class="keyword">virtual</span> <span class="keywordtype">void</span> slotCmdOutput(QString program, QStringList arguments, <span class="keywordtype">int</span> exitCode, QString result);
+<a name="l00097"></a>00097     <span class="keyword">virtual</span> <span class="keywordtype">void</span> slotRunRuleset();
+<a name="l00098"></a>00098     <span class="keyword">virtual</span> <span class="keywordtype">void</span> slotDisplayString(QString msg);
+<a name="l00099"></a>00099 
+<a name="l00100"></a>00100 <span class="keyword">private</span>:
+<a name="l00101"></a>00101     Ui::FormTest *ui;
+<a name="l00102"></a>00102 };
+<a name="l00103"></a>00103 
+<a name="l00104"></a>00104 <span class="preprocessor">#endif // FORMTEST_H</span>
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -155,7 +157,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sat Apr 27 2013 16:44:22 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Fri May 3 2013 19:12:14 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

@@ -109,17 +109,6 @@ void FormTest::slotCmdOutput(QString program, QStringList arguments, int exitCod
     exitCode = exitCode;
     result = result;
 
-    /***********
-    QString tmp = QString("%1 args [%2] returned [%3]\n"
-                          "=============================\n"
-                          "%4\n"
-                          "=============================\n"
-                          ).
-            arg(program).
-            arg(args).
-            arg(exitCode).
-            arg(result);
-    *******************/
     QString tmp = QString("%1 %2\n").
             arg(program).
             arg(args);
@@ -145,28 +134,6 @@ void FormTest::slotRunRuleset()
             this, SLOT(slotDisplayString(QString)));
 
     wrapper->run(worker);
-    /**************
-    ui->plainTextEdit->appendPlainText("====================================");
-    ui->plainTextEdit->appendPlainText("FormTest::slotRunRuleset() : Start");
-    ui->plainTextEdit->appendPlainText("====================================");
-    *********************/
-
-    //QString ruleset = ui->cbxRuleset->currentText();
-    //iptables->processRuleset(ruleset);
-
-    /***********************
-    QString shortName = iptables->getRulesetShortName(ui->cbxRuleset->currentText());
-
-    ui->plainTextEdit->appendPlainText("===========================================");
-    ui->plainTextEdit->appendPlainText("Executing Commands to set firewall rules");
-    ui->plainTextEdit->appendPlainText("===========================================");
-    iptables->processRuleset(ui->cbxRuleset->currentText());
-
-    // create a new empty chain with the short name of the Ruleset
-    QString tmp = shortName;
-    tmp.prepend("iptables -N ");
-    proc->execCmdLine(tmp);
-    ************************/
 
     // Display the firewall rules after the selected ruleset has been run
     slotIptablesList();

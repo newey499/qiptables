@@ -1,11 +1,19 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$formtest_8h.html" title="formtest.h" alt="" coords="1047,83,1135,112"/>
-<area shape="rect" id="node23" href="$qiptablesexception_8h.html" title="qiptablesexception.h" alt="" coords="2175,160,2329,189"/>
-<area shape="rect" id="node32" href="$linuxuserid_8h.html" title="linuxuserid.h" alt="" coords="435,392,536,421"/>
-<area shape="rect" id="node40" href="$ipprocess_8h.html" title="ipprocess.h" alt="" coords="443,315,536,344"/>
-<area shape="rect" id="node49" href="$iptables_8h.html" title="iptables.h" alt="" coords="1139,237,1221,267"/>
-<area shape="rect" id="node63" href="$install_8h.html" title="install.h" alt="" coords="845,315,915,344"/>
-<area shape="rect" id="node73" href="$databasemanager_8h.html" title="databasemanager.h" alt="" coords="1141,392,1291,421"/>
-<area shape="rect" id="node90" href="$rulesnippet_8h.html" title="rulesnippet.h" alt="" coords="1485,160,1589,189"/>
-<area shape="rect" id="node101" href="$cmdline_8h.html" title="cmdline.h" alt="" coords="1752,315,1835,344"/>
+<area shape="rect" id="node5" href="$formtest_8h.html" title="formtest.h" alt="" coords="1341,160,1429,189"/>
+<area shape="rect" id="node97" href="$genlib_8h.html" title="genlib.h" alt="" coords="2463,469,2535,499"/>
+<area shape="rect" id="node103" href="$mainwindow_8h.html" title="mainwindow.h" alt="" coords="2447,83,2556,112"/>
+<area shape="rect" id="node152" href="$threadwrapper_8h.html" title="threadwrapper.h" alt="" coords="3293,83,3419,112"/>
+<area shape="rect" id="node162" href="$threadiptablesworkersubclass_8h.html" title="threadiptablesworkersubclass.h" alt="" coords="1747,160,1968,189"/>
+<area shape="rect" id="node25" href="$qiptablesexception_8h.html" title="qiptablesexception.h" alt="" coords="2476,315,2631,344"/>
+<area shape="rect" id="node34" href="$linuxuserid_8h.html" title="linuxuserid.h" alt="" coords="2564,469,2665,499"/>
+<area shape="rect" id="node42" href="$ipprocess_8h.html" title="ipprocess.h" alt="" coords="2096,392,2189,421"/>
+<area shape="rect" id="node51" href="$iptables_8h.html" title="iptables.h" alt="" coords="1031,315,1113,344"/>
+<area shape="rect" id="node65" href="$install_8h.html" title="install.h" alt="" coords="1445,392,1515,421"/>
+<area shape="rect" id="node71" href="$databasemanager_8h.html" title="databasemanager.h" alt="" coords="971,469,1120,499"/>
+<area shape="rect" id="node83" href="$rulesnippet_8h.html" title="rulesnippet.h" alt="" coords="615,237,719,267"/>
+<area shape="rect" id="node127" href="$formfirewallrules_8h.html" title="formfirewallrules.h" alt="" coords="1645,237,1784,267"/>
+<area shape="rect" id="node141" href="$formconfigqiptables_8h.html" title="formconfigqiptables.h" alt="" coords="1211,392,1371,421"/>
+<area shape="rect" id="node145" href="$ipstackedwidget_8h.html" title="ipstackedwidget.h" alt="" coords="2981,160,3117,189"/>
+<area shape="rect" id="node156" href="$threadworker_8h.html" title="threadworker.h" alt="" coords="3248,237,3365,267"/>
+<area shape="rect" id="node159" href="$threadworkersubclass_8h_source.html" title="threadworkersubclass.h" alt="" coords="3344,160,3517,189"/>
 </map>

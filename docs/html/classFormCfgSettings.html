@@ -42,6 +42,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&nbsp;List</span></a></li>
       <li><a href="classes.html"><span>Class&nbsp;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&nbsp;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&nbsp;Members</span></a></li>
     </ul>
   </div>
@@ -73,9 +74,15 @@ Collaboration diagram for FormCfgSettings:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-slots"></a>
 Public Slots</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7ec23d88c45e545ebd5369000a23715c"></a><!-- doxytag: member="FormCfgSettings::slotFileDialog" ref="a7ec23d88c45e545ebd5369000a23715c" args="()" -->
-virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormCfgSettings.html#a7ec23d88c45e545ebd5369000a23715c">slotFileDialog</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a536493371b8588e88a8322594268c000"></a><!-- doxytag: member="FormCfgSettings::slotIptables" ref="a536493371b8588e88a8322594268c000" args="()" -->
+virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormCfgSettings.html#a536493371b8588e88a8322594268c000">slotIptables</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Wrapper for file dialogue used to select iptables location. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abdf0f339d7d56d66fcc7df4c625a7c85"></a><!-- doxytag: member="FormCfgSettings::slotShell" ref="abdf0f339d7d56d66fcc7df4c625a7c85" args="()" -->
+virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormCfgSettings.html#abdf0f339d7d56d66fcc7df4c625a7c85">slotShell</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Wrapper for file dialogue used to select shell location. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9b1cb0e7e385222cb0e972afd095cc92"></a><!-- doxytag: member="FormCfgSettings::slotTempDir" ref="a9b1cb0e7e385222cb0e972afd095cc92" args="()" -->
+virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormCfgSettings.html#a9b1cb0e7e385222cb0e972afd095cc92">slotTempDir</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Wrapper for file dialogue used to select directory for temporary files. <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2a79033fe5a99ec095831f9e60d5ad9f"></a><!-- doxytag: member="FormCfgSettings::slotSave" ref="a2a79033fe5a99ec095831f9e60d5ad9f" args="()" -->
 virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFormCfgSettings.html#a2a79033fe5a99ec095831f9e60d5ad9f">slotSave</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Save Configuration to table. <br/></td></tr>
@@ -114,6 +121,8 @@ int&nbsp;</td><td class="memItemRight" valign="bottom"><b>id</b></td></tr>
 QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>shell</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8175c7ce5331e415a559ae50fbca4ad5"></a><!-- doxytag: member="FormCfgSettings::iptables" ref="a8175c7ce5331e415a559ae50fbca4ad5" args="" -->
 QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>iptables</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a24a21e347fa14857f353ca09bf5e7128"></a><!-- doxytag: member="FormCfgSettings::tempdir" ref="a24a21e347fa14857f353ca09bf5e7128" args="" -->
+QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>tempdir</b></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a74292a0c3857db569f2dec33094f3466"></a><!-- doxytag: member="FormCfgSettings::defaultRuleName" ref="a74292a0c3857db569f2dec33094f3466" args="" -->
 QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>defaultRuleName</b></td></tr>
 </table>
@@ -159,7 +168,7 @@ QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>defaultRuleName</b
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sat Apr 27 2013 16:44:22 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Fri May 3 2013 19:12:15 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

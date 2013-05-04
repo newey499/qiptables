@@ -42,6 +42,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&nbsp;List</span></a></li>
       <li><a href="classes.html"><span>Class&nbsp;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&nbsp;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&nbsp;Members</span></a></li>
     </ul>
   </div>
@@ -70,6 +71,10 @@ Public Member Functions</h2></td></tr>
 Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static QString&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGenLib.html#a12c32db0f2025becef80fc56521b6962">getIncludeString</a> (QString snippetName)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns include statement for snippet to be included in ruleset.  <a href="#a12c32db0f2025becef80fc56521b6962"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static QString&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGenLib.html#a46ee9f54a55c735cc123f0c55283f567">getRulesetName</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">gets long ruleset name using the the short name which is qiptables writes as the name of an empty qiptables chain.  <a href="#a46ee9f54a55c735cc123f0c55283f567"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static QWidget *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGenLib.html#a0a5f0cddda18360b07500dbdfc7691e5">getWidgetPointer</a> (QString widgetObjectName)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">get pointer to top level widget using widget instance name  <a href="#a0a5f0cddda18360b07500dbdfc7691e5"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>Class containing various utility functions. </p>
@@ -103,6 +108,48 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a46ee9f54a55c735cc123f0c55283f567"></a><!-- doxytag: member="GenLib::getRulesetName" ref="a46ee9f54a55c735cc123f0c55283f567" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString GenLib::getRulesetName </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>gets long ruleset name using the the short name which is qiptables writes as the name of an empty qiptables chain. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>long ruleset name </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a0a5f0cddda18360b07500dbdfc7691e5"></a><!-- doxytag: member="GenLib::getWidgetPointer" ref="a0a5f0cddda18360b07500dbdfc7691e5" args="(QString widgetObjectName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QWidget * GenLib::getWidgetPointer </td>
+          <td>(</td>
+          <td class="paramtype">QString&nbsp;</td>
+          <td class="paramname"> <em>widgetObjectName</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>get pointer to top level widget using widget instance name </p>
+<p>The return pointer (if not null) has to be cast to the required widget type</p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>pointer to QWidget or 0 if not found. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="genlib_8h_source.html">genlib.h</a></li>
 <li>genlib.cpp</li>
@@ -122,7 +169,7 @@ Static Public Member Functions</h2></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sat Apr 27 2013 16:44:22 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Fri May 3 2013 19:12:15 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>

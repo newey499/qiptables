@@ -42,6 +42,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&nbsp;List</span></a></li>
       <li><a href="classes.html"><span>Class&nbsp;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&nbsp;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&nbsp;Members</span></a></li>
     </ul>
   </div>
@@ -95,6 +96,8 @@ bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 Static Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adc973b3e6643502782374acadf5eaccc"></a><!-- doxytag: member="Install::INSTALL_DIR" ref="adc973b3e6643502782374acadf5eaccc" args="" -->
 static const QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>INSTALL_DIR</b> = QString(&quot;/etc/qiptables&quot;)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a10fb57ea3c78741012aa2c5874243df0"></a><!-- doxytag: member="Install::TOOLS_DIR" ref="a10fb57ea3c78741012aa2c5874243df0" args="" -->
+static const QString&nbsp;</td><td class="memItemRight" valign="bottom"><b>TOOLS_DIR</b> = QString(&quot;/etc/qiptables/tools&quot;)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae046ad45f32f6073e208022c5db86b4b"></a><!-- doxytag: member="Install::IPTABLES_CHAIN_MAX_NAME_LENGTH" ref="ae046ad45f32f6073e208022c5db86b4b" args="" -->
 static const int&nbsp;</td><td class="memItemRight" valign="bottom"><b>IPTABLES_CHAIN_MAX_NAME_LENGTH</b> = 30</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae518034f82f26630b81548c8f443ad0a"></a><!-- doxytag: member="Install::IPTABLES_CHAIN_NAME_PREFIX" ref="ae518034f82f26630b81548c8f443ad0a" args="" -->
@@ -121,10 +124,10 @@ Protected Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">create an initial rulesnippet row  <a href="#a6d6020cd144c44d937817c399c6b59fe"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstall.html#af1528ca1204a506964ed88f1617e6f75">createSysconfRow</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">create initial system configuration table row  <a href="#af1528ca1204a506964ed88f1617e6f75"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">QString&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstall.html#a818608ebaf368bd244690a2f91f45ac9">createFile</a> (QString filename, QString content, bool executable=false)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Create a file providing its content as string.  <a href="#a818608ebaf368bd244690a2f91f45ac9"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">QString&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstall.html#a693e7a889fafbb0953badaf0af69f566">createFile</a> (QString filename, QStringList content, bool executable=false)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Create a file providing its content as string list.  <a href="#a693e7a889fafbb0953badaf0af69f566"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">QString&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstall.html#ae391f24f561ad51c221236ffee2275c0">createFile</a> (QString path, QString filename, QString content, bool executable=false)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Create a file providing its content as string.  <a href="#ae391f24f561ad51c221236ffee2275c0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">QString&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstall.html#a34c927506ce340be9f372661d4789cf8">createFile</a> (QString path, QString filename, QStringList content, bool executable=false)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Create a file providing its content as string list.  <a href="#a34c927506ce340be9f372661d4789cf8"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstall.html#a587c4ee53855a8cb6039b4c6b13cc4ca">createShellScripts</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Create shell scripts used by qiptables.  <a href="#a587c4ee53855a8cb6039b4c6b13cc4ca"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">QString&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstall.html#aa3296bb8022791c9bbbc5611f063e18d">createScriptClearFirewall</a> ()</td></tr>
@@ -164,13 +167,19 @@ QFile *&nbsp;</td><td class="memItemRight" valign="bottom"><b>file</b></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a818608ebaf368bd244690a2f91f45ac9"></a><!-- doxytag: member="Install::createFile" ref="a818608ebaf368bd244690a2f91f45ac9" args="(QString filename, QString content, bool executable=false)" -->
+<a class="anchor" id="ae391f24f561ad51c221236ffee2275c0"></a><!-- doxytag: member="Install::createFile" ref="ae391f24f561ad51c221236ffee2275c0" args="(QString path, QString filename, QString content, bool executable=false)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">QString Install::createFile </td>
           <td>(</td>
+          <td class="paramtype">QString&nbsp;</td>
+          <td class="paramname"> <em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">QString&nbsp;</td>
           <td class="paramname"> <em>filename</em>, </td>
         </tr>
@@ -208,13 +217,19 @@ QFile *&nbsp;</td><td class="memItemRight" valign="bottom"><b>file</b></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a693e7a889fafbb0953badaf0af69f566"></a><!-- doxytag: member="Install::createFile" ref="a693e7a889fafbb0953badaf0af69f566" args="(QString filename, QStringList content, bool executable=false)" -->
+<a class="anchor" id="a34c927506ce340be9f372661d4789cf8"></a><!-- doxytag: member="Install::createFile" ref="a34c927506ce340be9f372661d4789cf8" args="(QString path, QString filename, QStringList content, bool executable=false)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">QString Install::createFile </td>
           <td>(</td>
+          <td class="paramtype">QString&nbsp;</td>
+          <td class="paramname"> <em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">QString&nbsp;</td>
           <td class="paramname"> <em>filename</em>, </td>
         </tr>
@@ -599,7 +614,7 @@ QFile *&nbsp;</td><td class="memItemRight" valign="bottom"><b>file</b></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sat Apr 27 2013 16:44:22 for Qiptables by&nbsp;
+<hr class="footer"/><address class="footer"><small>Generated on Fri May 3 2013 19:12:15 for Qiptables by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
 </body>
