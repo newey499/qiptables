@@ -1,4 +1,5 @@
-/************************************************************************
+/**************************************
+
 Copyright Chris Newey 2013
 
 qiptables@hotmail.com
@@ -20,10 +21,12 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
-***************************************************************************/
-
+************************************************/
 
 A QT based project to enable switching of iptables firewall rule sets.
+
+This, as an example, enables different firewall rules to be employed for
+for home, office and public wi-fi environments.
 
 Developed using QT 4.8.1
 
