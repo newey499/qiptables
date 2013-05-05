@@ -42,7 +42,6 @@ FormDlgRuleset::FormDlgRuleset(int opCode, FormCfgRuleset *parent) :
 
     ui->setupUi(this);
 
-    //formSnippets = new FormCfgRuleSnippets(true, this, Qt::Popup);
     formSnippets = new FormCfgRuleSnippets(true, this, Qt::Window);
     //formSnippets->enableDrag();
     formSnippets->enableContextMenu(true);
@@ -317,8 +316,6 @@ bool FormDlgRuleset::writeRow()
     bool result = false;
     QString qryStr;
 
-    qDebug("FormDlgRuleset::writeRow()");
-
     if (opcode == FormCfgRuleset::REC_ADD)
     {
         QSqlRecord rec = this->formRuleset->getModel()->record();
@@ -328,13 +325,11 @@ bool FormDlgRuleset::writeRow()
         // insert new row at end of model
         if (formRuleset->getModel()->insertRecord(-1, rec))
         {
-            qDebug("row inserted");
             formRuleset->getModel()->submitAll();
             result = true;
         }
         else
         {
-            qDebug("row not inserted");
             formRuleset->getModel()->revertAll();
         }
     }
@@ -349,13 +344,11 @@ bool FormDlgRuleset::writeRow()
         // update row
         if (formRuleset->getModel()->setRecord(currentRow, rec))
         {
-            qDebug("row update write submitAll() Ok");
             formRuleset->getModel()->submitAll();
             result = true;
         }
         else
         {
-            qDebug("row not updated - setRecord call failed");
             formRuleset->getModel()->revertAll();
         }
     }
@@ -378,7 +371,6 @@ bool FormDlgRuleset::writeRow()
         }
         else
         {
-            qDebug("row not deleted - removeRow call failed");
             formRuleset->getModel()->revertAll();
         }
     }
@@ -403,10 +395,6 @@ void FormDlgRuleset::hideEvent(QHideEvent *event)
 
 void FormDlgRuleset::slotLaunchFormRuleSnippets()
 {
-    qDebug("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-    qDebug("!!!! void FormDlgRuleset::slotLaunchFormRuleSnippets() !!!!");
-    qDebug("!!!! Launch Snippet Form                   !!!!");
-    qDebug("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     formSnippets->show();
 }
 

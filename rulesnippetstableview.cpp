@@ -130,8 +130,8 @@ void RuleSnippetsTableView::slotShowContextMenu(const QPoint & pos)
 
     QMenu myMenu;
 
-    QString tmp1 = QString("Include Snippet [%1]").arg(currentRow());
-    QString tmp2 = QString("Paste Snippet Item [%1]").arg(currentRow());
+    QString tmp1 = QString("Include Snippet");
+    QString tmp2 = QString("Paste Snippet");
 
     myMenu.addAction(tmp1);
     myMenu.addAction(tmp2);

@@ -51,15 +51,15 @@ FormConfigQiptables::FormConfigQiptables(QWidget *parent) :
     }
 
 
-    qDebug("Add rulesets page to tabbed widget");
+    // Add rulesets page to tabbed widget
     formCfgRuleset = new FormCfgRuleset(this);
     ui->tabWidget->addTab(formCfgRuleset, "Rule Sets");
 
-    qDebug("Add rule snippets page to tabbed widget");
+    // Add rule snippets page to tabbed widget
     formCfgRuleSnippets = new FormCfgRuleSnippets(this);
     ui->tabWidget->addTab(formCfgRuleSnippets, "Rule Snippets");
 
-    qDebug("Add settings page to tabbed widget");
+    // Add settings page to tabbed widget
     formCfgSettings = new FormCfgSettings(this);
     ui->tabWidget->addTab(formCfgSettings, "Settings");
 }

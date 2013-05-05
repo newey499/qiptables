@@ -76,7 +76,6 @@ void FormFirewallRules::showEvent(QShowEvent *event)
 {
     //showCurrentFirewallRules();
     QWidget::showEvent(event);
-    qDebug("FormFirewallRules::showEvent(QShowEvent *event) Called - WHY???");
 }
 
 
@@ -156,8 +155,6 @@ void FormFirewallRules::slotCurrentRules()
 
 void FormFirewallRules::slotDisplayString(QString msg)
 {
-    qDebug("FormFirewallRules::slotDisplayString()");
-
     ui->edtCurrentRules->clear();
     ui->edtCurrentRules->appendPlainText(msg);
 }

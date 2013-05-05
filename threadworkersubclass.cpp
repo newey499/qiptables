@@ -47,7 +47,6 @@ void ThreadWorkerSubClass::process(int processRequired)
     processRequired = processRequired;
 
     // allocate resources using new here
-    qDebug("Hello World from ThreadWorkerSubClass! I am a subclass of a ThreadWorker Object operating in a new QThread");
 
     emit finished();
 }

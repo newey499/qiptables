@@ -172,7 +172,6 @@ void FormTest::slotIptablesList()
 
 void FormTest::slotDisplayString(QString msg)
 {
-    qDebug("FormTest::slotDisplayString()");
     ui->plainTextEdit->clear();
     ui->plainTextEdit->appendPlainText(msg);
 }

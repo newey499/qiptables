@@ -217,7 +217,6 @@ void FormCfgRuleSnippets::slotBtnEdit()
 
 void FormCfgRuleSnippets::slotBtnDelete()
 {
-    qDebug("FormCfgRuleSnippets::slotBtnDelete()");
     DatabaseManager dm(Install::INSTALL_DIR, this);
 
     // Do not allow a snippet to be deleted if it is included in a ruleset.
@@ -258,8 +257,6 @@ void FormCfgRuleSnippets::saveSettings()
 
 void FormCfgRuleSnippets::closeEvent(QCloseEvent *event)
 {
-
-    qDebug("MainWindow::closeEvent");
     //int ret = quitYesNo();
 
     //if (ret == QMessageBox::Yes)
@@ -291,31 +288,26 @@ int FormCfgRuleSnippets::quitYesNo()
 
 void FormCfgRuleSnippets::slotIncludeSnippet()
 {
-    int row = ui->tblRuleSnippets->currentRow();
+    //int row = ui->tblRuleSnippets->currentRow();
     int id = getColumnData("id").toInt();
     QString name = getColumnData("name").toString();
     QString snippets = getColumnData("snippets").toString();
     emit addSnippet(true, id, name, snippets);
-    qDebug("FormCfgRuleSnippets::slotIncludeSnippet() row [%d] name [%s]",
-           row, name.toAscii().data());
 }
 
 
 void FormCfgRuleSnippets::slotPasteSnippet()
 {
-    int row = ui->tblRuleSnippets->currentRow();
+    //int row = ui->tblRuleSnippets->currentRow();
     int id = getColumnData("id").toInt();
     QString name = getColumnData("name").toString();
     QString snippets = getColumnData("snippets").toString();
     emit addSnippet(false, id, name, snippets);
-    qDebug("FormCfgRuleSnippets::slotPasteSnippet() row [%d] name [%s]",
-           row, name.toAscii().data());
 }
 
 
 void FormCfgRuleSnippets::slotCloseWindow()
 {
-    qDebug("FormCfgRuleSnippets::slotCloseWindow()");
     close();
 }
 
@@ -328,8 +320,6 @@ void FormCfgRuleSnippets::enableContextMenu(bool enable)
 
 void FormCfgRuleSnippets::slotMenuSelection(QAction * selectedAction)
 {
-    qDebug("FormCfgRuleSnippets::slotMenuSelection(QAction * selectedAction) [%s]",
-           selectedAction->text().toAscii().data());
     if (selectedAction->data().toInt() == RuleSnippetsTableView::INCLUDE_SNIPPET)
     //if (selectedAction->data().toInt() == RuleSnippetsTableView::INCLUDE_SNIPPET)
     {
@@ -345,7 +335,6 @@ void FormCfgRuleSnippets::slotMenuSelection(QAction * selectedAction)
 
 void FormCfgRuleSnippets::displayMsgBox(QString title, QString snippet, QStringList rulesets)
 {
-    qDebug("FormCfgRuleSnippets::displayMsgBox(QString title, QString snippet, QStringList rulesets)");
     QString message = rulesets.join("\n");
     QString tmp = QString("Snippet [%1] \n may not be deleted as it\n").arg(snippet);
     tmp = tmp.append("is included in the following rulesets.\n\n");

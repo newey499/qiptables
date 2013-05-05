@@ -71,7 +71,6 @@ ThreadIptablesWorkerSubClass::~ThreadIptablesWorkerSubClass()
 void ThreadIptablesWorkerSubClass::process()
 {
     // allocate resources using new here
-    qDebug("Hello World from ThreadIptablesWorkerSubClass! I am a subclass of a ThreadWorker Object operating in a new QThread");
 
     switch (processRequired)
     {
@@ -103,7 +102,6 @@ void ThreadIptablesWorkerSubClass::process()
 
 void ThreadIptablesWorkerSubClass::getCurrentRuleset()
 {
-    qDebug("ThreadIptablesWorkerSubClass::getCurrentRuleset()");
     QString msg("");
 
 
@@ -123,7 +121,6 @@ void ThreadIptablesWorkerSubClass::getCurrentRuleset()
 
 void ThreadIptablesWorkerSubClass::setCurrentRuleset()
 {
-    qDebug("ThreadIptablesWorkerSubClass::setCurrentRuleset()");
     QString msg("");
 
     iptables = new Iptables(this);

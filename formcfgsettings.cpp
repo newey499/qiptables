@@ -63,14 +63,12 @@ FormCfgSettings::~FormCfgSettings()
 
 void FormCfgSettings::slotButtonStateEnabled()
 {
-    //qDebug("FormCfgSettings::slotButtonStateEnabled()");
     ui->btnCancel->setEnabled(true);
     ui->btnSave->setEnabled(true);
 }
 
 void FormCfgSettings::slotButtonStateDisabled()
 {
-    //qDebug("FormCfgSettings::slotButtonStateDisabled()");
     ui->btnCancel->setEnabled(true);
     ui->btnSave->setEnabled(false);
 }
@@ -125,7 +123,6 @@ void FormCfgSettings::slotTempDir()
 
 void FormCfgSettings::slotSave()
 {
-    qDebug("FormConfigQiptables::slotSave()");
     slotButtonStateDisabled();
     saveSettings();
     loadSettings();
@@ -134,7 +131,6 @@ void FormCfgSettings::slotSave()
 
 void FormCfgSettings::slotCancel()
 {
-    qDebug("FormConfigQiptables::slotCancel()");
     this->loadSettings();
     //ui->edtIptables->setText(shell);
     //ui->cbxDefRuleset->setCurrentIndex(ui->cbxDefRuleset->findText(defaultRuleName));
@@ -148,9 +144,6 @@ QString FormCfgSettings::lastSqlErrorAsString()
 
 void FormCfgSettings::loadSettings()
 {
-
-    //qDebug("FormCfgSettings::loadSettings()");
-
     if (qry.exec("select id, shell, iptables, tempdir, defaultRuleName from sysconf"))
     {
         if (qry.first())
@@ -204,7 +197,6 @@ void FormCfgSettings::saveSettings()
 
     if (qry.exec())
     {
-        qDebug("sysconf updated OK");
         slotButtonStateDisabled();
     }
     else

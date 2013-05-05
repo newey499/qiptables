@@ -57,6 +57,5 @@ ThreadWorker::~ThreadWorker()
 void ThreadWorker::process()
 {
     // allocate resources using new here
-    qDebug("Hello World! I am a ThreadWorker Object operating in a new QThread");
     emit finished();
 }
