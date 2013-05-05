@@ -34,6 +34,7 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #include <QSqlRecord>
 #include <QVariant>
 
+#include "formcfgrulesnippets.h"
 #include "rulesetsqltablemodel.h"
 #include "formcfgruleset.h"
 #include "formdlgrulesnippet.h"
@@ -61,6 +62,8 @@ class FormDlgRuleset : public QDialog
 
 public:
 
+    QPointer<FormCfgRuleSnippets> formSnippets;
+
     /**
     \brief  Constructor
     \param  opCode - whether the dialogue is to be used to add, amend or
@@ -83,9 +86,16 @@ public slots:
     virtual void slotCancel();
 
     /**
-    \brief Add a new snippet
+    \brief Launch the rulesnippet form to allow snippets to be added
+    to a ruleset.
       ***************/
-    virtual void slotAddSnippet();
+    virtual void slotLaunchFormRuleSnippets();
+
+
+    /**
+    \brief Append a snippet to the ruleset
+      ***************/
+    virtual void slotAddSnippet(bool useInclude, int id, QString name, QString snippets);
 
 protected:
 
@@ -110,6 +120,9 @@ protected:
     \brief Write data to table
       *******************/
     bool writeRow();
+
+
+    void hideEvent(QHideEvent *event);
 
 protected slots:
 

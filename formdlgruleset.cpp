@@ -29,6 +29,7 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
+#include "genlib.h"
 #include "formdlgruleset.h"
 #include "ui_formdlgruleset.h"
 
@@ -40,6 +41,15 @@ FormDlgRuleset::FormDlgRuleset(int opCode, FormCfgRuleset *parent) :
     formRuleset = parent;
 
     ui->setupUi(this);
+
+    //formSnippets = new FormCfgRuleSnippets(true, this, Qt::Popup);
+    formSnippets = new FormCfgRuleSnippets(true, this, Qt::Window);
+    //formSnippets->enableDrag();
+    formSnippets->enableContextMenu(true);
+    connect(formSnippets, SIGNAL(addSnippet(bool, int, QString, QString)),
+            this, SLOT(slotAddSnippet(bool, int, QString, QString)));
+
+
     id = formRuleset->getColumnData("id").toInt();
     name = formRuleset->getColumnData("name").toString();
     rules = formRuleset->getColumnData("rules").toString();
@@ -50,7 +60,7 @@ FormDlgRuleset::FormDlgRuleset(int opCode, FormCfgRuleset *parent) :
         ui->edtRulesetName->setText("");
         ui->edtRuleset->clear();
         ui->edtRuleset->appendPlainText("");
-        ui->btnAddSnippet->setEnabled(true);
+        ui->btnAddSnippet->setVisible(true);
     }
 
     if (opcode == FormCfgRuleset::REC_EDIT)
@@ -58,7 +68,7 @@ FormDlgRuleset::FormDlgRuleset(int opCode, FormCfgRuleset *parent) :
         ui->edtRulesetName->setText(name);
         ui->edtRuleset->clear();
         ui->edtRuleset->appendPlainText(rules);
-        ui->btnAddSnippet->setEnabled(true);
+        ui->btnAddSnippet->setVisible(true);
         // Cannot edit ruleset name if its the default held
         // on the sysconf table.
         if (isDefaultRuleset())
@@ -76,7 +86,7 @@ FormDlgRuleset::FormDlgRuleset(int opCode, FormCfgRuleset *parent) :
         ui->edtRuleset->clear();
         ui->edtRuleset->appendPlainText(rules);
         ui->btnSave->setText("&Delete");
-        ui->btnAddSnippet->setEnabled(false);
+        ui->btnAddSnippet->setVisible(false);
         buttonsEnabled(true);
     }
 
@@ -101,6 +111,10 @@ void FormDlgRuleset::dataChanged()
 
 FormDlgRuleset::~FormDlgRuleset()
 {
+    if (formSnippets)
+    {
+        delete formSnippets;
+    }
     delete ui;
 }
 
@@ -373,7 +387,45 @@ bool FormDlgRuleset::writeRow()
 }
 
 
-void FormDlgRuleset::slotAddSnippet()
+void FormDlgRuleset::hideEvent(QHideEvent *event)
 {
-    qDebug("void FormDlgRuleset::slotAddSnippet()");
+    if (formSnippets)
+    {
+        if (formSnippets->isVisible())
+        {
+            formSnippets->hide();
+        }
+    }
+
+    event->ignore();
+}
+
+
+void FormDlgRuleset::slotLaunchFormRuleSnippets()
+{
+    qDebug("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    qDebug("!!!! void FormDlgRuleset::slotLaunchFormRuleSnippets() !!!!");
+    qDebug("!!!! Launch Snippet Form                   !!!!");
+    qDebug("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    formSnippets->show();
+}
+
+
+void FormDlgRuleset::slotAddSnippet(bool useInclude, int id, QString name, QString snippets)
+{
+    id = id;  // suppress compiler warning - compiler optimises this out
+
+    QString include;
+
+    if (useInclude)
+    {
+        include = GenLib::getIncludeString(name);
+    }
+    else
+    {
+        include = snippets;
+    }
+
+    ui->edtRuleset->appendPlainText(include);
+
 }

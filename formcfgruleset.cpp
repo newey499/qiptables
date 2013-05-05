@@ -42,12 +42,6 @@ FormCfgRuleset::FormCfgRuleset(QWidget *parent) :
     ui(new Ui::FormCfgRuleset)
 {
     ui->setupUi(this);
-    //formSnippets = new FormCfgRuleSnippets(true, this, Qt::Popup);
-    formSnippets = new FormCfgRuleSnippets(true, this, Qt::Window);
-    //formSnippets->enableDrag();
-    formSnippets->enableContextMenu(true);
-    connect(formSnippets, SIGNAL(addSnippet(bool, int, QString, QString)),
-            this, SLOT(slotAddSnippet(bool, int, QString, QString)));
 
     ui->edtRuleSet->setReadOnly(true);
 
@@ -78,10 +72,6 @@ FormCfgRuleset::FormCfgRuleset(QWidget *parent) :
 
 FormCfgRuleset::~FormCfgRuleset()
 {
-    if (formSnippets)
-    {
-        delete formSnippets;
-    }
     delete ui;
 }
 
@@ -223,11 +213,6 @@ bool FormCfgRuleset::isRulesetDefault()
 }
 
 
-void FormCfgRuleset::slotCodeSnippets()
-{
-    formSnippets->show();
-}
-
 
 void FormCfgRuleset::slotAddSnippet(bool useInclude, int id, QString name, QString snippets)
 {
@@ -264,11 +249,4 @@ void FormCfgRuleset::slotAddSnippet(bool useInclude, int id, QString name, QStri
 
 }
 
-void FormCfgRuleset::hideEvent(QHideEvent *event)
-{
-    if (formSnippets->isVisible())
-    {
-        formSnippets->hide();
-    }
-    event->ignore();
-}
+

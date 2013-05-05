@@ -155,7 +155,7 @@
    <sender>btnAddSnippet</sender>
    <signal>clicked()</signal>
    <receiver>FormDlgRuleset</receiver>
-   <slot>slotAddSnippet()</slot>
+   <slot>slotLaunchFormRuleSnippets()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>55</x>
@@ -172,6 +172,6 @@
   <slot>slotSave()</slot>
   <slot>slotCancel()</slot>
   <slot>dataChanged()</slot>
-  <slot>slotAddSnippet()</slot>
+  <slot>slotLaunchFormRuleSnippets()</slot>
  </slots>
 </ui>

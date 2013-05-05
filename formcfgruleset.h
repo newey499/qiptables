@@ -37,7 +37,6 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #include <QVariant>
 #include <QWidget>
 
-#include "formcfgrulesnippets.h"
 #include "rulesettableview.h"
 #include "rulesetsqltablemodel.h"
 #include "formdlgruleset.h"
@@ -66,8 +65,6 @@ public:
     static const int REC_ADD;
     static const int REC_EDIT;
     static const int REC_DELETE;
-
-    QPointer<FormCfgRuleSnippets> formSnippets;
 
     explicit FormCfgRuleset(QWidget *parent = 0);
     ~FormCfgRuleset();
@@ -122,12 +119,6 @@ public slots:
       ******************/
     virtual void slotBtnDelete();
 
-    /**
-      \brief Displays the rule snippet form
-
-      Enables snippets to be included or pasted into a ruleset
-      ******************/
-    virtual void slotCodeSnippets();
 
     /**
       \brief Adds a rule snippet to a rule set.
@@ -155,11 +146,6 @@ protected:
       **********************/
     virtual bool isRulesetDefault();
 
-    /**
-      \brief hides rulesnippet form if visible when ruleset form is hidden.
-      \param QT generated event
-      ********************/
-    void hideEvent(QHideEvent * event);
 
 private:
     Ui::FormCfgRuleset *ui;
