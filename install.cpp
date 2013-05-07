@@ -37,7 +37,7 @@ const QString Install::INSTALL_DIR = QString("/etc/qiptables");
 const QString Install::TOOLS_DIR = QString("/etc/qiptables/tools");
 
 // Max length of iptables chain name as defined by iptables program.
-const int Install::IPTABLES_CHAIN_MAX_NAME_LENGTH = 30;
+const int Install::IPTABLES_CHAIN_MAX_NAME_LENGTH = 28;
 // Prefix used to help identify qiptables ruleset on iptables
 const QString Install::IPTABLES_CHAIN_NAME_PREFIX = QString("Q_");
 

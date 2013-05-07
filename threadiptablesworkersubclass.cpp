@@ -132,6 +132,10 @@ void ThreadIptablesWorkerSubClass::setCurrentRuleset()
     // create a new empty chain with the short name of the Ruleset
     QString tmp = shortName;
     tmp.prepend("iptables -N ");
+    qDebug("=======================================");
+    qDebug("Create a new empty chain with the short name of the Ruleset");
+    qDebug("[%s]", tmp.toAscii().data());
+    qDebug("=======================================");
     proc->execCmdLine(tmp);
 
     msg = proc->execCmdLine("iptables -L");
