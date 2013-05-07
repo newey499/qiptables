@@ -186,8 +186,8 @@ void FormFirewallRules::slotEnableRuleset()
         mainWindow->statusBar()->showMessage("Please Wait - Activating Ruleset..........");
     }
 
-    ThreadWrapper *wrapper = new ThreadWrapper(this);
-    ThreadIptablesWorkerSubClass *worker =
+    QPointer<ThreadWrapper> wrapper = new ThreadWrapper(this);
+    QPointer<ThreadIptablesWorkerSubClass> worker =
         new ThreadIptablesWorkerSubClass(ThreadIptablesWorkerSubClass::SET_CURRENT_RULESET,
                                          ui->cbxFirewalls->currentText());
 
@@ -202,6 +202,15 @@ void FormFirewallRules::slotEnableRuleset()
     if (mainWindow)
     {
         mainWindow->statusBar()->clearMessage();
+    }
+
+    if (wrapper)
+    {
+        wrapper->deleteLater();
+    }
+    if (worker)
+    {
+        worker->deleteLater();
     }
 
 }

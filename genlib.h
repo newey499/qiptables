@@ -73,6 +73,14 @@ public:
       *************************/
     static void clearAllFirewallRules();
 
+    /**
+
+    \brief Returns a QStringList containing the GNU licence
+
+
+      *************************/
+    static QStringList getGnuLicence();
+
 signals:
 
 public slots:

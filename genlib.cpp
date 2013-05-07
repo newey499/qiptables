@@ -3,6 +3,9 @@
 #include "mainwindow.h"
 #include "ipprocess.h"
 
+#include "threadwrapper.h"
+#include "threadiptablesworkersubclass.h"
+
 GenLib::GenLib(QObject *parent) :
     QObject(parent)
 {
@@ -74,4 +77,41 @@ void GenLib::clearAllFirewallRules()
     {
         delete ipProcess;
     }
+}
+
+
+QStringList GenLib::getGnuLicence()
+{
+    QStringList licence;
+
+    licence.append("");
+    licence.append("");
+    licence.append("##########################################################################");
+    licence.append("# Copyright Chris Newey 2013");
+    licence.append("# ");
+    licence.append("# qiptables@hotmail.com");
+    licence.append("# ");
+    licence.append("# This file is part of Qiptables.");
+    licence.append("# ");
+    licence.append("# Qiptables is distributed under the terms of the GNU General Public License");
+    licence.append("# ");
+    licence.append("# Qiptables is free software: you can redistribute it and/or modify");
+    licence.append("# it under the terms of the GNU General Public License as published by");
+    licence.append("# the Free Software Foundation, either version 3 of the License, or");
+    licence.append("# (at your option) any later version.");
+    licence.append("# ");
+    licence.append("# Qiptables is distributed in the hope that it will be useful,");
+    licence.append("# but WITHOUT ANY WARRANTY; without even the implied warranty of");
+    licence.append("# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the");
+    licence.append("# GNU General Public License for more details.");
+    licence.append("# ");
+    licence.append("# You should have received a copy of the GNU General Public License");
+    licence.append("# along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.");
+    licence.append("# ");
+    licence.append("##########################################################################");
+    licence.append("");
+    licence.append("");
+
+
+    return licence;
 }

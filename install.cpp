@@ -195,8 +195,11 @@ QString Install::createFile(QString path, QString filename, QString content, boo
                             QFile::ReadGroup  |
                             QFile::WriteGroup |
                             QFile::ReadOther  |
+                            QFile::ReadUser   |
                             QFile::ExeOwner   |
-                            QFile::ExeGroup);
+                            QFile::ExeGroup   |
+                            QFile::ExeOther   |
+                            QFile::ExeOther );
     }
     else
     {
@@ -696,11 +699,14 @@ QString Install::createScriptClearFirewall()
     QString filename = "clearFirewall.sh";
 
     script  << "#!/bin/bash"
+            << ""
+            << GenLib::getGnuLicence().join("\n")
+            << ""
             << "################################################"
             << "#"
             << QString("# ").append(filename)
             << "#"
-            << "# created by Qiptables install program"
+            << "# created by qiptables install program"
             << "#"
             << "# referenced from ruleset table of Sqlite database"
             << "#"
@@ -708,7 +714,19 @@ QString Install::createScriptClearFirewall()
             << "#"
             << "#"
             << "################################################"
+            << ""
+            << "GET_FIREWALL_NAME=\"/etc/qiptables/tools/get-firewall-name.sh\""
+            << ""
             << "echo \"Stopping firewall and allowing everyone...\""
+            << ""
+            << "# Remove qiptables short name chains "
+            << "# These are chains whose name commences with \"Q_\" "
+            << "for OUTPUT in $($GET_FIREWALL_NAME) "
+            << "do "
+            << "    iptables -F $OUTPUT "
+            << "    iptables -X $OUTPUT "
+            << "done "
+            << ""
             << "iptables -F"
             << "iptables -X"
             << "iptables -t nat -F"
@@ -734,9 +752,13 @@ QString Install::createScriptGetFirewallName()
     QString filename = "get-firewall-name.sh";
 
     script << "#!/bin/bash"
+           << ""
+           << GenLib::getGnuLicence().join("\n")
+           << ""
+           << ""
            << "#####################"
            << "#"
-           << "# firewall-name.sh"
+           << "# get-firewall-name.sh"
            << "#"
            << "# reports name of current firewall using the qiptables convention"
            << "# of using a chain of zero references whose name is prefixed with"
@@ -746,8 +768,9 @@ QString Install::createScriptGetFirewallName()
            << ""
            << "ZERO_REFERENCES=\"(0 references)\""
            << "Q_IPTABLES_PREFIX=\"Q_\""
+           << "IPTABLES_EXECUTABLE=\"/sbin/iptables\""
            << ""
-           << "iptables -L | grep \"$Q_IPTABLES_PREFIX\" | awk '{ print $2; }'";
+           << "$IPTABLES_EXECUTABLE -L | grep \"$Q_IPTABLES_PREFIX\" | awk '{ print $2; }'";
 
 
     // Create the file
