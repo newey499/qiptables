@@ -1,6 +1,7 @@
 #include "genlib.h"
 #include "formfirewallrules.h"
 #include "mainwindow.h"
+#include "ipprocess.h"
 
 GenLib::GenLib(QObject *parent) :
     QObject(parent)
@@ -59,4 +60,18 @@ QString GenLib::getRulesetShortName(QString rulesetLongName)
     result = result.prepend(Install::IPTABLES_CHAIN_NAME_PREFIX);
 
     return result;
+}
+
+
+void GenLib::clearAllFirewallRules()
+{
+    qDebug("GenLib::clearAllFirewallRules()");
+    QPointer<IpProcess> ipProcess = new IpProcess();
+
+    ipProcess->execCmdLine("/etc/qiptables/tools/clearFirewall.sh");
+
+    if (ipProcess)
+    {
+        delete ipProcess;
+    }
 }

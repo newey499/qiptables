@@ -8,6 +8,8 @@
 #include <QObject>
 #include <QString>
 
+
+
 /**
  \file genlib.h
 
@@ -64,6 +66,12 @@ public:
     \return pointer to QWidget or 0 if not found.
       *****************************/
     static QWidget * getWidgetPointer(QString widgetObjectName);
+
+
+    /**
+    \brief Clears all firewall chains and sets all policies to Accept
+      *************************/
+    static void clearAllFirewallRules();
 
 signals:
 
