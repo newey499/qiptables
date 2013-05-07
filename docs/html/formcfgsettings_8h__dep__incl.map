@@ -1,9 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$formcfgsettings_8cpp.html" title="Maintain application configuration settings." alt="" coords="5,83,155,112"/>
-<area shape="rect" id="node5" href="$formconfigqiptables_8h.html" title="formconfigqiptables.h" alt="" coords="179,83,339,112"/>
-<area shape="rect" id="node7" href="$formconfigqiptables_8cpp.html" title="REDUNDANT: add forms to tabbed widget." alt="" coords="89,160,263,189"/>
-<area shape="rect" id="node9" href="$mainwindow_8h.html" title="mainwindow.h" alt="" coords="287,160,396,189"/>
-<area shape="rect" id="node11" href="$formtest_8cpp.html" title="Form for various test routines used during development." alt="" coords="173,237,277,267"/>
-<area shape="rect" id="node13" href="$main_8cpp.html" title="Qiptables application entry point." alt="" coords="301,237,381,267"/>
-<area shape="rect" id="node15" href="$mainwindow_8cpp.html" title="Main Window of application." alt="" coords="405,237,531,267"/>
-</map>

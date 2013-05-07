@@ -38,7 +38,10 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #include <QMessageBox>
 #include <QPointer>
 #include <QSettings>
+#include <QSqlQuery>
+#include <QSqlRecord>
 #include <QStackedWidget>
+#include <QVariant>
 
 #include "qiptablesexception.h"
 #include "formtest.h"
@@ -47,7 +50,9 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #include "ipstackedwidget.h"
 #include "linuxuserid.h"
 #include "ipprocess.h"
+#include "menuaction.h"
 
+class GenLib;
 
 namespace Ui {
 class MainWindow;
@@ -69,6 +74,16 @@ class MainWindow : public QMainWindow
 public:
 
     static const QString VERSION_NUMBER;
+    static const QString FIREWALL_SUB_MENU_NAME;
+
+    /**
+    \brief build firewall menu
+
+    The firewall menu is built in this method as the contents of this menu changes
+    whenever a ruleset is added/amended/deleted.
+      *******************************/
+    static void addFirewallMenuOptions();
+
 
     /**
     \brief Constructor the organization and application are used to uniquely identify
@@ -140,6 +155,8 @@ public slots:
     virtual void saveSettings();
 
 
+    virtual void processSelectedAction(MenuAction *action);
+
 signals:
 
 
@@ -160,32 +177,33 @@ protected:
       ************************/
     virtual void buildMenusAndForms();
 
-    IpStackedWidget *widgetStack;
-    FormTest *formTest;
-    FormFirewallRules *formFirewallRules;
-    FormConfigQiptables *formConfigQiptables;
-    FormCfgRuleset *formCfgRuleset;
-    FormCfgRuleSnippets *formCfgRuleSnippets;
-    FormCfgSettings *formCfgSettings;
+    QPointer<IpStackedWidget> widgetStack;
+    QPointer<FormTest> formTest;
+    QPointer<FormFirewallRules> formFirewallRules;
+    QPointer<FormConfigQiptables> formConfigQiptables;
+    QPointer<FormCfgRuleset> formCfgRuleset;
+    QPointer<FormCfgRuleSnippets> formCfgRuleSnippets;
+    QPointer<FormCfgSettings> formCfgSettings;
+    QPointer<GenLib> genLib;
 
 
-    QMenu *fileMenu;
-        QAction *actFirewallRules;
-        QAction *actQuit;
+    QPointer<QMenu> fileMenu;
+        QPointer<QAction> actFirewallRules;
+        QPointer<QAction> actQuit;
 
-    QMenu *toolsMenu;
-        QAction *actTest;
-        QAction *actFwSetUp;
+    QPointer<QMenu> toolsMenu;
+        QPointer<QAction> actTest;
+        QPointer<QAction> actFwSetUp;
 
-    QMenu *settingsMenu;
-        QAction *actConfigQiptables;
-        QAction *actCfgRuleset;
-        QAction *actCfgRuleSnippet;
-        QAction *actCfgRuleSettings;
+    QPointer<QMenu> settingsMenu;
+        QPointer<QAction> actConfigQiptables;
+        QPointer<QAction> actCfgRuleset;
+        QPointer<QAction> actCfgRuleSnippet;
+        QPointer<QAction> actCfgRuleSettings;
 
-    QMenu *helpMenu;
-        QAction *actAboutQt;
-        QAction *actAboutQiptables;
+    QPointer<QMenu> helpMenu;
+        QPointer<QAction> actAboutQt;
+        QPointer<QAction> actAboutQiptables;
 
 private:
     Ui::MainWindow *ui;

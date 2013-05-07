@@ -25,6 +25,7 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef FORMFIREWALLRULES_H
 #define FORMFIREWALLRULES_H
 
+#include <QComboBox>
 #include <QListView>
 #include <QMessageBox>
 #include <QPointer>
@@ -98,9 +99,17 @@ public:
       ****************/
     QString getRulesetNameFromShortName(QString shortName);
 
+
+
 signals:
 
 public slots:
+
+    /**
+    \brief Sets the text of the combobox containing firewall ruleset names
+      ********************/
+    virtual void setCbxFirewallsText(QString text);
+
 
     /**
     \brief Displays string in plain text edit box
@@ -124,6 +133,12 @@ public slots:
     \brief Called when the ruleset selected in the combobox changes
       *****************/
     virtual void slotCbxFirewallsIndexChanged(int index);
+
+
+    /**
+    \brief fills firewall ruleset name combobox with currently defined ruleset names
+      ***********************/
+    virtual void fillCbxFirewallRulesetNames();
 
 protected:
 

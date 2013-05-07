@@ -177,3 +177,24 @@ void FormTest::slotDisplayString(QString msg)
 }
 
 
+
+void FormTest::fillCbxRulesetNames()
+{
+    QStringList sl = db->getRulesetNames();
+
+    ui->cbxRuleset->clear();
+    ui->cbxRuleset->addItem("Not running a Qiptables ruleset");
+    for (int i = 0; i < sl.count(); i++)
+    {
+        ui->cbxRuleset->addItem(sl.at(i));
+    }
+}
+
+
+void FormTest::showEvent(QShowEvent *event)
+{
+    // disable compiler warning for unused parameter - gcc optimizes out this code
+    event = event;
+
+    fillCbxRulesetNames();
+}

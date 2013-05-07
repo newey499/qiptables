@@ -58,6 +58,11 @@ class FormCfgRuleSnippets;
 
 \brief Browse Rulesnippets and call add amend delete rulesnippet form
 
+\todo Display rulesets and rulesnippets in alaphabetical order of name
+
+\todo If rulesets and rulesnippets are displayed in alphabetical order
+      then ensure correct line is selected after adding/amending
+
 ***************************/
 class FormCfgRuleSnippets : public QWidget
 {

@@ -84,12 +84,6 @@ public:
       ******************/
     bool createRulesetSnippetsTable();
 
-    /**
-    \brief calculate the ruleset shortname from the ruleset full name
-    \param rulesetLongName - ruleset full name
-    \return ruleset short name
-      *******************/
-    QString getRulesetShortName(QString rulesetLongName);
 
     /**
     \brief Populate the newly created database

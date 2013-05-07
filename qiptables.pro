@@ -67,7 +67,8 @@ SOURCES += main.cpp\
     threadwrapper.cpp \
     threadworkersubclass.cpp \
     threadiptablesworkersubclass.cpp \
-    threadiptableswrapper.cpp
+    threadiptableswrapper.cpp \
+    menuaction.cpp
 
 
 
@@ -98,7 +99,8 @@ HEADERS  += mainwindow.h \
     threadwrapper.h \
     threadworkersubclass.h \
     threadiptablesworkersubclass.h \
-    threadiptableswrapper.h
+    threadiptableswrapper.h \
+    menuaction.h
 
 
 FORMS    += mainwindow.ui \

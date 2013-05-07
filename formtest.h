@@ -83,6 +83,8 @@ public slots:
     virtual void slotBtnTest();
     virtual void slotBtnRun();
     virtual void slotIptablesList();
+    virtual void fillCbxRulesetNames();
+    virtual void showEvent(QShowEvent *event);
 
 signals:
 

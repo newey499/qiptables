@@ -56,14 +56,9 @@ FormFirewallRules::FormFirewallRules(QWidget *parent, Qt::WindowFlags f) :
     ipTables = new Iptables(this);
 
     databaseManager = new DatabaseManager(Install::INSTALL_DIR, this);
-    QStringList sl = databaseManager->getRulesetNames();
 
-    ui->cbxFirewalls->addItem("Not running a Qiptables ruleset");
-    for (int i = 0; i < sl.count(); i++)
-    {
-        ui->cbxFirewalls->addItem(sl.at(i));
-    }
 
+    fillCbxFirewallRulesetNames();
 }
 
 FormFirewallRules::~FormFirewallRules()
@@ -75,6 +70,7 @@ FormFirewallRules::~FormFirewallRules()
 void FormFirewallRules::showEvent(QShowEvent *event)
 {
     //showCurrentFirewallRules();
+    fillCbxFirewallRulesetNames();
     QWidget::showEvent(event);
 }
 
@@ -211,5 +207,32 @@ void FormFirewallRules::slotEnableRuleset()
 }
 
 
+void FormFirewallRules::setCbxFirewallsText(QString text)
+{
+    fillCbxFirewallRulesetNames();
+
+    int index = ui->cbxFirewalls->findText(text);
+
+    qDebug("index of [%s] is [%d]",
+           text.toAscii().data(),
+           index);
+    //ui->cbxFirewalls->setEditText(text);
+    ui->cbxFirewalls->setCurrentIndex(index);
+    slotEnableRuleset();
+}
+
+
+
+void FormFirewallRules::fillCbxFirewallRulesetNames()
+{
+    QStringList sl = databaseManager->getRulesetNames();
+
+    ui->cbxFirewalls->clear();
+    ui->cbxFirewalls->addItem("Not running a Qiptables ruleset");
+    for (int i = 0; i < sl.count(); i++)
+    {
+        ui->cbxFirewalls->addItem(sl.at(i));
+    }
+}
 
 

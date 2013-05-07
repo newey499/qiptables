@@ -1,7 +1,10 @@
 #ifndef GENLIB_H
 #define GENLIB_H
 
+#include <QAction>
 #include <QApplication>
+#include <QList>
+#include <QMenu>
 #include <QObject>
 #include <QString>
 
@@ -22,6 +25,13 @@ class GenLib : public QObject
     Q_OBJECT
 
 public:
+
+    /**
+    \brief calculate the ruleset shortname from the ruleset full name
+    \param rulesetLongName - ruleset full name
+    \return ruleset short name
+      *******************/
+    static QString getRulesetShortName(QString rulesetLongName);
 
     explicit GenLib(QObject *parent = 0);
     ~GenLib();
@@ -58,6 +68,7 @@ public:
 signals:
 
 public slots:
+
 
 protected:
 

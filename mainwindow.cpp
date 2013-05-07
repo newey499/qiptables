@@ -35,6 +35,9 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #include "genlib.h"
 
 const QString MainWindow::VERSION_NUMBER = "0.2";
+const QString MainWindow::FIREWALL_SUB_MENU_NAME = "fireWallSubMenu";
+
+
 
 MainWindow::MainWindow(QString organization, QString application, QWidget *parent) :
     QMainWindow(parent),
@@ -53,6 +56,8 @@ MainWindow::MainWindow(QString organization, QString application, QWidget *paren
 
     DatabaseManager dm(Install::INSTALL_DIR, this);
     dm.openDB();
+
+    genLib = new GenLib(this);
 
     buildMenusAndForms();
 
@@ -145,6 +150,17 @@ void MainWindow::buildMenusAndForms()
                 this, SLOT(selectFirewallRulesPage()));
         fileMenu->addAction(actFirewallRules);
 
+        fileMenu->addSeparator();
+
+        QMenu *subMenu = new QMenu("Firewall Rulesets", this);
+        subMenu->setObjectName(MainWindow::FIREWALL_SUB_MENU_NAME);
+        subMenu->setTitle("&Select Ruleset");
+        fileMenu->addMenu(subMenu);
+
+        addFirewallMenuOptions();
+
+        fileMenu->addSeparator();
+
         actQuit = new QAction(tr("&Quit"), this);
         actQuit->setStatusTip(tr("Exit Qiptables"));
         connect(actQuit, SIGNAL(triggered()), this, SLOT(quitApplication()));
@@ -221,6 +237,61 @@ void MainWindow::buildMenusAndForms()
 
     widgetStack->setCurrentIndex(widgetStack->getPageIndex("formTest"));
 }
+
+
+
+
+void MainWindow::addFirewallMenuOptions()
+{
+    QString title;
+    QSqlQuery qry;
+
+    GenLib *genLib = new GenLib();
+    MainWindow *mainWindowPtr = ( MainWindow *) genLib->getWidgetPointer("MainWindow");
+    QMenu * subMenuPtr = (QMenu *) genLib->getWidgetPointer(MainWindow::FIREWALL_SUB_MENU_NAME);
+
+    subMenuPtr->clear();
+
+    if (qry.exec("select id, name, shortname, rules from ruleset"))
+    {
+        while(qry.next())
+        {
+            title = qry.record().value("name").toString();
+            //QAction *tmpAction = new QAction(title, subMenuPtr);
+            MenuAction *tmpAction = new MenuAction(title, subMenuPtr);
+
+            tmpAction->setData(qry.record().value("shortname").toString());
+            //tmpAction->setStatusTip(tr(title));
+            //connect(tmpAction, SIGNAL(triggered()),
+            //        this, SLOT(selectFirewallRulesPage()));
+            connect(tmpAction, SIGNAL(menuActionSelected(MenuAction *)),
+                    mainWindowPtr, SLOT(processSelectedAction(MenuAction *)));
+            //fileMenu->addAction(tmpAction);
+            subMenuPtr->addAction(tmpAction);
+        }
+    }
+    else
+    {
+        qDebug("MainWindow::addFirewallMenuOptions() - Query Error\n%s",
+               qry.lastError().text().toAscii().data());
+    }
+
+}
+
+
+void MainWindow::processSelectedAction(MenuAction *action)
+{
+    qDebug("=====================================");
+    qDebug("Action selected slot");
+    qDebug("[%s] [%s]",
+           action->text().toAscii().data(),
+           action->data().toString().toAscii().data());
+    qDebug("=====================================");
+
+    selectFirewallRulesPage();
+    formFirewallRules->setCbxFirewallsText(action->text());
+}
+
 
 
 void MainWindow::selectFwSetUp()

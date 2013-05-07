@@ -32,6 +32,7 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #include "genlib.h"
 #include "formdlgruleset.h"
 #include "ui_formdlgruleset.h"
+#include "mainwindow.h"
 
 FormDlgRuleset::FormDlgRuleset(int opCode, FormCfgRuleset *parent) :
     QDialog(parent),
@@ -124,6 +125,7 @@ void FormDlgRuleset::slotSave()
     {
         writeRow();
         accept();
+        MainWindow::addFirewallMenuOptions();
     }
 }
 
@@ -320,16 +322,26 @@ bool FormDlgRuleset::writeRow()
     {
         QSqlRecord rec = this->formRuleset->getModel()->record();
         rec.setValue("name", ui->edtRulesetName->text());
+        rec.setValue("shortname", ui->edtRulesetName->text());
         rec.setValue("rules", ui->edtRuleset->toPlainText());
 
         // insert new row at end of model
         if (formRuleset->getModel()->insertRecord(-1, rec))
         {
-            formRuleset->getModel()->submitAll();
-            result = true;
+            if (! formRuleset->getModel()->submitAll())
+            {
+                qDebug("1) Error writing new record [%s]",
+                    formRuleset->getModel()->lastError().text().toAscii().data());
+            }
+            else
+            {
+                result = true;
+            }
         }
         else
         {
+            qDebug("2) Error writing new record [%s]",
+                formRuleset->getModel()->lastError().text().toAscii().data());
             formRuleset->getModel()->revertAll();
         }
     }
@@ -339,16 +351,26 @@ bool FormDlgRuleset::writeRow()
         int currentRow = this->formRuleset->getView()->currentRow();
         QSqlRecord rec = this->formRuleset->getModel()->record(currentRow);
         rec.setValue("name", ui->edtRulesetName->text());
+        rec.setValue("shortname", ui->edtRulesetName->text());
         rec.setValue("rules", ui->edtRuleset->toPlainText());
 
         // update row
         if (formRuleset->getModel()->setRecord(currentRow, rec))
         {
-            formRuleset->getModel()->submitAll();
-            result = true;
+            if (! formRuleset->getModel()->submitAll())
+            {
+                qDebug("3) Error writing new record [%s]",
+                    formRuleset->getModel()->lastError().text().toAscii().data());
+            }
+            else
+            {
+                result = true;
+            }
         }
         else
         {
+            qDebug("4) Error writing new record [%s]",
+                    formRuleset->getModel()->lastError().text().toAscii().data());
             formRuleset->getModel()->revertAll();
         }
     }
@@ -365,12 +387,21 @@ bool FormDlgRuleset::writeRow()
             // delete row
             if (formRuleset->getModel()->removeRow(currentRow))
             {
-                formRuleset->getModel()->submitAll();
-                result = true;
+                if (! formRuleset->getModel()->submitAll())
+                {
+                    qDebug("5) Error writing new record [%s]",
+                        formRuleset->getModel()->lastError().text().toAscii().data());
+                }
+                else
+                {
+                    result = true;
+                }
             }
         }
         else
         {
+            qDebug("6) Error writing new record [%s]",
+                formRuleset->getModel()->lastError().text().toAscii().data());
             formRuleset->getModel()->revertAll();
         }
     }

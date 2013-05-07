@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classFormCfgRuleset.html" title="Browse Rulesets and call add amend delete ruleset form." alt="" coords="5,101,128,131"/>
-<area shape="rect" id="node4" href="$classFormCfgSettings.html" title="Maintain application configuration settings." alt="" coords="152,101,280,131"/>
-<area shape="rect" id="node6" href="$classDatabaseManager.html" title="Class to manipulate application database." alt="" coords="147,5,285,35"/>
-<area shape="rect" id="node8" href="$classFormCfgRuleSnippets.html" title="Browse Rulesnippets and call add amend delete rulesnippet form." alt="" coords="304,101,461,131"/>
-</map>

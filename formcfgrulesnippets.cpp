@@ -104,6 +104,7 @@ void FormCfgRuleSnippets::commonConstructor()
     model = new RuleSnippetsSqlTableModel(this);
     model->setTable("rulesetsnippets");
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+    // does sorting work??
     //model->setSort(1, Qt::AscendingOrder); // Sort by ruleset Name
     model->setHeaderData(0, Qt::Horizontal, tr("Id"));
     model->setHeaderData(1, Qt::Horizontal, tr("Snippet Name"));

@@ -31,7 +31,7 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include "install.h"
-
+#include "genlib.h"
 
 const QString Install::INSTALL_DIR = QString("/etc/qiptables");
 const QString Install::TOOLS_DIR = QString("/etc/qiptables/tools");
@@ -65,19 +65,7 @@ Install::~Install()
     }
 }
 
-QString Install::getRulesetShortName(QString rulesetLongName)
-{
-    QString result = rulesetLongName;
 
-    result = result.left(Install::IPTABLES_CHAIN_MAX_NAME_LENGTH - 2);
-    result = result.toUpper();
-    result = result.trimmed();
-    result = result.replace(" ", "_");
-    result = result.replace("-", "");
-    result = result.prepend(Install::IPTABLES_CHAIN_NAME_PREFIX);
-
-    return result;
-}
 
 QString Install::performInstall(bool forceInstall)
 {
@@ -341,7 +329,7 @@ bool Install::insertRulesetRow(QString rulesName, QStringList rulesList)
     if (dm->getDb().isOpen())
     {
         QString rulesText = rulesList.join("\n");
-        QString shortName = getRulesetShortName(rulesName);
+        QString shortName = GenLib::getRulesetShortName(rulesName);
         QSqlQuery query;
         QString qryMsg = QString(" insert into %1 "
                                  "   (name, shortname, rules) "

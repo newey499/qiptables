@@ -79,12 +79,10 @@ void ThreadIptablesWorkerSubClass::process()
             break;
 
         case ThreadIptablesWorkerSubClass::GET_CURRENT_RULESET :
-            qDebug("ThreadIptablesWorkerSubClass::GET_CURRENT_RULESET [%d]", processRequired);
             getCurrentRuleset();
             break;
 
         case ThreadIptablesWorkerSubClass::SET_CURRENT_RULESET :
-            qDebug("ThreadIptablesWorkerSubClass::SET_CURRENT_RULESET [%d]", processRequired);
             setCurrentRuleset();
             break;
 
