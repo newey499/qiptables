@@ -25,15 +25,37 @@ QString GenLib::getIncludeString(QString snippetName)
 
 QString GenLib::getRulesetName()
 {
-    FormFirewallRules * fr = new FormFirewallRules(0);
-    QString shortName = fr->getCurrentFirewallShortName();
-    QString rulesetName("Qiptables ruleset not in use");
-    if (! shortName.isEmpty())
+    FormFirewallRules fr;
+    QString shortName = fr.getCurrentFirewallShortName();
+    QString rulesetName("");
+    if (shortName.isEmpty())
     {
-        rulesetName = fr->getRulesetNameFromShortName(shortName);
+        rulesetName = "";
+    }
+    else
+    {
+        rulesetName = fr.getRulesetNameFromShortName(shortName);
     }
 
     return rulesetName;
+}
+
+
+QString GenLib::getCurrentFirewallShortName()
+{
+    IpProcess proc;
+    QString result = proc.execCmdLine("/etc/qiptables/tools/get-firewall-name.sh");
+    result = result.trimmed();
+    return result;
+}
+
+
+QString GenLib::getRulesetNameFromShortName(QString shortname)
+{
+    FormFirewallRules fr;
+
+    return fr.getRulesetNameFromShortName(shortname);
+
 }
 
 

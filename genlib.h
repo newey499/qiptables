@@ -28,13 +28,6 @@ class GenLib : public QObject
 
 public:
 
-    /**
-    \brief calculate the ruleset shortname from the ruleset full name
-    \param rulesetLongName - ruleset full name
-    \return ruleset short name
-      *******************/
-    static QString getRulesetShortName(QString rulesetLongName);
-
     explicit GenLib(QObject *parent = 0);
     ~GenLib();
 
@@ -50,6 +43,14 @@ public:
       **********************/
     static QString getIncludeString(QString snippetName);
 
+
+    /**
+    \brief calculate the ruleset shortname from the ruleset full name
+    \param rulesetLongName - ruleset full name
+    \return ruleset short name
+      *******************/
+    static QString getRulesetShortName(QString rulesetLongName);
+
     /**
     \brief gets long ruleset name using the the short name which is
            qiptables writes as the name of an empty qiptables chain.
@@ -57,6 +58,22 @@ public:
     \return long ruleset name
       **************/
     static QString getRulesetName();
+
+
+    /**
+    \brief get short name of current ruleset using
+           /tc/qiptables/tools/get-firewall-name.sh
+
+      **************************/
+    static QString getCurrentFirewallShortName();
+
+
+    /**
+    \brief Gets the full ruleset name from the short name.
+
+      ****************************************/
+    static QString getRulesetNameFromShortName(QString shortname = GenLib::getCurrentFirewallShortName());
+
 
     /**
     \brief get pointer to top level widget using widget instance name

@@ -80,7 +80,6 @@ QString FormFirewallRules::getCurrentFirewallShortName()
     QString result = proc->execCmdLine("/etc/qiptables/tools/get-firewall-name.sh");
     result = result.trimmed();
     return result;
-
 }
 
 QString FormFirewallRules::getRulesetNameFromShortName(QString shortName)

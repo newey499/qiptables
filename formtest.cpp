@@ -193,8 +193,28 @@ void FormTest::fillCbxRulesetNames()
 
 void FormTest::showEvent(QShowEvent *event)
 {
+    static int counter =1;
     // disable compiler warning for unused parameter - gcc optimizes out this code
     event = event;
+    int index = 0;
 
+    // Ensure ruleset names are up to date
     fillCbxRulesetNames();
+
+    index = ui->cbxRuleset->findText(GenLib::getRulesetNameFromShortName());
+    if (index == -1)
+    {
+        index = 0;
+    }
+    ui->cbxRuleset->setCurrentIndex(index);
+
+    slotIptablesList();
+
+    qDebug("\n");
+    qDebug("==============================================");
+    qDebug("FormTest::showEvent(QShowEvent *event) [%d]", counter++);
+    qDebug("Short Name [%s]", GenLib::getCurrentFirewallShortName().toAscii().data());
+    qDebug("Ruleset Name [%s]", GenLib::getRulesetNameFromShortName().toAscii().data());
+    qDebug("==============================================");
+
 }
