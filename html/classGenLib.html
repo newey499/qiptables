@@ -90,14 +90,26 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ab9b18c6d0820f44a80ba74a9ecc047fb"><td class="memItemLeft" align="right" valign="top">static QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGenLib.html#ab9b18c6d0820f44a80ba74a9ecc047fb">getRulesetShortName</a> (QString rulesetLongName)</td></tr>
-<tr class="memdesc:ab9b18c6d0820f44a80ba74a9ecc047fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculate the ruleset shortname from the ruleset full name  <a href="#ab9b18c6d0820f44a80ba74a9ecc047fb"></a><br/></td></tr>
 <tr class="memitem:a12c32db0f2025becef80fc56521b6962"><td class="memItemLeft" align="right" valign="top">static QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGenLib.html#a12c32db0f2025becef80fc56521b6962">getIncludeString</a> (QString snippetName)</td></tr>
 <tr class="memdesc:a12c32db0f2025becef80fc56521b6962"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns #include statement for snippet to be included in ruleset.  <a href="#a12c32db0f2025becef80fc56521b6962"></a><br/></td></tr>
+<tr class="memitem:ab9b18c6d0820f44a80ba74a9ecc047fb"><td class="memItemLeft" align="right" valign="top">static QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGenLib.html#ab9b18c6d0820f44a80ba74a9ecc047fb">getRulesetShortName</a> (QString rulesetLongName)</td></tr>
+<tr class="memdesc:ab9b18c6d0820f44a80ba74a9ecc047fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculate the ruleset shortname from the ruleset full name  <a href="#ab9b18c6d0820f44a80ba74a9ecc047fb"></a><br/></td></tr>
 <tr class="memitem:a46ee9f54a55c735cc123f0c55283f567"><td class="memItemLeft" align="right" valign="top">static QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGenLib.html#a46ee9f54a55c735cc123f0c55283f567">getRulesetName</a> ()</td></tr>
 <tr class="memdesc:a46ee9f54a55c735cc123f0c55283f567"><td class="mdescLeft">&#160;</td><td class="mdescRight">gets long ruleset name using the the short name which is qiptables writes as the name of an empty qiptables chain.  <a href="#a46ee9f54a55c735cc123f0c55283f567"></a><br/></td></tr>
+<tr class="memitem:a0d25ff338c626abc47dad917223a8e51"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d25ff338c626abc47dad917223a8e51"></a>
+static QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGenLib.html#a0d25ff338c626abc47dad917223a8e51">getCurrentFirewallShortName</a> ()</td></tr>
+<tr class="memdesc:a0d25ff338c626abc47dad917223a8e51"><td class="mdescLeft">&#160;</td><td class="mdescRight">get short name of current ruleset using /tc/qiptables/tools/get-firewall-name.sh <br/></td></tr>
+<tr class="memitem:a83509abc109fb2c0824a7f7bb284d0bc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a83509abc109fb2c0824a7f7bb284d0bc"></a>
+static QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGenLib.html#a83509abc109fb2c0824a7f7bb284d0bc">getRulesetNameFromShortName</a> (QString shortname=<a class="el" href="classGenLib.html#a0d25ff338c626abc47dad917223a8e51">GenLib::getCurrentFirewallShortName</a>())</td></tr>
+<tr class="memdesc:a83509abc109fb2c0824a7f7bb284d0bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the full ruleset name from the short name. <br/></td></tr>
 <tr class="memitem:a0a5f0cddda18360b07500dbdfc7691e5"><td class="memItemLeft" align="right" valign="top">static QWidget *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGenLib.html#a0a5f0cddda18360b07500dbdfc7691e5">getWidgetPointer</a> (QString widgetObjectName)</td></tr>
 <tr class="memdesc:a0a5f0cddda18360b07500dbdfc7691e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">get pointer to top level widget using widget instance name  <a href="#a0a5f0cddda18360b07500dbdfc7691e5"></a><br/></td></tr>
+<tr class="memitem:aa9a72d1f2bbc635e536638a03671f036"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa9a72d1f2bbc635e536638a03671f036"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGenLib.html#aa9a72d1f2bbc635e536638a03671f036">clearAllFirewallRules</a> ()</td></tr>
+<tr class="memdesc:aa9a72d1f2bbc635e536638a03671f036"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears all firewall chains and sets all policies to Accept. <br/></td></tr>
+<tr class="memitem:ad559e65edd116ca2fe12a8e8e34ba70c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad559e65edd116ca2fe12a8e8e34ba70c"></a>
+static QStringList&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGenLib.html#ad559e65edd116ca2fe12a8e8e34ba70c">getGnuLicence</a> ()</td></tr>
+<tr class="memdesc:ad559e65edd116ca2fe12a8e8e34ba70c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a QStringList containing the GNU licence. <br/></td></tr>
 </table>
 <a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Class containing various utility functions. </p>
@@ -231,7 +243,7 @@ Static Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 7 2013 14:53:03 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri May 10 2013 14:39:34 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

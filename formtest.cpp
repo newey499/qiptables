@@ -75,12 +75,8 @@ void FormTest::slotBtnTest()
     //ui->plainTextEdit->appendPlainText("FormTest::slotBtnTest() : Start");
     //ui->plainTextEdit->appendPlainText("====================================");
 
-    //iptables->processRuleset("aaa");
-    //iptables->processRuleset("bbb");
-    //QStringList sl = ruleSnippet->getRuleSnippetRows("test");
-    //QStringList sl = ruleSnippet->getIncludeRuleSnippetRows("test");
 
-    ui->plainTextEdit->appendPlainText("No test currently set up - nothing to report");
+    ui->plainTextEdit->appendPlainText("Test new 'never display again' dialog");
 
 
     //ui->plainTextEdit->appendPlainText("====================================");

@@ -1,6 +1,7 @@
 var searchData=
 [
   ['checkforroot',['checkForRoot',['../classIpProcess.html#ab24ac4bb2c6950492fb6c3961cfbc6b0',1,'IpProcess']]],
+  ['clearallfirewallrules',['clearAllFirewallRules',['../classGenLib.html#aa9a72d1f2bbc635e536638a03671f036',1,'GenLib']]],
   ['closedb',['closeDB',['../classDatabaseManager.html#ae642d8692ee2f8e78d7beffe23571fae',1,'DatabaseManager']]],
   ['closeevent',['closeEvent',['../classFormCfgRuleSnippets.html#a886a3a6d486ae5db4bdcd39be1b48ec2',1,'FormCfgRuleSnippets::closeEvent()'],['../classMainWindow.html#a4e20a4a065fbb0e4d3532a45a0a91425',1,'MainWindow::closeEvent()']]],
   ['cmdline',['CmdLine',['../classCmdLine.html',1,'']]],
@@ -11,6 +12,7 @@ var searchData=
   ['configureview',['configureView',['../classRulesetTableView.html#a5936b763a30e72d7941b0022d6786c95',1,'RulesetTableView::configureView()'],['../classRuleSnippetsTableView.html#ae00bcadf94ec8be050ff579d8502f02b',1,'RuleSnippetsTableView::configureView()']]],
   ['createdir',['createDir',['../classInstall.html#a6119b123f6016b23898be64ad6512558',1,'Install']]],
   ['createfile',['createFile',['../classInstall.html#ae391f24f561ad51c221236ffee2275c0',1,'Install::createFile(QString path, QString filename, QString content, bool executable=false)'],['../classInstall.html#a34c927506ce340be9f372661d4789cf8',1,'Install::createFile(QString path, QString filename, QStringList content, bool executable=false)']]],
+  ['createguid',['createGUID',['../classDialogChkBoxAbstract.html#af4a939044aa74a52c7eefdb85d818bf6',1,'DialogChkBoxAbstract::createGUID()'],['../classDialogChkBoxTemplate.html#adfd2c321038aa2da10058e07e40f4378',1,'DialogChkBoxTemplate::createGUID()']]],
   ['createinitialrows',['createInitialRows',['../classInstall.html#ac86b817b745892d965bfc786229bffe4',1,'Install']]],
   ['createqiptablesdatabase',['createQiptablesDatabase',['../classInstall.html#a442a9502aebecc903aeff91391864f2f',1,'Install']]],
   ['createqiptablesdir',['createQiptablesDir',['../classInstall.html#a3a43a6c0551da3dc4b4c399408cefbb8',1,'Install']]],

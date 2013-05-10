@@ -68,8 +68,9 @@ SOURCES += main.cpp\
     threadworkersubclass.cpp \
     threadiptablesworkersubclass.cpp \
     threadiptableswrapper.cpp \
-    menuaction.cpp
-
+    menuaction.cpp \
+	dialogchkboxabstract.cpp \
+	dialogchkboxtemplate.cpp
 
 
 HEADERS  += mainwindow.h \
@@ -100,7 +101,9 @@ HEADERS  += mainwindow.h \
     threadworkersubclass.h \
     threadiptablesworkersubclass.h \
     threadiptableswrapper.h \
-    menuaction.h
+    menuaction.h \
+	dialogchkboxabstract.h \
+	dialogchkboxtemplate.h
 
 
 FORMS    += mainwindow.ui \
