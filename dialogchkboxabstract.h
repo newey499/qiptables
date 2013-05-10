@@ -53,6 +53,9 @@ using this GUID to uniquely identify the dialog.
 This means that a sub class must be defined for each "Never display this dialog again"
 dialog box.
 
+
+\todo Look at subclassing the QErrorMessage Class and adding persistency to do this.
+
 ***************************/
 class DialogChkBoxAbstract : public QDialog
 {
