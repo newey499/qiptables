@@ -26,6 +26,5 @@ var searchData=
   ['getsysconfrow',['getSysconfRow',['../classDatabaseManager.html#ac17db5077b4f1853cb97914974f3e9a8',1,'DatabaseManager']]],
   ['getuserid',['getUserId',['../classLinuxUserId.html#a09500d36bc440fac51e80e972c3cb9b6',1,'LinuxUserId']]],
   ['getview',['getView',['../classFormCfgRuleset.html#a7e11beb7d3ab5b75e49c26d36e12b972',1,'FormCfgRuleset::getView()'],['../classFormCfgRuleSnippets.html#ac3e237d60b6abbda6fcfb48243080767',1,'FormCfgRuleSnippets::getView()']]],
-  ['getwidgetpointer',['getWidgetPointer',['../classGenLib.html#a0a5f0cddda18360b07500dbdfc7691e5',1,'GenLib']]],
-  ['guiderrmsg',['guidErrMsg',['../classDialogChkBoxAbstract.html#a196aa373610b11689e860ceded046354',1,'DialogChkBoxAbstract']]]
+  ['getwidgetpointer',['getWidgetPointer',['../classGenLib.html#a0a5f0cddda18360b07500dbdfc7691e5',1,'GenLib']]]
 ];

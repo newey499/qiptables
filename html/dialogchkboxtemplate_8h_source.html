@@ -101,40 +101,41 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="dialogchkboxabstract_8h.html">dialogchkboxabstract.h</a>&quot;</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="classDialogChkBoxTemplate.html">   46</a></span>&#160;<span class="keyword">class </span><a class="code" href="classDialogChkBoxTemplate.html" title="Subclass of the Abstract Class DialogChkBoxAbstract to provide a persistent &quot;Never display this dialo...">DialogChkBoxTemplate</a> : <span class="keyword">public</span> <a class="code" href="classDialogChkBoxAbstract.html" title="Abstract Class to provide a persistent &quot;Never display this dialog again&quot; dialog box.">DialogChkBoxAbstract</a></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    Q_OBJECT</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classDialogChkBoxTemplate.html" title="Subclass of the Abstract Class DialogChkBoxAbstract to provide a persistent &quot;Never display this dialo...">DialogChkBoxTemplate</a>(QWidget *parent = 0);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classDialogChkBoxTemplate.html" title="Subclass of the Abstract Class DialogChkBoxAbstract to provide a persistent &quot;Never display this dialo...">DialogChkBoxTemplate</a>(QString organization,</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                                  QString application,</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                                  QWidget *parent = 0);</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="classDialogChkBoxTemplate.html">   51</a></span>&#160;<span class="keyword">class </span><a class="code" href="classDialogChkBoxTemplate.html" title="Subclass of the Abstract Class DialogChkBoxAbstract to provide a persistent &quot;Never display this dialo...">DialogChkBoxTemplate</a> : <span class="keyword">public</span> <a class="code" href="classDialogChkBoxAbstract.html" title="Abstract Class to provide a persistent &quot;Never display this dialog again&quot; dialog box.">DialogChkBoxAbstract</a></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    Q_OBJECT</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="classDialogChkBoxTemplate.html#aa21a9fc8b7742e9987ad883a82670627" title="execs the dialog">exec</a>();</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">virtual</span> QString <a class="code" href="classDialogChkBoxTemplate.html#adfd2c321038aa2da10058e07e40f4378" title="Generate a GUID and display it using qDebug()">createGUID</a>();</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;signals:</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classDialogChkBoxTemplate.html" title="Subclass of the Abstract Class DialogChkBoxAbstract to provide a persistent &quot;Never display this dialo...">DialogChkBoxTemplate</a>(QWidget *parent = 0);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classDialogChkBoxTemplate.html" title="Subclass of the Abstract Class DialogChkBoxAbstract to provide a persistent &quot;Never display this dialo...">DialogChkBoxTemplate</a>(QString organization,</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                                  QString application,</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                                  QWidget *parent = 0);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="classDialogChkBoxTemplate.html#aa21a9fc8b7742e9987ad883a82670627" title="execs the dialog">exec</a>();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;signals:</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">public</span> slots:</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">public</span> slots:</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">void</span> commonConstructor();</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">void</span> commonConstructor();</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">void</span> forceAbstractClass();</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;};</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;};</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#endif // DIALOGCHKBOXTEMPLATE_H</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#endif // DIALOGCHKBOXTEMPLATE_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 10 2013 14:39:33 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 11 2013 10:23:35 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

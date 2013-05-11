@@ -72,7 +72,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-slots">Public Slots</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classDialogChkBoxAbstract-members.html">List of all members</a>  </div>
@@ -107,6 +106,8 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setTextVisibl
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setDetailedText</b> (QString text)</td></tr>
 <tr class="memitem:ad1c734bba911df9d24b30e7c97f8d7ed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad1c734bba911df9d24b30e7c97f8d7ed"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setDetailedTextVisible</b> (bool visible)</td></tr>
+<tr class="memitem:a113b239c72dc370c87b27157d0aa1ed3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a113b239c72dc370c87b27157d0aa1ed3"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setNeverAgainCheckBox</b> (bool isChecked=false)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -122,24 +123,15 @@ virtual QString&#160;</td><td class="memItemRight" valign="bottom"><b>getDetaile
 virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>getTextVisible</b> ()</td></tr>
 <tr class="memitem:a31bd98e6b3367aa1b90495f2da6f899d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a31bd98e6b3367aa1b90495f2da6f899d"></a>
 virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>getDetailedTextVisible</b> ()</td></tr>
-<tr class="memitem:af4a939044aa74a52c7eefdb85d818bf6"><td class="memItemLeft" align="right" valign="top">virtual QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDialogChkBoxAbstract.html#af4a939044aa74a52c7eefdb85d818bf6">createGUID</a> ()=0</td></tr>
-<tr class="memdesc:af4a939044aa74a52c7eefdb85d818bf6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pure virtual method.  <a href="#af4a939044aa74a52c7eefdb85d818bf6"></a><br/></td></tr>
-<tr class="memitem:a8acd278288112ce1ed271755fbb2ff1b"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDialogChkBoxAbstract.html#a8acd278288112ce1ed271755fbb2ff1b">isGuidAssigned</a> ()</td></tr>
-<tr class="memdesc:a8acd278288112ce1ed271755fbb2ff1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks to see whether a GUID has been set up.  <a href="#a8acd278288112ce1ed271755fbb2ff1b"></a><br/></td></tr>
-<tr class="memitem:a196aa373610b11689e860ceded046354"><td class="memItemLeft" align="right" valign="top">virtual QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDialogChkBoxAbstract.html#a196aa373610b11689e860ceded046354">guidErrMsg</a> ()</td></tr>
-<tr class="memdesc:a196aa373610b11689e860ceded046354"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays an error message via qDebug() if a GUID has not been set up.  <a href="#a196aa373610b11689e860ceded046354"></a><br/></td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2><a name="pub-static-attribs"></a>
-Static Public Attributes</h2></td></tr>
-<tr class="memitem:a61e3be87a07b114a22ee6f86d606290d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a61e3be87a07b114a22ee6f86d606290d"></a>
-static const QString&#160;</td><td class="memItemRight" valign="bottom"><b>UNASSIGNED_GUID</b> = &quot;GUID not assigned&quot;</td></tr>
-<tr class="memitem:a8d4b0a58a656503bfec5f2d353dded3a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8d4b0a58a656503bfec5f2d353dded3a"></a>
-static QString&#160;</td><td class="memItemRight" valign="bottom"><b>GUID</b> = DialogChkBoxAbstract::UNASSIGNED_GUID</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a194d890eb4b206b86664d44b0c3816a3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a194d890eb4b206b86664d44b0c3816a3"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>commonConstructor</b> (QString organization, QString application)</td></tr>
+<tr class="memitem:ac0a094e8c0c022e6c4c02e7a363411f6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac0a094e8c0c022e6c4c02e7a363411f6"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>loadSettings</b> (QString key)</td></tr>
+<tr class="memitem:a8d1dbc5cc44ce06e472e32b989522b12"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8d1dbc5cc44ce06e472e32b989522b12"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>saveSettings</b> ()</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -171,101 +163,22 @@ QString&#160;</td><td class="memItemRight" valign="bottom"><b>application</b></t
 QString&#160;</td><td class="memItemRight" valign="bottom"><b>organization</b></td></tr>
 <tr class="memitem:aab849078a39583b992f2887dd39dca0b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aab849078a39583b992f2887dd39dca0b"></a>
 QPointer&lt; QSettings &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>settings</b></td></tr>
+<tr class="memitem:aeb85b1e6282b31555fd4c46ac810fb33"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeb85b1e6282b31555fd4c46ac810fb33"></a>
+QString&#160;</td><td class="memItemRight" valign="bottom"><b>chkBoxSettingsKey</b></td></tr>
 </table>
 <a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Abstract Class to provide a persistent "Never display this dialog again" dialog box. </p>
-<p>The persistency is provided by assigning a GUID generated in a subclass and using this GUID to uniquely identify the dialog.</p>
-<p>This means that a sub class must be defined for each "Never display this dialog again" dialog box. </p>
-</div><h2>Member Function Documentation</h2>
-<a class="anchor" id="af4a939044aa74a52c7eefdb85d818bf6"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual QString DialogChkBoxAbstract::createGUID </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Pure virtual method. </p>
-<p>Ensures this class cannot be instantiated.</p>
-<dl class="section return"><dt>Returns</dt><dd>The generated GUID </dd></dl>
-
-<p>Implemented in <a class="el" href="classDialogChkBoxTemplate.html#adfd2c321038aa2da10058e07e40f4378">DialogChkBoxTemplate</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a196aa373610b11689e860ceded046354"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">QString DialogChkBoxAbstract::guidErrMsg </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Displays an error message via qDebug() if a GUID has not been set up. </p>
-<dl class="section return"><dt>Returns</dt><dd>QString version of qDebug() output </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a8acd278288112ce1ed271755fbb2ff1b"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool DialogChkBoxAbstract::isGuidAssigned </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Checks to see whether a GUID has been set up. </p>
-<dl class="section return"><dt>Returns</dt><dd>True if GUID set up else False </dd></dl>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<p>The persistency is provided by assigning a key generated in a subclass and using this key to uniquely identify the dialog. The generated key is the name of the subclass</p>
+<p>This means that a sub class must be defined for each "Never display this dialog again" dialog box.</p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Look at subclassing the QErrorMessage Class and adding persistency to do this.</dd></dl>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="dialogchkboxabstract_8h_source.html">dialogchkboxabstract.h</a></li>
 <li>dialogchkboxabstract.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 10 2013 14:39:34 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 11 2013 10:23:36 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

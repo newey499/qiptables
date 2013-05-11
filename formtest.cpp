@@ -78,6 +78,15 @@ void FormTest::slotBtnTest()
 
     ui->plainTextEdit->appendPlainText("Test new 'never display again' dialog");
 
+    if (! dcb)
+    {
+        dcb = new DialogChkBoxTemplate(MainWindow::ORGANIZATION,
+                                       MainWindow::APPLICATION,
+                                       this);
+    }
+
+    dcb->exec();
+
 
     //ui->plainTextEdit->appendPlainText("====================================");
     //ui->plainTextEdit->appendPlainText("FormTest::slotBtnTest() : End");

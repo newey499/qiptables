@@ -43,37 +43,26 @@ DialogChkBoxTemplate::DialogChkBoxTemplate(QString organization,
 
 void DialogChkBoxTemplate::commonConstructor()
 {
-    // Use newly generated GUID here
-    // See method "DialogChkBoxTemplate::createGUID()"
-    // for GUID Generation.
-    //GUID = "{50f73000-e5ff-462c-ac6a-b35f5de1c907}";
+
+    setObjectName("DialogChkBoxTemplate");
+    loadSettings(this->objectName());
+}
+
+
+/**
+\brief Override Pure virtual method of abstract parent class
+
+Ensures this class may be instantiated.
+
+  *********************/
+void DialogChkBoxTemplate::forceAbstractClass()
+{
+    // Does nothing other than to ensure class may be instantiated
 }
 
 int DialogChkBoxTemplate::exec()
 {
-    if (! isGuidAssigned())
-    {
-        createGUID();
-    }
     return DialogChkBoxAbstract::exec();
 }
 
 
-QString DialogChkBoxTemplate::createGUID()
-{
-    QUuid guid = QUuid::createUuid();
-
-    QString guidStr = guid.toString();
-
-    qDebug("==========================================");
-    qDebug("QString DialogChkBoxAbstract::createGUID()");
-    qDebug("New GUID %s", guidStr.toAscii().data());
-    qDebug("Paste this newly generated GUID into the");
-    qDebug("variable");
-    qDebug("const QString DialogChkBoxAbstract::GUID");
-    qDebug("defined at the top of the file");
-    qDebug("\"dialogchkboxabstract.cpp\"");
-    qDebug("==========================================");
-
-    return guidStr;
-}

@@ -36,11 +36,16 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 \brief Subclass of the Abstract Class DialogChkBoxAbstract to provide a persistent
  "Never display this dialog again" dialog box.
 
-The persistency is provided by assigning a generated GUID and
-using this GUID to uniquely identify the dialog.
+The persistency is provided by assigning a generated key and
+using this key to uniquely identify the dialog. The key is the name of this class
+with the string "_doNoShowEverAgainCheckBox" appended.
 
 This means that a sub class of DialogChkBoxAbstract (such as this) must be defined
 for each "Never display this dialog again" dialog box.
+
+In other words if numerous instances of DialogChkBoxTemplate were instantiated then
+the "Never display this dialog again" behaviour would be global across these
+instances.
 
 ***************************/
 class DialogChkBoxTemplate : public DialogChkBoxAbstract
@@ -57,20 +62,11 @@ public:
     /**
     \brief execs the dialog
 
-    If the class has not been set up with a GUID then one is
-    generated and displayed with qDebug().
-
     \return Result from executing dialog - either QDialog::Accepted or
     QDialog::Rejected
       ***********************/
     virtual int exec();
 
-    /**
-    \brief Generate a GUID and display it using qDebug()
-
-    \return Generated GUID
-      ******************/
-    virtual QString createGUID();
 
 signals:
 
@@ -83,6 +79,8 @@ protected:
     void commonConstructor();
 
 private:
+
+    void forceAbstractClass();
 
 };
 

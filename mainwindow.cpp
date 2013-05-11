@@ -36,7 +36,8 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 const QString MainWindow::VERSION_NUMBER = "0.2";
 const QString MainWindow::FIREWALL_SUB_MENU_NAME = "fireWallSubMenu";
-
+QString MainWindow::ORGANIZATION = "";
+QString MainWindow::APPLICATION  = "";
 
 
 MainWindow::MainWindow(QString organization, QString application, QWidget *parent) :
@@ -46,6 +47,10 @@ MainWindow::MainWindow(QString organization, QString application, QWidget *paren
     setObjectName("MainWindow");
     this->organization = organization;
     this->application = application;
+
+    MainWindow::ORGANIZATION = this->organization;
+    MainWindow::APPLICATION = this->application;
+
 
     ui->setupUi(this);
     QSettings settings(organization, application);

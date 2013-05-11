@@ -25,12 +25,6 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "dialogchkboxabstract.h"
 
-
-
-const QString DialogChkBoxAbstract::UNASSIGNED_GUID = "GUID not assigned";
-QString DialogChkBoxAbstract::GUID = DialogChkBoxAbstract::UNASSIGNED_GUID;
-
-
 QString application;
 QString organization;
 
@@ -54,6 +48,7 @@ void DialogChkBoxAbstract::commonConstructor(QString organization, QString appli
     this->organization = organization;
     this->application = application;
 
+    settings = new QSettings(organization, application, this);
 
     setSizeGripEnabled(false);
 
@@ -68,7 +63,13 @@ void DialogChkBoxAbstract::commonConstructor(QString organization, QString appli
     lblDetailedText = new QLabel(this);
     lblDetailedText->setWordWrap(true);
     lblDetailedText->setMargin(10);
-    lblDetailedText->setText("Label Detailed Text");
+    lblDetailedText->setText("Label Detailed Text line 1\n"
+                             "Label Detailed Text line 2\n"
+                             "Label Detailed Text line 3\n"
+                             "Label Detailed Text line 4\n"
+                             "Label Detailed Text line 5\n"
+                             "Label Detailed Text line 6"
+                             );
 
     lblNeverShow = new QLabel(this);
     lblNeverShow->setText("Never show this Dialogue again");
@@ -113,7 +114,7 @@ void DialogChkBoxAbstract::commonConstructor(QString organization, QString appli
 
 DialogChkBoxAbstract::~DialogChkBoxAbstract()
 {
-
+    saveSettings();
 }
 
 
@@ -164,11 +165,11 @@ bool DialogChkBoxAbstract::getDetailedTextVisible()
 int DialogChkBoxAbstract::exec()
 {
 
-    if (! isGuidAssigned())
+    if (chkBox->isChecked())
     {
-        qDebug("\nDialogChkBoxAbstract::exec()");
-        guidErrMsg();
-        return QDialog::Rejected;
+        qDebug("\nNever display again check box is checked - "
+               "don't display and return QDialog::Accepted");
+        return QDialog::Accepted;
     }
 
     qDebug("========================");
@@ -198,38 +199,40 @@ int DialogChkBoxAbstract::exec()
 }
 
 
-bool DialogChkBoxAbstract::isGuidAssigned()
+void DialogChkBoxAbstract::loadSettings(QString key)
 {
-    bool result;
+    qDebug("void DialogChkBoxAbstract::loadSettings()");
+    chkBoxSettingsKey = key.append("_doNoShowEverAgainCheckBox");
+    bool checked = settings->value(chkBoxSettingsKey, false).toBool();
+    chkBox->setChecked(checked);
 
-    result = QString(GUID).
-                compare(UNASSIGNED_GUID, Qt::CaseSensitive) != 0;
-
-    return result;
+    qDebug("key [%s] Do not show again CheckBox Checked [%s]",
+           chkBoxSettingsKey.toAscii().data(),
+           chkBox->isChecked() ? QString("Yes").toAscii().data() :
+                                 QString("No").toAscii().data());
 }
 
 
-QString DialogChkBoxAbstract::guidErrMsg()
+void DialogChkBoxAbstract::saveSettings()
 {
-    QStringList sl;
-    QString result;
+    qDebug("void DialogChkBoxAbstract::saveSettings()");
 
-    sl.append("============================");
-    sl.append("GUID not assigned");
-    sl.append("This class will not work");
-    sl.append("without an assigned GUID.");
-    sl.append("See Files:");
-    sl.append("\tdialogchkboxabstract.h, dialogchkboxabstract.h");
-    sl.append("\tdialogchkboxtemplate.h, dialogchkboxtemplate.h");
-    sl.append("============================");
+    // Debug force clear of "never display again" checkbox
+    //chkBox->setChecked(false);
 
-    result = sl.join("\n");
-    qDebug("%s\n", result.toAscii().data());
+    settings->setValue(chkBoxSettingsKey, chkBox->isChecked());
 
-    return result;
+    qDebug("key [%s] Do not show again CheckBox Checked [%s]",
+           chkBoxSettingsKey.toAscii().data(),
+           chkBox->isChecked() ? QString("Yes").toAscii().data() :
+                                 QString("No").toAscii().data());
 }
 
 
+void DialogChkBoxAbstract::setNeverAgainCheckBox(bool isChecked)
+{
+    chkBox->setChecked(isChecked);
+}
 
 
 

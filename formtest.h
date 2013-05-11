@@ -44,6 +44,7 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #include "install.h"
 #include "databasemanager.h"
 #include "rulesnippet.h"
+#include "dialogchkboxtemplate.h"
 
 namespace Ui {
 class FormTest;
@@ -60,6 +61,9 @@ class FormTest;
  This form is not documented as its used as a testbed during development
  and subject to ad-hoc changes.
 
+ \todo If combobox selection is "not running a qipatables ruleset" then
+ run the shell script to clear firewall rules - probably need to think about this.
+
 */
 class FormTest : public QWidget
 {
@@ -75,7 +79,7 @@ public:
     explicit FormTest(QWidget *parent = 0);
     ~FormTest();
 
-
+    QPointer<DialogChkBoxTemplate> dcb;
 
 
 public slots:

@@ -75,6 +75,8 @@ public:
 
     static const QString VERSION_NUMBER;
     static const QString FIREWALL_SUB_MENU_NAME;
+    static QString ORGANIZATION;
+    static QString APPLICATION;
 
     /**
     \brief build firewall menu
