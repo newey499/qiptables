@@ -52,6 +52,8 @@ FormCfgSettings::FormCfgSettings(QWidget *parent) :
             this, SLOT(slotButtonStateEnabled()));
     connect(ui->cbxBootRuleset, SIGNAL(currentIndexChanged(int)),
             this, SLOT(slotButtonStateEnabled()));
+    connect(ui->cbxBootMech, SIGNAL(currentIndexChanged(int)),
+            this, SLOT(slotButtonStateEnabled()));
     connect(ui->btnCancel, SIGNAL(clicked()),
             SLOT(slotButtonStateDisabled()));
 
@@ -154,7 +156,7 @@ void FormCfgSettings::showEvent(QShowEvent *event)
 void FormCfgSettings::loadSettings()
 {
     if (qry.exec("select id, shell, iptables, tempdir, defaultRuleName, "
-                 "       bootRuleName from sysconf"))
+                 "       bootRuleName, bootMechanism from sysconf"))
     {
         if (qry.first())
         {
@@ -164,6 +166,7 @@ void FormCfgSettings::loadSettings()
             tempdir = qry.record().value("tempdir").toString();
             defaultRuleName = qry.record().value("defaultRuleName").toString();
             bootRuleName = qry.record().value("bootRuleName").toString();
+            bootMechanism = qry.record().value("bootMechanism").toString();
 
             ui->edtShell->setText(shell);
             ui->edtIptables->setText(iptables);
@@ -197,6 +200,12 @@ void FormCfgSettings::loadSettings()
     {
         qDebug("Query error on ruleset: [%s]", qry.lastError().text().toAscii().data());
     }
+
+    ui->cbxBootMech->clear();
+    ui->cbxBootMech->addItem("Do not start at boot");
+    ui->cbxBootMech->addItem("DHCP Network start");
+    ui->cbxBootMech->addItem("init.d start");
+    ui->cbxBootMech->setCurrentIndex(ui->cbxBootMech->findText(bootMechanism));
 }
 
 void FormCfgSettings::saveSettings()
@@ -206,12 +215,14 @@ void FormCfgSettings::saveSettings()
                 "  shell = :shell, "
                 "  tempdir = :tempdir, "
                 "  defaultRuleName = :defaultRuleName, "
-                "  bootRuleName = :bootRuleName ");
+                "  bootRuleName = :bootRuleName, "
+                "  bootMechanism = :bootMechanism");
     qry.bindValue(":iptables", ui->edtIptables->text());
     qry.bindValue(":shell", ui->edtShell->text());
     qry.bindValue(":tempdir", ui->edtTempDir->text());
     qry.bindValue(":defaultRuleName", ui->cbxDefRuleset->currentText());
     qry.bindValue(":bootRuleName", ui->cbxBootRuleset->currentText());
+    qry.bindValue(":bootMechanism", ui->cbxBootMech->currentText());
 
     if (qry.exec())
     {

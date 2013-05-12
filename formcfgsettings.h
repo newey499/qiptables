@@ -110,7 +110,7 @@ protected:
     QString tempdir;
     QString defaultRuleName;
     QString bootRuleName;
-
+    QString bootMechanism;
     /**
     \brief Load configuration settings from table
       ***********************/
