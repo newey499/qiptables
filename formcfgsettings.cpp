@@ -50,6 +50,8 @@ FormCfgSettings::FormCfgSettings(QWidget *parent) :
             this, SLOT(slotButtonStateEnabled()));
     connect(ui->cbxDefRuleset, SIGNAL(currentIndexChanged(int)),
             this, SLOT(slotButtonStateEnabled()));
+    connect(ui->cbxBootRuleset, SIGNAL(currentIndexChanged(int)),
+            this, SLOT(slotButtonStateEnabled()));
     connect(ui->btnCancel, SIGNAL(clicked()),
             SLOT(slotButtonStateDisabled()));
 
@@ -142,9 +144,17 @@ QString FormCfgSettings::lastSqlErrorAsString()
     return qry.lastError().text();
 }
 
+void FormCfgSettings::showEvent(QShowEvent *event)
+{
+    event = event; // suppress compiler warning - compiler optimizes this out
+    loadSettings();
+    slotButtonStateDisabled();
+}
+
 void FormCfgSettings::loadSettings()
 {
-    if (qry.exec("select id, shell, iptables, tempdir, defaultRuleName from sysconf"))
+    if (qry.exec("select id, shell, iptables, tempdir, defaultRuleName, "
+                 "       bootRuleName from sysconf"))
     {
         if (qry.first())
         {
@@ -153,6 +163,8 @@ void FormCfgSettings::loadSettings()
             iptables = qry.record().value("iptables").toString();
             tempdir = qry.record().value("tempdir").toString();
             defaultRuleName = qry.record().value("defaultRuleName").toString();
+            bootRuleName = qry.record().value("bootRuleName").toString();
+
             ui->edtShell->setText(shell);
             ui->edtIptables->setText(iptables);
             ui->edtTempDir->setText(tempdir);
@@ -168,14 +180,18 @@ void FormCfgSettings::loadSettings()
     }
 
     ui->cbxDefRuleset->clear();
+    ui->cbxBootRuleset->clear();
     if (qry.exec("select id, name, rules from ruleset"))
     {
         while (qry.next())
         {
             ui->cbxDefRuleset->addItem(qry.record().value("name").toString(),
                                        qry.record().value("id").toInt());
+            ui->cbxBootRuleset->addItem(qry.record().value("name").toString(),
+                                       qry.record().value("id").toInt());
         }
         ui->cbxDefRuleset->setCurrentIndex(ui->cbxDefRuleset->findText(defaultRuleName));
+        ui->cbxBootRuleset->setCurrentIndex(ui->cbxBootRuleset->findText(bootRuleName));
     }
     else
     {
@@ -189,11 +205,13 @@ void FormCfgSettings::saveSettings()
                 "  iptables = :iptables, "
                 "  shell = :shell, "
                 "  tempdir = :tempdir, "
-                "  defaultRuleName = :defaultRuleName ");
+                "  defaultRuleName = :defaultRuleName, "
+                "  bootRuleName = :bootRuleName ");
     qry.bindValue(":iptables", ui->edtIptables->text());
     qry.bindValue(":shell", ui->edtShell->text());
     qry.bindValue(":tempdir", ui->edtTempDir->text());
     qry.bindValue(":defaultRuleName", ui->cbxDefRuleset->currentText());
+    qry.bindValue(":bootRuleName", ui->cbxBootRuleset->currentText());
 
     if (qry.exec())
     {

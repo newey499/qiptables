@@ -28,6 +28,7 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include <QFileDialog>
+#include <QShowEvent>
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QStringList>
@@ -108,6 +109,7 @@ protected:
     QString iptables;
     QString tempdir;
     QString defaultRuleName;
+    QString bootRuleName;
 
     /**
     \brief Load configuration settings from table
@@ -118,6 +120,9 @@ protected:
     \brief Save configuration settings to table
       ***********************/
     virtual void saveSettings();
+
+
+    virtual void showEvent(QShowEvent *event);
 
     /**
     \brief Return last error if any from last executed SQL command
