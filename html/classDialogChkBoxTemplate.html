@@ -98,8 +98,6 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>DialogChkBoxTemplate</b> (QWidget *parent=0)</td></tr>
 <tr class="memitem:a86cc55a494b2f3951281c192e471ad4d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a86cc55a494b2f3951281c192e471ad4d"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>DialogChkBoxTemplate</b> (QString organization, QString application, QWidget *parent=0)</td></tr>
-<tr class="memitem:aa21a9fc8b7742e9987ad883a82670627"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDialogChkBoxTemplate.html#aa21a9fc8b7742e9987ad883a82670627">exec</a> ()</td></tr>
-<tr class="memdesc:aa21a9fc8b7742e9987ad883a82670627"><td class="mdescLeft">&#160;</td><td class="mdescRight">execs the dialog  <a href="#aa21a9fc8b7742e9987ad883a82670627"></a><br/></td></tr>
 <tr class="inherit_header pub_methods_classDialogChkBoxAbstract"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classDialogChkBoxAbstract')"><img src="closed.png" alt="-"/>&nbsp;Public Member Functions inherited from <a class="el" href="classDialogChkBoxAbstract.html">DialogChkBoxAbstract</a></td></tr>
 <tr class="memitem:a529c4e7dfad2ffb6b7dd54287a828f74 inherit pub_methods_classDialogChkBoxAbstract"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a529c4e7dfad2ffb6b7dd54287a828f74"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>DialogChkBoxAbstract</b> (QWidget *parent=0)</td></tr>
@@ -129,6 +127,8 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>saveSettings<
 <tr class="heading"><td colspan="2"><h2><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_slots_classDialogChkBoxAbstract"><td colspan="2" onclick="javascript:toggleInherit('pub_slots_classDialogChkBoxAbstract')"><img src="closed.png" alt="-"/>&nbsp;Public Slots inherited from <a class="el" href="classDialogChkBoxAbstract.html">DialogChkBoxAbstract</a></td></tr>
+<tr class="memitem:a8a58cbcf5e886ed0d6f35cd0b078ed5a inherit pub_slots_classDialogChkBoxAbstract"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8a58cbcf5e886ed0d6f35cd0b078ed5a"></a>
+virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>exec</b> ()</td></tr>
 <tr class="memitem:a0c18d940ba4f829168a560920cdbffc4 inherit pub_slots_classDialogChkBoxAbstract"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0c18d940ba4f829168a560920cdbffc4"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setText</b> (QString text)</td></tr>
 <tr class="memitem:aa23210e27b451ece504c4691d47d5a47 inherit pub_slots_classDialogChkBoxAbstract"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa23210e27b451ece504c4691d47d5a47"></a>
@@ -176,43 +176,14 @@ QString&#160;</td><td class="memItemRight" valign="bottom"><b>chkBoxSettingsKey<
 <p>The persistency is provided by assigning a generated key and using this key to uniquely identify the dialog. The key is the name of this class with the string "_doNoShowEverAgainCheckBox" appended.</p>
 <p>This means that a sub class of <a class="el" href="classDialogChkBoxAbstract.html" title="Abstract Class to provide a persistent &quot;Never display this dialog again&quot; dialog box.">DialogChkBoxAbstract</a> (such as this) must be defined for each "Never display this dialog again" dialog box.</p>
 <p>In other words if numerous instances of <a class="el" href="classDialogChkBoxTemplate.html" title="Subclass of the Abstract Class DialogChkBoxAbstract to provide a persistent &quot;Never display this dialo...">DialogChkBoxTemplate</a> were instantiated then the "Never display this dialog again" behaviour would be global across these instances. </p>
-</div><h2>Member Function Documentation</h2>
-<a class="anchor" id="aa21a9fc8b7742e9987ad883a82670627"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int DialogChkBoxTemplate::exec </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>execs the dialog </p>
-<dl class="section return"><dt>Returns</dt><dd>Result from executing dialog - either QDialog::Accepted or QDialog::Rejected </dd></dl>
-
-<p>Reimplemented from <a class="el" href="classDialogChkBoxAbstract.html">DialogChkBoxAbstract</a>.</p>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following files:<ul>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="dialogchkboxtemplate_8h_source.html">dialogchkboxtemplate.h</a></li>
 <li>dialogchkboxtemplate.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 11 2013 10:23:36 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 11 2013 10:39:57 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

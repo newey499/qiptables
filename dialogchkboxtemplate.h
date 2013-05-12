@@ -28,6 +28,8 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "dialogchkboxabstract.h"
 
+#include <QMetaObject>
+
 
 /**
 \file dialogchkboxtemplate.h
@@ -58,14 +60,6 @@ public:
     explicit DialogChkBoxTemplate(QString organization,
                                   QString application,
                                   QWidget *parent = 0);
-
-    /**
-    \brief execs the dialog
-
-    \return Result from executing dialog - either QDialog::Accepted or
-    QDialog::Rejected
-      ***********************/
-    virtual int exec();
 
 
 signals:

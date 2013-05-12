@@ -167,29 +167,29 @@ int DialogChkBoxAbstract::exec()
 
     if (chkBox->isChecked())
     {
-        qDebug("\nNever display again check box is checked - "
-               "don't display and return QDialog::Accepted");
+        // Never display again check box is checked
+        // don't display and return QDialog::Accepted
         return QDialog::Accepted;
     }
-
-    qDebug("========================");
-    qDebug("int DialogChkBox::exec()");
 
     int result = QDialog::exec();
 
     switch (result)
     {
         case QDialog::Accepted :
-            qDebug("result = QDialog::Accepted");
+            // result = QDialog::Accepted
             break;
 
 
         case QDialog::Rejected :
-            qDebug("result = QDialog::Rejected");
+            // result = QDialog::Rejected
             break;
 
         default:
-            qDebug("result = unexpected [%d]", result);
+            qDebug("DialogChkBoxAbstract::exec() [%s] line [%d] result = unexpected [%d]",
+                   __FILE__ ,
+                   __LINE__ ,
+                   result);
             break;
     }
 
@@ -201,31 +201,18 @@ int DialogChkBoxAbstract::exec()
 
 void DialogChkBoxAbstract::loadSettings(QString key)
 {
-    qDebug("void DialogChkBoxAbstract::loadSettings()");
     chkBoxSettingsKey = key.append("_doNoShowEverAgainCheckBox");
     bool checked = settings->value(chkBoxSettingsKey, false).toBool();
     chkBox->setChecked(checked);
-
-    qDebug("key [%s] Do not show again CheckBox Checked [%s]",
-           chkBoxSettingsKey.toAscii().data(),
-           chkBox->isChecked() ? QString("Yes").toAscii().data() :
-                                 QString("No").toAscii().data());
 }
 
 
 void DialogChkBoxAbstract::saveSettings()
 {
-    qDebug("void DialogChkBoxAbstract::saveSettings()");
-
     // Debug force clear of "never display again" checkbox
-    //chkBox->setChecked(false);
+    //setNeverAgainCheckBox(false);
 
     settings->setValue(chkBoxSettingsKey, chkBox->isChecked());
-
-    qDebug("key [%s] Do not show again CheckBox Checked [%s]",
-           chkBoxSettingsKey.toAscii().data(),
-           chkBox->isChecked() ? QString("Yes").toAscii().data() :
-                                 QString("No").toAscii().data());
 }
 
 

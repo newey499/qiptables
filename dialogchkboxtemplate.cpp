@@ -43,8 +43,8 @@ DialogChkBoxTemplate::DialogChkBoxTemplate(QString organization,
 
 void DialogChkBoxTemplate::commonConstructor()
 {
-
-    setObjectName("DialogChkBoxTemplate");
+    // Set the object name to the class name
+    setObjectName(this->metaObject()->className());
     loadSettings(this->objectName());
 }
 
@@ -58,11 +58,9 @@ Ensures this class may be instantiated.
 void DialogChkBoxTemplate::forceAbstractClass()
 {
     // Does nothing other than to ensure class may be instantiated
+    // DialogChkBoxAbstract::forceAbstractClass() is defined as pure virtual
+    // to ensure it is not instantiated.
 }
 
-int DialogChkBoxTemplate::exec()
-{
-    return DialogChkBoxAbstract::exec();
-}
 
 
