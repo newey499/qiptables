@@ -31,10 +31,10 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include "install.h"
-#include "genlib.h"
 
 const QString Install::INSTALL_DIR = QString("/etc/qiptables");
-const QString Install::TOOLS_DIR = QString("/etc/qiptables/tools");
+const QString Install::TOOLS_DIR   = QString("/etc/qiptables/tools");
+const QString Install::TMP_DIR     = QString("/etc/qiptables/tmp");
 
 // Max length of iptables chain name as defined by iptables program.
 const int Install::IPTABLES_CHAIN_MAX_NAME_LENGTH = 28;
@@ -178,9 +178,8 @@ bool Install::createQiptablesDatabase()
 
 QString Install::createFile(QString path, QString filename, QString content, bool executable)
 {
-    QString fname = QString("%1/%2").
-            arg(path).
-            arg(filename);
+
+    QString fname = GenLib::cleanFileName(path, filename);
 
     QFile data(fname);
     if (data.open(QFile::WriteOnly | QFile::Truncate)) {
@@ -191,23 +190,21 @@ QString Install::createFile(QString path, QString filename, QString content, boo
     if (executable)
     {
         data.setPermissions(QFile::ReadOwner  |
-                            QFile::WriteOwner |
-                            QFile::ReadGroup  |
-                            QFile::WriteGroup |
-                            QFile::ReadOther  |
                             QFile::ReadUser   |
+                            QFile::ReadOther  |
+                            QFile::WriteOwner |
+                            QFile::WriteGroup |
                             QFile::ExeOwner   |
-                            QFile::ExeGroup   |
-                            QFile::ExeOther   |
-                            QFile::ExeOther );
+                            QFile::ExeGroup   );
     }
     else
     {
         data.setPermissions(QFile::ReadOwner  |
+                            QFile::ReadUser   |
+                            QFile::ReadOther  |
                             QFile::WriteOwner |
-                            QFile::ReadGroup  |
-                            QFile::WriteGroup |
-                            QFile::ReadOther);
+                            QFile::WriteUser  |
+                            QFile::WriteOther );
     }
 
     return fname;
@@ -696,9 +693,13 @@ bool Install::createRulesetSnippetRows()
 bool Install::createShellScripts()
 {
     bool result = true;
+    BootRulesetConfig bootScripts(this);
 
     createScriptClearFirewall();
     createScriptGetFirewallName();
+    createInitdShellScript();
+    createSaveIptablesShellScript();
+    createRestoreIptablesShellScript();
 
     return result;
 }
@@ -756,6 +757,48 @@ QString Install::createScriptClearFirewall()
 }
 
 
+QString Install::createInitdShellScript()
+{
+    QString filename = BootRulesetConfig::BOOT_INIT_D_SHELL_SCRIPT;
+    QStringList script;
+    QString rulesetName = GenLib::cleanFileName(Install::TMP_DIR,
+                                                BootRulesetConfig::BOOT_INIT_D_RULESET);
+
+
+    qDebug("bool Install::createInitdShellScript()");
+
+    script <<  "#!/bin/sh "
+           <<  "### BEGIN INIT INFO "
+           <<  "# Provides: iptables "
+           <<  "# Required-Start: mountkernfs $local_fs "
+           <<  "# Required-Stop: $local_fs "
+           <<  "# Default-Start: 2 3 4 5 "
+           <<  "# Default-Stop: 0 1 6 "
+           <<  "# Short-Description: Set up iptables rules "
+           <<  "### END INIT INFO "
+           <<  ""
+           <<  QString("%1 < %2").
+                    arg("/sbin/iptables-restore ").
+                    arg(rulesetName)
+           <<  ""
+           <<  "case \"$1\" in "
+           <<  ""
+           <<  "     *) "
+           <<  "        echo \"iptables loaded from file\" "
+           <<  "     ;; "
+           <<  ""
+           <<  "esac "
+           <<  ""
+           <<  "exit 0 "
+           <<  "";
+
+    // Create the file
+    filename = createFile(Install::TOOLS_DIR , filename, script, true);
+
+    return filename;
+}
+
+
 QString Install::createScriptGetFirewallName()
 {
     QStringList script;
@@ -789,3 +832,68 @@ QString Install::createScriptGetFirewallName()
     return filename;
 }
 
+
+QString Install::createSaveIptablesShellScript()
+{
+    qDebug("QString Install::createSaveIptablesShellScript()");
+    QString filename = BootRulesetConfig::SAVE_IPTABLES_CURRENT_RULES_SCRIPT;
+    QStringList script;
+    QString rulesetName = GenLib::cleanFileName(Install::TMP_DIR,
+                                                BootRulesetConfig::BOOT_INIT_D_RULESET);
+
+    script << "#!/bin/bash "
+           << "##################################"
+           << "# "
+           << QString("# %1").arg(GenLib::cleanFileName(Install::TOOLS_DIR, filename))
+           << "# "
+           << "# Created by qiptables install"
+           << "# "
+           << "##################################"
+           << ""
+           <<  ""
+           << GenLib::getGnuLicence().join("\n")
+           << ""
+           << QString("iptables-save > %1").arg(rulesetName)
+           << ""
+           << "exit 0 "
+           << "";
+
+    // Create the file
+    filename = createFile(Install::TOOLS_DIR , filename, script, true);
+
+    return filename;
+}
+
+
+QString Install::createRestoreIptablesShellScript()
+{
+    qDebug("Install::createRestoreIptablesShellScript()");
+    QString filename = BootRulesetConfig::RESTORE_IPTABLES_CURRENT_RULES_SCRIPT;
+    QStringList script;
+    QString rulesetName = GenLib::cleanFileName(Install::TMP_DIR,
+                                                BootRulesetConfig::BOOT_INIT_D_RULESET);
+
+
+    script << "#!/bin/bash "
+           << "##################################"
+           << "# "
+           << QString("# %1").arg(GenLib::cleanFileName(Install::TOOLS_DIR, filename))
+           << "# "
+           << "# Created by qiptables install"
+           << "# "
+           << "##################################"
+           << ""
+           <<  ""
+           << GenLib::getGnuLicence().join("\n")
+           << ""
+           << QString("iptables-restore < %1").arg(rulesetName)
+           << ""
+           << "exit 0 "
+           << "";
+
+    // Create the file
+    filename = createFile(Install::TOOLS_DIR , filename, script, true);
+
+    return filename;
+
+}

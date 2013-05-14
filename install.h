@@ -33,7 +33,11 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #include <QTextStream>
 #include <QWidget>
 
+#include "bootrulesetconfig.h"
 #include "databasemanager.h"
+#include "genlib.h"
+
+
 
 class DatabaseManager;
 
@@ -54,6 +58,7 @@ public:
 
     static const QString INSTALL_DIR;
     static const QString TOOLS_DIR;
+    static const QString TMP_DIR;
 
     static const int IPTABLES_CHAIN_MAX_NAME_LENGTH;
     static const QString IPTABLES_CHAIN_NAME_PREFIX;
@@ -208,6 +213,30 @@ protected:
     \return shortname of active firewall ruleset
       ******************/
     QString createScriptGetFirewallName();
+
+    /**
+    \brief Create script to start firewall rules run during boot
+           from init.d
+
+    \return path and name of file created
+      ***********************/
+    QString createInitdShellScript();
+
+
+    /**
+    \brief Create script to save iptables using iptables-save
+
+    \return path and name of file created
+      ***********************/
+    QString createSaveIptablesShellScript();
+
+
+    /**
+    \brief Create script to restore iptables using iptables-restore
+
+    \return path and name of file created
+      ***********************/
+    QString createRestoreIptablesShellScript();
 
 private:
 

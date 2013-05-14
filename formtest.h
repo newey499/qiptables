@@ -36,6 +36,7 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #include <QStringList>
 #include <QWidget>
 
+#include "bootrulesetconfig.h"
 
 #include "qiptablesexception.h"
 #include "linuxuserid.h"
@@ -84,7 +85,10 @@ public:
 
 public slots:
 
-    virtual void slotBtnTest();
+    virtual void slotTest1();
+    virtual void slotTest2();
+    virtual void slotTest3();
+
     virtual void slotBtnRun();
     virtual void slotIptablesList();
     virtual void fillCbxRulesetNames();

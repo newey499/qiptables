@@ -70,7 +70,9 @@ SOURCES += main.cpp\
     threadiptableswrapper.cpp \
     menuaction.cpp \
 	dialogchkboxabstract.cpp \
-	dialogchkboxtemplate.cpp
+	dialogchkboxtemplate.cpp \
+    bootrulesetconfig.cpp \
+    qiptablesradiobutton.cpp
 
 
 HEADERS  += mainwindow.h \
@@ -103,7 +105,9 @@ HEADERS  += mainwindow.h \
     threadiptableswrapper.h \
     menuaction.h \
 	dialogchkboxabstract.h \
-	dialogchkboxtemplate.h
+	dialogchkboxtemplate.h \
+    bootrulesetconfig.h \
+    qiptablesradiobutton.h
 
 
 FORMS    += mainwindow.ui \

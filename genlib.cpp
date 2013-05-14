@@ -137,3 +137,15 @@ QStringList GenLib::getGnuLicence()
 
     return licence;
 }
+
+
+QString GenLib::cleanFileName(QString path, QString filename)
+{
+    QString fname = QString("%1%2%3").
+            arg(path).
+            arg(QDir::separator()).
+            arg(filename);
+
+    fname = QDir::cleanPath(fname);
+    return fname;
+}

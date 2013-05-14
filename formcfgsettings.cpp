@@ -41,6 +41,7 @@ FormCfgSettings::FormCfgSettings(QWidget *parent) :
 {
 
     ui->setupUi(this);
+    bootRulesetConfig = new BootRulesetConfig(this);
 
     ui->edtIptables->setReadOnly(true);
 
@@ -202,10 +203,9 @@ void FormCfgSettings::loadSettings()
     }
 
     ui->cbxBootMech->clear();
-    ui->cbxBootMech->addItem("Do not start at boot");
-    ui->cbxBootMech->addItem("DHCP Network start");
-    ui->cbxBootMech->addItem("init.d start");
+    ui->cbxBootMech->insertItems(0, bootRulesetConfig->getBootOptions());
     ui->cbxBootMech->setCurrentIndex(ui->cbxBootMech->findText(bootMechanism));
+
 }
 
 void FormCfgSettings::saveSettings()
@@ -227,9 +227,13 @@ void FormCfgSettings::saveSettings()
     if (qry.exec())
     {
         slotButtonStateDisabled();
+        bootRulesetConfig->setBootProcess(ui->cbxBootMech->currentIndex());
     }
     else
     {
         qDebug("Query error on sysconf update: [%s]", qry.lastError().text().toAscii().data());
     }
 }
+
+
+

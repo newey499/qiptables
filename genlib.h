@@ -3,6 +3,8 @@
 
 #include <QAction>
 #include <QApplication>
+#include <QDir>
+#include <QFile>
 #include <QList>
 #include <QMenu>
 #include <QObject>
@@ -91,12 +93,17 @@ public:
     static void clearAllFirewallRules();
 
     /**
-
     \brief Returns a QStringList containing the GNU licence
 
 
       *************************/
     static QStringList getGnuLicence();
+
+    /**
+    \brief Returns the canonical path to <filename>
+
+      ***********************/
+    static QString cleanFileName(QString path, QString filename);
 
 signals:
 

@@ -37,7 +37,7 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "install.h"
 #include "databasemanager.h"
-
+#include "bootrulesetconfig.h"
 
 namespace Ui {
 class FormCfgSettings;
@@ -99,10 +99,12 @@ public slots:
       *****************/
     virtual void slotButtonStateDisabled();
 
+
 protected:
 
     DatabaseManager *databaseManager;
     QSqlQuery qry;
+    QPointer<BootRulesetConfig> bootRulesetConfig;
 
     int id;
     QString shell;

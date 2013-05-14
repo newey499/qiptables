@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>505</width>
-    <height>299</height>
+    <height>410</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -91,13 +91,6 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QPushButton" name="btnTest">
-       <property name="text">
-        <string>Test</string>
-       </property>
-      </widget>
-     </item>
-     <item>
       <spacer name="horizontalSpacer_2">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -136,6 +129,44 @@
      </item>
     </layout>
    </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="QPushButton" name="btnTest1">
+       <property name="text">
+        <string>init.d</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnTest2">
+       <property name="text">
+        <string>DHCP</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnTest3">
+       <property name="text">
+        <string>No Boot</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
   </layout>
  </widget>
  <resources/>
@@ -147,8 +178,8 @@
    <slot>slotBtnRun()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>380</x>
-     <y>41</y>
+     <x>300</x>
+     <y>82</y>
     </hint>
     <hint type="destinationlabel">
      <x>199</x>
@@ -163,8 +194,8 @@
    <slot>slotBtnRun()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>217</x>
-     <y>43</y>
+     <x>215</x>
+     <y>80</y>
     </hint>
     <hint type="destinationlabel">
      <x>199</x>
@@ -173,14 +204,14 @@
    </hints>
   </connection>
   <connection>
-   <sender>btnTest</sender>
+   <sender>btnTest1</sender>
    <signal>clicked()</signal>
    <receiver>FormTest</receiver>
-   <slot>slotBtnTest()</slot>
+   <slot>slotTest1()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>33</x>
-     <y>330</y>
+     <x>44</x>
+     <y>364</y>
     </hint>
     <hint type="destinationlabel">
      <x>199</x>
@@ -195,8 +226,8 @@
    <slot>slotRunRuleset()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>408</x>
-     <y>307</y>
+     <x>470</x>
+     <y>294</y>
     </hint>
     <hint type="destinationlabel">
      <x>232</x>
@@ -211,12 +242,44 @@
    <slot>slotIptablesList()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>362</x>
-     <y>11</y>
+     <x>439</x>
+     <y>38</y>
     </hint>
     <hint type="destinationlabel">
      <x>241</x>
      <y>185</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTest2</sender>
+   <signal>clicked()</signal>
+   <receiver>FormTest</receiver>
+   <slot>slotTest2()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>133</x>
+     <y>352</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>252</x>
+     <y>204</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTest3</sender>
+   <signal>clicked()</signal>
+   <receiver>FormTest</receiver>
+   <slot>slotTest3()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>218</x>
+     <y>352</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>252</x>
+     <y>204</y>
     </hint>
    </hints>
   </connection>
@@ -226,5 +289,8 @@
   <slot>slotBtnRun()</slot>
   <slot>slotRunRuleset()</slot>
   <slot>slotIptablesList()</slot>
+  <slot>slotTest1()</slot>
+  <slot>slotTest2()</slot>
+  <slot>slotTest3()</slot>
  </slots>
 </ui>

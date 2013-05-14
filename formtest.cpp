@@ -68,29 +68,77 @@ FormTest::~FormTest()
 }
 
 
-void FormTest::slotBtnTest()
+void FormTest::slotTest1()
 {
     ui->plainTextEdit->clear();
-    //ui->plainTextEdit->appendPlainText("====================================");
-    //ui->plainTextEdit->appendPlainText("FormTest::slotBtnTest() : Start");
-    //ui->plainTextEdit->appendPlainText("====================================");
+    ui->plainTextEdit->appendPlainText("====================================");
+    ui->plainTextEdit->appendPlainText("FormTest::slotBtnTest1() : Start");
+    ui->plainTextEdit->appendPlainText("====================================");
+
+    // Test enable/disable ruleset;
+    BootRulesetConfig boot(this);
+
+    //ui->plainTextEdit->appendPlainText("BootRulesetConfig::BOOT_NONE");
+    //boot.setBootProcess(BootRulesetConfig::BOOT_NONE);
 
 
-    ui->plainTextEdit->appendPlainText("Test new 'never display again' dialog");
+    ui->plainTextEdit->appendPlainText("BootRulesetConfig::BOOT_INIT_D");
+    boot.setBootProcess(BootRulesetConfig::BOOT_INIT_D);
 
-    if (! dcb)
-    {
-        dcb = new DialogChkBoxTemplate(MainWindow::ORGANIZATION,
-                                       MainWindow::APPLICATION,
-                                       this);
-    }
+    ui->plainTextEdit->appendPlainText("start iptables via init.d enabled");
 
-    dcb->exec();
+    //ui->plainTextEdit->appendPlainText("BootRulesetConfig::BOOT_DHCP");
+    //boot.setBootProcess(BootRulesetConfig::BOOT_DHCP);
 
 
-    //ui->plainTextEdit->appendPlainText("====================================");
-    //ui->plainTextEdit->appendPlainText("FormTest::slotBtnTest() : End");
-    //ui->plainTextEdit->appendPlainText("====================================");
+    ui->plainTextEdit->appendPlainText("====================================");
+    ui->plainTextEdit->appendPlainText("FormTest::slotBtnTest1() : End");
+    ui->plainTextEdit->appendPlainText("====================================");
+
+}
+
+
+void FormTest::slotTest2()
+{
+    ui->plainTextEdit->clear();
+    ui->plainTextEdit->appendPlainText("====================================");
+    ui->plainTextEdit->appendPlainText("FormTest::slotBtnTest2() : Start");
+    ui->plainTextEdit->appendPlainText("====================================");
+
+    ui->plainTextEdit->appendPlainText("Does nothing - DHCP boot iptables not supported");
+
+    ui->plainTextEdit->appendPlainText("====================================");
+    ui->plainTextEdit->appendPlainText("FormTest::slotBtnTest2() : End");
+    ui->plainTextEdit->appendPlainText("====================================");
+
+}
+
+
+void FormTest::slotTest3()
+{
+    ui->plainTextEdit->clear();
+    ui->plainTextEdit->appendPlainText("====================================");
+    ui->plainTextEdit->appendPlainText("FormTest::slotBtnTest3() : Start");
+    ui->plainTextEdit->appendPlainText("====================================");
+
+    // Test enable/disable ruleset;
+    BootRulesetConfig boot(this);
+
+    ui->plainTextEdit->appendPlainText("BootRulesetConfig::BOOT_NONE");
+    boot.setBootProcess(BootRulesetConfig::BOOT_NONE);
+
+    ui->plainTextEdit->appendPlainText("start iptables at boot disabled");
+
+    //ui->plainTextEdit->appendPlainText("BootRulesetConfig::BOOT_INIT_D");
+    //boot.setBootProcess(BootRulesetConfig::BOOT_INIT_D);
+
+    //ui->plainTextEdit->appendPlainText("BootRulesetConfig::BOOT_DHCP");
+    //boot.setBootProcess(BootRulesetConfig::BOOT_DHCP);
+
+
+    ui->plainTextEdit->appendPlainText("====================================");
+    ui->plainTextEdit->appendPlainText("FormTest::slotBtnTest()3 : End");
+    ui->plainTextEdit->appendPlainText("====================================");
 
 }
 

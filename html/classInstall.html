@@ -110,6 +110,8 @@ Static Public Attributes</h2></td></tr>
 static const QString&#160;</td><td class="memItemRight" valign="bottom"><b>INSTALL_DIR</b> = QString(&quot;/etc/qiptables&quot;)</td></tr>
 <tr class="memitem:a10fb57ea3c78741012aa2c5874243df0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a10fb57ea3c78741012aa2c5874243df0"></a>
 static const QString&#160;</td><td class="memItemRight" valign="bottom"><b>TOOLS_DIR</b> = QString(&quot;/etc/qiptables/tools&quot;)</td></tr>
+<tr class="memitem:a5a1b35801a67df562f0f1dd37cafdd9d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5a1b35801a67df562f0f1dd37cafdd9d"></a>
+static const QString&#160;</td><td class="memItemRight" valign="bottom"><b>TMP_DIR</b> = QString(&quot;/etc/qiptables/tmp&quot;)</td></tr>
 <tr class="memitem:ae046ad45f32f6073e208022c5db86b4b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae046ad45f32f6073e208022c5db86b4b"></a>
 static const int&#160;</td><td class="memItemRight" valign="bottom"><b>IPTABLES_CHAIN_MAX_NAME_LENGTH</b> = 28</td></tr>
 <tr class="memitem:ae518034f82f26630b81548c8f443ad0a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae518034f82f26630b81548c8f443ad0a"></a>
@@ -147,6 +149,12 @@ Protected Member Functions</h2></td></tr>
 <tr class="memdesc:aa3296bb8022791c9bbbc5611f063e18d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create bash script to clear firewall rules using iptables.  <a href="#aa3296bb8022791c9bbbc5611f063e18d"></a><br/></td></tr>
 <tr class="memitem:a2e093e745442fe5311a0c035b969bc37"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstall.html#a2e093e745442fe5311a0c035b969bc37">createScriptGetFirewallName</a> ()</td></tr>
 <tr class="memdesc:a2e093e745442fe5311a0c035b969bc37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get short name of current firewall ruleset using iptables.  <a href="#a2e093e745442fe5311a0c035b969bc37"></a><br/></td></tr>
+<tr class="memitem:a1ccc37e67a834e87766c14ae3e7bb78c"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstall.html#a1ccc37e67a834e87766c14ae3e7bb78c">createInitdShellScript</a> ()</td></tr>
+<tr class="memdesc:a1ccc37e67a834e87766c14ae3e7bb78c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create script to start firewall rules run during boot from init.d.  <a href="#a1ccc37e67a834e87766c14ae3e7bb78c"></a><br/></td></tr>
+<tr class="memitem:aff6caf290a7a39c3a2e133305b38d94a"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstall.html#aff6caf290a7a39c3a2e133305b38d94a">createSaveIptablesShellScript</a> ()</td></tr>
+<tr class="memdesc:aff6caf290a7a39c3a2e133305b38d94a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create script to save iptables using iptables-save.  <a href="#aff6caf290a7a39c3a2e133305b38d94a"></a><br/></td></tr>
+<tr class="memitem:a6a21edc19c0918933d30a88e610845e8"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstall.html#a6a21edc19c0918933d30a88e610845e8">createRestoreIptablesShellScript</a> ()</td></tr>
+<tr class="memdesc:a6a21edc19c0918933d30a88e610845e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create script to restore iptables using iptables-restore.  <a href="#a6a21edc19c0918933d30a88e610845e8"></a><br/></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -301,6 +309,32 @@ QFile *&#160;</td><td class="memItemRight" valign="bottom"><b>file</b></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a1ccc37e67a834e87766c14ae3e7bb78c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString Install::createInitdShellScript </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create script to start firewall rules run during boot from init.d. </p>
+<dl class="section return"><dt>Returns</dt><dd>path and name of file created </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a442a9502aebecc903aeff91391864f2f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -405,6 +439,32 @@ QFile *&#160;</td><td class="memItemRight" valign="bottom"><b>file</b></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a6a21edc19c0918933d30a88e610845e8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString Install::createRestoreIptablesShellScript </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create script to restore iptables using iptables-restore. </p>
+<dl class="section return"><dt>Returns</dt><dd>path and name of file created </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a9b05fa7ab484796e18ba39ef806ee1cf"></a>
 <div class="memitem">
 <div class="memproto">
@@ -454,6 +514,32 @@ QFile *&#160;</td><td class="memItemRight" valign="bottom"><b>file</b></td></tr>
 
 <p>create initial rulesnippet rows </p>
 <dl class="section return"><dt>Returns</dt><dd>true if successful created else false </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aff6caf290a7a39c3a2e133305b38d94a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString Install::createSaveIptablesShellScript </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create script to save iptables using iptables-save. </p>
+<dl class="section return"><dt>Returns</dt><dd>path and name of file created </dd></dl>
 
 </div>
 </div>
@@ -681,7 +767,7 @@ QFile *&#160;</td><td class="memItemRight" valign="bottom"><b>file</b></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 11 2013 10:39:57 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 14 2013 17:57:28 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>
