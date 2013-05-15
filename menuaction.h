@@ -3,6 +3,15 @@
 
 #include <QAction>
 
+
+/**
+\file menuaction.h
+\class MenuAction
+
+\brief Adds a new signal to QAction which emits a pointer to the instance of
+the class
+
+***********/
 class MenuAction : public QAction
 {
     Q_OBJECT

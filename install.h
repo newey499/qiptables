@@ -28,7 +28,9 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <QDir>
 #include <QFile>
+#include <QPixmap>
 #include <QPointer>
+#include <QSplashScreen>
 #include <QStringList>
 #include <QTextStream>
 #include <QWidget>
@@ -62,6 +64,8 @@ public:
 
     static const int IPTABLES_CHAIN_MAX_NAME_LENGTH;
     static const QString IPTABLES_CHAIN_NAME_PREFIX;
+
+    static const QString NAT_SCRIPT_FILENAME;
 
     explicit Install(QObject *parent = 0);
     ~Install();
@@ -230,13 +234,20 @@ protected:
       ***********************/
     QString createSaveIptablesShellScript();
 
-
     /**
     \brief Create script to restore iptables using iptables-restore
 
     \return path and name of file created
       ***********************/
     QString createRestoreIptablesShellScript();
+
+    /**
+    \brief Turns Network Address Translation (NAT) on or off
+
+
+    \return path and name of file created
+      ***********************/
+    QString createNatScript();
 
 private:
 

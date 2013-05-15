@@ -41,6 +41,8 @@ const int Install::IPTABLES_CHAIN_MAX_NAME_LENGTH = 28;
 // Prefix used to help identify qiptables ruleset on iptables
 const QString Install::IPTABLES_CHAIN_NAME_PREFIX = QString("Q_");
 
+const QString Install::NAT_SCRIPT_FILENAME = QString("nat-on-off.sh");
+
 Install::Install(QObject *parent) :
     QObject(parent)
 {
@@ -686,6 +688,22 @@ bool Install::createRulesetSnippetRows()
                        "iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 6001  -j ACCEPT";
         insertRuleSnippetRow(snippetName, snippetList);
 
+
+        snippetName = "Turn NAT On";
+        snippetList.clear();
+        snippetList << "# Turn NAT On"
+                    << "/etc/qiptables/tools/nat-on-off.sh start"
+                    << "";
+        insertRuleSnippetRow(snippetName, snippetList);
+
+
+        snippetName = "Turn NAT Off";
+        snippetList.clear();
+        snippetList << "# Turn NAT Off"
+                    << "/etc/qiptables/tools/nat-on-off.sh stop"
+                    << "";
+        insertRuleSnippetRow(snippetName, snippetList);
+
     }
     return ret;
 }
@@ -700,6 +718,7 @@ bool Install::createShellScripts()
     createInitdShellScript();
     createSaveIptablesShellScript();
     createRestoreIptablesShellScript();
+    createNatScript();
 
     return result;
 }
@@ -887,6 +906,63 @@ QString Install::createRestoreIptablesShellScript()
            << GenLib::getGnuLicence().join("\n")
            << ""
            << QString("iptables-restore < %1").arg(rulesetName)
+           << ""
+           << "exit 0 "
+           << "";
+
+    // Create the file
+    filename = createFile(Install::TOOLS_DIR , filename, script, true);
+
+    return filename;
+
+}
+
+
+
+QString Install::createNatScript()
+{
+    qDebug("Install::createNatScript()");
+    QString filename = Install::NAT_SCRIPT_FILENAME ;
+    QStringList script;
+    QString rulesetName = GenLib::cleanFileName(Install::TOOLS_DIR,
+                                                filename);
+
+
+    script << "#!/bin/bash "
+           << "##################################"
+           << "# "
+           << QString("# %1").arg(GenLib::cleanFileName(Install::TOOLS_DIR, filename))
+           << "# "
+           << "# Created by qiptables install"
+           << "# "
+           << "##################################"
+           << ""
+           <<  ""
+           << GenLib::getGnuLicence().join("\n")
+           << ""
+           << "OP_CODE=\"$1\" "
+           << ""
+           << "   case \"$OP_CODE\" in "
+           << ""
+           << "       start|on) "
+           << ""
+           << "           # Turn NAT on "
+           << "           echo 1 > /proc/sys/net/ipv4/ip_forward "
+           << "           ;; "
+           << ""
+           << "       stop|off) "
+           << ""
+           << "           # Turn NAT off "
+           << "           echo 0 > /proc/sys/net/ipv4/ip_forward "
+           << "           ;; "
+           << ""
+           << "       *) "
+           << "           echo \"Usage: $0 {start|on|stop|off\" "
+           << "           echo \"Error - OP_CODE Passed as first argument = [$OP_CODE]\" "
+           << "           exit 1 "
+           << "           ;; "
+           << "   esac "
+           << ""
            << ""
            << "exit 0 "
            << "";

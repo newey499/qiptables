@@ -69,8 +69,8 @@ SOURCES += main.cpp\
     threadiptablesworkersubclass.cpp \
     threadiptableswrapper.cpp \
     menuaction.cpp \
-	dialogchkboxabstract.cpp \
-	dialogchkboxtemplate.cpp \
+    dialogchkboxabstract.cpp \
+    dialogchkboxtemplate.cpp \
     bootrulesetconfig.cpp \
     qiptablesradiobutton.cpp
 
@@ -104,8 +104,8 @@ HEADERS  += mainwindow.h \
     threadiptablesworkersubclass.h \
     threadiptableswrapper.h \
     menuaction.h \
-	dialogchkboxabstract.h \
-	dialogchkboxtemplate.h \
+    dialogchkboxabstract.h \
+    dialogchkboxtemplate.h \
     bootrulesetconfig.h \
     qiptablesradiobutton.h
 

@@ -1,5 +1,10 @@
 #include "menuaction.h"
 
+/**
+\file menuaction.cpp
+
+***********/
+
 MenuAction::MenuAction(QObject *parent) :
     QAction(parent)
 {
