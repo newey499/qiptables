@@ -30,12 +30,15 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
+
+
 #include "rulesnippetssqltablemodel.h"
 
 RuleSnippetsSqlTableModel::RuleSnippetsSqlTableModel(QObject *parent) :
     QSqlTableModel(parent)
 {
     readOnly = false;
+    connectNameUpperCaseSlot();
 }
 
 RuleSnippetsSqlTableModel::RuleSnippetsSqlTableModel(bool readOnly, QObject *parent) :
@@ -53,8 +56,20 @@ RuleSnippetsSqlTableModel::RuleSnippetsSqlTableModel(bool readOnly, QObject *par
         connect(this, SIGNAL(beforeDelete(int)),
                 this, SLOT(dropChanges()) );
     }
+    else
+    {
+        connectNameUpperCaseSlot();
+    }
 }
 
+
+void RuleSnippetsSqlTableModel::connectNameUpperCaseSlot()
+{
+    connect(this, SIGNAL(beforeInsert(QSqlRecord&)),
+            this, SLOT(setNameUpperCase(QSqlRecord&)));
+    connect(this, SIGNAL(beforeUpdate(int, QSqlRecord&)),
+            this, SLOT(setNameUpperCaseUpdate(int, QSqlRecord&)));
+}
 
 
 bool RuleSnippetsSqlTableModel::updateRowInTable(int row, const QSqlRecord &values)
@@ -67,3 +82,17 @@ void RuleSnippetsSqlTableModel::dropChanges()
 {
     //revertAll();
 }
+
+void RuleSnippetsSqlTableModel::setNameUpperCaseUpdate(int row, QSqlRecord &record)
+{
+    row = row; // suppress compiler warning
+    setNameUpperCase(record);
+}
+
+void RuleSnippetsSqlTableModel::setNameUpperCase(QSqlRecord &record)
+{
+    qDebug("RuleSnippetsSqlTableModel::setNameUpperCase(QSqlRecord &record)");
+    QString name = record.value("name").toString();
+    record.setValue("nameupper", QVariant(name.toUpper()));
+}
+

@@ -28,6 +28,8 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #define RULESETSQLTABLEMODEL_H
 
 #include <QSqlTableModel>
+#include <QSqlRecord>
+#include <QVariant>
 
 /**
  \file rulesetsqltablemodel.h
@@ -58,6 +60,9 @@ public:
 signals:
 
 public slots:
+
+    virtual void setNameUpperCase(QSqlRecord &record);
+    virtual void setNameUpperCaseUpdate(int row, QSqlRecord &record);
 
 protected:
 

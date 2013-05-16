@@ -305,6 +305,7 @@ bool Install::createRulesetTable()
                                  "("
                                  " id integer primary key not null, "
                                  " name         varchar(100) unique not null, "
+                                 " nameupper    varchar(100) unique not null, "
                                  " shortname    varchar(%2) unique not null, "
                                  " rules        text not null, "
                                  " foreign key(name) references %3(name) "
@@ -344,13 +345,14 @@ bool Install::insertRulesetRow(QString rulesName, QStringList rulesList)
         QString shortName = GenLib::getRulesetShortName(rulesName);
         QSqlQuery query;
         QString qryMsg = QString(" insert into %1 "
-                                 "   (name, shortname, rules) "
+                                 "   (name, nameupper, shortname, rules) "
                                  " values "
-                                 "   ('%2', '%3', '%4') ");
+                                 "   ('%2', '%3', '%4', '%5') ");
 
         ret = query.exec(qryMsg.
                             arg("ruleset").
                             arg(rulesName).
+                            arg(rulesName.toUpper()).
                             arg(shortName).
                             arg(rulesText)
                          );
@@ -366,6 +368,7 @@ bool Install::insertRulesetRow(QString rulesName, QStringList rulesList)
         ret = query.exec(qryMsg.
                             arg("rulesetdef").
                             arg(rulesName).
+                            arg(rulesName.toUpper()).
                             arg(shortName).
                             arg(rulesText)
                         );
@@ -444,8 +447,9 @@ bool Install::createRulesetSnippetsTable()
         QString qryMsg = QString("create table %1 "
                                  "("
                                  " id integer primary key not null, "
-                                 " name     varchar(100) unique not null, "
-                                 " snippets	text not null "
+                                 " name      varchar(100) unique not null, "
+                                 " nameupper varchar(100) unique not null, "
+                                 " snippets	 text not null "
                                  ")");
         ret = query.exec(qryMsg.arg("rulesetsnippets"));
         ret = query.exec(qryMsg.arg("rulesetsnippetsdef"));
@@ -465,12 +469,13 @@ bool Install::insertRuleSnippetRow(QString snippetName, QStringList snippetList)
     {
         snippetText = snippetList.join("\n");
         qryMsg = QString(" insert into %1 "
-                         "   (name, snippets) "
+                         "   (name, nameupper, snippets) "
                          " values "
-                         "   ('%2', '%3') ");
+                         "   ('%2', '%3', '%4') ");
         ret = query.exec(qryMsg.
                             arg("rulesetsnippets").
                             arg(snippetName).
+                            arg(snippetName.toUpper()).
                             arg(snippetText)
                          );
         if (! ret)
@@ -483,6 +488,7 @@ bool Install::insertRuleSnippetRow(QString snippetName, QStringList snippetList)
         ret = query.exec(qryMsg.
                             arg("rulesetsnippetsdef").
                             arg(snippetName).
+                            arg(snippetName.toUpper()).
                             arg(snippetText)
                         );
         if (! ret)

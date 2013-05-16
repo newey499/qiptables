@@ -55,8 +55,8 @@ FormCfgRuleset::FormCfgRuleset(QWidget *parent) :
     connect(proxyModel, SIGNAL(rowsAboutToBeInserted(const QModelIndex &, int, int)),
             this, SLOT(slotRowsAboutToBeInserted(const QModelIndex &, int, int)));
 
-    model->setSort(1, Qt::AscendingOrder); // Sort by ruleset Name
-
+    model->setSort(2, Qt::AscendingOrder); // Sort by upper case ruleset Name
+    proxyModel->setSortCaseSensitivity(Qt::CaseInsensitive);
 
     model->setHeaderData(0, Qt::Horizontal, tr("Id"));
     model->setHeaderData(1, Qt::Horizontal, tr("Ruleset Name"));
@@ -67,8 +67,10 @@ FormCfgRuleset::FormCfgRuleset(QWidget *parent) :
     ui->tblRuleset->setModel(proxyModel);
 
     ui->tblRuleset->hideColumn(0); // don't show the ID
-    ui->tblRuleset->hideColumn(2); // don't show the internal Ruleset name
-    ui->tblRuleset->hideColumn(3); // don't show the Ruleset - displayed
+    // Show the ruleset name
+    ui->tblRuleset->hideColumn(2); // don't show the upper case name
+    ui->tblRuleset->hideColumn(3); // don't show the internal Ruleset name
+    ui->tblRuleset->hideColumn(4); // don't show the Ruleset - displayed
                                    // in text edit box
 
 

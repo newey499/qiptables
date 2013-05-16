@@ -108,7 +108,9 @@ void FormCfgRuleSnippets::commonConstructor()
     proxyModel = new QSortFilterProxyModel(this);
     proxyModel->setSourceModel(model);
 
-    model->setSort(1, Qt::AscendingOrder); // Sort by rulesnippet Name
+    model->setSort(2, Qt::AscendingOrder); // Sort by upper case rulesnippet Name
+    proxyModel->setSortCaseSensitivity(Qt::CaseInsensitive);
+
     model->setHeaderData(0, Qt::Horizontal, tr("Id"));
     model->setHeaderData(1, Qt::Horizontal, tr("Snippet Name"));
     model->setHeaderData(2, Qt::Horizontal, tr("Snippet"));
@@ -120,8 +122,10 @@ void FormCfgRuleSnippets::commonConstructor()
             this, SLOT(slotRowsAboutToBeInserted(const QModelIndex &, int, int)));
 
     ui->tblRuleSnippets->hideColumn(0); // don't show the ID
-    ui->tblRuleSnippets->hideColumn(2); // don't show the Ruleset Snippets - displayed
-                                   // in text edit box
+
+    ui->tblRuleSnippets->hideColumn(2); // don't show the upper case snippet name
+    ui->tblRuleSnippets->hideColumn(3); // don't show the Ruleset Snippets - displayed
+                                        // in text edit box
     ui->tblRuleSnippets->selectRow(0);  // select first row
 
     connect(ui->tblRuleSnippets, SIGNAL(rowChanged(QModelIndex)),

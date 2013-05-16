@@ -27,6 +27,8 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #define RULESNIPPETSSQLTABLEMODEL_H
 
 #include <QSqlTableModel>
+#include <QSqlRecord>
+#include <QVariant>
 
 
 /**
@@ -69,6 +71,11 @@ public slots:
     \brief redundant debug code - does nothing except issue a qDebug message
       ******************/
     virtual void dropChanges();
+
+    virtual void connectNameUpperCaseSlot();
+
+    virtual void setNameUpperCase(QSqlRecord &record);
+    virtual void setNameUpperCaseUpdate(int row, QSqlRecord &record);
 
 protected:
 

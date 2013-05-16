@@ -35,9 +35,27 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 RulesetSqlTableModel::RulesetSqlTableModel(QObject *parent) :
     QSqlTableModel(parent)
 {
+    connect(this, SIGNAL(beforeInsert(QSqlRecord &)),
+            this, SLOT(setNameUpperCase(QSqlRecord &)));
+    connect(this, SIGNAL(beforeUpdate(int, QSqlRecord &)),
+            this, SLOT(setNameUpperCaseUpdate(int, QSqlRecord &)));
 }
 
 bool RulesetSqlTableModel::updateRowInTable(int row, const QSqlRecord &values)
 {
     return QSqlTableModel::updateRowInTable(row, values);
 }
+
+void RulesetSqlTableModel::setNameUpperCaseUpdate(int row, QSqlRecord &record)
+{
+    row = row; // suppress compiler warning
+    setNameUpperCase(record);
+}
+
+void RulesetSqlTableModel::setNameUpperCase(QSqlRecord &record)
+{
+    qDebug("RulesetSqlTableModel::setNameUpperCase(QSqlRecord &record)");
+    QString name = record.value("name").toString();
+    record.setValue("nameupper", QVariant(name.toUpper()));
+}
+
