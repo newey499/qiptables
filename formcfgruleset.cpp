@@ -48,14 +48,24 @@ FormCfgRuleset::FormCfgRuleset(QWidget *parent) :
     model = new RulesetSqlTableModel(this);
     model->setTable("ruleset");
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
-    //model->setSort(1, Qt::AscendingOrder); // Sort by ruleset Name
+
+    proxyModel = new QSortFilterProxyModel(this);
+    proxyModel->setSourceModel(model);
+
+    connect(proxyModel, SIGNAL(rowsAboutToBeInserted(const QModelIndex &, int, int)),
+            this, SLOT(slotRowsAboutToBeInserted(const QModelIndex &, int, int)));
+
+    model->setSort(1, Qt::AscendingOrder); // Sort by ruleset Name
+
+
     model->setHeaderData(0, Qt::Horizontal, tr("Id"));
     model->setHeaderData(1, Qt::Horizontal, tr("Ruleset Name"));
     model->setHeaderData(2, Qt::Horizontal, tr("Internal Name"));
     model->setHeaderData(3, Qt::Horizontal, tr("Ruleset"));
     model->select();
 
-    ui->tblRuleset->setModel(model);
+    ui->tblRuleset->setModel(proxyModel);
+
     ui->tblRuleset->hideColumn(0); // don't show the ID
     ui->tblRuleset->hideColumn(2); // don't show the internal Ruleset name
     ui->tblRuleset->hideColumn(3); // don't show the Ruleset - displayed
@@ -106,7 +116,16 @@ void FormCfgRuleset::slotBtnAdd()
     if (dlg.exec())
     {
         getModel()->submitAll();
-        ui->tblRuleset->selectRow(model->rowCount() - 1);
+        QModelIndex start = getModel()->index(0,1);
+        QModelIndexList indexList = getModel()->match(start, Qt::DisplayRole, getUpdatedName());
+        //ui->tblRuleset->selectRow(model->rowCount() - 1);
+        if (indexList.count() > 0)
+        {
+            ui->tblRuleset->selectRow(indexList[0].row());
+            qDebug("name [%s] row [%d]",
+                   getUpdatedName().toString().toAscii().data(),
+                   indexList[0].row());
+        }
     }
     else
     {
@@ -119,14 +138,23 @@ void FormCfgRuleset::slotBtnEdit()
     FormDlgRuleset dlg(REC_EDIT, this);
     dlg.setWindowTitle("Edit this Ruleset");
     dlg.setModal(true);
-    int currentRow = getView()->currentRow();
     if (dlg.exec())
     {
         getModel()->submitAll();
+        QModelIndex start = getModel()->index(0,1);
+        QModelIndexList indexList = getModel()->match(start, Qt::DisplayRole, getUpdatedName());
+        if (indexList.count() > 0)
+        {
+            ui->tblRuleset->selectRow(indexList[0].row());
+            qDebug("name [%s] row [%d]",
+                   getUpdatedName().toString().toAscii().data(),
+                   indexList[0].row());
+        }
+
         QString rules = getColumnData("rules").toString();
         ui->edtRuleSet->clear();
         ui->edtRuleSet->setPlainText(rules);
-        ui->tblRuleset->selectRow(currentRow);
+        //ui->tblRuleset->selectRow(currentRow);
     }
     else
     {
@@ -249,4 +277,23 @@ void FormCfgRuleset::slotAddSnippet(bool useInclude, int id, QString name, QStri
 
 }
 
+
+void FormCfgRuleset::slotRowsAboutToBeInserted(const QModelIndex &index, int start, int end)
+{
+    int proxyRow = proxyModel->mapFromSource(index).row();
+    qDebug("slotRowsAboutToBeInserted start [%d] end [%d] row [%d] proxyRow [%d]",
+           start, end, index.row(), proxyRow);
+
+}
+
+
+QVariant FormCfgRuleset::getUpdatedName()
+{
+    return newName;
+}
+
+void FormCfgRuleset::setUpdatedName(QVariant name)
+{
+    newName = name;
+}
 

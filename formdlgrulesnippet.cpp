@@ -72,13 +72,10 @@ FormDlgRuleSnippet::FormDlgRuleSnippet(int opCode, FormCfgRuleSnippets *parent) 
         ui->edtRuleSnippet->appendPlainText(snippets);
     }
 
-
-
     connect(ui->edtRuleSnippetName, SIGNAL(textEdited(QString)),
             this, SLOT(dataChanged()));
     connect(ui->edtRuleSnippet, SIGNAL(textChanged()),
             this, SLOT(dataChanged()));
-
 
 }
 
@@ -129,7 +126,7 @@ bool FormDlgRuleSnippet::validateData()
                 arg((result ? "" : "\n"));
         result = false;
     }
-    else if (snippetName.trimmed().size() <= 2)
+    else if (snippetName.trimmed().size() < 2)
     {
         errMsg = errMsg.append("%1Snippet Name must be at least two characters"
                       " - not including leading and trailing spaces.").
@@ -262,7 +259,7 @@ bool FormDlgRuleSnippet::writeRow()
         // insert new row at end of model
         if (formCfgRuleSnippets->getModel()->insertRecord(-1, rec))
         {
-            formCfgRuleSnippets->getModel()->submitAll();
+            this->formCfgRuleSnippets->setUpdatedName(ui->edtRuleSnippetName->text());
             result = true;
         }
         else
@@ -281,7 +278,7 @@ bool FormDlgRuleSnippet::writeRow()
         // update row
         if (formCfgRuleSnippets->getModel()->setRecord(currentRow, rec))
         {
-            formCfgRuleSnippets->getModel()->submitAll();
+            this->formCfgRuleSnippets->setUpdatedName(ui->edtRuleSnippetName->text());
             result = true;
         }
         else

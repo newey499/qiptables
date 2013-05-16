@@ -53,13 +53,6 @@ int RulesetTableView::currentRow()
     return index.row();
 }
 
-void RulesetTableView::currentChanged(const QModelIndex &current,
-                                      const QModelIndex &previous)
-{
-    QTableView::currentChanged(current, previous);
-    selectRow(current.row());
-    emit rowChanged(current);
-}
 
 /***********
 void RulesetTableView::show()
@@ -68,3 +61,19 @@ void RulesetTableView::show()
     selectRow(currentRow());
 }
 *************/
+
+
+void RulesetTableView::currentChanged(const QModelIndex &current,
+                                      const QModelIndex &previous)
+{
+    QTableView::currentChanged(current, previous);
+    selectRow(current.row());
+    emit rowChanged(current);
+
+    qDebug("RulesetTableView::currentChanged  Row: current [%d] previous [%d]",
+           current.row(), previous.row());
+}
+
+
+
+

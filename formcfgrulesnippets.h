@@ -31,6 +31,7 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #include <QMessageBox>
 #include <QPointer>
 #include <QSettings>
+#include <QSortFilterProxyModel>
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QSqlRecord>
@@ -125,6 +126,11 @@ public:
       ************************/
     virtual void displayMsgBox(QString title, QString snippet, QStringList rulesets);
 
+
+    virtual QVariant getUpdatedName();
+    virtual void setUpdatedName(QVariant name);
+    QVariant newName;
+
 signals:
 
     /**
@@ -198,9 +204,14 @@ public slots:
       *********************/
     virtual void enableContextMenu(bool enable);
 
+
+    virtual void slotRowsAboutToBeInserted(const QModelIndex &index, int start, int end);
+
 protected:
 
     QPointer<RuleSnippetsSqlTableModel> model;
+    QPointer<QSortFilterProxyModel> proxyModel;
+
     bool popupSnippetSelect;
     QString organization;
     QString application;

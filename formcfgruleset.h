@@ -31,6 +31,7 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #include <QHideEvent>
 #include <QPointer>
 #include <QShowEvent>
+#include <QSortFilterProxyModel>
 #include <QSqlRecord>
 #include <QSqlTableModel>
 #include <QTableView>
@@ -91,6 +92,11 @@ public:
       *****************/
     virtual RulesetSqlTableModel *getModel() { return model; }
 
+
+    virtual QVariant getUpdatedName();
+    virtual void setUpdatedName(QVariant name);
+    QVariant newName;
+
 public slots:
 
     /**
@@ -134,6 +140,10 @@ public slots:
       ***************************/
     virtual void slotAddSnippet(bool useInclude, int id, QString name, QString snippets);
 
+
+
+    virtual void slotRowsAboutToBeInserted(const QModelIndex &index, int start, int end);
+
 signals:
 
 
@@ -141,6 +151,7 @@ signals:
 protected:
 
     QPointer<RulesetSqlTableModel> model;
+    QPointer<QSortFilterProxyModel> proxyModel;
 
     /**
       \brief Checks if current ruleset is the default ruleset as held on

@@ -28,6 +28,8 @@ along with Qiptables.  If not, see <http://www.gnu.org/licenses/>.
 #define RULESETTABLEVIEW_H
 
 #include <QHeaderView>
+#include <QModelIndex>
+#include <QModelIndexList>
 #include <QTableView>
 
 /**
@@ -76,6 +78,10 @@ public slots:
       ***************/
     virtual void currentChanged(const QModelIndex &current,
                                 const QModelIndex &previous );
+
+
+protected:
+
 
 };
 

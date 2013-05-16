@@ -104,14 +104,20 @@ void FormCfgRuleSnippets::commonConstructor()
     model = new RuleSnippetsSqlTableModel(this);
     model->setTable("rulesetsnippets");
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
-    // does sorting work??
-    //model->setSort(1, Qt::AscendingOrder); // Sort by ruleset Name
+
+    proxyModel = new QSortFilterProxyModel(this);
+    proxyModel->setSourceModel(model);
+
+    model->setSort(1, Qt::AscendingOrder); // Sort by rulesnippet Name
     model->setHeaderData(0, Qt::Horizontal, tr("Id"));
     model->setHeaderData(1, Qt::Horizontal, tr("Snippet Name"));
     model->setHeaderData(2, Qt::Horizontal, tr("Snippet"));
 
     model->select();
-    ui->tblRuleSnippets->setModel(model);
+    ui->tblRuleSnippets->setModel(proxyModel);
+
+    connect(proxyModel, SIGNAL(rowsAboutToBeInserted(const QModelIndex &, int, int)),
+            this, SLOT(slotRowsAboutToBeInserted(const QModelIndex &, int, int)));
 
     ui->tblRuleSnippets->hideColumn(0); // don't show the ID
     ui->tblRuleSnippets->hideColumn(2); // don't show the Ruleset Snippets - displayed
@@ -173,16 +179,25 @@ void FormCfgRuleSnippets::slotBtnAdd()
     /*
     Don't allow snippet name to be added if the snippet name already exists
     **************/
-    dlg.setWindowTitle("Add a Ruleset");
+    dlg.setWindowTitle("Add a Rulesnippet");
     dlg.setModal(true);
     if (dlg.exec())
     {
-        //getModel()->submitAll();
-        ui->tblRuleSnippets->selectRow(model->rowCount() - 1);
+        getModel()->submitAll();
+        //ui->tblRuleSnippets->selectRow(model->rowCount() - 1);
+        QModelIndex start = getModel()->index(0,1);
+        QModelIndexList indexList = getModel()->match(start, Qt::DisplayRole, getUpdatedName());
+        if (indexList.count() > 0)
+        {
+            ui->tblRuleSnippets->selectRow(indexList[0].row());
+            qDebug("name [%s] row [%d]",
+                   getUpdatedName().toString().toAscii().data(),
+                   indexList[0].row());
+        }
     }
     else
     {
-        //getModel()->revertAll();
+        getModel()->revertAll();
     }
 
 }
@@ -199,16 +214,24 @@ void FormCfgRuleSnippets::slotBtnEdit()
     {
         dlg.setSnippetNameReadOnly(true);
     }
-    dlg.setWindowTitle("Edit this Ruleset");
+    dlg.setWindowTitle("Edit this Rulesnippet");
     dlg.setModal(true);
-    int currentRow = getView()->currentRow();
     if (dlg.exec())
     {
         getModel()->submitAll();
+        QModelIndex start = getModel()->index(0,1);
+        QModelIndexList indexList = getModel()->match(start, Qt::DisplayRole, getUpdatedName());
+        if (indexList.count() > 0)
+        {
+            ui->tblRuleSnippets->selectRow(indexList[0].row());
+            qDebug("name [%s] row [%d]",
+                   getUpdatedName().toString().toAscii().data(),
+                   indexList[0].row());
+        }
+
         QString rules = getColumnData("rules").toString();
         ui->edtRuleSnippets->clear();
         ui->edtRuleSnippets->setPlainText(rules);
-        ui->tblRuleSnippets->selectRow(currentRow);
     }
     else
     {
@@ -341,4 +364,24 @@ void FormCfgRuleSnippets::displayMsgBox(QString title, QString snippet, QStringL
     tmp = tmp.append("is included in the following rulesets.\n\n");
     message = message.prepend(tmp);
     QMessageBox::warning(this, title, message, QMessageBox::Ok);
+}
+
+
+QVariant FormCfgRuleSnippets::getUpdatedName()
+{
+    return newName;
+}
+
+void FormCfgRuleSnippets::setUpdatedName(QVariant name)
+{
+    newName = name;
+}
+
+
+void FormCfgRuleSnippets::slotRowsAboutToBeInserted(const QModelIndex &index, int start, int end)
+{
+    int proxyRow = proxyModel->mapFromSource(index).row();
+    qDebug("slotRowsAboutToBeInserted start [%d] end [%d] row [%d] proxyRow [%d]",
+           start, end, index.row(), proxyRow);
+
 }

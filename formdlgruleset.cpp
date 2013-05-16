@@ -197,7 +197,7 @@ bool FormDlgRuleset::validateData()
                 arg((result ? "" : "\n"));
         result = false;
     }
-    else if (rulesetName.trimmed().size() <= 2)
+    else if (rulesetName.trimmed().size() < 2)
     {
         errMsg = errMsg.append("%1Ruleset Name must be at least two characters"
                       " - not including leading and trailing spaces.").
@@ -328,15 +328,8 @@ bool FormDlgRuleset::writeRow()
         // insert new row at end of model
         if (formRuleset->getModel()->insertRecord(-1, rec))
         {
-            if (! formRuleset->getModel()->submitAll())
-            {
-                qDebug("1) Error writing new record [%s]",
-                    formRuleset->getModel()->lastError().text().toAscii().data());
-            }
-            else
-            {
-                result = true;
-            }
+            this->formRuleset->setUpdatedName(ui->edtRulesetName->text());
+            result = true;
         }
         else
         {
@@ -357,15 +350,8 @@ bool FormDlgRuleset::writeRow()
         // update row
         if (formRuleset->getModel()->setRecord(currentRow, rec))
         {
-            if (! formRuleset->getModel()->submitAll())
-            {
-                qDebug("3) Error writing new record [%s]",
-                    formRuleset->getModel()->lastError().text().toAscii().data());
-            }
-            else
-            {
-                result = true;
-            }
+            this->formRuleset->setUpdatedName(ui->edtRulesetName->text());
+            result = true;
         }
         else
         {
@@ -387,6 +373,7 @@ bool FormDlgRuleset::writeRow()
             // delete row
             if (formRuleset->getModel()->removeRow(currentRow))
             {
+                /****************
                 if (! formRuleset->getModel()->submitAll())
                 {
                     qDebug("5) Error writing new record [%s]",
@@ -396,6 +383,7 @@ bool FormDlgRuleset::writeRow()
                 {
                     result = true;
                 }
+                ***********************/
             }
         }
         else
