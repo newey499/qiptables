@@ -125,6 +125,7 @@ void FormCfgRuleset::slotBtnAdd()
             qDebug("name [%s] row [%d]",
                    getUpdatedName().toString().toAscii().data(),
                    indexList[0].row());
+
         }
     }
     else
