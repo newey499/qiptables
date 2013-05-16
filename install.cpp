@@ -41,7 +41,7 @@ const int Install::IPTABLES_CHAIN_MAX_NAME_LENGTH = 28;
 // Prefix used to help identify qiptables ruleset on iptables
 const QString Install::IPTABLES_CHAIN_NAME_PREFIX = QString("Q_");
 
-const QString Install::NAT_SCRIPT_FILENAME = QString("nat-on-off.sh");
+const QString Install::NAT_SCRIPT_FILENAME = QString("qiptables-nat-on-off.sh");
 
 Install::Install(QObject *parent) :
     QObject(parent)
@@ -692,7 +692,7 @@ bool Install::createRulesetSnippetRows()
         snippetName = "Turn NAT On";
         snippetList.clear();
         snippetList << "# Turn NAT On"
-                    << "/etc/qiptables/tools/nat-on-off.sh start"
+                    << "/etc/qiptables/tools/qiptables-nat-on-off.sh start"
                     << "";
         insertRuleSnippetRow(snippetName, snippetList);
 
@@ -700,7 +700,7 @@ bool Install::createRulesetSnippetRows()
         snippetName = "Turn NAT Off";
         snippetList.clear();
         snippetList << "# Turn NAT Off"
-                    << "/etc/qiptables/tools/nat-on-off.sh stop"
+                    << "/etc/qiptables/tools/qiptables-nat-on-off.sh stop"
                     << "";
         insertRuleSnippetRow(snippetName, snippetList);
 
