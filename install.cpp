@@ -41,7 +41,6 @@ const int Install::IPTABLES_CHAIN_MAX_NAME_LENGTH = 28;
 // Prefix used to help identify qiptables ruleset on iptables
 const QString Install::IPTABLES_CHAIN_NAME_PREFIX = QString("Q_");
 
-const QString Install::NAT_SCRIPT_FILENAME = QString("qiptables-nat-on-off.sh");
 
 Install::Install(QObject *parent) :
     QObject(parent)
@@ -92,6 +91,9 @@ QString Install::performInstall(bool forceInstall)
         dbFile.setPermissions(QFile::ReadOwner  | QFile::WriteOwner |
                               QFile::ReadGroup  | QFile::WriteGroup |
                               QFile::ReadOther  | QFile::WriteOther );
+
+
+        createShellScripts();
     }
 
     return msg;
@@ -106,8 +108,6 @@ bool Install::createQiptablesDir()
     createDir(Install::INSTALL_DIR);
     createDir(QString("%1/%2").arg(Install::INSTALL_DIR).arg("tmp"));
     createDir(QString("%1/%2").arg(Install::INSTALL_DIR).arg("tools"));
-
-    createShellScripts();
 
     return result;
 }
@@ -689,39 +689,11 @@ bool Install::createRulesetSnippetRows()
         insertRuleSnippetRow(snippetName, snippetList);
 
 
-        snippetName = "Turn NAT On";
-        snippetList.clear();
-        snippetList << "# Turn NAT On"
-                    << "/etc/qiptables/tools/qiptables-nat-on-off.sh start"
-                    << "";
-        insertRuleSnippetRow(snippetName, snippetList);
-
-
-        snippetName = "Turn NAT Off";
-        snippetList.clear();
-        snippetList << "# Turn NAT Off"
-                    << "/etc/qiptables/tools/qiptables-nat-on-off.sh stop"
-                    << "";
-        insertRuleSnippetRow(snippetName, snippetList);
 
     }
     return ret;
 }
 
-bool Install::createShellScripts()
-{
-    bool result = true;
-    BootRulesetConfig bootScripts(this);
-
-    createScriptClearFirewall();
-    createScriptGetFirewallName();
-    createInitdShellScript();
-    createSaveIptablesShellScript();
-    createRestoreIptablesShellScript();
-    createNatScript();
-
-    return result;
-}
 
 QString Install::createScriptClearFirewall()
 {
@@ -773,6 +745,66 @@ QString Install::createScriptClearFirewall()
     filename = createFile(Install::TOOLS_DIR,  filename, script, true);
 
     return filename;
+}
+
+
+QString Install::createScriptSetIptablesKernelDefaults()
+{
+    QStringList script;
+    QString filename = "qiptables-restore-kernel-setting-defaults.sh";
+
+    script  << "#!/bin/bash"
+            << ""
+            << GenLib::getGnuLicence().join("\n")
+            << ""
+            << "################################################"
+            << "#"
+            << QString("# ").append(filename)
+            << "#"
+            << "# created by qiptables install program"
+            << "#"
+            << "#"
+            << "################################################"
+            << ""
+            << ""
+            << "echo \"Restoring iptables kernel setting defaults...\""
+            << ""
+            << "echo \"Enable broadcast echo Protection\" "
+            << "echo 1 > /proc/sys/net/ipv4/icmp_echo_ignore_broadcasts"
+            << ""
+            << "echo \"Disable Source Routed Packets\" "
+            << "echo 0 > /proc/sys/net/ipv4/conf/all/accept_source_route"
+            << ""
+            << "echo \"Enable TCP SYN Cookie Protection\" "
+            << "echo 1 > /proc/sys/net/ipv4/tcp_syncookies"
+            << ""
+            << "echo \"Disable ICMP Redirect Acceptance\" "
+            << "echo 0 > /proc/sys/net/ipv4/conf/all/accept_redirects"
+            << ""
+            << "echo \"Don't send Redirect Messages\" "
+            << "echo 0 > /proc/sys/net/ipv4/conf/default/send_redirects"
+            << ""
+            << "echo \"Drop Spoofed Packets coming in on an interface where responses\" "
+            << "echo \"would result in the reply going out a different interface.\" "
+            << "echo 1 > /proc/sys/net/ipv4/conf/default/rp_filter"
+            << ""
+            << " "
+            << " ";
+
+    // Create the file
+    filename = createFile(Install::TOOLS_DIR,  filename, script, true);
+
+
+
+    QString tmpSnippetName = "Restore iptables kernel settings defaults";
+    QStringList snippetList;
+    snippetList << QString("# %1").arg(tmpSnippetName)
+                << filename
+                << "";
+    insertRuleSnippetRow(tmpSnippetName, snippetList);
+
+    return filename;
+
 }
 
 
@@ -918,15 +950,25 @@ QString Install::createRestoreIptablesShellScript()
 }
 
 
-
-QString Install::createNatScript()
+QString Install::createKernelSwitchScript(QString scriptFileName,
+                                          QString kernelFileName,
+                                          QString snippetName,
+                                          QStringList message)
 {
-    qDebug("Install::createNatScript()");
-    QString filename = Install::NAT_SCRIPT_FILENAME ;
+    QString filename = scriptFileName;
     QStringList script;
     QString rulesetName = GenLib::cleanFileName(Install::TOOLS_DIR,
                                                 filename);
+    QString msg("");
+    QString tmp;
 
+    if (message.count() > 0)
+    {
+        for (int i = 0; i < message.count(); i++)
+        {
+            message[i] = QString("# %1").arg(message.at(i));
+        }
+    }
 
     script << "#!/bin/bash "
            << "##################################"
@@ -935,6 +977,7 @@ QString Install::createNatScript()
            << "# "
            << "# Created by qiptables install"
            << "# "
+           << ((message.count() > 0) ? message.join("\n") : "# ")
            << "##################################"
            << ""
            <<  ""
@@ -946,14 +989,14 @@ QString Install::createNatScript()
            << ""
            << "       start|on) "
            << ""
-           << "           # Turn NAT on "
-           << "           echo 1 > /proc/sys/net/ipv4/ip_forward "
+           << QString("           # Enable %1 ").arg(snippetName)
+           << QString("           echo 1 > %1 ").arg(kernelFileName)
            << "           ;; "
            << ""
            << "       stop|off) "
            << ""
-           << "           # Turn NAT off "
-           << "           echo 0 > /proc/sys/net/ipv4/ip_forward "
+           << QString("           # Disable %1 ").arg(snippetName)
+           << QString("           echo 0 > %1 ").arg(kernelFileName)
            << "           ;; "
            << ""
            << "       *) "
@@ -970,6 +1013,117 @@ QString Install::createNatScript()
     // Create the file
     filename = createFile(Install::TOOLS_DIR , filename, script, true);
 
-    return filename;
+    QStringList snippetList;
+    QString tmpSnippetName;
 
+    tmpSnippetName = QString("%1 - Enable").arg(snippetName);
+    snippetList.clear();
+    snippetList << QString("# %1").arg(tmpSnippetName)
+                << QString("%1 start").arg(filename)
+                << "";
+    insertRuleSnippetRow(tmpSnippetName, snippetList);
+
+
+    tmpSnippetName = QString("%1 - Disable").arg(snippetName);
+    snippetList.clear();
+    snippetList << QString("# %1").arg(tmpSnippetName)
+                << QString("%1 stop").arg(filename)
+                << "";
+    insertRuleSnippetRow(tmpSnippetName, snippetList);
+
+    return filename;
+}
+
+
+
+
+QString Install::createNatScript()
+{
+    QString filename = createKernelSwitchScript("qiptables-nat-on-off.sh",
+                                                "/proc/sys/net/ipv4/ip_forward",
+                                                "NAT");
+    return filename;
+}
+
+
+QString Install::createBroadcastScript()
+{
+    QString filename = createKernelSwitchScript("qiptables-broadcast-protection-on-off.sh",
+                                                "/proc/sys/net/ipv4/icmp_echo_ignore_broadcasts",
+                                                "Broadcast echo protection");
+    return filename;
+}
+
+
+QString Install::createSourceRoutedPacketsScript()
+{
+    QString filename = createKernelSwitchScript("qiptables-source-routed-packet-protection-on-off.sh",
+                                                "/proc/sys/net/ipv4/conf/all/accept_source_route",
+                                                "Source Routed Packets protection");
+    return filename;
+}
+
+
+QString Install::createTcpSynCookieScript()
+{
+    QString filename = createKernelSwitchScript("qiptables-tcp-syn-cookie-protection-on-off.sh",
+                                                "/proc/sys/net/ipv4/tcp_syncookies",
+                                                "TCP SYN Cookie Protection");
+    return filename;
+}
+
+
+QString Install::createIcmpRedirectAcceptanceScript()
+{
+    QString filename = createKernelSwitchScript("qiptables-icp-redirect-acceptance-on-off.sh",
+                                                "/proc/sys/net/ipv4/conf/all/accept_redirects",
+                                                "ICMP Redirect Acceptance");
+    return filename;
+}
+
+
+
+QString Install::createSendRedirectMessagesScript()
+{
+    QString filename = createKernelSwitchScript("qiptables-send-redirect-messages-on-off.sh",
+                                                "/proc/sys/net/ipv4/conf/default/send_redirects",
+                                                "Send Redirect messages");
+    return filename;
+}
+
+
+QString Install::createDropSpoofedPacketsScript()
+{
+    QStringList message;
+    message.append("Drop Spoofed Packets coming in on an interface where responses");
+    message.append("would result in the reply going out a different interface.");
+
+    QString filename = createKernelSwitchScript("qiptables-drop-spoofed-packets-on-off.sh",
+                                                "/proc/sys/net/ipv4/conf/default/rp_filter",
+                                                "Drop spoofed Packets",
+                                                message);
+    return filename;
+}
+
+
+bool Install::createShellScripts()
+{
+    bool result = true;
+    BootRulesetConfig bootScripts(this);
+
+    createScriptClearFirewall();
+    createScriptGetFirewallName();
+    createInitdShellScript();
+    createSaveIptablesShellScript();
+    createRestoreIptablesShellScript();
+    createNatScript();
+    createBroadcastScript();
+    createSourceRoutedPacketsScript();
+    createTcpSynCookieScript();
+    createIcmpRedirectAcceptanceScript();
+    createSendRedirectMessagesScript();
+    createDropSpoofedPacketsScript();
+    createScriptSetIptablesKernelDefaults();
+
+    return result;
 }

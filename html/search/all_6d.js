@@ -6,5 +6,6 @@ var searchData=
   ['mainwindow_2eh',['mainwindow.h',['../mainwindow_8h.html',1,'']]],
   ['menuaction',['MenuAction',['../classMenuAction.html',1,'']]],
   ['menuaction_2ecpp',['menuaction.cpp',['../menuaction_8cpp.html',1,'']]],
+  ['menuaction_2eh',['menuaction.h',['../menuaction_8h.html',1,'']]],
   ['menuitemselected',['menuItemSelected',['../classRuleSnippetsTableView.html#a7adeb5685e05b5b00c5cda7551507227',1,'RuleSnippetsTableView']]]
 ];

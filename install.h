@@ -65,8 +65,6 @@ public:
     static const int IPTABLES_CHAIN_MAX_NAME_LENGTH;
     static const QString IPTABLES_CHAIN_NAME_PREFIX;
 
-    static const QString NAT_SCRIPT_FILENAME;
-
     explicit Install(QObject *parent = 0);
     ~Install();
 
@@ -98,6 +96,17 @@ public:
     \brief Populate the newly created database
       ****************/
     bool createInitialRows();
+
+    /**
+    \brief Create kernel switch shell script and enable/disable rule
+           snippet table entries
+
+    \return String containing name of created shell script
+      **********************/
+    QString createKernelSwitchScript(QString scriptFileName,
+                                     QString kernelFileName,
+                                     QString snippetName,
+                                     QStringList message = QStringList());
 
 signals:
 
@@ -211,6 +220,10 @@ protected:
       ***********************/
     QString createScriptClearFirewall();
 
+
+    QString createScriptSetIptablesKernelDefaults();
+
+
     /**
     \brief Get short name of current firewall ruleset using iptables
 
@@ -244,10 +257,56 @@ protected:
     /**
     \brief Turns Network Address Translation (NAT) on or off
 
-
     \return path and name of file created
       ***********************/
     QString createNatScript();
+
+
+    /**
+    \brief Turns Broadcast echo protection on or off
+
+    \return path and name of file created
+      ***********************/
+    QString createBroadcastScript();
+
+
+    /**
+    \brief Turns protection against source routed scripts on or off
+
+    \return path and name of file created
+      ***********************/
+    QString createSourceRoutedPacketsScript();
+
+
+    /**
+    \brief Turns protection against TCP Syn Cookies on or off
+
+    \return path and name of file created
+      ***********************/
+    QString createTcpSynCookieScript();
+
+
+    /**
+    \brief Turns whether to accept ICMP Redirect Acceptance on or off
+
+    \return path and name of file created
+      ***********************/
+    QString createIcmpRedirectAcceptanceScript();
+
+
+    /**
+    \brief Turns the sending of Redirect messages on or off
+
+    \return path and name of file created
+      ***********************/
+    QString createSendRedirectMessagesScript();
+
+    /**
+    \brief Turns the dropping of spoofed packets on or off
+
+    \return path and name of file created
+      ***********************/
+    QString createDropSpoofedPacketsScript();
 
 private:
 

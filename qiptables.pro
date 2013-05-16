@@ -122,4 +122,5 @@ FORMS    += mainwindow.ui \
 
 OTHER_FILES += \
     README.md \
-    LICENCE
+    LICENCE \
+    iptables-useful-info.txt

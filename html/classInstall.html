@@ -103,6 +103,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:ac86b817b745892d965bfc786229bffe4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac86b817b745892d965bfc786229bffe4"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstall.html#ac86b817b745892d965bfc786229bffe4">createInitialRows</a> ()</td></tr>
 <tr class="memdesc:ac86b817b745892d965bfc786229bffe4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Populate the newly created database. <br/></td></tr>
+<tr class="memitem:a02e5ee523c5020a8c3d54733fee7a26f"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstall.html#a02e5ee523c5020a8c3d54733fee7a26f">createKernelSwitchScript</a> (QString scriptFileName, QString kernelFileName, QString snippetName, QStringList message=QStringList())</td></tr>
+<tr class="memdesc:a02e5ee523c5020a8c3d54733fee7a26f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create kernel switch shell script and enable/disable rule snippet table entries.  <a href="#a02e5ee523c5020a8c3d54733fee7a26f"></a><br/></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -147,6 +149,8 @@ Protected Member Functions</h2></td></tr>
 <tr class="memdesc:a587c4ee53855a8cb6039b4c6b13cc4ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create shell scripts used by qiptables.  <a href="#a587c4ee53855a8cb6039b4c6b13cc4ca"></a><br/></td></tr>
 <tr class="memitem:aa3296bb8022791c9bbbc5611f063e18d"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstall.html#aa3296bb8022791c9bbbc5611f063e18d">createScriptClearFirewall</a> ()</td></tr>
 <tr class="memdesc:aa3296bb8022791c9bbbc5611f063e18d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create bash script to clear firewall rules using iptables.  <a href="#aa3296bb8022791c9bbbc5611f063e18d"></a><br/></td></tr>
+<tr class="memitem:a82a557c357342d5f2545dea1443e6f5b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a82a557c357342d5f2545dea1443e6f5b"></a>
+QString&#160;</td><td class="memItemRight" valign="bottom"><b>createScriptSetIptablesKernelDefaults</b> ()</td></tr>
 <tr class="memitem:a2e093e745442fe5311a0c035b969bc37"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstall.html#a2e093e745442fe5311a0c035b969bc37">createScriptGetFirewallName</a> ()</td></tr>
 <tr class="memdesc:a2e093e745442fe5311a0c035b969bc37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get short name of current firewall ruleset using iptables.  <a href="#a2e093e745442fe5311a0c035b969bc37"></a><br/></td></tr>
 <tr class="memitem:a1ccc37e67a834e87766c14ae3e7bb78c"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstall.html#a1ccc37e67a834e87766c14ae3e7bb78c">createInitdShellScript</a> ()</td></tr>
@@ -155,6 +159,20 @@ Protected Member Functions</h2></td></tr>
 <tr class="memdesc:aff6caf290a7a39c3a2e133305b38d94a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create script to save iptables using iptables-save.  <a href="#aff6caf290a7a39c3a2e133305b38d94a"></a><br/></td></tr>
 <tr class="memitem:a6a21edc19c0918933d30a88e610845e8"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstall.html#a6a21edc19c0918933d30a88e610845e8">createRestoreIptablesShellScript</a> ()</td></tr>
 <tr class="memdesc:a6a21edc19c0918933d30a88e610845e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create script to restore iptables using iptables-restore.  <a href="#a6a21edc19c0918933d30a88e610845e8"></a><br/></td></tr>
+<tr class="memitem:aa3a4cbca29c337ba4925ff7c0c2284aa"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstall.html#aa3a4cbca29c337ba4925ff7c0c2284aa">createNatScript</a> ()</td></tr>
+<tr class="memdesc:aa3a4cbca29c337ba4925ff7c0c2284aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turns Network Address Translation (NAT) on or off.  <a href="#aa3a4cbca29c337ba4925ff7c0c2284aa"></a><br/></td></tr>
+<tr class="memitem:a23662d6f447433e90000ba36b56ae0a0"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstall.html#a23662d6f447433e90000ba36b56ae0a0">createBroadcastScript</a> ()</td></tr>
+<tr class="memdesc:a23662d6f447433e90000ba36b56ae0a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turns Broadcast echo protection on or off.  <a href="#a23662d6f447433e90000ba36b56ae0a0"></a><br/></td></tr>
+<tr class="memitem:abfd7d21aba6d274501f9bdc1bd3bfd1f"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstall.html#abfd7d21aba6d274501f9bdc1bd3bfd1f">createSourceRoutedPacketsScript</a> ()</td></tr>
+<tr class="memdesc:abfd7d21aba6d274501f9bdc1bd3bfd1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turns protection against source routed scripts on or off.  <a href="#abfd7d21aba6d274501f9bdc1bd3bfd1f"></a><br/></td></tr>
+<tr class="memitem:adcb34974469c68b61f35102171cde474"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstall.html#adcb34974469c68b61f35102171cde474">createTcpSynCookieScript</a> ()</td></tr>
+<tr class="memdesc:adcb34974469c68b61f35102171cde474"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turns protection against TCP Syn Cookies on or off.  <a href="#adcb34974469c68b61f35102171cde474"></a><br/></td></tr>
+<tr class="memitem:a0fb4df179aa11a228df7518d9b7ea6f6"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstall.html#a0fb4df179aa11a228df7518d9b7ea6f6">createIcmpRedirectAcceptanceScript</a> ()</td></tr>
+<tr class="memdesc:a0fb4df179aa11a228df7518d9b7ea6f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turns whether to accept ICMP Redirect Acceptance on or off.  <a href="#a0fb4df179aa11a228df7518d9b7ea6f6"></a><br/></td></tr>
+<tr class="memitem:a04d414bb20b83ecb3d537e52fd67fb69"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstall.html#a04d414bb20b83ecb3d537e52fd67fb69">createSendRedirectMessagesScript</a> ()</td></tr>
+<tr class="memdesc:a04d414bb20b83ecb3d537e52fd67fb69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turns the sending of Redirect messages on or off.  <a href="#a04d414bb20b83ecb3d537e52fd67fb69"></a><br/></td></tr>
+<tr class="memitem:ad4dd2a239a16354dbacd8e8a5906a85d"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstall.html#ad4dd2a239a16354dbacd8e8a5906a85d">createDropSpoofedPacketsScript</a> ()</td></tr>
+<tr class="memdesc:ad4dd2a239a16354dbacd8e8a5906a85d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turns the dropping of spoofed packets on or off.  <a href="#ad4dd2a239a16354dbacd8e8a5906a85d"></a><br/></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -168,6 +186,32 @@ QFile *&#160;</td><td class="memItemRight" valign="bottom"><b>file</b></td></tr>
 <a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Builds application database. </p>
 </div><h2>Member Function Documentation</h2>
+<a class="anchor" id="a23662d6f447433e90000ba36b56ae0a0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString Install::createBroadcastScript </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Turns Broadcast echo protection on or off. </p>
+<dl class="section return"><dt>Returns</dt><dd>path and name of file created </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a6119b123f6016b23898be64ad6512558"></a>
 <div class="memitem">
 <div class="memproto">
@@ -192,6 +236,32 @@ QFile *&#160;</td><td class="memItemRight" valign="bottom"><b>file</b></td></tr>
 
 <p>Create directory. </p>
 <dl class="section return"><dt>Returns</dt><dd>true if successful created else false </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ad4dd2a239a16354dbacd8e8a5906a85d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString Install::createDropSpoofedPacketsScript </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Turns the dropping of spoofed packets on or off. </p>
+<dl class="section return"><dt>Returns</dt><dd>path and name of file created </dd></dl>
 
 </div>
 </div>
@@ -309,6 +379,32 @@ QFile *&#160;</td><td class="memItemRight" valign="bottom"><b>file</b></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a0fb4df179aa11a228df7518d9b7ea6f6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString Install::createIcmpRedirectAcceptanceScript </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Turns whether to accept ICMP Redirect Acceptance on or off. </p>
+<dl class="section return"><dt>Returns</dt><dd>path and name of file created </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a1ccc37e67a834e87766c14ae3e7bb78c"></a>
 <div class="memitem">
 <div class="memproto">
@@ -331,6 +427,73 @@ QFile *&#160;</td><td class="memItemRight" valign="bottom"><b>file</b></td></tr>
 </div><div class="memdoc">
 
 <p>Create script to start firewall rules run during boot from init.d. </p>
+<dl class="section return"><dt>Returns</dt><dd>path and name of file created </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a02e5ee523c5020a8c3d54733fee7a26f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString Install::createKernelSwitchScript </td>
+          <td>(</td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>scriptFileName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>kernelFileName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>snippetName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QStringList&#160;</td>
+          <td class="paramname"><em>message</em> = <code>QStringList()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create kernel switch shell script and enable/disable rule snippet table entries. </p>
+<dl class="section return"><dt>Returns</dt><dd>String containing name of created shell script </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aa3a4cbca29c337ba4925ff7c0c2284aa"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString Install::createNatScript </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Turns Network Address Translation (NAT) on or off. </p>
 <dl class="section return"><dt>Returns</dt><dd>path and name of file created </dd></dl>
 
 </div>
@@ -595,6 +758,32 @@ QFile *&#160;</td><td class="memItemRight" valign="bottom"><b>file</b></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a04d414bb20b83ecb3d537e52fd67fb69"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString Install::createSendRedirectMessagesScript </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Turns the sending of Redirect messages on or off. </p>
+<dl class="section return"><dt>Returns</dt><dd>path and name of file created </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a587c4ee53855a8cb6039b4c6b13cc4ca"></a>
 <div class="memitem">
 <div class="memproto">
@@ -621,6 +810,32 @@ QFile *&#160;</td><td class="memItemRight" valign="bottom"><b>file</b></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="abfd7d21aba6d274501f9bdc1bd3bfd1f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString Install::createSourceRoutedPacketsScript </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Turns protection against source routed scripts on or off. </p>
+<dl class="section return"><dt>Returns</dt><dd>path and name of file created </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="af1528ca1204a506964ed88f1617e6f75"></a>
 <div class="memitem">
 <div class="memproto">
@@ -644,6 +859,32 @@ QFile *&#160;</td><td class="memItemRight" valign="bottom"><b>file</b></td></tr>
 
 <p>create initial system configuration table row </p>
 <dl class="section return"><dt>Returns</dt><dd>true if successful created else false </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="adcb34974469c68b61f35102171cde474"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString Install::createTcpSynCookieScript </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Turns protection against TCP Syn Cookies on or off. </p>
+<dl class="section return"><dt>Returns</dt><dd>path and name of file created </dd></dl>
 
 </div>
 </div>
@@ -767,7 +1008,7 @@ QFile *&#160;</td><td class="memItemRight" valign="bottom"><b>file</b></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed May 15 2013 07:24:33 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 16 2013 10:36:52 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>
