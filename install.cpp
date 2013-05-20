@@ -1123,13 +1123,19 @@ bool Install::createShellScripts()
     createSaveIptablesShellScript();
     createRestoreIptablesShellScript();
     createNatScript();
-    createBroadcastScript();
-    createSourceRoutedPacketsScript();
-    createTcpSynCookieScript();
-    createIcmpRedirectAcceptanceScript();
-    createSendRedirectMessagesScript();
-    createDropSpoofedPacketsScript();
-    createScriptSetIptablesKernelDefaults();
+
+    /**
+    \todo Turn off most of iptables kernel switch scripts until effects better understood
+
+
+    *******************/
+    //createBroadcastScript();
+    //createSourceRoutedPacketsScript();
+    //createTcpSynCookieScript();
+    //createIcmpRedirectAcceptanceScript();
+    //createSendRedirectMessagesScript();
+    //createDropSpoofedPacketsScript();
+    //createScriptSetIptablesKernelDefaults();
 
     return result;
 }
