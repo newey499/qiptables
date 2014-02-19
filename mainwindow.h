@@ -177,7 +177,8 @@ protected:
     /**
     \brief Create menus and forms used by application
       ************************/
-    virtual void buildMenusAndForms();
+    virtual void buildMenu
+    sAndForms();
 
     QPointer<IpStackedWidget> widgetStack;
     QPointer<FormTest> formTest;
